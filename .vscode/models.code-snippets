@@ -1,0 +1,47 @@
+{
+	"Freezed Model": {
+		"prefix": "fzm",
+		"body": [
+			"import 'package:freezed_annotation/freezed_annotation.dart';",
+			"",
+			"part '${1:file_name}.freezed.dart';",
+			"part '${1:file_name}.g.dart';",
+			"",
+			"@freezed",
+			"class ${2:name} with _$${2:name} {",
+			"",
+			"  const factory ${2:name}({",
+			"    required int id,",
+			"  }) = _${2:name};",
+			"",
+			"  factory ${2:name}.fromJson(Map<String, dynamic> json) =>",
+			"      _$${2:name}FromJson(json);",
+			"}",
+		],
+		"description": "Create a Freezed Model"
+	},
+	"Hive X Freezed Model": {
+		"prefix": "hfm",
+		"body": [
+			"import 'package:freezed_annotation/freezed_annotation.dart';",
+			"import 'package:hive/hive.dart';",
+			"",
+			"part '${1:file_name}.freezed.dart';",
+			"part '${1:file_name}.g.dart';",
+			"",
+			"@freezed",
+			"class ${2:name} with _$${2:name} {",
+			"  static const String boxName = '${1:file_name}';",
+			"",
+			"  @HiveType(typeId: ${3:type_id})",
+			"  const factory ${2:name}({",
+			"    @HiveField(0) required int id,",
+			"  }) = _${2:name};",
+			"",
+			"  factory ${2:name}.fromJson(Map<String, dynamic> json) =>",
+			"      _$${2:name}FromJson(json);",
+			"}",
+		],
+		"description": "Create a Hive X Freezed Model"
+	}
+}

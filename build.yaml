@@ -1,0 +1,13 @@
+targets:  
+  $default:  
+    sources:
+      - $package$
+      - lib/**
+    builders:
+      freezed:
+        options:
+          copy_with: true
+      json_serializable:
+          options:
+            include_if_null: false
+            explicit_to_json: true

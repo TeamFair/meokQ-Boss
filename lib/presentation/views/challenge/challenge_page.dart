@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
-class StatisticsPage extends StatefulWidget {
-  static const id = 'statisticsage';
-  const StatisticsPage({super.key});
+class ChallengePage extends StatefulWidget {
+  static const id = 'challenge_page';
+  const ChallengePage({super.key});
 
   @override
-  State<StatisticsPage> createState() => _StatisticsPageState();
+  State<ChallengePage> createState() => _ChallengePageState();
 }
 
-class _StatisticsPageState extends State<StatisticsPage> {
+class _ChallengePageState extends State<ChallengePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          '고객 통계',
+          '도전',
         ),
         actions: [
           IconButton(

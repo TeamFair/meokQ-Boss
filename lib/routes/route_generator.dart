@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meokq_boss/presentation/bloc/bottom_navigation_controller/bnc_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
 import 'package:meokq_boss/presentation/views/home/home_page.dart';
@@ -26,14 +27,11 @@ class RouteGenerator {
           ),
         );
       case HomePage.id:
-        // return MaterialPageRoute(
-        //   builder: (context) => BlocProvider<LoginBloc>.value(
-        //     value: LoginBloc(),
-        //     child: const HomePage(),
-        //   ),
-        // );
         return MaterialPageRoute(
-          builder: (_) => const HomePage(),
+          builder: (context) => BlocProvider<BNCBloc>.value(
+            value: BNCBloc(),
+            child: const HomePage(),
+          ),
         );
 
       default:

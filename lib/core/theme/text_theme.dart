@@ -4,13 +4,23 @@ import 'package:meokq_boss/core/color/color_theme.dart';
 class TextS {
   static const double scaled = 0.0;
 
+  static TextStyle title1() {
+    return const TextStyle(
+      fontFamily: 'Pretendard',
+      fontSize: 23,
+      fontWeight: FontWeight.w700,
+      fontStyle: FontStyle.normal,
+      color: Colors.black,
+    );
+  }
+
   static TextStyle heading1() {
     return const TextStyle(
       fontFamily: 'Pretendard',
       fontSize: 17,
       fontWeight: FontWeight.w700,
       fontStyle: FontStyle.normal,
-      height: 20,
+      height: 18,
       letterSpacing: -0.4,
       color: Colors.black,
     );
@@ -23,6 +33,18 @@ class TextS {
       fontWeight: FontWeight.w700,
       fontStyle: FontStyle.normal,
       height: 18,
+      letterSpacing: -0.4,
+      color: Colors.black,
+    );
+  }
+
+  static TextStyle subtitle1() {
+    return const TextStyle(
+      fontFamily: 'Pretendard',
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      fontStyle: FontStyle.normal,
+      height: 24,
       letterSpacing: -0.4,
       color: Colors.black,
     );
@@ -82,9 +104,7 @@ class TextS {
       fontSize: 10,
       fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal,
-      height: 16,
-      letterSpacing: -0.4,
-      color: ColorS.red,
+      height: 12,
     );
   }
 

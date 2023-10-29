@@ -1,4 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:meokq_boss/resources/resources.dart';
 
 class QuestPage extends StatefulWidget {
   static const id = 'quest_page';
@@ -11,6 +13,22 @@ class QuestPage extends StatefulWidget {
 class _QuestPageState extends State<QuestPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          '퀘스트',
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(Svgs.plusIcon),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(Svgs.settingIcon),
+          ),
+        ],
+      ),
+    );
   }
 }

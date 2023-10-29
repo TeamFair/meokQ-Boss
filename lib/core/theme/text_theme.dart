@@ -20,7 +20,6 @@ class TextS {
       fontSize: 17,
       fontWeight: FontWeight.w700,
       fontStyle: FontStyle.normal,
-      height: 18,
       letterSpacing: -0.4,
       color: Colors.black,
     );
@@ -32,7 +31,7 @@ class TextS {
       fontSize: 15,
       fontWeight: FontWeight.w700,
       fontStyle: FontStyle.normal,
-      height: 18,
+      // height: 18,
       letterSpacing: -0.4,
       color: Colors.black,
     );
@@ -44,7 +43,7 @@ class TextS {
       fontSize: 16,
       fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal,
-      height: 24,
+      // height: 24,
       letterSpacing: -0.4,
       color: Colors.black,
     );
@@ -56,7 +55,7 @@ class TextS {
       fontSize: 16,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
-      height: 24,
+      // height: 24,
       letterSpacing: -0.4,
       color: Colors.black,
     );
@@ -68,7 +67,7 @@ class TextS {
       fontSize: 13,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
-      height: 20,
+      // height: 20,
       letterSpacing: -0.3,
       color: ColorS.gray300,
     );
@@ -80,9 +79,7 @@ class TextS {
       fontSize: 12,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
-      height: 16,
       letterSpacing: -0.3,
-      color: ColorS.gray300,
     );
   }
 
@@ -92,7 +89,7 @@ class TextS {
       fontSize: 12,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
-      height: 16,
+      // height: 16,
       letterSpacing: -0.4,
       color: Colors.black,
     );
@@ -104,7 +101,7 @@ class TextS {
       fontSize: 10,
       fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal,
-      height: 12,
+      // height: 12,
     );
   }
 
@@ -114,7 +111,16 @@ class TextS {
       fontSize: 16,
       fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal,
-      height: 18,
+      // height: 18,
+    );
+  }
+
+  static TextStyle tabRegular() {
+    return const TextStyle(
+      fontFamily: 'Pretendard',
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      fontStyle: FontStyle.normal,
     );
   }
 

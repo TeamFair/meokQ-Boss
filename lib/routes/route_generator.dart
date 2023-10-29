@@ -5,6 +5,7 @@ import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
 import 'package:meokq_boss/presentation/views/home/home_page.dart';
 import 'package:meokq_boss/presentation/views/login/login_page.dart';
+import 'package:meokq_boss/presentation/views/setting/setting_page.dart';
 import 'package:meokq_boss/presentation/views/spalsh/splash_page.dart';
 
 class RouteGenerator {
@@ -31,6 +32,13 @@ class RouteGenerator {
           builder: (context) => BlocProvider<BNCBloc>.value(
             value: BNCBloc(),
             child: const HomePage(),
+          ),
+        );
+      case SettingPage.id:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider<BNCBloc>.value(
+            value: BNCBloc(),
+            child: const SettingPage(),
           ),
         );
 

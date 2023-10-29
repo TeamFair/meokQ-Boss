@@ -19,6 +19,8 @@ import '../../domain/repository/user/user_repository.dart' as _i4;
 
 const String _prod = 'prod';
 
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: lines_longer_than_80_chars
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt init(
   _i1.GetIt getIt, {

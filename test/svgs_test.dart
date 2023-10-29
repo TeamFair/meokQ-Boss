@@ -15,6 +15,7 @@ void main() {
     expect(File(Svgs.plusIcon).existsSync(), isTrue);
     expect(File(Svgs.questOffIcon).existsSync(), isTrue);
     expect(File(Svgs.questOnIcon).existsSync(), isTrue);
+    expect(File(Svgs.rightArrowIcon).existsSync(), isTrue);
     expect(File(Svgs.settingIcon).existsSync(), isTrue);
     expect(File(Svgs.smileIcon).existsSync(), isTrue);
     expect(File(Svgs.smileIconWithBg).existsSync(), isTrue);

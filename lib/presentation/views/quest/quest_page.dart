@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:meokq_boss/core/color/color_theme.dart';
+import 'package:meokq_boss/presentation/bloc/tab_bar_controller/tab_bar_bloc.dart';
+import 'package:meokq_boss/presentation/views/quest/quest_check/quest_check_page.dart';
+import 'package:meokq_boss/presentation/views/quest/quest_show/quest_show_page.dart';
+import 'package:meokq_boss/presentation/views/setting/setting_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
 class QuestPage extends StatefulWidget {
-  static const id = 'quest_page';
   const QuestPage({super.key});
 
   @override
@@ -13,21 +18,58 @@ class QuestPage extends StatefulWidget {
 class _QuestPageState extends State<QuestPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          '퀘스트',
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            '퀘스트',
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(Svgs.plusIcon),
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  SettingPage.id,
+                );
+              },
+              icon: SvgPicture.asset(Svgs.settingIcon),
+            ),
+          ],
+          bottom: TabBar(
+            tabs: const <Widget>[
+              Tab(
+                text: '게시중',
+              ),
+              Tab(
+                text: '검토중',
+              ),
+            ],
+            onTap: (index) {
+              setState(() {
+                BlocProvider.of<TabBarBloc>(context)
+                    .add(TabChange(tabIndex: index));
+              });
+            },
+            indicatorPadding: const EdgeInsets.symmetric(horizontal: 36),
+            indicator: const UnderlineTabIndicator(
+              borderSide: BorderSide(width: 3, color: ColorS.tabYellow),
+              borderRadius: BorderRadius.all(Radius.circular(100)),
+              insets: EdgeInsets.symmetric(
+                horizontal: 1,
+              ),
+            ),
+          ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(Svgs.plusIcon),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(Svgs.settingIcon),
-          ),
-        ],
+        body: const TabBarView(
+          children: [
+            QuestShowPage(),
+            QuestCheckPage(),
+          ],
+        ),
       ),
     );
   }

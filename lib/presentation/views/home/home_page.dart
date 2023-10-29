@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/presentation/bloc/bottom_navigation_controller/bnc_bloc.dart';
 import 'package:meokq_boss/presentation/views/account/account_page.dart';
 import 'package:meokq_boss/presentation/views/challenge/challenge_page.dart';
-import 'package:meokq_boss/presentation/views/quest/quest_page.dart';
+import 'package:meokq_boss/presentation/views/quest/quest_page_view.dart';
 import 'package:meokq_boss/presentation/views/statistics/statistics_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Widget> pageRouteList = const [
-    QuestPage(),
+    QuestPageView(),
     ChallengePage(),
     StatisticsPage(),
     AccountPage(),

@@ -17,7 +17,7 @@ extension ColorS on MaterialColor {
 
   static const notiYellow = Color(0xFFFFCD00);
 
-  static const tabYello = Color(0xFFFBE176);
+  static const tabYellow = Color(0xFFFBE176);
 
   static const background = Color(0xFFF6F6F6);
 

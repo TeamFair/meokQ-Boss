@@ -21,7 +21,7 @@ class _AccountPageState extends State<AccountPage> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: SvgPicture.asset(Svgs.settingIcon),
+            icon: SvgPicture.asset(Svgs.pencilIcon),
           ),
         ],
       ),

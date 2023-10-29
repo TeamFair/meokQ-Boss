@@ -29,7 +29,12 @@ class AppTheme {
 
   static TabBarTheme _tabBarTheme() {
     return TabBarTheme(
-      labelStyle: TextS.caption2(),
+      labelStyle: TextS.tabRegular().copyWith(
+        color: Colors.black,
+      ),
+      unselectedLabelStyle: TextS.tabRegular().copyWith(
+        color: ColorS.gray200,
+      ),
     );
   }
 

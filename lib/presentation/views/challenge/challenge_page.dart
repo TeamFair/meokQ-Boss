@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:meokq_boss/presentation/views/setting/setting_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
 class ChallengePage extends StatefulWidget {
@@ -20,7 +21,11 @@ class _ChallengePageState extends State<ChallengePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(
+                    SettingPage.id,
+                  );
+            },
             icon: SvgPicture.asset(Svgs.settingIcon),
           ),
         ],

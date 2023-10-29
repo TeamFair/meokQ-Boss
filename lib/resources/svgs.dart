@@ -14,6 +14,7 @@ class Svgs {
   static const String plusIcon = 'assets/vectors/plus_icon.svg';
   static const String questOffIcon = 'assets/vectors/quest_off_icon.svg';
   static const String questOnIcon = 'assets/vectors/quest_on_icon.svg';
+  static const String rightArrowIcon = 'assets/vectors/right_arrow_icon.svg';
   static const String settingIcon = 'assets/vectors/setting_icon.svg';
   static const String smileIcon = 'assets/vectors/smile_icon.svg';
   static const String smileIconWithBg = 'assets/vectors/smile_icon_with_bg.svg';

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
-import 'package:meokq_boss/presentation/views/home/home_page.dart';
+import 'package:meokq_boss/presentation/views/login/login_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
 class SplashPage extends StatefulWidget {
@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
       listener: (context, state) {
         if (state.status == SplashStatus.success) {
           Navigator.of(context)
-              .pushNamedAndRemoveUntil(HomePage.id, (route) => false);
+              .pushNamedAndRemoveUntil(LoginPage.id, (route) => false);
         }
       },
       child: Container(

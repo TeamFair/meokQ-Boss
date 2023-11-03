@@ -16,28 +16,26 @@ class AuthenticationRepository extends InterfaceAuthenticatoin {
 
   @override
   Future<void> kakaoLogin() async {
-    // TODO: 카카오 로그인 api usecase 추가
     await Future.delayed(
       const Duration(milliseconds: 300),
       () => _controller.add(AuthenticationStatus.authenticated),
     );
+
   }
 
   @override
   Future<void> appleLogin() async {
-    // TODO: 애플 로그인 api usecase 추가
     await Future.delayed(
       const Duration(milliseconds: 300),
-      () => _controller.add(AuthenticationStatus.authenticated),
+      () => _controller.add(AuthenticationStatus.unknown),
     );
   }
 
   @override
   Future<void> googleLogin() async {
-    // TODO: 구글 로그인 api usecase 추가
     await Future.delayed(
       const Duration(milliseconds: 300),
-      () => _controller.add(AuthenticationStatus.authenticated),
+      () => _controller.add(AuthenticationStatus.unauthenticated),
     );
   }
 

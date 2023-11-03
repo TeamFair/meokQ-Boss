@@ -14,6 +14,16 @@ class TextS {
     );
   }
 
+  static TextStyle title2() {
+    return const TextStyle(
+      fontFamily: 'Pretendard',
+      fontSize: 17,
+      fontWeight: FontWeight.w700,
+      fontStyle: FontStyle.normal,
+      color: Colors.black,
+    );
+  }
+
   static TextStyle heading1() {
     return const TextStyle(
       fontFamily: 'Pretendard',
@@ -121,6 +131,16 @@ class TextS {
       fontSize: 14,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
+    );
+  }
+
+  static TextStyle content() {
+    return const TextStyle(
+      fontSize: 15,
+      fontFamily: 'Pretendard',
+      fontWeight: FontWeight.w400,
+      height: 0.10,
+      letterSpacing: -0.30,
     );
   }
 

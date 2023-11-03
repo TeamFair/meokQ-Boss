@@ -1,4 +1,4 @@
-enum AuthenticationStatus { unknown, authenticated, unauthenticated }
+enum AuthenticationStatus { unknown, authenticated, unauthenticated}
 
 abstract class InterfaceAuthenticatoin {
   Stream<AuthenticationStatus> get status;

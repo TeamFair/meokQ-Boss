@@ -5,11 +5,21 @@ class Svgs {
 
   static const String accountOffIcon = 'assets/vectors/account_off_icon.svg';
   static const String accountOnIcon = 'assets/vectors/account_on_icon.svg';
+  static const String appleIcon = 'assets/vectors/apple_icon.svg';
   static const String cameraIcon = 'assets/vectors/camera_icon.svg';
   static const String challengeOffIcon =
       'assets/vectors/challenge_off_icon.svg';
   static const String challengeOnIcon = 'assets/vectors/challenge_on_icon.svg';
   static const String checkIcon = 'assets/vectors/check_icon.svg';
+  static const String checkInIcon = 'assets/vectors/check_in_icon.svg';
+  static const String checkInWithCircleIcon =
+      'assets/vectors/check_in_with_circle_icon.svg';
+  static const String checkOffWithCircleIcon =
+      'assets/vectors/check_off_with_circle_icon.svg';
+  static const String checkOutIcon = 'assets/vectors/check_out_icon.svg';
+  static const String googleIcon = 'assets/vectors/google_icon.svg';
+  static const String kakaoIcon = 'assets/vectors/kakao_icon.svg';
+  static const String leftArrowIcon = 'assets/vectors/left_arrow_icon.svg';
   static const String pencilIcon = 'assets/vectors/pencil_icon.svg';
   static const String plusIcon = 'assets/vectors/plus_icon.svg';
   static const String questOffIcon = 'assets/vectors/quest_off_icon.svg';

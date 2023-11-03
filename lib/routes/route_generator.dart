@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meokq_boss/presentation/bloc/agreementPermission/agreement_permission_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/bottom_navigation_controller/bnc_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
 import 'package:meokq_boss/presentation/views/home/home_page.dart';
 import 'package:meokq_boss/presentation/views/login/login_page.dart';
 import 'package:meokq_boss/presentation/views/setting/setting_page.dart';
+import 'package:meokq_boss/presentation/views/sign_in/agree/agree_page.dart';
 import 'package:meokq_boss/presentation/views/spalsh/splash_page.dart';
 
 class RouteGenerator {
@@ -41,7 +43,13 @@ class RouteGenerator {
             child: const SettingPage(),
           ),
         );
-
+      case AgreePage.id:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider<AgreementPermissionBloc>.value(
+            value: AgreementPermissionBloc(),
+            child: const AgreePage(),
+          ),
+        );
       default:
         return _errorRoute();
     }

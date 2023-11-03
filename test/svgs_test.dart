@@ -7,10 +7,18 @@ void main() {
   test('svgs assets test', () {
     expect(File(Svgs.accountOffIcon).existsSync(), isTrue);
     expect(File(Svgs.accountOnIcon).existsSync(), isTrue);
+    expect(File(Svgs.appleIcon).existsSync(), isTrue);
     expect(File(Svgs.cameraIcon).existsSync(), isTrue);
     expect(File(Svgs.challengeOffIcon).existsSync(), isTrue);
     expect(File(Svgs.challengeOnIcon).existsSync(), isTrue);
     expect(File(Svgs.checkIcon).existsSync(), isTrue);
+    expect(File(Svgs.checkInIcon).existsSync(), isTrue);
+    expect(File(Svgs.checkInWithCircleIcon).existsSync(), isTrue);
+    expect(File(Svgs.checkOffWithCircleIcon).existsSync(), isTrue);
+    expect(File(Svgs.checkOutIcon).existsSync(), isTrue);
+    expect(File(Svgs.googleIcon).existsSync(), isTrue);
+    expect(File(Svgs.kakaoIcon).existsSync(), isTrue);
+    expect(File(Svgs.leftArrowIcon).existsSync(), isTrue);
     expect(File(Svgs.pencilIcon).existsSync(), isTrue);
     expect(File(Svgs.plusIcon).existsSync(), isTrue);
     expect(File(Svgs.questOffIcon).existsSync(), isTrue);

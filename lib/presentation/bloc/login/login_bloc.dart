@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:formz/formz.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/domain/repository/auth/interface_authentication.dart';
 
@@ -20,12 +19,22 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginGoogleLogin event,
     Emitter<LoginState> emit,
   ) async {
-    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+    emit(state.copyWith(status: LoginStatus.inProgress));
     try {
+      // 이 부분들 다 usecase로 묶을 수 있을 것 같다
       await _authenticationRepository.googleLogin();
-      emit(state.copyWith(status: FormzSubmissionStatus.success));
+      _authenticationRepository.status.listen((authStatus) {
+        switch (authStatus) {
+          case AuthenticationStatus.unknown:
+            emit(state.copyWith(status: LoginStatus.unknown));
+          case AuthenticationStatus.authenticated:
+            emit(state.copyWith(status: LoginStatus.success));
+          case AuthenticationStatus.unauthenticated:
+            emit(state.copyWith(status: LoginStatus.failure));
+        }
+      });
     } catch (_) {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      emit(state.copyWith(status: LoginStatus.failure));
     }
   }
 
@@ -33,12 +42,21 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginAppleLogin event,
     Emitter<LoginState> emit,
   ) async {
-    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+    emit(state.copyWith(status: LoginStatus.inProgress));
     try {
       await _authenticationRepository.appleLogin();
-      emit(state.copyWith(status: FormzSubmissionStatus.success));
+      _authenticationRepository.status.listen((authStatus) {
+        switch (authStatus) {
+          case AuthenticationStatus.unknown:
+            emit(state.copyWith(status: LoginStatus.unknown));
+          case AuthenticationStatus.authenticated:
+            emit(state.copyWith(status: LoginStatus.success));
+          case AuthenticationStatus.unauthenticated:
+            emit(state.copyWith(status: LoginStatus.failure));
+        }
+      });
     } catch (_) {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      emit(state.copyWith(status: LoginStatus.failure));
     }
   }
 
@@ -46,12 +64,21 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginKakaoLogin event,
     Emitter<LoginState> emit,
   ) async {
-    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+    emit(state.copyWith(status: LoginStatus.inProgress));
     try {
       await _authenticationRepository.kakaoLogin();
-      emit(state.copyWith(status: FormzSubmissionStatus.success));
+      _authenticationRepository.status.listen((authStatus) {
+        switch (authStatus) {
+          case AuthenticationStatus.unknown:
+            emit(state.copyWith(status: LoginStatus.unknown));
+          case AuthenticationStatus.authenticated:
+            emit(state.copyWith(status: LoginStatus.success));
+          case AuthenticationStatus.unauthenticated:
+            emit(state.copyWith(status: LoginStatus.failure));
+        }
+      });
     } catch (_) {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      emit(state.copyWith(status: LoginStatus.failure));
     }
   }
 }

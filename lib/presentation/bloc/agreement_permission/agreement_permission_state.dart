@@ -1,5 +1,39 @@
 part of 'agreement_permission_bloc.dart';
 
+enum Consent {
+  all,
+  collection,
+  thirdParty,
+  marketing;
+
+  String get text {
+    return switch (this) {
+      Consent.all => '모두 동의합니다.',
+      Consent.collection => '(필수) 개인정보 수집 이용 동의서',
+      Consent.thirdParty => '(필수) 개인정보 제3자 제공 동의',
+      Consent.marketing => '(선택) 홍보 및 마케팅에 관한 동의',
+    };
+  }
+
+  String get bottomSheetText {
+    return switch (this) {
+      Consent.all => '모두 동의합니다.',
+      Consent.collection => '개인정보 수집 이용 동의서',
+      Consent.thirdParty => '개인정보 제3자 제공 동의',
+      Consent.marketing => '홍보 및 마케팅에 관한 동의',
+    };
+  }
+
+  String get content {
+    return switch (this) {
+      Consent.all => '',
+      Consent.collection => personalInfoCollectAgreement,
+      Consent.thirdParty => thirdPartySharingConsent,
+      Consent.marketing => marketingConsent,
+    };
+  }
+}
+
 class AgreementPermissionState extends Equatable {
   const AgreementPermissionState({
     required this.allButtonClick,

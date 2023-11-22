@@ -14,6 +14,10 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../../domain/repository/auth/authentication_repository.dart' as _i6;
 import '../../domain/repository/auth/interface_authentication.dart' as _i5;
+import '../../domain/repository/image_picker/image_picker_repository.dart'
+    as _i8;
+import '../../domain/repository/image_picker/interface_image_picker.dart'
+    as _i7;
 import '../../domain/repository/user/interface_user.dart' as _i3;
 import '../../domain/repository/user/user_repository.dart' as _i4;
 
@@ -38,6 +42,10 @@ _i1.GetIt init(
   );
   gh.singleton<_i5.InterfaceAuthenticatoin>(
     _i6.AuthenticationRepository(),
+    registerFor: {_prod},
+  );
+  gh.singleton<_i7.InterfaceImagePicker>(
+    _i8.ImagePickerRepository(),
     registerFor: {_prod},
   );
   return getIt;

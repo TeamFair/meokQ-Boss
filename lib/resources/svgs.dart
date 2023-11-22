@@ -6,6 +6,8 @@ class Svgs {
   static const String accountOffIcon = 'assets/vectors/account_off_icon.svg';
   static const String accountOnIcon = 'assets/vectors/account_on_icon.svg';
   static const String appleIcon = 'assets/vectors/apple_icon.svg';
+  static const String arrowDown = 'assets/vectors/arrow_down.svg';
+  static const String arrowUp = 'assets/vectors/arrow_up.svg';
   static const String cameraIcon = 'assets/vectors/camera_icon.svg';
   static const String challengeOffIcon =
       'assets/vectors/challenge_off_icon.svg';
@@ -22,6 +24,8 @@ class Svgs {
   static const String leftArrowIcon = 'assets/vectors/left_arrow_icon.svg';
   static const String pencilIcon = 'assets/vectors/pencil_icon.svg';
   static const String plusIcon = 'assets/vectors/plus_icon.svg';
+  static const String plusInCircleIcon =
+      'assets/vectors/plus_in_circle_icon.svg';
   static const String questOffIcon = 'assets/vectors/quest_off_icon.svg';
   static const String questOnIcon = 'assets/vectors/quest_on_icon.svg';
   static const String rightArrowIcon = 'assets/vectors/right_arrow_icon.svg';

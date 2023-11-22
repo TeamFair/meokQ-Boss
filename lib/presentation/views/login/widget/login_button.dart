@@ -17,12 +17,12 @@ class LoginButton extends StatelessWidget {
   final Color color;
   final bool isBorderNeed;
   final Color textColor;
-  final Function? onTap;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onTap,
+      onTap: onTap,
       child: Container(
         width: 269,
         height: 50,

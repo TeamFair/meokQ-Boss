@@ -11,7 +11,11 @@ extension ColorS on MaterialColor {
 
   static const gray100 = Color(0xFFE8E8E8);
 
+  static const applyGray = Color(0xFF838693);
+
   static const grayForBackgroundText = Color(0xFFA4A4A4);
+
+  static const buttonYellow = Color(0xFFFFEB3E);
 
   static const textYellow = Color(0xFFE2BC32);
 

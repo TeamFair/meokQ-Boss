@@ -139,7 +139,6 @@ class TextS {
       fontSize: 15,
       fontFamily: 'Pretendard',
       fontWeight: FontWeight.w400,
-      height: 0.10,
       letterSpacing: -0.30,
     );
   }

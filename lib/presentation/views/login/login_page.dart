@@ -5,6 +5,7 @@ import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 import 'package:meokq_boss/presentation/views/home/home_page.dart';
 import 'package:meokq_boss/presentation/views/login/widget/login_button.dart';
 import 'package:meokq_boss/presentation/views/login/widget/login_chip.dart';
+import 'package:meokq_boss/presentation/views/sign_in/agree/agree_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
 class LoginPage extends StatefulWidget {
@@ -65,7 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                 color: Colors.white,
                 isBorderNeed: true,
                 textColor: Colors.black,
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed(AgreePage.id);
+                },
               ),
               const SizedBox(
                 height: 16,

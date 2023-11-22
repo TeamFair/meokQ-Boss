@@ -8,6 +8,8 @@ void main() {
     expect(File(Svgs.accountOffIcon).existsSync(), isTrue);
     expect(File(Svgs.accountOnIcon).existsSync(), isTrue);
     expect(File(Svgs.appleIcon).existsSync(), isTrue);
+    expect(File(Svgs.arrowDown).existsSync(), isTrue);
+    expect(File(Svgs.arrowUp).existsSync(), isTrue);
     expect(File(Svgs.cameraIcon).existsSync(), isTrue);
     expect(File(Svgs.challengeOffIcon).existsSync(), isTrue);
     expect(File(Svgs.challengeOnIcon).existsSync(), isTrue);
@@ -21,6 +23,7 @@ void main() {
     expect(File(Svgs.leftArrowIcon).existsSync(), isTrue);
     expect(File(Svgs.pencilIcon).existsSync(), isTrue);
     expect(File(Svgs.plusIcon).existsSync(), isTrue);
+    expect(File(Svgs.plusInCircleIcon).existsSync(), isTrue);
     expect(File(Svgs.questOffIcon).existsSync(), isTrue);
     expect(File(Svgs.questOnIcon).existsSync(), isTrue);
     expect(File(Svgs.rightArrowIcon).existsSync(), isTrue);

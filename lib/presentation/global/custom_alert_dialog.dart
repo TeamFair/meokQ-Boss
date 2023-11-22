@@ -1,0 +1,88 @@
+import 'package:flutter/material.dart';
+import 'package:meokq_boss/core/color/color_theme.dart';
+import 'package:meokq_boss/core/theme/text_theme.dart';
+import 'package:meokq_boss/presentation/global/meakq_two_button.dart';
+
+class CustomAlertDialog extends StatelessWidget {
+  const CustomAlertDialog({
+    Key? key,
+    this.title = '',
+    this.contents = '',
+    this.cancelText = '취소',
+    this.confirmText = '확인',
+    required this.confirmCallback,
+    this.cancelCallback,
+    this.confirmButtonColor = ColorS.notiYellow,
+    this.height = 168,
+  }) : super(key: key);
+
+  /// 다이얼로그의 제목
+  final String title;
+
+  /// 다이얼로그 본문 내용
+  final String contents;
+
+  /// 취소 버튼의 텍스트
+  final String cancelText;
+
+  /// 확인 버튼의 텍스트
+  final String confirmText;
+
+  /// 확인 버튼을 눌렀을 때 어떻게 동작시킬지에 대한 함수
+  final VoidCallback confirmCallback;
+
+  /// 취소 버튼을 눌렀을 때 어떻게 동작시킬지에 대한 함수
+  final VoidCallback? cancelCallback;
+
+  /// 확인 버튼의 색상
+  final Color confirmButtonColor;
+
+  final int height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(24)),
+      ),
+      child: Container(
+        width: 289,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(
+              height: 33,
+            ),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextS.heading2(),
+            ),
+            if (contents != '')
+              const SizedBox(
+                height: 8,
+              ),
+            if (contents != '')
+              Text(
+                contents,
+                textAlign: TextAlign.center,
+                style: TextS.caption1().copyWith(color: ColorS.gray400),
+              ),
+            const SizedBox(
+              height: 24,
+            ),
+            MeokQTwoButton(
+              firstText: cancelText,
+              secondText: confirmText,
+              firstButtonTap: cancelCallback,
+              secondButtonTap: confirmCallback,
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

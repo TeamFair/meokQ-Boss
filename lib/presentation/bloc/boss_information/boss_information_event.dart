@@ -42,3 +42,5 @@ class ChangeStage extends BossInformationEvent {
     required this.stage,
   });
 }
+
+class WritingCompleted extends BossInformationEvent {}

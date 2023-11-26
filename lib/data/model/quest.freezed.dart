@@ -23,6 +23,7 @@ mixin _$Quest {
   int get id => throw _privateConstructorUsedError;
   String get reward => throw _privateConstructorUsedError;
   String get mission => throw _privateConstructorUsedError;
+  QuestStatus get questStatus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $QuestCopyWith<$Res> {
   factory $QuestCopyWith(Quest value, $Res Function(Quest) then) =
       _$QuestCopyWithImpl<$Res, Quest>;
   @useResult
-  $Res call({int id, String reward, String mission});
+  $Res call({int id, String reward, String mission, QuestStatus questStatus});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$QuestCopyWithImpl<$Res, $Val extends Quest>
     Object? id = null,
     Object? reward = null,
     Object? mission = null,
+    Object? questStatus = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -67,6 +69,10 @@ class _$QuestCopyWithImpl<$Res, $Val extends Quest>
           ? _value.mission
           : mission // ignore: cast_nullable_to_non_nullable
               as String,
+      questStatus: null == questStatus
+          ? _value.questStatus
+          : questStatus // ignore: cast_nullable_to_non_nullable
+              as QuestStatus,
     ) as $Val);
   }
 }
@@ -78,7 +84,7 @@ abstract class _$$QuestImplCopyWith<$Res> implements $QuestCopyWith<$Res> {
       __$$QuestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String reward, String mission});
+  $Res call({int id, String reward, String mission, QuestStatus questStatus});
 }
 
 /// @nodoc
@@ -95,6 +101,7 @@ class __$$QuestImplCopyWithImpl<$Res>
     Object? id = null,
     Object? reward = null,
     Object? mission = null,
+    Object? questStatus = null,
   }) {
     return _then(_$QuestImpl(
       id: null == id
@@ -109,6 +116,10 @@ class __$$QuestImplCopyWithImpl<$Res>
           ? _value.mission
           : mission // ignore: cast_nullable_to_non_nullable
               as String,
+      questStatus: null == questStatus
+          ? _value.questStatus
+          : questStatus // ignore: cast_nullable_to_non_nullable
+              as QuestStatus,
     ));
   }
 }
@@ -117,7 +128,10 @@ class __$$QuestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuestImpl implements _Quest {
   const _$QuestImpl(
-      {required this.id, required this.reward, required this.mission});
+      {required this.id,
+      required this.reward,
+      required this.mission,
+      required this.questStatus});
 
   factory _$QuestImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuestImplFromJson(json);
@@ -128,10 +142,12 @@ class _$QuestImpl implements _Quest {
   final String reward;
   @override
   final String mission;
+  @override
+  final QuestStatus questStatus;
 
   @override
   String toString() {
-    return 'Quest(id: $id, reward: $reward, mission: $mission)';
+    return 'Quest(id: $id, reward: $reward, mission: $mission, questStatus: $questStatus)';
   }
 
   @override
@@ -141,12 +157,15 @@ class _$QuestImpl implements _Quest {
             other is _$QuestImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.reward, reward) || other.reward == reward) &&
-            (identical(other.mission, mission) || other.mission == mission));
+            (identical(other.mission, mission) || other.mission == mission) &&
+            (identical(other.questStatus, questStatus) ||
+                other.questStatus == questStatus));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, reward, mission);
+  int get hashCode =>
+      Object.hash(runtimeType, id, reward, mission, questStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -166,7 +185,8 @@ abstract class _Quest implements Quest {
   const factory _Quest(
       {required final int id,
       required final String reward,
-      required final String mission}) = _$QuestImpl;
+      required final String mission,
+      required final QuestStatus questStatus}) = _$QuestImpl;
 
   factory _Quest.fromJson(Map<String, dynamic> json) = _$QuestImpl.fromJson;
 
@@ -176,6 +196,8 @@ abstract class _Quest implements Quest {
   String get reward;
   @override
   String get mission;
+  @override
+  QuestStatus get questStatus;
   @override
   @JsonKey(ignore: true)
   _$$QuestImplCopyWith<_$QuestImpl> get copyWith =>

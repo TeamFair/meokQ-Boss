@@ -22,64 +22,54 @@ class RouteGenerator {
     switch (settings.name) {
       case SplashPage.id:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<SplashBloc>.value(
-            value: SplashBloc(),
+          builder: (context) => BlocProvider<SplashBloc>(
+            create: (context) => SplashBloc(),
             child: const SplashPage(),
           ),
         );
       case LoginPage.id:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<LoginBloc>.value(
-            value: LoginBloc(),
+          builder: (context) => BlocProvider<LoginBloc>(
+            create: (context) =>  LoginBloc(),
             child: const LoginPage(),
           ),
         );
       case HomePage.id:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<BNCBloc>.value(
-            value: BNCBloc(),
+          builder: (context) => BlocProvider<BNCBloc>(
+            create: (context) =>  BNCBloc(),
             child: const HomePage(),
           ),
         );
       case SettingPage.id:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<BNCBloc>.value(
-            value: BNCBloc(),
+          builder: (context) => BlocProvider<BNCBloc>(
+            create: (context) =>  BNCBloc(),
             child: const SettingPage(),
           ),
         );
       case AgreePage.id:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<AgreementPermissionBloc>.value(
-            value: AgreementPermissionBloc(),
+          builder: (context) => BlocProvider<AgreementPermissionBloc>(
+            create: (context) =>  AgreementPermissionBloc(),
             child: const AgreePage(),
           ),
         );
       case ApplyStorePage.id:
         return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(
-            providers: [
-              BlocProvider<BossInformationBloc>.value(
-                value: BossInformationBloc(),
-              ),
-              BlocProvider<StoreInformationBloc>.value(
-                value: StoreInformationBloc(),
-              ),
-            ],
-            child: const ApplyStorePage(),
-          ),
+          builder: (context) => const ApplyStorePage(),
         );
       case BossInformationApplyPage.id:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<BossInformationBloc>.value(
-            value: BossInformationBloc(),
+          builder: (context) => BlocProvider<BossInformationBloc>(
+            create: (context) => BossInformationBloc(),
             child: const BossInformationApplyPage(),
           ),
         );
       case StoreInformationApplyPage.id:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<StoreInformationBloc>.value(
-            value: StoreInformationBloc(),
+          builder: (context) => BlocProvider<StoreInformationBloc>(
+            create: (context) => StoreInformationBloc(),
             child: const StoreInformationApplyPage(),
           ),
         );

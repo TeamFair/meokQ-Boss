@@ -2,48 +2,35 @@ import 'dart:async';
 
 import 'package:injectable/injectable.dart';
 import 'package:meokq_boss/domain/repository/auth/interface_authentication.dart';
+import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 
 @Singleton(as: InterfaceAuthenticatoin, env: ['prod'])
 class AuthenticationRepository extends InterfaceAuthenticatoin {
-  final _controller = StreamController<AuthenticationStatus>();
-
   @override
-  Stream<AuthenticationStatus> get status async* {
-    await Future<void>.delayed(const Duration(seconds: 1));
-    yield AuthenticationStatus.unauthenticated;
-    yield* _controller.stream;
+  Future<LoginStatus> kakaoLogin() async {
+    await Future.delayed(
+      const Duration(milliseconds: 300),
+    );
+    return LoginStatus.done;
   }
 
   @override
-  Future<void> kakaoLogin() async {
+  Future<LoginStatus> appleLogin() async {
     await Future.delayed(
       const Duration(milliseconds: 300),
-      () => _controller.add(AuthenticationStatus.authenticated),
     );
-
+    return LoginStatus.reject;
   }
 
   @override
-  Future<void> appleLogin() async {
+  Future<LoginStatus> googleLogin() async {
     await Future.delayed(
       const Duration(milliseconds: 300),
-      () => _controller.add(AuthenticationStatus.unknown),
     );
-  }
-
-  @override
-  Future<void> googleLogin() async {
-    await Future.delayed(
-      const Duration(milliseconds: 300),
-      () => _controller.add(AuthenticationStatus.unauthenticated),
-    );
+    return LoginStatus.newUser;
   }
 
   @override
   void logOut() {
-    _controller.add(AuthenticationStatus.unauthenticated);
   }
-
-  @override
-  void dispose() => _controller.close();
 }

@@ -18,6 +18,8 @@ import '../../domain/repository/image_picker/image_picker_repository.dart'
     as _i8;
 import '../../domain/repository/image_picker/interface_image_picker.dart'
     as _i7;
+import '../../domain/repository/local/inteface_local.dart' as _i9;
+import '../../domain/repository/local/local_repository.dart' as _i10;
 import '../../domain/repository/user/interface_user.dart' as _i3;
 import '../../domain/repository/user/user_repository.dart' as _i4;
 
@@ -46,6 +48,10 @@ _i1.GetIt init(
   );
   gh.singleton<_i7.InterfaceImagePicker>(
     _i8.ImagePickerRepository(),
+    registerFor: {_prod},
+  );
+  gh.singleton<_i9.InterfaceLocal>(
+    _i10.LocalRepository(),
     registerFor: {_prod},
   );
   return getIt;

@@ -25,6 +25,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final _navigatorKey = GlobalKey<NavigatorState>();
+
   late Locale _locale;
   void setLocale(Locale locale) {
     setState(() {
@@ -43,6 +45,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: _navigatorKey,
       onGenerateRoute: RouteGenerator().generateRoute,
       initialRoute: SplashPage.id,
       theme: AppTheme.buildTheme(),

@@ -6,7 +6,7 @@ class MeokQButton extends StatelessWidget {
     super.key,
     required this.onTap,
     required this.text,
-    required this.canTap,
+    this.canTap = true,
     this.activeColor = ColorS.buttonYellow,
   });
 

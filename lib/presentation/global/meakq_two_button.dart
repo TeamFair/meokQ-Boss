@@ -11,6 +11,8 @@ class MeokQTwoButton extends StatelessWidget {
     required this.secondButtonTap,
     this.firstColor = ColorS.gray100,
     this.secondColor = ColorS.buttonYellow,
+    this.secondButtonCanTap = true,
+    this.padding = 20,
   });
 
   final String firstText;
@@ -25,11 +27,15 @@ class MeokQTwoButton extends StatelessWidget {
 
   final Color secondColor;
 
+  final bool secondButtonCanTap;
+
+  final double padding;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
+      padding: EdgeInsets.symmetric(
+        horizontal: padding,
       ),
       child: Row(
         children: [
@@ -48,7 +54,7 @@ class MeokQTwoButton extends StatelessWidget {
             child: MeokQButton(
               onTap: secondButtonTap,
               text: secondText,
-              canTap: true,
+              canTap: secondButtonCanTap,
               activeColor: secondColor,
             ),
           ),

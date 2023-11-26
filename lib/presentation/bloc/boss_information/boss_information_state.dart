@@ -31,7 +31,7 @@ enum BossTextInputType {
       BossTextInputType.storeName => '상호명',
       BossTextInputType.address => '주소',
       BossTextInputType.postalCode => '우편번호',
-      BossTextInputType.birth => '생년월일',
+      BossTextInputType.birth => 'YY/MM/DD',
       BossTextInputType.userName => '성함',
     };
   }

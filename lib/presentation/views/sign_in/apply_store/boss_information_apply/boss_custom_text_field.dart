@@ -4,9 +4,9 @@ import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/boss_information/boss_information_bloc.dart';
 
-// TODO: 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({
+// TODO:
+class BossCustomTextField extends StatelessWidget {
+  const BossCustomTextField({
     super.key,
     required this.bossTextInputType,
     required this.textInputType,
@@ -18,7 +18,8 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       height: 80,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

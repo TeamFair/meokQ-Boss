@@ -7,78 +7,35 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(const LoginState()) {
-    on<LoginKakaoLogin>(_kakaoLogin);
-    on<LoginGoogleLogin>(_googleLogin);
-    on<LoginAppleLogin>(_appleLogin);
+  LoginBloc()
+      : super(
+          const LoginState(
+            loginStatus: LoginStatus.init,
+          ),
+        ) {
+    on<LoginButtonTap>(_loginButtonTap);
   }
 
   final _authenticationRepository = getIt<InterfaceAuthenticatoin>();
 
-  Future<void> _googleLogin(
-    LoginGoogleLogin event,
+  Future<void> _loginButtonTap(
+    LoginButtonTap event,
     Emitter<LoginState> emit,
   ) async {
-    emit(state.copyWith(status: LoginStatus.inProgress));
     try {
-      // 이 부분들 다 usecase로 묶을 수 있을 것 같다
-      await _authenticationRepository.googleLogin();
-      _authenticationRepository.status.listen((authStatus) {
-        switch (authStatus) {
-          case AuthenticationStatus.unknown:
-            emit(state.copyWith(status: LoginStatus.unknown));
-          case AuthenticationStatus.authenticated:
-            emit(state.copyWith(status: LoginStatus.success));
-          case AuthenticationStatus.unauthenticated:
-            emit(state.copyWith(status: LoginStatus.failure));
-        }
-      });
+      emit(state.copyWith(loginStatus: LoginStatus.init));
+      LoginStatus loginStatus;
+      switch (event.loginMethod) {
+        case LoginMethod.kakao:
+          loginStatus = await _authenticationRepository.kakaoLogin();
+        case LoginMethod.google:
+          loginStatus = await _authenticationRepository.googleLogin();
+        default:
+          loginStatus = await _authenticationRepository.appleLogin();
+      }
+      emit(state.copyWith(loginStatus: loginStatus));
     } catch (_) {
-      emit(state.copyWith(status: LoginStatus.failure));
-    }
-  }
-
-  Future<void> _appleLogin(
-    LoginAppleLogin event,
-    Emitter<LoginState> emit,
-  ) async {
-    emit(state.copyWith(status: LoginStatus.inProgress));
-    try {
-      await _authenticationRepository.appleLogin();
-      _authenticationRepository.status.listen((authStatus) {
-        switch (authStatus) {
-          case AuthenticationStatus.unknown:
-            emit(state.copyWith(status: LoginStatus.unknown));
-          case AuthenticationStatus.authenticated:
-            emit(state.copyWith(status: LoginStatus.success));
-          case AuthenticationStatus.unauthenticated:
-            emit(state.copyWith(status: LoginStatus.failure));
-        }
-      });
-    } catch (_) {
-      emit(state.copyWith(status: LoginStatus.failure));
-    }
-  }
-
-  Future<void> _kakaoLogin(
-    LoginKakaoLogin event,
-    Emitter<LoginState> emit,
-  ) async {
-    emit(state.copyWith(status: LoginStatus.inProgress));
-    try {
-      await _authenticationRepository.kakaoLogin();
-      _authenticationRepository.status.listen((authStatus) {
-        switch (authStatus) {
-          case AuthenticationStatus.unknown:
-            emit(state.copyWith(status: LoginStatus.unknown));
-          case AuthenticationStatus.authenticated:
-            emit(state.copyWith(status: LoginStatus.success));
-          case AuthenticationStatus.unauthenticated:
-            emit(state.copyWith(status: LoginStatus.failure));
-        }
-      });
-    } catch (_) {
-      emit(state.copyWith(status: LoginStatus.failure));
+      emit(state.copyWith(loginStatus: LoginStatus.failure));
     }
   }
 }

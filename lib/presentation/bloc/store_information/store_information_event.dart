@@ -8,11 +8,11 @@ sealed class StoreInformationEvent extends Equatable {
 }
 
 class ChangeTextField extends StoreInformationEvent {
-  final BossTextInputType bossTextInputType;
+  final StoreTextInputType storeTextInputType;
   final String newText;
 
   const ChangeTextField({
-    required this.bossTextInputType,
+    required this.storeTextInputType,
     required this.newText,
   });
 }
@@ -28,17 +28,21 @@ class ChangeBussinessHour extends StoreInformationEvent {
 }
 
 class ChangeBussinessDays extends StoreInformationEvent {
-  final List<String> businessDays;
+  final String day;
 
   const ChangeBussinessDays({
-    required this.businessDays,
+    required this.day,
   });
 }
 
-class AddImage extends StoreInformationEvent {
-  final String imageUrl;
+class AddImage extends StoreInformationEvent {}
 
-  const AddImage({
-    required this.imageUrl,
+class ChangeStage extends StoreInformationEvent {
+  final Stage stage;
+
+  const ChangeStage({
+    required this.stage,
   });
 }
+
+class StoreApply extends StoreInformationEvent {}

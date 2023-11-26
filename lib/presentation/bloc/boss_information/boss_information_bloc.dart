@@ -14,6 +14,7 @@ class BossInformationBloc
     on<ChangeBussinessType>(_changeBussinessType);
     on<AddImage>(_addImage);
     on<ChangeStage>(_changeStage);
+    on<WritingCompleted>(_writingCompleted);
   }
 
   final _imagePickerRepository = getIt<InterfaceImagePicker>();
@@ -136,6 +137,18 @@ class BossInformationBloc
     emit(
       state.copyWith(
         stage: event.stage,
+      ),
+    );
+  }
+
+  Future<void> _writingCompleted(
+    WritingCompleted event,
+    Emitter<BossInformationState> emit,
+  ) async {
+    //TODO: 입력한 값을 api로 전달
+    emit(
+      state.copyWith(
+        allFinished: true,
       ),
     );
   }

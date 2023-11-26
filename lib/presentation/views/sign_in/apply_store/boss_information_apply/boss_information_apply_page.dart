@@ -4,20 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/boss_information/boss_information_bloc.dart';
 import 'package:meokq_boss/presentation/global/custom_alert_dialog.dart';
-import 'package:meokq_boss/presentation/views/sign_in/apply_store/boss_information_apply/stage_1_page.dart';
-import 'package:meokq_boss/presentation/views/sign_in/apply_store/boss_information_apply/stage_2_page.dart';
+import 'package:meokq_boss/presentation/views/sign_in/apply_store/boss_information_apply/boss_stage_1_page.dart';
+import 'package:meokq_boss/presentation/views/sign_in/apply_store/boss_information_apply/boss_stage_2_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
-class BossInformationApplyPage extends StatefulWidget {
+class BossInformationApplyPage extends StatelessWidget {
   static const id = 'boss_information_apply_page';
   const BossInformationApplyPage({super.key});
 
-  @override
-  State<BossInformationApplyPage> createState() =>
-      _BossInformationApplyPageState();
-}
-
-class _BossInformationApplyPageState extends State<BossInformationApplyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,9 +47,9 @@ class _BossInformationApplyPageState extends State<BossInformationApplyPage> {
         builder: (context, state) {
           switch (state.stage) {
             case Stage.first:
-              return const Stage1Page();
+              return const BossStage1Page();
             case Stage.second:
-              return const Stage2Page();
+              return const BossStage2Page();
           }
         },
       ),

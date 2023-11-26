@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
+import 'package:meokq_boss/presentation/global/meokq_button.dart';
 import 'package:meokq_boss/presentation/views/home/home_page.dart';
 import 'package:meokq_boss/presentation/views/login/widget/login_button.dart';
 import 'package:meokq_boss/presentation/views/login/widget/login_chip.dart';
@@ -21,19 +23,64 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
-        switch (state.status) {
-          case LoginStatus.init:
-          case LoginStatus.inProgress:
-          case LoginStatus.success:
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil(HomePage.id, (route) => false);
-          case LoginStatus.unknown:
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil(HomePage.id, (route) => false);
+        switch (state.loginStatus) {
+          case LoginStatus.newUser:
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              builder: (childContext) {
+                return LoginStatusBottomSheet(
+                  loginStatus: state.loginStatus,
+                  onTap: () => Navigator.of(context).pushNamed(AgreePage.id),
+                );
+              },
+            );
+          case LoginStatus.reject:
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              builder: (childContext) {
+                return LoginStatusBottomSheet(
+                  loginStatus: state.loginStatus,
+                  content: '사업자 등록증을 첨부해주세요.',
+                  onTap: () => Navigator.of(context).pushNamed(AgreePage.id),
+                );
+              },
+            );
+          case LoginStatus.review:
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              builder: (childContext) {
+                return LoginStatusBottomSheet(
+                  loginStatus: state.loginStatus,
+                );
+              },
+            );
+
+          case LoginStatus.firstComplete:
+          case LoginStatus.done:
+            Navigator.of(context).pushNamed(HomePage.id);
+
           case LoginStatus.failure:
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('로그인을 실패하였습니다.')),
             );
+          default:
+            break;
         }
       },
       child: Scaffold(
@@ -49,40 +96,97 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 76,
               ),
-              LoginButton(
+              const LoginButton(
                 svgLink: Svgs.kakaoIcon,
-                text: '카카오로 로그인하기',
-                color: const Color(0xFFFEE500),
+                loginMethod: LoginMethod.kakao,
+                color: Color(0xFFFEE500),
                 isBorderNeed: false,
                 textColor: Colors.black,
-                onTap: () {},
               ),
               const SizedBox(
                 height: 16,
               ),
-              LoginButton(
+              const LoginButton(
                 svgLink: Svgs.googleIcon,
-                text: 'Google로 로그인하기',
+                loginMethod: LoginMethod.google,
                 color: Colors.white,
                 isBorderNeed: true,
                 textColor: Colors.black,
-                onTap: () {
-                  Navigator.of(context).pushNamed(AgreePage.id);
-                },
               ),
               const SizedBox(
                 height: 16,
               ),
-              LoginButton(
+              // if (defaultTargetPlatform == TargetPlatform.iOS)
+              const LoginButton(
                 svgLink: Svgs.appleIcon,
-                text: 'Apple로 로그인하기',
+                loginMethod: LoginMethod.apple,
                 color: Colors.black,
                 isBorderNeed: false,
                 textColor: Colors.white,
-                onTap: () {},
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class LoginStatusBottomSheet extends StatelessWidget {
+  const LoginStatusBottomSheet({
+    super.key,
+    required this.loginStatus,
+    this.content,
+    this.onTap,
+  });
+
+  final LoginStatus loginStatus;
+
+  final Function()? onTap;
+
+  final String? content;
+
+  @override
+  Widget build(BuildContext context) {
+    return FractionallySizedBox(
+      heightFactor: 0.9,
+      child: Container(
+        height: 800,
+        width: double.infinity,
+        padding: const EdgeInsets.fromLTRB(20, 178, 20, 36),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SvgPicture.asset(
+              Svgs.smileIconWithBg,
+              width: 124,
+              height: 124,
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Text(
+              loginStatus.title,
+              textAlign: TextAlign.center,
+              style: TextS.heading1().copyWith(fontSize: 19),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Text(
+              loginStatus.subTitle + (content ?? ''),
+              textAlign: TextAlign.center,
+              style: TextS.content(),
+            ),
+            const Spacer(),
+            if (onTap != null)
+              MeokQButton(
+                onTap: onTap!,
+                text: loginStatus.button,
+                canTap: true,
+              ),
+          ],
         ),
       ),
     );

@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({
     super.key,
     required this.svgLink,
-    required this.text,
+    required this.loginMethod,
     required this.color,
     required this.isBorderNeed,
     required this.textColor,
-    required this.onTap,
   });
 
   final String svgLink;
-  final String text;
+  final LoginMethod loginMethod;
   final Color color;
   final bool isBorderNeed;
   final Color textColor;
-  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () => context.read<LoginBloc>().add(LoginButtonTap(loginMethod: loginMethod)),
       child: Container(
         width: 269,
         height: 50,
@@ -44,7 +44,7 @@ class LoginButton extends StatelessWidget {
               width: 53,
             ),
             Text(
-              text,
+              loginMethod.buttonText,
               style: TextStyle(
                 color: textColor,
                 fontSize: 14,

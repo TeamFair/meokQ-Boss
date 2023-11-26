@@ -38,4 +38,8 @@ extension ColorS on MaterialColor {
   static const badgeBlue = Color(0xFFE2F1FF);
 
   static const badgeGreen = Color(0xFFD9EED3);
+
+  static const contentGray = Color(0xFFA3A3A3);
+
+  static const divideGray = Color(0xFFE6E6E6);
 }

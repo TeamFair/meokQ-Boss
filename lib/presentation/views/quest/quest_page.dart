@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
+import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/tab_bar_controller/tab_bar_bloc.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_check/quest_check_page.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_show/quest_show_page.dart';
@@ -25,6 +26,7 @@ class _QuestPageState extends State<QuestPage> {
           title: const Text(
             '퀘스트',
           ),
+          automaticallyImplyLeading: false,
           actions: [
             IconButton(
               onPressed: () {},
@@ -54,6 +56,7 @@ class _QuestPageState extends State<QuestPage> {
                     .add(TabChange(tabIndex: index));
               });
             },
+            labelStyle: TextS.subtitle1().copyWith(fontSize: 14),
             indicatorPadding: const EdgeInsets.symmetric(horizontal: 36),
             indicator: const UnderlineTabIndicator(
               borderSide: BorderSide(width: 3, color: ColorS.tabYellow),

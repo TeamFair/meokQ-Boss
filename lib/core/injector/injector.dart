@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meokq_boss/core/injector/injector.config.dart';
+import 'package:meokq_boss/domain/repository/local/inteface_local.dart';
 
 final getIt = GetIt.instance;
 
@@ -22,4 +23,6 @@ Future<void> configureDependencies({
     environment: env,
     environmentFilter: environmentFilter,
   );
+
+  getIt<InterfaceLocal>().init();
 }

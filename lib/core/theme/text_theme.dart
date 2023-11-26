@@ -96,7 +96,7 @@ class TextS {
   static TextStyle body() {
     return const TextStyle(
       fontFamily: 'Pretendard',
-      fontSize: 12,
+      fontSize: 13,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
       // height: 16,
@@ -121,7 +121,6 @@ class TextS {
       fontSize: 16,
       fontWeight: FontWeight.w600,
       fontStyle: FontStyle.normal,
-      // height: 18,
     );
   }
 

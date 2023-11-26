@@ -1,28 +1,30 @@
 part of 'store_information_bloc.dart';
 
-enum BossTextInputType {
+enum StoreTextInputType {
   storeName,
   address,
   phone;
 
   String get text {
     return switch (this) {
-      BossTextInputType.storeName => '상호명',
-      BossTextInputType.address => '가게주소',
-      BossTextInputType.phone => '가게 전화번호',
+      StoreTextInputType.storeName => '상호명',
+      StoreTextInputType.address => '가게주소',
+      StoreTextInputType.phone => '가게 전화번호',
     };
   }
 
   String get inTextField {
     return switch (this) {
-      BossTextInputType.phone => 'ex) 커피크라운 안양점',
-      BossTextInputType.storeName => 'ex) 경기도 안양시 만안구 안양동 88-1',
-      BossTextInputType.address => '숫자만 입력',
+      StoreTextInputType.phone => 'ex) 커피크라운 안양점',
+      StoreTextInputType.storeName => 'ex) 경기도 안양시 만안구 안양동 88-1',
+      StoreTextInputType.address => '숫자만 입력',
     };
   }
 }
 
 enum BusinessHour { open, close }
+
+enum Stage { first, second, third }
 
 class StoreInformationState extends Equatable {
   const StoreInformationState({
@@ -34,6 +36,7 @@ class StoreInformationState extends Equatable {
     required this.close,
     required this.logoUrl,
     required this.allFinished,
+    required this.stage,
   });
 
   final String storeName;
@@ -52,16 +55,19 @@ class StoreInformationState extends Equatable {
 
   final bool allFinished;
 
+  final Stage stage;
+
   static StoreInformationState init() {
     return const StoreInformationState(
       storeName: '',
       address: '',
       phone: '',
       businessDays: [],
-      open: '',
-      close: '',
+      open: '오전 9:00',
+      close: '오후 11:00',
       logoUrl: '',
       allFinished: false,
+      stage: Stage.first,
     );
   }
 
@@ -74,6 +80,7 @@ class StoreInformationState extends Equatable {
     String? close,
     String? logoUrl,
     bool? allFinished,
+    Stage? stage,
   }) {
     return StoreInformationState(
       storeName: storeName ?? this.storeName,
@@ -84,6 +91,7 @@ class StoreInformationState extends Equatable {
       close: close ?? this.close,
       logoUrl: logoUrl ?? this.logoUrl,
       allFinished: allFinished ?? this.allFinished,
+      stage: stage ?? this.stage,
     );
   }
 
@@ -97,5 +105,11 @@ class StoreInformationState extends Equatable {
         close,
         logoUrl,
         allFinished,
+        stage,
       ];
+
+  bool get canStage1ButtonTap =>
+      storeName.isNotEmpty && address.isNotEmpty && phone.isNotEmpty;
+
+  bool get canStage3ButtonTap => logoUrl.isNotEmpty;
 }

@@ -51,7 +51,7 @@ class CustomAlertDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(
-              height: 33,
+              height: 25,
             ),
             Text(
               title,

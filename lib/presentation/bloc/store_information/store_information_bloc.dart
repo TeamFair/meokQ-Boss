@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meokq_boss/core/injector/injector.dart';
+import 'package:meokq_boss/domain/repository/image_picker/interface_image_picker.dart';
 
 part 'store_information_state.dart';
 part 'store_information_event.dart';
@@ -11,26 +13,30 @@ class StoreInformationBloc
     on<ChangeBussinessHour>(_changeBussinessHour);
     on<ChangeBussinessDays>(_changeBussinessDays);
     on<AddImage>(_addImage);
+    on<ChangeStage>(_changeStage);
+    on<StoreApply>(_storeApply);
   }
+
+  final _imagePickerRepository = getIt<InterfaceImagePicker>();
 
   void _changeTextField(
     ChangeTextField event,
     Emitter<StoreInformationState> emit,
   ) {
-    switch (event.bossTextInputType) {
-      case BossTextInputType.storeName:
+    switch (event.storeTextInputType) {
+      case StoreTextInputType.storeName:
         emit(
           state.copyWith(
             storeName: event.newText,
           ),
         );
-      case BossTextInputType.address:
+      case StoreTextInputType.address:
         emit(
           state.copyWith(
             address: event.newText,
           ),
         );
-      case BossTextInputType.phone:
+      case StoreTextInputType.phone:
         emit(
           state.copyWith(
             phone: event.newText,
@@ -63,17 +69,50 @@ class StoreInformationBloc
     ChangeBussinessDays event,
     Emitter<StoreInformationState> emit,
   ) {
+    var businessDays = <String>[];
+    for (String s in state.businessDays) {
+      businessDays.add(s);
+    }
+
+    if (businessDays.contains(event.day)) {
+      businessDays.remove(event.day);
+    } else {
+      businessDays.add(event.day);
+    }
     emit(
-          state.copyWith(
-            businessDays: event.businessDays,
-          ),
-        );
+      state.copyWith(
+        businessDays: businessDays,
+      ),
+    );
   }
 
-  void _addImage(
-    AddImage event,
+  void _changeStage(
+    ChangeStage event,
     Emitter<StoreInformationState> emit,
   ) {
-    // TODO: 이미지를 찍거나 사진을 가져오는 부분
+    emit(
+      state.copyWith(
+        stage: event.stage,
+      ),
+    );
+  }
+
+  Future<void> _addImage(
+    AddImage event,
+    Emitter<StoreInformationState> emit,
+  ) async {
+    final imagePath = await _imagePickerRepository.getImageFromGallery();
+    emit(
+      state.copyWith(
+        logoUrl: imagePath,
+      ),
+    );
+  }
+
+  Future<void> _storeApply(
+    StoreApply event,
+    Emitter<StoreInformationState> emit,
+  ) async {
+    // TODO: API 연결
   }
 }

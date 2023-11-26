@@ -1,15 +1,11 @@
-enum AuthenticationStatus { unknown, authenticated, unauthenticated}
+import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 
 abstract class InterfaceAuthenticatoin {
-  Stream<AuthenticationStatus> get status;
+  Future<LoginStatus> kakaoLogin();
 
-  Future<void> kakaoLogin();
+  Future<LoginStatus> googleLogin();
 
-  Future<void> googleLogin();
-
-  Future<void> appleLogin();
+  Future<LoginStatus> appleLogin();
 
   void logOut();
-
-  void dispose();
 }

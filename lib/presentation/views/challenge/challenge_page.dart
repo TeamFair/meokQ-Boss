@@ -19,6 +19,7 @@ class _ChallengePageState extends State<ChallengePage> {
         title: const Text(
           '도전',
         ),
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             onPressed: () {

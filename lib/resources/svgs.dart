@@ -28,6 +28,8 @@ class Svgs {
       'assets/vectors/plus_in_circle_icon.svg';
   static const String questOffIcon = 'assets/vectors/quest_off_icon.svg';
   static const String questOnIcon = 'assets/vectors/quest_on_icon.svg';
+  static const String questionMarkIcon =
+      'assets/vectors/question_mark_icon.svg';
   static const String rightArrowIcon = 'assets/vectors/right_arrow_icon.svg';
   static const String settingIcon = 'assets/vectors/setting_icon.svg';
   static const String smileIcon = 'assets/vectors/smile_icon.svg';

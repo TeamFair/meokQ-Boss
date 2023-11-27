@@ -26,6 +26,7 @@ void main() {
     expect(File(Svgs.plusInCircleIcon).existsSync(), isTrue);
     expect(File(Svgs.questOffIcon).existsSync(), isTrue);
     expect(File(Svgs.questOnIcon).existsSync(), isTrue);
+    expect(File(Svgs.questionMarkIcon).existsSync(), isTrue);
     expect(File(Svgs.rightArrowIcon).existsSync(), isTrue);
     expect(File(Svgs.settingIcon).existsSync(), isTrue);
     expect(File(Svgs.smileIcon).existsSync(), isTrue);

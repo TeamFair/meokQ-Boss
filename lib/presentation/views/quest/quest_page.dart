@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/tab_bar_controller/tab_bar_bloc.dart';
+import 'package:meokq_boss/presentation/views/quest/quest_add/quest_add_page.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_check/quest_check_page.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_show/quest_show_page.dart';
 import 'package:meokq_boss/presentation/views/setting/setting_page.dart';
@@ -26,10 +27,15 @@ class _QuestPageState extends State<QuestPage> {
           title: const Text(
             '퀘스트',
           ),
+          elevation: 1,
           automaticallyImplyLeading: false,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  QuestAddPage.id,
+                );
+              },
               icon: SvgPicture.asset(Svgs.plusIcon),
             ),
             IconButton(

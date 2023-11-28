@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
+import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
+import 'package:meokq_boss/data/model/mission/mission.dart';
+import 'package:meokq_boss/data/model/reward/reward.dart';
 import 'package:meokq_boss/presentation/bloc/quest_add/quest_add_bloc.dart';
+import 'package:meokq_boss/presentation/global/custom_tool_tip.dart';
 import 'package:meokq_boss/presentation/global/meokq_button.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
@@ -16,6 +21,11 @@ class QuestAddPage extends StatefulWidget {
 }
 
 class _QuestAddPageState extends State<QuestAddPage> {
+  final questToolTipController = JustTheController();
+  final rewardToolTipController = JustTheController();
+  bool questToolTipOpen = false;
+  bool rewardToolTipOpen = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +63,20 @@ class _QuestAddPageState extends State<QuestAddPage> {
                               fontSize: 14,
                             ),
                           ),
-                          SvgPicture.asset(Svgs.questionMarkIcon),
+                          CustomToolTip(
+                            onTap: () {
+                              if (questToolTipOpen) {
+                                questToolTipController.hideTooltip();
+                                questToolTipOpen = false;
+                              } else {
+                                questToolTipController.showTooltip();
+                                questToolTipOpen = true;
+                              }
+                            },
+                            controller: questToolTipController,
+                            title: '퀘스트란?',
+                            content: questContent,
+                          ),
                         ],
                       ),
                     ),
@@ -63,10 +86,10 @@ class _QuestAddPageState extends State<QuestAddPage> {
                     SizedBox(
                       height: 40,
                       child: Row(
-                        children: QuestType.values.map((questType) {
+                        children: MissionType.values.map((missionType) {
                           return GestureDetector(
                             onTap: () => context.read<QuestAddBloc>().add(
-                                  ChangeQuestType(questType: questType),
+                                  ChangeMissionType(missionType: missionType),
                                 ),
                             child: Container(
                               width: 100,
@@ -75,7 +98,7 @@ class _QuestAddPageState extends State<QuestAddPage> {
                                 right: 9,
                               ),
                               decoration: ShapeDecoration(
-                                color: state.questType == questType
+                                color: state.missionType == missionType
                                     ? ColorS.buttonYellow
                                     : ColorS.background,
                                 shape: RoundedRectangleBorder(
@@ -84,7 +107,7 @@ class _QuestAddPageState extends State<QuestAddPage> {
                               ),
                               child: Center(
                                 child: Text(
-                                  questType.text,
+                                  missionType.text,
                                   style: TextS.content().copyWith(
                                     color: ColorS.gray400,
                                   ),
@@ -112,16 +135,16 @@ class _QuestAddPageState extends State<QuestAddPage> {
                                         textType: TextType.missionItem,
                                       ),
                                     ),
-                            title: state.questType.title,
+                            title: state.missionType.title,
                             text: state.missionItem,
-                            hintText: state.questType.hintText,
-                            width: state.questType.isFreeQuest ? 352 : 255,
+                            hintText: state.missionType.hintText,
+                            width: state.missionType.isFreeQuest ? 352 : 255,
                           ),
-                          if (!state.questType.isFreeQuest)
+                          if (!state.missionType.isFreeQuest)
                             const SizedBox(
                               width: 17,
                             ),
-                          if (!state.questType.isFreeQuest)
+                          if (!state.missionType.isFreeQuest)
                             QuestAddTextField(
                               onChanged: (text) =>
                                   context.read<QuestAddBloc>().add(
@@ -135,7 +158,7 @@ class _QuestAddPageState extends State<QuestAddPage> {
                               hintText: '0',
                               width: 50,
                             ),
-                          if (!state.questType.isFreeQuest)
+                          if (!state.missionType.isFreeQuest)
                             Padding(
                               padding: const EdgeInsets.only(top: 43, left: 8),
                               child: Text(
@@ -172,7 +195,58 @@ class _QuestAddPageState extends State<QuestAddPage> {
                               fontSize: 14,
                             ),
                           ),
-                          SvgPicture.asset(Svgs.questionMarkIcon),
+                          GestureDetector(
+                            onTap: () {
+                              if (rewardToolTipOpen) {
+                                rewardToolTipController.hideTooltip();
+                                rewardToolTipOpen = false;
+                              } else {
+                                rewardToolTipController.showTooltip();
+                                rewardToolTipOpen = true;
+                              }
+                            },
+                            child: JustTheTooltip(
+                              controller: rewardToolTipController,
+                              content: Container(
+                                width: 218,
+                                height: 100,
+                                padding: const EdgeInsets.all(14),
+                                decoration: ShapeDecoration(
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  shadows: const [
+                                    BoxShadow(
+                                      color: Color(0x26000000),
+                                      blurRadius: 20,
+                                      offset: Offset(0, 4),
+                                      spreadRadius: 0,
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      '보상이란?',
+                                      style: TextS.button().copyWith(
+                                        fontSize: 14,
+                                        color: ColorS.gray400,
+                                      ),
+                                    ),
+                                    Text(
+                                      rewardContent,
+                                      style: TextS.caption1()
+                                          .copyWith(color: ColorS.gray400),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              child: SvgPicture.asset(
+                                Svgs.questionMarkIcon,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),

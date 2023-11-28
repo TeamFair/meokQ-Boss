@@ -2,10 +2,10 @@ part of 'quest_add_bloc.dart';
 
 sealed class QuestAddEvent {}
 
-class ChangeQuestType extends QuestAddEvent {
-  final QuestType questType;
+class ChangeMissionType extends QuestAddEvent {
+  final MissionType missionType;
 
-  ChangeQuestType({required this.questType});
+  ChangeMissionType({required this.missionType});
 }
 
 class ChangeRewardType extends QuestAddEvent {

@@ -5,11 +5,13 @@ import 'package:meokq_boss/presentation/bloc/boss_information/boss_information_b
 import 'package:meokq_boss/presentation/bloc/bottom_navigation_controller/bnc_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/quest_add/quest_add_bloc.dart';
+import 'package:meokq_boss/presentation/bloc/quest_detail/quest_detail_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/store_information/store_information_bloc.dart';
 import 'package:meokq_boss/presentation/views/home/home_page.dart';
 import 'package:meokq_boss/presentation/views/login/login_page.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_add/quest_add_page.dart';
+import 'package:meokq_boss/presentation/views/quest/quest_detail/quest_detail_page.dart';
 import 'package:meokq_boss/presentation/views/setting/setting_page.dart';
 import 'package:meokq_boss/presentation/views/sign_in/agree/agree_page.dart';
 import 'package:meokq_boss/presentation/views/sign_in/apply_store/apply_store_page.dart';
@@ -80,6 +82,14 @@ class RouteGenerator {
           builder: (context) => BlocProvider<QuestAddBloc>(
             create: (context) => QuestAddBloc(),
             child: const QuestAddPage(),
+          ),
+        );
+      case QuestDetailPage.id:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) => BlocProvider<QuestDetailBloc>(
+            create: (context) => QuestDetailBloc(),
+            child: const QuestDetailPage(),
           ),
         );
       default:

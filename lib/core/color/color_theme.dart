@@ -25,7 +25,7 @@ extension ColorS on MaterialColor {
 
   static const background = Color(0xFFF6F6F6);
 
-  static const red = Color(0xFFF16969);
+  static const red = Color(0xFFF16868);
 
   static const blue = Color(0xFF339DEA);
 
@@ -42,4 +42,6 @@ extension ColorS on MaterialColor {
   static const contentGray = Color(0xFFA3A3A3);
 
   static const divideGray = Color(0xFFE6E6E6);
+
+  static const commentGray = Color(0xFFB3B3B5);
 }

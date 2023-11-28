@@ -1,47 +1,5 @@
 part of 'quest_add_bloc.dart';
 
-enum QuestType {
-  basic,
-  free;
-
-  String get text => switch (this) {
-        QuestType.basic => '기본 퀘스트',
-        QuestType.free => '자유 퀘스트',
-      };
-
-  String get title => switch (this) {
-        QuestType.basic => '미션 대상 아이템',
-        QuestType.free => '미션',
-      };
-
-  String get hintText => switch (this) {
-        QuestType.basic => 'ex) 아메리카노',
-        QuestType.free => '미션 내용을 입력하세요',
-      };
-
-  bool get isFreeQuest => this == QuestType.free;
-}
-
-enum RewardType {
-  discount,
-  giftCard;
-
-  String get text => switch (this) {
-        RewardType.discount => '할인권',
-        RewardType.giftCard => '증정권',
-      };
-
-  String get subTitle => switch (this) {
-        RewardType.discount => '할인율',
-        RewardType.giftCard => '개수',
-      };
-
-  String get subText => switch (this) {
-        RewardType.discount => '%',
-        RewardType.giftCard => '개',
-      };
-}
-
 enum TextType {
   missionItem,
   missionItemCount,
@@ -54,7 +12,7 @@ class QuestAddState extends Equatable {
   final String missionItemCount;
   final String rewardItem;
   final String reward;
-  final QuestType questType;
+  final MissionType missionType;
   final RewardType rewardType;
 
   const QuestAddState({
@@ -62,7 +20,7 @@ class QuestAddState extends Equatable {
     required this.missionItemCount,
     required this.rewardItem,
     required this.reward,
-    required this.questType,
+    required this.missionType,
     required this.rewardType,
   });
 
@@ -71,7 +29,7 @@ class QuestAddState extends Equatable {
         missionItemCount: '',
         rewardItem: '',
         reward: '',
-        questType: QuestType.basic,
+        missionType: MissionType.basic,
         rewardType: RewardType.discount,
       );
 
@@ -80,7 +38,7 @@ class QuestAddState extends Equatable {
     String? missionItemCount,
     String? rewardItem,
     String? reward,
-    QuestType? questType,
+    MissionType? missionType,
     RewardType? rewardType,
   }) {
     return QuestAddState(
@@ -88,7 +46,7 @@ class QuestAddState extends Equatable {
       missionItemCount: missionItemCount ?? this.missionItemCount,
       rewardItem: rewardItem ?? this.rewardItem,
       reward: reward ?? this.reward,
-      questType: questType ?? this.questType,
+      missionType: missionType ?? this.missionType,
       rewardType: rewardType ?? this.rewardType,
     );
   }
@@ -99,16 +57,16 @@ class QuestAddState extends Equatable {
         missionItemCount,
         rewardItem,
         reward,
-        questType,
+        missionType,
         rewardType,
       ];
 
   String get title =>
       '$rewardItem $reward${rewardType.subText} ${rewardType.text}';
 
-  String get subTitle => switch (questType) {
-        QuestType.basic => '$missionItem $missionItemCount개 주문시',
-        QuestType.free => missionItem,
+  String get subTitle => switch (missionType) {
+        MissionType.basic => '$missionItem $missionItemCount개 주문시',
+        MissionType.free => missionItem,
       };
 
   bool get isButtonAble => rewardItem.isNotEmpty && reward.isNotEmpty && missionItem.isNotEmpty;

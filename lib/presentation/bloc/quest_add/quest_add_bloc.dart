@@ -1,23 +1,25 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meokq_boss/data/model/mission/mission.dart';
+import 'package:meokq_boss/data/model/reward/reward.dart';
 
 part 'quest_add_state.dart';
 part 'quest_add_event.dart';
 
 class QuestAddBloc extends Bloc<QuestAddEvent, QuestAddState> {
   QuestAddBloc() : super(QuestAddState.init()) {
-    on<ChangeQuestType>(_changeQuestType);
+    on<ChangeMissionType>(_changeQuestType);
     on<ChangeRewardType>(_changeRewardType);
     on<ChangeText>(_changeText);
   }
 
   void _changeQuestType(
-    ChangeQuestType event,
+    ChangeMissionType event,
     Emitter<QuestAddState> emit,
   ) {
     emit(
       state.copyWith(
-        questType: event.questType,
+        missionType: event.missionType,
       ),
     );
   }

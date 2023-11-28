@@ -14,6 +14,7 @@ class CustomAlertDialog extends StatelessWidget {
     this.cancelCallback,
     this.confirmButtonColor = ColorS.notiYellow,
     this.height = 168,
+    this.secondContent,
   }) : super(key: key);
 
   /// 다이얼로그의 제목
@@ -36,6 +37,8 @@ class CustomAlertDialog extends StatelessWidget {
 
   /// 확인 버튼의 색상
   final Color confirmButtonColor;
+
+  final String? secondContent;
 
   final int height;
 
@@ -67,6 +70,18 @@ class CustomAlertDialog extends StatelessWidget {
                 contents,
                 textAlign: TextAlign.center,
                 style: TextS.caption1().copyWith(color: ColorS.gray400),
+              ),
+            if (secondContent != null)
+              const SizedBox(
+                height: 4,
+              ),
+            if (secondContent != null)
+              Text(
+                secondContent!,
+                style: TextS.heading1().copyWith(
+                  fontSize: 13,
+                  color: ColorS.gray400,
+                ),
               ),
             const SizedBox(
               height: 24,

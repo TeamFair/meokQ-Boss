@@ -48,7 +48,7 @@ class MeokQTwoButton extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: 8,
+            width: 10,
           ),
           Expanded(
             child: MeokQButton(

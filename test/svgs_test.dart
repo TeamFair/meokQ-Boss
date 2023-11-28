@@ -21,9 +21,11 @@ void main() {
     expect(File(Svgs.googleIcon).existsSync(), isTrue);
     expect(File(Svgs.kakaoIcon).existsSync(), isTrue);
     expect(File(Svgs.leftArrowIcon).existsSync(), isTrue);
+    expect(File(Svgs.minusIcon).existsSync(), isTrue);
     expect(File(Svgs.pencilIcon).existsSync(), isTrue);
     expect(File(Svgs.plusIcon).existsSync(), isTrue);
     expect(File(Svgs.plusInCircleIcon).existsSync(), isTrue);
+    expect(File(Svgs.questAddButton).existsSync(), isTrue);
     expect(File(Svgs.questOffIcon).existsSync(), isTrue);
     expect(File(Svgs.questOnIcon).existsSync(), isTrue);
     expect(File(Svgs.questionMarkIcon).existsSync(), isTrue);

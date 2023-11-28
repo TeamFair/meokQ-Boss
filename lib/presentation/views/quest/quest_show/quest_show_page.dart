@@ -4,6 +4,8 @@ import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/quest/quest_bloc.dart';
 import 'package:meokq_boss/presentation/global/quest_box.dart';
+import 'package:meokq_boss/presentation/views/quest/quest_detail/quest_detail_argument.dart';
+import 'package:meokq_boss/presentation/views/quest/quest_detail/quest_detail_page.dart';
 
 class QuestShowPage extends StatefulWidget {
   const QuestShowPage({super.key});
@@ -14,8 +16,8 @@ class QuestShowPage extends StatefulWidget {
 
 class _QuestShowPageState extends State<QuestShowPage> {
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     BlocProvider.of<QuestBloc>(context).add(InitQuest());
   }
 
@@ -32,8 +34,20 @@ class _QuestShowPageState extends State<QuestShowPage> {
                     separatorBuilder: (context, index) => const SizedBox(
                       height: 12,
                     ),
-                    itemBuilder: (context, index) =>
-                        QuestBox(quest: state.questList[index]),
+                    itemBuilder: (context, index) {
+                      final quest = state.questList[index];
+                      return GestureDetector(
+                        onTap: () {
+                          if (quest.questStatus.isWait) {
+                            Navigator.of(context).pushNamed(
+                              QuestDetailPage.id,
+                              arguments: QuestDetailArgument(quest: quest),
+                            );
+                          }
+                        },
+                        child: QuestBox(quest: quest),
+                      );
+                    },
                   )
                 : Center(
                     child: Text(

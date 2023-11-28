@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
+import 'package:meokq_boss/data/model/mission/mission.dart';
+import 'package:meokq_boss/data/model/reward/reward.dart';
 
 part 'quest.freezed.dart';
 part 'quest.g.dart';
@@ -29,14 +31,16 @@ enum QuestStatus {
       };
 
   bool get isOpen => this == QuestStatus.open;
+
+  bool get isWait => this == QuestStatus.wait;
 }
 
 @freezed
 class Quest with _$Quest {
   const factory Quest({
     required int id,
-    required String reward,
-    required String mission,
+    required Reward reward,
+    required Mission mission,
     required QuestStatus questStatus,
   }) = _Quest;
 

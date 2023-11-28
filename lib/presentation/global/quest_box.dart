@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
-import 'package:meokq_boss/data/model/quest.dart';
+import 'package:meokq_boss/data/model/quest/quest.dart';
 
 class QuestBox extends StatelessWidget {
   const QuestBox({super.key, required this.quest});
@@ -32,14 +32,14 @@ class QuestBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  quest.reward,
+                  quest.reward.content,
                   style: TextS.heading1(),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 Text(
-                  quest.mission,
+                  quest.mission.content,
                   style: TextS.caption2(),
                 ),
               ],

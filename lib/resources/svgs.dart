@@ -22,10 +22,12 @@ class Svgs {
   static const String googleIcon = 'assets/vectors/google_icon.svg';
   static const String kakaoIcon = 'assets/vectors/kakao_icon.svg';
   static const String leftArrowIcon = 'assets/vectors/left_arrow_icon.svg';
+  static const String minusIcon = 'assets/vectors/minus_icon.svg';
   static const String pencilIcon = 'assets/vectors/pencil_icon.svg';
   static const String plusIcon = 'assets/vectors/plus_icon.svg';
   static const String plusInCircleIcon =
       'assets/vectors/plus_in_circle_icon.svg';
+  static const String questAddButton = 'assets/vectors/quest_add_button.svg';
   static const String questOffIcon = 'assets/vectors/quest_off_icon.svg';
   static const String questOnIcon = 'assets/vectors/quest_on_icon.svg';
   static const String questionMarkIcon =

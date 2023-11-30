@@ -181,6 +181,7 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   String businessDayString(List<String> businessDays) {
+    if (businessDays.isEmpty) return '';
     var str = '';
     print(businessDays);
     for (var day in businessDays) {

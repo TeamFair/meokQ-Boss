@@ -64,69 +64,6 @@ class _ApplyStorePageState extends State<ApplyStorePage> {
             ),
             GestureDetector(
               onTap: () async {
-                if (!bossButtonState) {
-                  final res = await Navigator.of(context).pushNamed(
-                    BossInformationApplyPage.id,
-                  );
-                  if (res == true) {
-                    setState(() {
-                      bossButtonState = true;
-                    });
-                  }
-                }
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 17),
-                width: double.infinity,
-                height: 87,
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  shadows: const [
-                    BoxShadow(
-                      color: Color(0x0C7D7D7D),
-                      blurRadius: 20,
-                      offset: Offset(0, 10),
-                      spreadRadius: 0,
-                    ),
-                  ],
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 50,
-                      width: 100,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('사업자정보', style: TextS.title2()),
-                          const SizedBox(
-                            height: 6,
-                          ),
-                          Text('영업신고증, 신분증', style: TextS.caption1()),
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    SvgPicture.asset(
-                      bossButtonState
-                          ? Svgs.checkInWithCircleIcon
-                          : Svgs.checkOffWithCircleIcon,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            GestureDetector(
-              onTap: () async {
                 if (!storeButtonState) {
                   final res = await Navigator.of(context)
                       .pushNamed(StoreInformationApplyPage.id);
@@ -170,6 +107,70 @@ class _ApplyStorePageState extends State<ApplyStorePage> {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 15,
+            ),
+            if (storeButtonState)
+              GestureDetector(
+                onTap: () async {
+                  if (!bossButtonState) {
+                    final res = await Navigator.of(context).pushNamed(
+                      BossInformationApplyPage.id,
+                    );
+                    if (res == true) {
+                      setState(() {
+                        bossButtonState = true;
+                      });
+                    }
+                  }
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 17),
+                  width: double.infinity,
+                  height: 87,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    shadows: const [
+                      BoxShadow(
+                        color: Color(0x0C7D7D7D),
+                        blurRadius: 20,
+                        offset: Offset(0, 10),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 100,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('사업자정보', style: TextS.title2()),
+                            const SizedBox(
+                              height: 6,
+                            ),
+                            Text('영업신고증, 신분증', style: TextS.caption1()),
+                          ],
+                        ),
+                      ),
+                      const Spacer(),
+                      SvgPicture.asset(
+                        bossButtonState
+                            ? Svgs.checkInWithCircleIcon
+                            : Svgs.checkOffWithCircleIcon,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
           ],
         ),
       ),

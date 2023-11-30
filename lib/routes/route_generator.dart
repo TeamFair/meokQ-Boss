@@ -6,6 +6,7 @@ import 'package:meokq_boss/presentation/bloc/bottom_navigation_controller/bnc_bl
 import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/quest_add/quest_add_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/quest_detail/quest_detail_bloc.dart';
+import 'package:meokq_boss/presentation/bloc/setting/setting_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/store_information/store_information_bloc.dart';
 import 'package:meokq_boss/presentation/views/home/home_page.dart';
@@ -47,8 +48,8 @@ class RouteGenerator {
         );
       case SettingPage.id:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<BNCBloc>(
-            create: (context) => BNCBloc(),
+          builder: (context) => BlocProvider<SettingBloc>(
+            create: (context) => SettingBloc(),
             child: const SettingPage(),
           ),
         );

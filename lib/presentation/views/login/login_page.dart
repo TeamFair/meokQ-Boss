@@ -73,7 +73,8 @@ class _LoginPageState extends State<LoginPage> {
 
           case LoginStatus.firstComplete:
           case LoginStatus.done:
-            Navigator.of(context).pushNamed(HomePage.id);
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil(HomePage.id, (route) => false);
 
           case LoginStatus.failure:
             ScaffoldMessenger.of(context).showSnackBar(

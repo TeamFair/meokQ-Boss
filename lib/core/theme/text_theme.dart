@@ -90,6 +90,7 @@ class TextS {
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
       letterSpacing: -0.3,
+      color: ColorS.applyGray,
     );
   }
 

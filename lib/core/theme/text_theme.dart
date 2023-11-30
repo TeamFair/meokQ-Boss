@@ -142,6 +142,15 @@ class TextS {
     );
   }
 
+  static TextStyle content2() {
+    return const TextStyle(
+      fontSize: 14,
+      fontFamily: 'Pretendard',
+      fontWeight: FontWeight.w400,
+      letterSpacing: -0.30,
+    );
+  }
+
   static TextTheme textTheme() {
     return TextTheme(
       headlineLarge: heading1(),

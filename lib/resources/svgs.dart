@@ -9,6 +9,7 @@ class Svgs {
   static const String arrowDown = 'assets/vectors/arrow_down.svg';
   static const String arrowUp = 'assets/vectors/arrow_up.svg';
   static const String cameraIcon = 'assets/vectors/camera_icon.svg';
+  static const String challengeButton = 'assets/vectors/challenge_button.svg';
   static const String challengeOffIcon =
       'assets/vectors/challenge_off_icon.svg';
   static const String challengeOnIcon = 'assets/vectors/challenge_on_icon.svg';
@@ -19,6 +20,8 @@ class Svgs {
   static const String checkOffWithCircleIcon =
       'assets/vectors/check_off_with_circle_icon.svg';
   static const String checkOutIcon = 'assets/vectors/check_out_icon.svg';
+  static const String checkWithCircleIcon =
+      'assets/vectors/check_with_circle_icon.svg';
   static const String googleIcon = 'assets/vectors/google_icon.svg';
   static const String kakaoIcon = 'assets/vectors/kakao_icon.svg';
   static const String leftArrowIcon = 'assets/vectors/left_arrow_icon.svg';

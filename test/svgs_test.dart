@@ -11,6 +11,7 @@ void main() {
     expect(File(Svgs.arrowDown).existsSync(), isTrue);
     expect(File(Svgs.arrowUp).existsSync(), isTrue);
     expect(File(Svgs.cameraIcon).existsSync(), isTrue);
+    expect(File(Svgs.challengeButton).existsSync(), isTrue);
     expect(File(Svgs.challengeOffIcon).existsSync(), isTrue);
     expect(File(Svgs.challengeOnIcon).existsSync(), isTrue);
     expect(File(Svgs.checkIcon).existsSync(), isTrue);
@@ -18,6 +19,7 @@ void main() {
     expect(File(Svgs.checkInWithCircleIcon).existsSync(), isTrue);
     expect(File(Svgs.checkOffWithCircleIcon).existsSync(), isTrue);
     expect(File(Svgs.checkOutIcon).existsSync(), isTrue);
+    expect(File(Svgs.checkWithCircleIcon).existsSync(), isTrue);
     expect(File(Svgs.googleIcon).existsSync(), isTrue);
     expect(File(Svgs.kakaoIcon).existsSync(), isTrue);
     expect(File(Svgs.leftArrowIcon).existsSync(), isTrue);

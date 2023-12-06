@@ -9,11 +9,11 @@ part 'quest_state.dart';
 
 class QuestBloc extends Bloc<QuestEvent, QuestState> {
   QuestBloc() : super(const QuestState(questList: [])) {
-    on<InitQuest>(_initQuest);
+    on<InitAllQuest>(_initAllQuest);
   }
 
-  Future<void> _initQuest(
-    InitQuest event,
+  Future<void> _initAllQuest(
+    InitAllQuest event,
     Emitter<QuestState> emit,
   ) async {
     // TODO: rest에서 quest의 정보를 받아옵니다
@@ -50,7 +50,24 @@ class QuestBloc extends Bloc<QuestEvent, QuestState> {
           quantity: 2,
           missionType: MissionType.free,
         ),
-        questStatus: QuestStatus.wait,
+        questStatus: QuestStatus.checking,
+      ),
+      const Quest(
+        id: 1,
+        reward: Reward(
+          content: '카페라떼 70% 할인권',
+          target: '카페라떼',
+          rewardTypeStr: 'DISCOUNT',
+          quantity: null,
+          discountRate: 70,
+        ),
+        mission: Mission(
+          content: '빵 2종류 이상 구매 시',
+          target: '빵',
+          quantity: 2,
+          missionType: MissionType.free,
+        ),
+        questStatus: QuestStatus.checking,
       ),
       const Quest(
         id: 2,

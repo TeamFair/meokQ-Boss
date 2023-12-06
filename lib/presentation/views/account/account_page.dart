@@ -32,6 +32,7 @@ class _AccountPageState extends State<AccountPage> {
         phoneController.text = state.myInformation.phone;
         return Scaffold(
           backgroundColor: Colors.white,
+                resizeToAvoidBottomInset: false,
           appBar: AppBar(
             automaticallyImplyLeading: false,
             elevation: 1,

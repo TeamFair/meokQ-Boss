@@ -18,7 +18,7 @@ class CustomDropDownButton extends StatelessWidget {
 
   final String selectedValue;
 
-  final Function(String) onTap;
+  final Function(String?) onTap;
 
   final double leftPadding;
 
@@ -42,7 +42,7 @@ class CustomDropDownButton extends StatelessWidget {
             )
             .toList(),
         value: selectedValue,
-        onChanged: (String? value) => onTap(value ?? ''),
+        onChanged: onTap,
         buttonStyleData: ButtonStyleData(
           height: 50,
           padding: EdgeInsets.fromLTRB(leftPadding, 15, 15, 15),

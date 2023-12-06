@@ -6,8 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/boss_information/boss_information_bloc.dart';
+import 'package:meokq_boss/presentation/global/custom_text_field.dart';
 import 'package:meokq_boss/presentation/global/meakq_two_button.dart';
-import 'package:meokq_boss/presentation/views/sign_in/apply_store/boss_information_apply/boss_custom_text_field.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
 class BossStage2Page extends StatelessWidget {
@@ -40,16 +40,28 @@ class BossStage2Page extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            const BossCustomTextField(
-              bossTextInputType: BossTextInputType.userName,
-              textInputType: TextInputType.text,
+            CustomTextField(
+              title: '성함',
+              text: state.userName,
+              hintText: '대표자명',
+              onChanged: (text) => context.read<BossInformationBloc>().add(
+                    ChangeUserName(
+                      newText: text,
+                    ),
+                  ),
             ),
             const SizedBox(
               height: 15,
             ),
-            const BossCustomTextField(
-              bossTextInputType: BossTextInputType.birth,
-              textInputType: TextInputType.text,
+            CustomTextField(
+              title: '생년월일',
+              text: state.birth,
+              hintText: '생년월일',
+              onChanged: (text) => context.read<BossInformationBloc>().add(
+                    ChangeBirth(
+                      newText: text,
+                    ),
+                  ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

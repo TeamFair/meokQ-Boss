@@ -5,7 +5,7 @@ import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/store_information/store_information_bloc.dart';
 import 'package:meokq_boss/presentation/global/meakq_two_button.dart';
-import 'package:meokq_boss/presentation/views/sign_in/apply_store/widget/custom_drop_down_button.dart';
+import 'package:meokq_boss/presentation/global/custom_drop_down_button.dart';
 
 class StoreStage2Page extends StatelessWidget {
   const StoreStage2Page({super.key});
@@ -24,8 +24,6 @@ class StoreStage2Page extends StatelessWidget {
           hourList.add('오후 $i:00');
           hourList.add('오후 $i:30');
         }
-
-        print(hourList);
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -110,7 +108,7 @@ class StoreStage2Page extends StatelessWidget {
                       onTap: (value) =>
                           context.read<StoreInformationBloc>().add(
                                 ChangeBussinessHour(
-                                  time: value,
+                                  time: value ?? '',
                                   businessHour: BusinessHour.open,
                                 ),
                               ),
@@ -127,7 +125,7 @@ class StoreStage2Page extends StatelessWidget {
                       onTap: (value) =>
                           context.read<StoreInformationBloc>().add(
                                 ChangeBussinessHour(
-                                  time: value,
+                                  time: value ?? '',
                                   businessHour: BusinessHour.close,
                                 ),
                               ),

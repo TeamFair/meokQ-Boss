@@ -22,6 +22,7 @@ class _ApplyStorePageState extends State<ApplyStorePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+            resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {

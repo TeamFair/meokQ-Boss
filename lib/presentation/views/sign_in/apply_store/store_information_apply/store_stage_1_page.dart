@@ -4,7 +4,7 @@ import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/store_information/store_information_bloc.dart';
 import 'package:meokq_boss/presentation/global/meokq_button.dart';
-import 'package:meokq_boss/presentation/views/sign_in/apply_store/store_information_apply/store_custom_text_field.dart';
+import 'package:meokq_boss/presentation/global/custom_text_field.dart';
 
 class StoreStage1Page extends StatelessWidget {
   const StoreStage1Page({super.key});
@@ -36,23 +36,42 @@ class StoreStage1Page extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            const StoreCustomTextField(
-              storeTextInputType: StoreTextInputType.storeName,
-              textInputType: TextInputType.text,
+            CustomTextField(
+              title: '상호명',
+              text: state.storeName,
+              hintText: 'ex) 커피크라운 안양점',
+              onChanged: (text) => context.read<StoreInformationBloc>().add(
+                    ChangeStore(
+                      newText: text,
+                    ),
+                  ),
             ),
             const SizedBox(
               height: 15,
             ),
-            const StoreCustomTextField(
-              storeTextInputType: StoreTextInputType.address,
-              textInputType: TextInputType.text,
+            CustomTextField(
+              title: '가게주소',
+              text: state.address,
+              hintText: 'ex) 경기도 안양시 만안구 안양동 88-1',
+              onChanged: (text) => context.read<StoreInformationBloc>().add(
+                    ChangeAddress(
+                      newText: text,
+                    ),
+                  ),
             ),
             const SizedBox(
               height: 15,
             ),
-            const StoreCustomTextField(
-              storeTextInputType: StoreTextInputType.phone,
-              textInputType: TextInputType.text,
+            CustomTextField(
+              title: '가게 전화번호',
+              text: state.phone,
+              hintText: '숫자만 입력',
+              textInputType: TextInputType.phone,
+              onChanged: (text) => context.read<StoreInformationBloc>().add(
+                    ChangePhone(
+                      newText: text,
+                    ),
+                  ),
             ),
             const Spacer(),
             Padding(

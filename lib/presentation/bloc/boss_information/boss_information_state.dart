@@ -1,44 +1,5 @@
 part of 'boss_information_bloc.dart';
 
-enum BossTextInputType {
-  businessNumber,
-  businessType,
-  bossName,
-  userName,
-  storeName,
-  address,
-  postalCode,
-  birth;
-
-  String get text {
-    return switch (this) {
-      BossTextInputType.businessNumber => '영업신고증 고유번호',
-      BossTextInputType.businessType => '영업의 종류',
-      BossTextInputType.bossName => '대표자',
-      BossTextInputType.storeName => '영업소 명칭(상호명)',
-      BossTextInputType.address => '소재지',
-      BossTextInputType.postalCode => '우편번호',
-      BossTextInputType.birth => '생년월일',
-      BossTextInputType.userName => '성함',
-    };
-  }
-
-  String get inTextField {
-    return switch (this) {
-      BossTextInputType.businessNumber => '제',
-      BossTextInputType.businessType => '선택하세요',
-      BossTextInputType.bossName => '대표자명',
-      BossTextInputType.storeName => '상호명',
-      BossTextInputType.address => '주소',
-      BossTextInputType.postalCode => '우편번호',
-      BossTextInputType.birth => 'YY/MM/DD',
-      BossTextInputType.userName => '성함',
-    };
-  }
-
-  bool get isBusinessNumber => this == BossTextInputType.businessNumber;
-}
-
 enum ImageType {
   businessCertification,
   identification,
@@ -65,27 +26,16 @@ class BossInformationState extends Equatable {
   });
 
   final String businessNumber;
-
   final String businessType;
-
   final String bossName;
-
   final String storeName;
-
   final String address;
-
   final String postalCode;
-
   final String birth;
-
   final String businessCertificationUrl;
-
   final String identificationUrl;
-
   final String userName;
-
   final bool allFinished;
-
   final Stage stage;
 
   static BossInformationState init() {

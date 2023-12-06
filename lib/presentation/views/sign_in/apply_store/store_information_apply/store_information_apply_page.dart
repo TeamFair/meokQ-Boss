@@ -22,6 +22,7 @@ class _StoreInformationApplyPageState extends State<StoreInformationApplyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),

@@ -18,7 +18,7 @@ class _QuestShowPageState extends State<QuestShowPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    BlocProvider.of<QuestBloc>(context).add(InitQuest());
+    BlocProvider.of<QuestBloc>(context).add(InitAllQuest());
   }
 
   @override
@@ -38,7 +38,7 @@ class _QuestShowPageState extends State<QuestShowPage> {
                       final quest = state.questList[index];
                       return GestureDetector(
                         onTap: () {
-                          if (quest.questStatus.isWait) {
+                          if (quest.questStatus.isChecking) {
                             Navigator.of(context).pushNamed(
                               QuestDetailPage.id,
                               arguments: QuestDetailArgument(quest: quest),

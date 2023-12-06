@@ -9,7 +9,9 @@ part 'store_information_event.dart';
 class StoreInformationBloc
     extends Bloc<StoreInformationEvent, StoreInformationState> {
   StoreInformationBloc() : super(StoreInformationState.init()) {
-    on<ChangeTextField>(_changeTextField);
+    on<ChangeStore>(_changeStore);
+    on<ChangeAddress>(_changeAddress);
+    on<ChangePhone>(_changePhone);
     on<ChangeBussinessHour>(_changeBussinessHour);
     on<ChangeBussinessDays>(_changeBussinessDays);
     on<AddImage>(_addImage);
@@ -19,30 +21,37 @@ class StoreInformationBloc
 
   final _imagePickerRepository = getIt<InterfaceImagePicker>();
 
-  void _changeTextField(
-    ChangeTextField event,
+  void _changeStore(
+    ChangeStore event,
     Emitter<StoreInformationState> emit,
   ) {
-    switch (event.storeTextInputType) {
-      case StoreTextInputType.storeName:
-        emit(
-          state.copyWith(
-            storeName: event.newText,
-          ),
-        );
-      case StoreTextInputType.address:
-        emit(
-          state.copyWith(
-            address: event.newText,
-          ),
-        );
-      case StoreTextInputType.phone:
-        emit(
-          state.copyWith(
-            phone: event.newText,
-          ),
-        );
-    }
+    emit(
+      state.copyWith(
+        storeName: event.newText,
+      ),
+    );
+  }
+
+  void _changeAddress(
+    ChangeAddress event,
+    Emitter<StoreInformationState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        address: event.newText,
+      ),
+    );
+  }
+
+  void _changePhone(
+    ChangePhone event,
+    Emitter<StoreInformationState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        phone: event.newText,
+      ),
+    );
   }
 
   void _changeBussinessHour(

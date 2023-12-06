@@ -7,12 +7,26 @@ sealed class StoreInformationEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class ChangeTextField extends StoreInformationEvent {
-  final StoreTextInputType storeTextInputType;
+class ChangeStore extends StoreInformationEvent {
   final String newText;
 
-  const ChangeTextField({
-    required this.storeTextInputType,
+  const ChangeStore({
+    required this.newText,
+  });
+}
+
+class ChangeAddress extends StoreInformationEvent {
+  final String newText;
+
+  const ChangeAddress({
+    required this.newText,
+  });
+}
+
+class ChangePhone extends StoreInformationEvent {
+  final String newText;
+
+  const ChangePhone({
     required this.newText,
   });
 }

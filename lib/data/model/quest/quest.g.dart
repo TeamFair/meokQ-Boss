@@ -22,7 +22,7 @@ Map<String, dynamic> _$$QuestImplToJson(_$QuestImpl instance) =>
     };
 
 const _$QuestStatusEnumMap = {
-  QuestStatus.wait: 'wait',
+  QuestStatus.checking: 'checking',
   QuestStatus.review: 'review',
   QuestStatus.open: 'open',
 };

@@ -7,12 +7,58 @@ sealed class BossInformationEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class ChangeTextField extends BossInformationEvent {
-  final BossTextInputType bossTextInputType;
+class ChangeBusinessNumber extends BossInformationEvent {
   final String newText;
 
-  const ChangeTextField({
-    required this.bossTextInputType,
+  const ChangeBusinessNumber({
+    required this.newText,
+  });
+}
+
+class ChangeBossName extends BossInformationEvent {
+  final String newText;
+
+  const ChangeBossName({
+    required this.newText,
+  });
+}
+
+class ChangeStoreName extends BossInformationEvent {
+  final String newText;
+
+  const ChangeStoreName({
+    required this.newText,
+  });
+}
+
+class ChangeAddress extends BossInformationEvent {
+  final String newText;
+
+  const ChangeAddress({
+    required this.newText,
+  });
+}
+
+class ChangePostalCode extends BossInformationEvent {
+  final String newText;
+
+  const ChangePostalCode({
+    required this.newText,
+  });
+}
+
+class ChangeBirth extends BossInformationEvent {
+  final String newText;
+
+  const ChangeBirth({
+    required this.newText,
+  });
+}
+
+class ChangeUserName extends BossInformationEvent {
+  final String newText;
+
+  const ChangeUserName({
     required this.newText,
   });
 }

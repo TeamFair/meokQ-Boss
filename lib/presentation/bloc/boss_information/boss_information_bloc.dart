@@ -10,8 +10,14 @@ part 'boss_information_event.dart';
 class BossInformationBloc
     extends Bloc<BossInformationEvent, BossInformationState> {
   BossInformationBloc() : super(BossInformationState.init()) {
-    on<ChangeTextField>(_changeTextField);
-    on<ChangeBussinessType>(_changeBussinessType);
+    on<ChangeBusinessNumber>(_changeBusinessNumber);
+    on<ChangeBossName>(_changeBossName);
+    on<ChangeBussinessType>(_changeBusinessType);
+    on<ChangeStoreName>(_changeStoreName);
+    on<ChangeAddress>(_changeAddress);
+    on<ChangePostalCode>(_changePostalCode);
+    on<ChangeUserName>(_changeUserName);
+    on<ChangeBirth>(_changeBirth);
     on<AddImage>(_addImage);
     on<ChangeStage>(_changeStage);
     on<WritingCompleted>(_writingCompleted);
@@ -19,63 +25,84 @@ class BossInformationBloc
 
   final _imagePickerRepository = getIt<InterfaceImagePicker>();
 
-  void _changeTextField(
-    ChangeTextField event,
+  void _changeBusinessNumber(
+    ChangeBusinessNumber event,
     Emitter<BossInformationState> emit,
   ) {
-    switch (event.bossTextInputType) {
-      case BossTextInputType.businessNumber:
-        emit(
-          state.copyWith(
-            businessNumber: event.newText,
-          ),
-        );
-      case BossTextInputType.businessType:
-        emit(
-          state.copyWith(
-            businessType: event.newText,
-          ),
-        );
-      case BossTextInputType.bossName:
-        emit(
-          state.copyWith(
-            bossName: event.newText,
-          ),
-        );
-      case BossTextInputType.userName:
-        emit(
-          state.copyWith(
-            userName: event.newText,
-          ),
-        );
-      case BossTextInputType.storeName:
-        emit(
-          state.copyWith(
-            storeName: event.newText,
-          ),
-        );
-      case BossTextInputType.address:
-        emit(
-          state.copyWith(
-            address: event.newText,
-          ),
-        );
-      case BossTextInputType.postalCode:
-        emit(
-          state.copyWith(
-            postalCode: event.newText,
-          ),
-        );
-      case BossTextInputType.birth:
-        emit(
-          state.copyWith(
-            birth: event.newText,
-          ),
-        );
-    }
+    emit(
+      state.copyWith(
+        businessNumber: event.newText,
+      ),
+    );
   }
 
-  void _changeBussinessType(
+  void _changeBossName(
+    ChangeBossName event,
+    Emitter<BossInformationState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        bossName: event.newText,
+      ),
+    );
+  }
+
+  void _changeStoreName(
+    ChangeStoreName event,
+    Emitter<BossInformationState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        storeName: event.newText,
+      ),
+    );
+  }
+
+  void _changeAddress(
+    ChangeAddress event,
+    Emitter<BossInformationState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        address: event.newText,
+      ),
+    );
+  }
+
+  void _changePostalCode(
+    ChangePostalCode event,
+    Emitter<BossInformationState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        postalCode: event.newText,
+      ),
+    );
+  }
+
+  void _changeUserName(
+    ChangeUserName event,
+    Emitter<BossInformationState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        userName: event.newText,
+      ),
+    );
+  }
+
+  void _changeBirth(
+    ChangeBirth event,
+    Emitter<BossInformationState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        birth: event.newText,
+      ),
+    );
+  }
+
+  void _changeBusinessType(
     ChangeBussinessType event,
     Emitter<BossInformationState> emit,
   ) {

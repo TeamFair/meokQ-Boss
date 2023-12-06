@@ -1,27 +1,5 @@
 part of 'store_information_bloc.dart';
 
-enum StoreTextInputType {
-  storeName,
-  address,
-  phone;
-
-  String get text {
-    return switch (this) {
-      StoreTextInputType.storeName => '상호명',
-      StoreTextInputType.address => '가게주소',
-      StoreTextInputType.phone => '가게 전화번호',
-    };
-  }
-
-  String get inTextField {
-    return switch (this) {
-      StoreTextInputType.phone => 'ex) 커피크라운 안양점',
-      StoreTextInputType.storeName => 'ex) 경기도 안양시 만안구 안양동 88-1',
-      StoreTextInputType.address => '숫자만 입력',
-    };
-  }
-}
-
 enum BusinessHour { open, close }
 
 enum Stage { first, second, third }

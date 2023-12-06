@@ -8,31 +8,31 @@ part 'quest.freezed.dart';
 part 'quest.g.dart';
 
 enum QuestStatus {
-  wait,
+  checking,
   review,
   open;
 
   String get text => switch (this) {
         QuestStatus.open => '게시중',
         QuestStatus.review => '대기상태',
-        QuestStatus.wait => '검토중',
+        QuestStatus.checking => '검토중',
       };
 
   Color get backgroundColor => switch (this) {
         QuestStatus.open => ColorS.badgeBlue,
         QuestStatus.review => ColorS.badgeRed,
-        QuestStatus.wait => ColorS.background,
+        QuestStatus.checking => ColorS.background,
       };
 
   Color get textColor => switch (this) {
         QuestStatus.open => const Color(0xFF329CE9),
         QuestStatus.review => const Color(0xFFF16868),
-        QuestStatus.wait => ColorS.applyGray,
+        QuestStatus.checking => ColorS.applyGray,
       };
 
   bool get isOpen => this == QuestStatus.open;
 
-  bool get isWait => this == QuestStatus.wait;
+  bool get isChecking => this == QuestStatus.checking;
 }
 
 @freezed

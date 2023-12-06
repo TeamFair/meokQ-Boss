@@ -7,9 +7,9 @@ import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/boss_information/boss_information_bloc.dart';
+import 'package:meokq_boss/presentation/global/custom_text_field.dart';
 import 'package:meokq_boss/presentation/global/meokq_button.dart';
-import 'package:meokq_boss/presentation/views/sign_in/apply_store/boss_information_apply/boss_custom_text_field.dart';
-import 'package:meokq_boss/presentation/views/sign_in/apply_store/widget/custom_drop_down_button.dart';
+import 'package:meokq_boss/presentation/global/custom_drop_down_button.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
 class BossStage1Page extends StatelessWidget {
@@ -17,16 +17,14 @@ class BossStage1Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width * 0.5;
     return BlocBuilder<BossInformationBloc, BossInformationState>(
       builder: (context, state) {
-        print(width);
         return ListView(
           children: [
             Container(
               height: 4,
               color: ColorS.buttonYellow,
-              width: width,
+              width: 195,
             ),
             const SizedBox(
               height: 20,
@@ -43,9 +41,17 @@ class BossStage1Page extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            const BossCustomTextField(
-              bossTextInputType: BossTextInputType.businessNumber,
+            CustomTextField(
+              title: '영업신고증 고유번호',
+              text: state.businessNumber,
+              hintText: '제',
+              suffixText: '호',
               textInputType: TextInputType.number,
+              onChanged: (text) => context.read<BossInformationBloc>().add(
+                    ChangeBusinessNumber(
+                      newText: text,
+                    ),
+                  ),
             ),
             const SizedBox(
               height: 4,
@@ -75,38 +81,64 @@ class BossStage1Page extends StatelessWidget {
               child: CustomDropDownButton(
                 dropDownList: businessTypeList,
                 selectedValue: state.businessType,
+                leftPadding: 0,
                 onTap: (value) => context
                     .read<BossInformationBloc>()
-                    .add(ChangeBussinessType(businessType: value)),
+                    .add(ChangeBussinessType(businessType: value ?? '')),
               ),
             ),
             const SizedBox(
               height: 15,
             ),
-            const BossCustomTextField(
-              bossTextInputType: BossTextInputType.bossName,
-              textInputType: TextInputType.text,
+            CustomTextField(
+              title: '대표자',
+              text: state.bossName,
+              hintText: '대표자명',
+              onChanged: (text) => context.read<BossInformationBloc>().add(
+                    ChangeBossName(
+                      newText: text,
+                    ),
+                  ),
             ),
             const SizedBox(
               height: 15,
             ),
-            const BossCustomTextField(
-              bossTextInputType: BossTextInputType.storeName,
-              textInputType: TextInputType.text,
+            CustomTextField(
+              title: '영업소 명칭(상호명)',
+              text: state.storeName,
+              hintText: '상호명',
+              onChanged: (text) => context.read<BossInformationBloc>().add(
+                    ChangeStoreName(
+                      newText: text,
+                    ),
+                  ),
             ),
             const SizedBox(
               height: 15,
             ),
-            const BossCustomTextField(
-              bossTextInputType: BossTextInputType.address,
-              textInputType: TextInputType.text,
+            CustomTextField(
+              title: '소재지',
+              text: state.address,
+              hintText: '주소',
+              onChanged: (text) => context.read<BossInformationBloc>().add(
+                    ChangeAddress(
+                      newText: text,
+                    ),
+                  ),
             ),
             const SizedBox(
               height: 15,
             ),
-            const BossCustomTextField(
-              bossTextInputType: BossTextInputType.postalCode,
+            CustomTextField(
+              title: '우편번호',
+              text: state.postalCode,
+              hintText: '우편번호',
               textInputType: TextInputType.number,
+              onChanged: (text) => context.read<BossInformationBloc>().add(
+                    ChangePostalCode(
+                      newText: text,
+                    ),
+                  ),
             ),
             const SizedBox(
               height: 15,

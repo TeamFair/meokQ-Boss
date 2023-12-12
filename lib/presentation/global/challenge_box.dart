@@ -12,7 +12,8 @@ class ChallengeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       height: 95,
       child: Stack(
         children: [

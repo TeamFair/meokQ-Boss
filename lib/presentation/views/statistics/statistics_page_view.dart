@@ -14,9 +14,9 @@ class StatisticsPageView extends StatelessWidget {
         BlocProvider<TabBarBloc>(
         create: (context) => TabBarBloc(), 
         ),
-        // BlocProvider<StatisticsBloc>(
-        // create: (context) => StatisticsBloc(), 
-        // ),
+        BlocProvider<StatisticsBloc>(
+        create: (context) => StatisticsBloc(), 
+        ),
       ],
       child: const StatisticsPage(),
     );

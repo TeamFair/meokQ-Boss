@@ -16,6 +16,10 @@ enum ChallengeStatus {
       };
 
   bool get isIssued => this != ChallengeStatus.notIssued;
+
+  bool get isIssuedComplete => this != ChallengeStatus.issuedComplete;
+
+  bool get isUsedComplete => this != ChallengeStatus.usedComplete;
 }
 
 @freezed

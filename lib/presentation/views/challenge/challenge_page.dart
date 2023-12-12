@@ -56,10 +56,7 @@ class _ChallengePageState extends State<ChallengePage> {
                       final challenge = state.challengeList[index];
                       return GestureDetector(
                         onTap: () {},
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: ChallengeBox(challenge: challenge),
-                        ),
+                        child: ChallengeBox(challenge: challenge),
                       );
                     },
                   )

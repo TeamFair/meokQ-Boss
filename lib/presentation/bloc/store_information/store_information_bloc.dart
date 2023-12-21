@@ -14,7 +14,8 @@ class StoreInformationBloc
     on<ChangePhone>(_changePhone);
     on<ChangeBussinessHour>(_changeBussinessHour);
     on<ChangeBussinessDays>(_changeBussinessDays);
-    on<AddImage>(_addImage);
+    on<AddImageFromGallery>(_addImageFromGallery);
+    on<AddImageFromCamera>(_addImageFromCamera);
     on<ChangeStage>(_changeStage);
     on<StoreApply>(_storeApply);
   }
@@ -106,11 +107,23 @@ class StoreInformationBloc
     );
   }
 
-  Future<void> _addImage(
-    AddImage event,
+  Future<void> _addImageFromGallery(
+    AddImageFromGallery event,
     Emitter<StoreInformationState> emit,
   ) async {
     final imagePath = await _imagePickerRepository.getImageFromGallery();
+    emit(
+      state.copyWith(
+        logoUrl: imagePath,
+      ),
+    );
+  }
+
+  Future<void> _addImageFromCamera(
+    AddImageFromCamera event,
+    Emitter<StoreInformationState> emit,
+  ) async {
+    final imagePath = await _imagePickerRepository.getImageFromCamera();
     emit(
       state.copyWith(
         logoUrl: imagePath,

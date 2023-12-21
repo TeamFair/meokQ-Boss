@@ -25,7 +25,7 @@ enum ChallengeStatus {
 @freezed
 class Challenge with _$Challenge {
   const factory Challenge({
-    required int id,
+    @JsonKey(name: 'questId') required int id,
     required String url,
     required String applicantId,
     required Quest quest,

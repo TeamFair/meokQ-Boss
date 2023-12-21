@@ -10,8 +10,6 @@ part 'account_event.dart';
 class AccountBloc extends Bloc<AccountEvent, AccountState> {
   AccountBloc() : super(AccountState.init()) {
     on<ChangeText>(_changeText);
-    on<ChangeBussinessHour>(_changeBusinessHour);
-    on<ChangeBusinessDays>(_changeBusinessDays);
     on<ChangeLogo>(_changeLogo);
     on<ChangeAccount>(_changeAccount);
     on<EditButtonClicked>(_editButtonClicked);
@@ -64,53 +62,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
           ),
         );
     }
-  }
-
-  void _changeBusinessHour(
-    ChangeBussinessHour event,
-    Emitter<AccountState> emit,
-  ) {
-    switch (event.businessHour) {
-      case BusinessHour.open:
-        emit(
-          state.copyWith(
-            myInformation: state.myInformation.copyWith(
-              address: event.hour,
-            ),
-          ),
-        );
-      case BusinessHour.close:
-        emit(
-          state.copyWith(
-            myInformation: state.myInformation.copyWith(
-              address: event.hour,
-            ),
-          ),
-        );
-    }
-  }
-
-  void _changeBusinessDays(
-    ChangeBusinessDays event,
-    Emitter<AccountState> emit,
-  ) {
-    var businessDays = <String>[];
-    for (String s in state.myInformation.businessDays) {
-      businessDays.add(s);
-    }
-
-    if (businessDays.contains(event.day)) {
-      businessDays.remove(event.day);
-    } else {
-      businessDays.add(event.day);
-    }
-    emit(
-      state.copyWith(
-        myInformation: state.myInformation.copyWith(
-          businessDays: businessDays,
-        ),
-      ),
-    );
   }
 
   Future<void> _changeLogo(

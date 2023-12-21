@@ -20,6 +20,7 @@ Challenge _$ChallengeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Challenge {
+  @JsonKey(name: 'questId')
   int get id => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   String get applicantId => throw _privateConstructorUsedError;
@@ -39,7 +40,7 @@ abstract class $ChallengeCopyWith<$Res> {
       _$ChallengeCopyWithImpl<$Res, Challenge>;
   @useResult
   $Res call(
-      {int id,
+      {@JsonKey(name: 'questId') int id,
       String url,
       String applicantId,
       Quest quest,
@@ -115,7 +116,7 @@ abstract class _$$ChallengeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {@JsonKey(name: 'questId') int id,
       String url,
       String applicantId,
       Quest quest,
@@ -177,7 +178,7 @@ class __$$ChallengeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ChallengeImpl implements _Challenge {
   const _$ChallengeImpl(
-      {required this.id,
+      {@JsonKey(name: 'questId') required this.id,
       required this.url,
       required this.applicantId,
       required this.quest,
@@ -188,6 +189,7 @@ class _$ChallengeImpl implements _Challenge {
       _$$ChallengeImplFromJson(json);
 
   @override
+  @JsonKey(name: 'questId')
   final int id;
   @override
   final String url;
@@ -206,7 +208,7 @@ class _$ChallengeImpl implements _Challenge {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChallengeImpl &&
@@ -241,7 +243,7 @@ class _$ChallengeImpl implements _Challenge {
 
 abstract class _Challenge implements Challenge {
   const factory _Challenge(
-      {required final int id,
+      {@JsonKey(name: 'questId') required final int id,
       required final String url,
       required final String applicantId,
       required final Quest quest,
@@ -252,6 +254,7 @@ abstract class _Challenge implements Challenge {
       _$ChallengeImpl.fromJson;
 
   @override
+  @JsonKey(name: 'questId')
   int get id;
   @override
   String get url;

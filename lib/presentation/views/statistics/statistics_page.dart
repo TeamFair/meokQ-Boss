@@ -49,11 +49,11 @@ class _StatisticsPageState extends State<StatisticsPage> {
               ),
             ],
             onTap: (index) {
-                BlocProvider.of<TabBarBloc>(context)
-                    .add(TabChange(tabIndex: index));
+              BlocProvider.of<TabBarBloc>(context)
+                  .add(TabChange(tabIndex: index));
             },
             labelStyle: TextS.subtitle1().copyWith(fontSize: 14),
-            indicatorPadding: const EdgeInsets.symmetric(horizontal: 36),
+            indicatorPadding: const EdgeInsets.symmetric(horizontal: -36),
             indicator: const UnderlineTabIndicator(
               borderSide: BorderSide(width: 3, color: ColorS.tabYellow),
               borderRadius: BorderRadius.all(Radius.circular(100)),

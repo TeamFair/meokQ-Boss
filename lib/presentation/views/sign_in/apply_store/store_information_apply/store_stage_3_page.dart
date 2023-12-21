@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/store_information/store_information_bloc.dart';
+import 'package:meokq_boss/presentation/global/custom_bottom_sheet.dart';
 import 'package:meokq_boss/presentation/global/meakq_two_button.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
@@ -41,9 +42,27 @@ class StoreStage3Page extends StatelessWidget {
             ),
             Center(
               child: GestureDetector(
-                onTap: () => context.read<StoreInformationBloc>().add(
-                      AddImage(),
+                // onTap: () => context.read<StoreInformationBloc>().add(
+                //       AddImage(),
+                //     ),
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(25),
+                      ),
                     ),
+                    builder: (childContext) => CameraBottomSheet(
+                      firstTap: () => context
+                          .read<StoreInformationBloc>()
+                          .add(AddImageFromGallery()),
+                      secondTap: () => context
+                          .read<StoreInformationBloc>()
+                          .add(AddImageFromCamera()),
+                    ),
+                  );
+                },
                 child: Container(
                   height: 98,
                   width: 98,

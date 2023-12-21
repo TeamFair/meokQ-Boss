@@ -24,8 +24,6 @@ Future<void> configureDependencies({
     javaScriptAppKey: '4717d4fb313b526d3cf8e510cfe1ee02',
   );
 
-  print(await KakaoSdk.origin);
-
   init(
     getIt,
     environment: env,

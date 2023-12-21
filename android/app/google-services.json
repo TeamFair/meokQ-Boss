@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "140008629638",
+    "firebase_url": "https://teamfair-7fb46-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "teamfair-7fb46",
+    "storage_bucket": "teamfair-7fb46.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140008629638:android:5c5df4b8bfa27df2b7b807",
+        "android_client_info": {
+          "package_name": "com.example.meokq_boss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140008629638-mqeuqrq1e8he8gnnnregmi5k9pl122b1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meokq_boss",
+            "certificate_hash": "198c26362a92d769ec4f915600459174391ba15e"
+          }
+        },
+        {
+          "client_id": "140008629638-2q17g8ud0rvlm8fv5mpqcmjtlmm05e2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6u-gC-noVOKvPXbNLl7D7Wmq1nILibuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140008629638-2q17g8ud0rvlm8fv5mpqcmjtlmm05e2h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "140008629638-02jmhfj5gl4100gmh16co2bdai37osu8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eugene.TeamFair"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140008629638:android:8bea53b160cf7397b7b807",
+        "android_client_info": {
+          "package_name": "com.meokq.boss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140008629638-c3jjvn8u51taiut58rtitsmtqcelr7om.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.meokq.boss",
+            "certificate_hash": "609664351b0dfc0166f622af7885271719bbfe5d"
+          }
+        },
+        {
+          "client_id": "140008629638-2q17g8ud0rvlm8fv5mpqcmjtlmm05e2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6u-gC-noVOKvPXbNLl7D7Wmq1nILibuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140008629638-2q17g8ud0rvlm8fv5mpqcmjtlmm05e2h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "140008629638-02jmhfj5gl4100gmh16co2bdai37osu8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eugene.TeamFair"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

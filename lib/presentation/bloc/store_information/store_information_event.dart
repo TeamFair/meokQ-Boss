@@ -49,7 +49,9 @@ class ChangeBussinessDays extends StoreInformationEvent {
   });
 }
 
-class AddImage extends StoreInformationEvent {}
+class AddImageFromGallery extends StoreInformationEvent {}
+
+class AddImageFromCamera extends StoreInformationEvent {}
 
 class ChangeStage extends StoreInformationEvent {
   final Stage stage;

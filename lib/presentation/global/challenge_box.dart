@@ -82,11 +82,11 @@ class ChallengeBox extends StatelessWidget {
                         ),
                       Container(
                         width: 50,
-                        height: 20,
+                        height: 22,
                         margin: const EdgeInsets.symmetric(horizontal: 22),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 6,
-                          vertical: 4,
+                          vertical: 3,
                         ),
                         decoration: ShapeDecoration(
                           color: ColorS.background,

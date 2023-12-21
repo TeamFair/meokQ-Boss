@@ -13,18 +13,13 @@ class LocalRepository extends InterfaceLocal {
     local = await SharedPreferences.getInstance();
   }
 
-  // @override
-  // ApplyState? getApplyState() {
-  //   final json = local.getString('apply_state');
-  //   if (json == null) {
-  //     return null;
-  //   }
-  //   return jsonDecode(json) as ApplyState;
-  // }
+  @override
+  Future<void> setKey(String key, String value) async {
+    await local.setString(key, value);
+  }
 
-  // @override
-  // Future<void> setApplyState(ApplyState applyState) async {
-  //   String json = jsonEncode(applyState.toJson());
-  //   await local.setString('apply_state', json);
-  // }
+  @override
+  String? getKey(String key) {
+    return local.getString(key);
+  }
 }

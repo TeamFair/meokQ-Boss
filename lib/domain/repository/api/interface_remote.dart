@@ -1,9 +1,14 @@
-// import 'package:dio/dio.dart' hide Headers;
-// import 'package:retrofit/http.dart';
+import 'package:meokq_boss/data/dto/login/login_dto.dart';
+import 'package:meokq_boss/data/dto/market/market_dto.dart';
+import 'package:meokq_boss/data/vo/login/login_vo.dart';
+import 'package:meokq_boss/data/vo/market/markets_vo.dart';
 
-// part 'onuii_apis.g.dart';
+abstract class InterfaceRemote {
+  void updateRepository({
+    List<Object?>? headers,
+  });
 
-// @RestApi(baseUrl: '')
-// abstract class InterfaceRemote {
-//   factory InterfaceRemote(Dio dio, {String baseUrl}) = _InterfaceRemote;
-// }
+  Future<LoginVO> login({required LoginDTO loginDTO});
+
+  Future<MarketsVO> markets({required MarketDTO marketDTO});
+}

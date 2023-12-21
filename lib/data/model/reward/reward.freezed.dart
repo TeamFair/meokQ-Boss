@@ -175,7 +175,7 @@ class _$RewardImpl implements _Reward {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RewardImpl &&

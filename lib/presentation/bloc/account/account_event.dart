@@ -18,22 +18,6 @@ class ChangeText extends AccountEvent {
   });
 }
 
-class ChangeBusinessDays extends AccountEvent {
-  final String day;
-
-  ChangeBusinessDays({required this.day});
-}
-
-class ChangeBussinessHour extends AccountEvent {
-  final String hour;
-  final BusinessHour businessHour;
-
-  ChangeBussinessHour({
-    required this.hour,
-    required this.businessHour,
-  });
-}
-
 class ChangeAccount extends AccountEvent {}
 
 class EditButtonClicked extends AccountEvent {}

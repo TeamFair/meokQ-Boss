@@ -7,17 +7,17 @@ part of 'quest.dart';
 // **************************************************************************
 
 _$QuestImpl _$$QuestImplFromJson(Map<String, dynamic> json) => _$QuestImpl(
-      id: json['id'] as int,
-      reward: Reward.fromJson(json['reward'] as Map<String, dynamic>),
-      mission: Mission.fromJson(json['mission'] as Map<String, dynamic>),
+      id: json['questId'] as int,
+      reward: Reward.fromJson(json['rewards'] as Map<String, dynamic>),
+      mission: Mission.fromJson(json['missions'] as Map<String, dynamic>),
       questStatus: $enumDecode(_$QuestStatusEnumMap, json['questStatus']),
     );
 
 Map<String, dynamic> _$$QuestImplToJson(_$QuestImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'reward': instance.reward.toJson(),
-      'mission': instance.mission.toJson(),
+      'questId': instance.id,
+      'rewards': instance.reward.toJson(),
+      'missions': instance.mission.toJson(),
       'questStatus': _$QuestStatusEnumMap[instance.questStatus]!,
     };
 

@@ -7,6 +7,7 @@ import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/boss_information/boss_information_bloc.dart';
+import 'package:meokq_boss/presentation/global/custom_bottom_sheet.dart';
 import 'package:meokq_boss/presentation/global/custom_text_field.dart';
 import 'package:meokq_boss/presentation/global/meokq_button.dart';
 import 'package:meokq_boss/presentation/global/custom_drop_down_button.dart';
@@ -156,12 +157,36 @@ class BossStage1Page extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: GestureDetector(
-                onTap: () => context.read<BossInformationBloc>().add(
-                      const AddImage(
-                        imagePicker: ImagePicker.gallery,
-                        imageType: ImageType.businessCertification,
+                // onTap: () => context.read<BossInformationBloc>().add(
+                //       const AddImage(
+                //         imagePicker: ImagePicker.gallery,
+                //         imageType: ImageType.businessCertification,
+                //       ),
+                //     ),
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(25),
                       ),
                     ),
+                    builder: (childContext) => CameraBottomSheet(
+                      firstTap: () => context.read<BossInformationBloc>().add(
+                            const AddImage(
+                              imageType: ImageType.businessCertification,
+                              imagePicker: ImagePicker.gallery,
+                            ),
+                          ),
+                      secondTap: () => context.read<BossInformationBloc>().add(
+                            const AddImage(
+                              imageType: ImageType.businessCertification,
+                              imagePicker: ImagePicker.camera,
+                            ),
+                          ),
+                    ),
+                  );
+                },
                 child: Container(
                   height: 197,
                   decoration: ShapeDecoration(

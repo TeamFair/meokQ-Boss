@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/core/theme/theme.dart';
@@ -9,11 +10,14 @@ void main() => launchApp();
 Future<void> launchApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies(env: 'prod');
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();

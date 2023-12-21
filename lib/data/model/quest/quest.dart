@@ -38,10 +38,10 @@ enum QuestStatus {
 @freezed
 class Quest with _$Quest {
   const factory Quest({
-    required int id,
-    required Reward reward,
-    required Mission mission,
-    required QuestStatus questStatus,
+    @JsonKey(name: 'questId') required int id,
+    @JsonKey(name: 'rewards') required Reward reward,
+    @JsonKey(name: 'missions') required Mission mission,
+    @JsonKey(name: 'questStatus') required QuestStatus questStatus,
   }) = _Quest;
 
   factory Quest.fromJson(Map<String, dynamic> json) => _$QuestFromJson(json);

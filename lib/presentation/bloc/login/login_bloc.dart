@@ -34,7 +34,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           loginStatus = await _authenticationRepository.appleLogin();
       }
       emit(state.copyWith(loginStatus: loginStatus));
-    } catch (_) {
+    } catch (e) {
+      print(e);
       emit(state.copyWith(loginStatus: LoginStatus.failure));
     }
   }

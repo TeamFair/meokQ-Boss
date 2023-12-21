@@ -20,9 +20,13 @@ Quest _$QuestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Quest {
+  @JsonKey(name: 'questId')
   int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'rewards')
   Reward get reward => throw _privateConstructorUsedError;
+  @JsonKey(name: 'missions')
   Mission get mission => throw _privateConstructorUsedError;
+  @JsonKey(name: 'questStatus')
   QuestStatus get questStatus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +39,11 @@ abstract class $QuestCopyWith<$Res> {
   factory $QuestCopyWith(Quest value, $Res Function(Quest) then) =
       _$QuestCopyWithImpl<$Res, Quest>;
   @useResult
-  $Res call({int id, Reward reward, Mission mission, QuestStatus questStatus});
+  $Res call(
+      {@JsonKey(name: 'questId') int id,
+      @JsonKey(name: 'rewards') Reward reward,
+      @JsonKey(name: 'missions') Mission mission,
+      @JsonKey(name: 'questStatus') QuestStatus questStatus});
 
   $RewardCopyWith<$Res> get reward;
   $MissionCopyWith<$Res> get mission;
@@ -103,7 +111,11 @@ abstract class _$$QuestImplCopyWith<$Res> implements $QuestCopyWith<$Res> {
       __$$QuestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, Reward reward, Mission mission, QuestStatus questStatus});
+  $Res call(
+      {@JsonKey(name: 'questId') int id,
+      @JsonKey(name: 'rewards') Reward reward,
+      @JsonKey(name: 'missions') Mission mission,
+      @JsonKey(name: 'questStatus') QuestStatus questStatus});
 
   @override
   $RewardCopyWith<$Res> get reward;
@@ -152,21 +164,25 @@ class __$$QuestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuestImpl implements _Quest {
   const _$QuestImpl(
-      {required this.id,
-      required this.reward,
-      required this.mission,
-      required this.questStatus});
+      {@JsonKey(name: 'questId') required this.id,
+      @JsonKey(name: 'rewards') required this.reward,
+      @JsonKey(name: 'missions') required this.mission,
+      @JsonKey(name: 'questStatus') required this.questStatus});
 
   factory _$QuestImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuestImplFromJson(json);
 
   @override
+  @JsonKey(name: 'questId')
   final int id;
   @override
+  @JsonKey(name: 'rewards')
   final Reward reward;
   @override
+  @JsonKey(name: 'missions')
   final Mission mission;
   @override
+  @JsonKey(name: 'questStatus')
   final QuestStatus questStatus;
 
   @override
@@ -175,7 +191,7 @@ class _$QuestImpl implements _Quest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QuestImpl &&
@@ -207,20 +223,25 @@ class _$QuestImpl implements _Quest {
 
 abstract class _Quest implements Quest {
   const factory _Quest(
-      {required final int id,
-      required final Reward reward,
-      required final Mission mission,
+      {@JsonKey(name: 'questId') required final int id,
+      @JsonKey(name: 'rewards') required final Reward reward,
+      @JsonKey(name: 'missions') required final Mission mission,
+      @JsonKey(name: 'questStatus')
       required final QuestStatus questStatus}) = _$QuestImpl;
 
   factory _Quest.fromJson(Map<String, dynamic> json) = _$QuestImpl.fromJson;
 
   @override
+  @JsonKey(name: 'questId')
   int get id;
   @override
+  @JsonKey(name: 'rewards')
   Reward get reward;
   @override
+  @JsonKey(name: 'missions')
   Mission get mission;
   @override
+  @JsonKey(name: 'questStatus')
   QuestStatus get questStatus;
   @override
   @JsonKey(ignore: true)

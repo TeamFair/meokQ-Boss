@@ -8,7 +8,7 @@ part of 'challenge.dart';
 
 _$ChallengeImpl _$$ChallengeImplFromJson(Map<String, dynamic> json) =>
     _$ChallengeImpl(
-      id: json['id'] as int,
+      id: json['questId'] as int,
       url: json['url'] as String,
       applicantId: json['applicantId'] as String,
       quest: Quest.fromJson(json['quest'] as Map<String, dynamic>),
@@ -19,7 +19,7 @@ _$ChallengeImpl _$$ChallengeImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ChallengeImplToJson(_$ChallengeImpl instance) {
   final val = <String, dynamic>{
-    'id': instance.id,
+    'questId': instance.id,
     'url': instance.url,
     'applicantId': instance.applicantId,
     'quest': instance.quest.toJson(),

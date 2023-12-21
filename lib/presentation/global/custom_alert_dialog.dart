@@ -5,7 +5,7 @@ import 'package:meokq_boss/presentation/global/meakq_two_button.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   const CustomAlertDialog({
-    Key? key,
+    super.key,
     this.title = '',
     this.contents = '',
     this.cancelText = '취소',
@@ -15,7 +15,7 @@ class CustomAlertDialog extends StatelessWidget {
     this.confirmButtonColor = ColorS.notiYellow,
     this.height = 168,
     this.secondContent,
-  }) : super(key: key);
+  });
 
   /// 다이얼로그의 제목
   final String title;

@@ -24,6 +24,7 @@ class _QuestPageState extends State<QuestPage> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: const Text(
             '퀘스트',
           ),
@@ -63,7 +64,7 @@ class _QuestPageState extends State<QuestPage> {
               });
             },
             labelStyle: TextS.subtitle1().copyWith(fontSize: 14),
-            indicatorPadding: const EdgeInsets.symmetric(horizontal: 36),
+            indicatorPadding: const EdgeInsets.symmetric(horizontal: -36),
             indicator: const UnderlineTabIndicator(
               borderSide: BorderSide(width: 3, color: ColorS.tabYellow),
               borderRadius: BorderRadius.all(Radius.circular(100)),

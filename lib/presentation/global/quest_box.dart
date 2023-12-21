@@ -90,10 +90,10 @@ class QuestStateChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 50,
-      height: 20,
+      height: 22,
       padding: const EdgeInsets.symmetric(
         horizontal: 6,
-        vertical: 4,
+        vertical: 3,
       ),
       decoration: ShapeDecoration(
         color: questStatus.backgroundColor,

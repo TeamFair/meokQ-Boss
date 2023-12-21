@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/account/account_bloc.dart';
+import 'package:meokq_boss/presentation/views/account/account_time_edit_argument.dart';
+import 'package:meokq_boss/presentation/views/account/account_time_edit_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
 class AccountPage extends StatefulWidget {
@@ -15,12 +17,10 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-  final addressController = TextEditingController();
-  final phoneController = TextEditingController();
-
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
     BlocProvider.of<AccountBloc>(context).add(InitMyInformation());
   }
 
@@ -28,14 +28,11 @@ class _AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<AccountBloc, AccountState>(
       builder: (context, state) {
-        addressController.text = state.myInformation.address;
-        phoneController.text = state.myInformation.phone;
         return Scaffold(
-          backgroundColor: Colors.white,
-                resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: true,
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            elevation: 1,
+            elevation: 0,
             title: const Text(
               '내 정보',
             ),
@@ -82,7 +79,7 @@ class _AccountPageState extends State<AccountPage> {
                         width: 18,
                       ),
                       SizedBox(
-                        height: 46,
+                        height: 50,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -147,31 +144,62 @@ class _AccountPageState extends State<AccountPage> {
                   title: '주소',
                   content: state.myInformation.address,
                   isEdit: state.editClicked,
-                  onTap: () {},
+                  onChanged: (text) => context.read<AccountBloc>().add(
+                        ChangeText(
+                          newText: text,
+                          textType: TextType.address,
+                        ),
+                      ),
                 ),
                 AccountTextWidget(
                   title: '영업일',
                   content: businessDayString(state.myInformation.businessDays),
                   isEdit: state.editClicked,
-                  onTap: () {},
+                  onButtonTap: () => Navigator.of(context).pushNamed(
+                    AccountTimeEditPage.id,
+                    arguments: AccountTimeEditArgument(
+                      businessDays: state.myInformation.businessDays,
+                      open: state.myInformation.open,
+                      close: state.myInformation.close,
+                    ),
+                  ),
                 ),
                 AccountTextWidget(
                   title: '영업 시작 시간',
                   content: state.myInformation.open,
                   isEdit: state.editClicked,
-                  onTap: () {},
+                  onButtonTap: () => Navigator.of(context).pushNamed(
+                    AccountTimeEditPage.id,
+                    arguments: AccountTimeEditArgument(
+                      businessDays: state.myInformation.businessDays,
+                      open: state.myInformation.open,
+                      close: state.myInformation.close,
+                    ),
+                  ),
                 ),
                 AccountTextWidget(
                   title: '영업 마감 시간',
                   content: state.myInformation.close,
                   isEdit: state.editClicked,
-                  onTap: () {},
+                  onButtonTap: () => Navigator.of(context).pushNamed(
+                    AccountTimeEditPage.id,
+                    arguments: AccountTimeEditArgument(
+                      businessDays: state.myInformation.businessDays,
+                      open: state.myInformation.open,
+                      close: state.myInformation.close,
+                    ),
+                  ),
                 ),
                 AccountTextWidget(
                   title: '영업장 전화번호',
                   content: state.myInformation.phone,
                   isEdit: state.editClicked,
-                  onTap: () {},
+                  onChanged: (text) => context.read<AccountBloc>().add(
+                        ChangeText(
+                          newText: text,
+                          textType: TextType.phone,
+                        ),
+                      ),
                 ),
               ],
             ),
@@ -184,7 +212,6 @@ class _AccountPageState extends State<AccountPage> {
   String businessDayString(List<String> businessDays) {
     if (businessDays.isEmpty) return '';
     var str = '';
-    print(businessDays);
     for (var day in businessDays) {
       str += '$day, ';
     }
@@ -193,21 +220,27 @@ class _AccountPageState extends State<AccountPage> {
 }
 
 class AccountTextWidget extends StatelessWidget {
-  const AccountTextWidget({
+  AccountTextWidget({
     super.key,
     required this.title,
     required this.content,
     required this.isEdit,
-    required this.onTap,
+    this.onButtonTap,
+    this.onChanged,
   });
 
   final String title;
   final String content;
   final bool isEdit;
-  final Function() onTap;
+  final Function()? onButtonTap;
+  final Function(String)? onChanged;
+
+  final textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    textEditingController.text = content;
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       height: 60,
@@ -219,16 +252,32 @@ class AccountTextWidget extends StatelessWidget {
             style: TextS.subtitle1(),
           ),
           isEdit
-              ? TextButton(
-                  onPressed: onTap,
-                  child: Text(
-                    content,
-                    style: TextS.subtitle2().copyWith(
-                      color: ColorS.gray400,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                )
+              ? onButtonTap == null
+                  ? SizedBox(
+                      width: 200,
+                      child: TextField(
+                        textAlign: TextAlign.end,
+                        controller: textEditingController,
+                        onChanged: onChanged,
+                        style: TextS.subtitle2().copyWith(
+                          color: ColorS.gray400,
+                          decoration: TextDecoration.underline,
+                        ),
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    )
+                  : TextButton(
+                      onPressed: onButtonTap,
+                      child: Text(
+                        content,
+                        style: TextS.subtitle2().copyWith(
+                          color: ColorS.gray400,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    )
               : Text(
                   content,
                   style: TextS.subtitle2().copyWith(

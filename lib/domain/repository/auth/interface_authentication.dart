@@ -7,5 +7,9 @@ abstract class InterfaceAuthenticatoin {
 
   Future<LoginStatus> appleLogin();
 
-  void logOut();
+  Future<void> appleLogOut();
+  
+  Future<void> googleLogOut();
+
+  Future<void> kakaoLogOut();
 }

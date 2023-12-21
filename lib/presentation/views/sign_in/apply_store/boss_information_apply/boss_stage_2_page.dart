@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/boss_information/boss_information_bloc.dart';
+import 'package:meokq_boss/presentation/global/custom_bottom_sheet.dart';
 import 'package:meokq_boss/presentation/global/custom_text_field.dart';
 import 'package:meokq_boss/presentation/global/meakq_two_button.dart';
 import 'package:meokq_boss/resources/resources.dart';
@@ -86,12 +87,30 @@ class BossStage2Page extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: GestureDetector(
-                onTap: () => context.read<BossInformationBloc>().add(
-                      const AddImage(
-                        imagePicker: ImagePicker.gallery,
-                        imageType: ImageType.identification,
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(25),
                       ),
                     ),
+                    builder: (childContext) => CameraBottomSheet(
+                      firstTap: () => context.read<BossInformationBloc>().add(
+                            const AddImage(
+                              imageType: ImageType.identification,
+                              imagePicker: ImagePicker.gallery,
+                            ),
+                          ),
+                      secondTap: () => context.read<BossInformationBloc>().add(
+                            const AddImage(
+                              imageType: ImageType.identification,
+                              imagePicker: ImagePicker.camera,
+                            ),
+                          ),
+                    ),
+                  );
+                },
                 child: Container(
                   height: 197,
                   width: double.infinity,

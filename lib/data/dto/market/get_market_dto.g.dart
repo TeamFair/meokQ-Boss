@@ -1,18 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'market_dto.dart';
+part of 'get_market_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MarketDTOImpl _$$MarketDTOImplFromJson(Map<String, dynamic> json) =>
-    _$MarketDTOImpl(
+_$GetMarketDTOImpl _$$GetMarketDTOImplFromJson(Map<String, dynamic> json) =>
+    _$GetMarketDTOImpl(
       district: json['district'] as String? ?? '',
       president: json['president'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$MarketDTOImplToJson(_$MarketDTOImpl instance) =>
+Map<String, dynamic> _$$GetMarketDTOImplToJson(_$GetMarketDTOImpl instance) =>
     <String, dynamic>{
       'district': instance.district,
       'president': instance.president,

@@ -11,6 +11,8 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+import '../../domain/repository/api/interface_remote.dart' as _i11;
+import '../../domain/repository/api/remote_repository.dart' as _i12;
 import '../../domain/repository/auth/authentication_repository.dart' as _i6;
 import '../../domain/repository/auth/interface_authentication.dart' as _i5;
 import '../../domain/repository/image_picker/image_picker_repository.dart'
@@ -39,7 +41,7 @@ _i1.GetIt init(
     _i4.UserRepository(),
     registerFor: {_prod},
   );
-  gh.singleton<_i5.InterfaceAuthenticatoin>(
+  gh.singleton<_i5.InterfaceAuthentication>(
     _i6.AuthenticationRepository(),
     registerFor: {_prod},
   );
@@ -49,6 +51,10 @@ _i1.GetIt init(
   );
   gh.singleton<_i9.InterfaceLocal>(
     _i10.LocalRepository(),
+    registerFor: {_prod},
+  );
+  gh.lazySingleton<_i11.InterfaceRemote>(
+    () => _i12.RemoteRepository.create(gh<_i9.InterfaceLocal>()),
     registerFor: {_prod},
   );
   return getIt;

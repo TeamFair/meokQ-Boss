@@ -12,6 +12,12 @@ enum QuestStatus {
   review,
   open;
 
+  QuestStatus stringToQuestStatus(String string) => switch (string) {
+    '' => QuestStatus.open,
+    'UNDER_REVIEW' => QuestStatus.review,
+    _ => QuestStatus.checking,
+  };
+
   String get text => switch (this) {
         QuestStatus.open => '게시중',
         QuestStatus.review => '대기상태',

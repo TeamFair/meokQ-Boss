@@ -1,7 +1,8 @@
 import 'package:meokq_boss/data/dto/login/login_dto.dart';
-import 'package:meokq_boss/data/dto/market/market_dto.dart';
+import 'package:meokq_boss/data/dto/market/apply_market/apply_market_dto.dart';
 import 'package:meokq_boss/data/vo/login/login_vo.dart';
-import 'package:meokq_boss/data/vo/market/markets_vo.dart';
+import 'package:meokq_boss/data/vo/market/apply_market/apply_market_vo.dart';
+import 'package:meokq_boss/data/vo/market/market_vo.dart';
 
 abstract class InterfaceRemote {
   void updateRepository({
@@ -10,5 +11,7 @@ abstract class InterfaceRemote {
 
   Future<LoginVO> login({required LoginDTO loginDTO});
 
-  Future<MarketsVO> markets({required MarketDTO marketDTO});
+  Future<MarketVO> getMarkets();
+
+  Future<ApplyMarketVO> applyMarkets({required ApplyMarketDTO applyMarketDTO});
 }

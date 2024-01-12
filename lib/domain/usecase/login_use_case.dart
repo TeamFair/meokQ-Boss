@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:meokq_boss/core/config/local_key.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/data/dto/login/login_dto.dart';
-import 'package:meokq_boss/data/dto/market/market_dto.dart';
 import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
 import 'package:meokq_boss/domain/repository/local/inteface_local.dart';
 import 'package:meokq_boss/domain/usecase/use_case.dart';
@@ -22,8 +21,6 @@ class LoginUseCase
     LoginInput input,
   ) async {
     try {
-      var loginStatus = LoginStatus.init;
-
       final loginDTO = LoginDTO(
         email: input.email,
         channel: input.channel,
@@ -33,32 +30,36 @@ class LoginUseCase
       );
 
       final login = await _remote.login(loginDTO: loginDTO);
+
       if (login.authorization.isEmpty) {
-        _local.setKey(
-          LocalKey.token,
-          login.authorization,
+        return Left(
+          LoginFailure(),
         );
       }
 
-      // TODO: market 정보를 얻기 위해 필요한 정보가 뭐가 더 있을지 체크
-      const marketDTO = MarketDTO(district: '', president: '');
-
-      final market = await _remote.markets(marketDTO: marketDTO);
-      if(market.marketList.isEmpty) {
-        _local.setKey(
-          LocalKey.marketId,
-          market.marketList[0].marketId,
-        );
-
-        return Right(
-        LoginOutput(
-          loginStatus: loginStatus,
-        ),
+      _local.setKey(
+        LocalKey.token,
+        login.authorization,
       );
+
+      final market = await _remote.getMarkets();
+
+      if (market.marketId.isEmpty) {
+        return Left(
+          LoginFailure(),
+        );
       }
 
-      return Left(
-        LoginFailure(),
+      _local.setKey(
+        LocalKey.marketId,
+        market.marketId,
+      );
+
+      return Right(
+        LoginOutput(
+          // loginStatus: strToLoginStatus(market.status),
+          loginStatus: LoginStatus.newUser,
+        ),
       );
     } on DioException catch (e) {
       return Left(restErrorHandle(e));
@@ -67,7 +68,7 @@ class LoginUseCase
     }
   }
 
-  LoginStatus loginStatus(String str) => switch (str) {
+  LoginStatus strToLoginStatus(String str) => switch (str) {
         'DONE' => LoginStatus.done,
         'UNDER_REVIEW' => LoginStatus.review,
         'NEW_USER' => LoginStatus.newUser,

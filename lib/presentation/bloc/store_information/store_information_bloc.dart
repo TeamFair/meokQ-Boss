@@ -79,10 +79,7 @@ class StoreInformationBloc
     ChangeBussinessDays event,
     Emitter<StoreInformationState> emit,
   ) {
-    var businessDays = <String>[];
-    for (String s in state.businessDays) {
-      businessDays.add(s);
-    }
+    var businessDays = state.businessDays;
 
     if (businessDays.contains(event.day)) {
       businessDays.remove(event.day);

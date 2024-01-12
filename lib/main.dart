@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/core/theme/theme.dart';
+import 'package:meokq_boss/firebase_options.dart';
 import 'package:meokq_boss/presentation/views/spalsh/splash_page.dart';
 import 'package:meokq_boss/routes/route_generator.dart';
 

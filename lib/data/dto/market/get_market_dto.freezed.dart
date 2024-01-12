@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'market_dto.dart';
+part of 'get_market_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-MarketDTO _$MarketDTOFromJson(Map<String, dynamic> json) {
-  return _MarketDTO.fromJson(json);
+GetMarketDTO _$GetMarketDTOFromJson(Map<String, dynamic> json) {
+  return _GetMarketDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MarketDTO {
+mixin _$GetMarketDTO {
   @JsonKey(name: 'district', defaultValue: '')
   String get district => throw _privateConstructorUsedError;
   @JsonKey(name: 'president', defaultValue: '')
@@ -27,14 +27,15 @@ mixin _$MarketDTO {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MarketDTOCopyWith<MarketDTO> get copyWith =>
+  $GetMarketDTOCopyWith<GetMarketDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MarketDTOCopyWith<$Res> {
-  factory $MarketDTOCopyWith(MarketDTO value, $Res Function(MarketDTO) then) =
-      _$MarketDTOCopyWithImpl<$Res, MarketDTO>;
+abstract class $GetMarketDTOCopyWith<$Res> {
+  factory $GetMarketDTOCopyWith(
+          GetMarketDTO value, $Res Function(GetMarketDTO) then) =
+      _$GetMarketDTOCopyWithImpl<$Res, GetMarketDTO>;
   @useResult
   $Res call(
       {@JsonKey(name: 'district', defaultValue: '') String district,
@@ -42,9 +43,9 @@ abstract class $MarketDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MarketDTOCopyWithImpl<$Res, $Val extends MarketDTO>
-    implements $MarketDTOCopyWith<$Res> {
-  _$MarketDTOCopyWithImpl(this._value, this._then);
+class _$GetMarketDTOCopyWithImpl<$Res, $Val extends GetMarketDTO>
+    implements $GetMarketDTOCopyWith<$Res> {
+  _$GetMarketDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -71,11 +72,11 @@ class _$MarketDTOCopyWithImpl<$Res, $Val extends MarketDTO>
 }
 
 /// @nodoc
-abstract class _$$MarketDTOImplCopyWith<$Res>
-    implements $MarketDTOCopyWith<$Res> {
-  factory _$$MarketDTOImplCopyWith(
-          _$MarketDTOImpl value, $Res Function(_$MarketDTOImpl) then) =
-      __$$MarketDTOImplCopyWithImpl<$Res>;
+abstract class _$$GetMarketDTOImplCopyWith<$Res>
+    implements $GetMarketDTOCopyWith<$Res> {
+  factory _$$GetMarketDTOImplCopyWith(
+          _$GetMarketDTOImpl value, $Res Function(_$GetMarketDTOImpl) then) =
+      __$$GetMarketDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -84,11 +85,11 @@ abstract class _$$MarketDTOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MarketDTOImplCopyWithImpl<$Res>
-    extends _$MarketDTOCopyWithImpl<$Res, _$MarketDTOImpl>
-    implements _$$MarketDTOImplCopyWith<$Res> {
-  __$$MarketDTOImplCopyWithImpl(
-      _$MarketDTOImpl _value, $Res Function(_$MarketDTOImpl) _then)
+class __$$GetMarketDTOImplCopyWithImpl<$Res>
+    extends _$GetMarketDTOCopyWithImpl<$Res, _$GetMarketDTOImpl>
+    implements _$$GetMarketDTOImplCopyWith<$Res> {
+  __$$GetMarketDTOImplCopyWithImpl(
+      _$GetMarketDTOImpl _value, $Res Function(_$GetMarketDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +98,7 @@ class __$$MarketDTOImplCopyWithImpl<$Res>
     Object? district = null,
     Object? president = null,
   }) {
-    return _then(_$MarketDTOImpl(
+    return _then(_$GetMarketDTOImpl(
       district: null == district
           ? _value.district
           : district // ignore: cast_nullable_to_non_nullable
@@ -112,13 +113,13 @@ class __$$MarketDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MarketDTOImpl implements _MarketDTO {
-  const _$MarketDTOImpl(
+class _$GetMarketDTOImpl implements _GetMarketDTO {
+  const _$GetMarketDTOImpl(
       {@JsonKey(name: 'district', defaultValue: '') required this.district,
       @JsonKey(name: 'president', defaultValue: '') required this.president});
 
-  factory _$MarketDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MarketDTOImplFromJson(json);
+  factory _$GetMarketDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetMarketDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'district', defaultValue: '')
@@ -129,14 +130,14 @@ class _$MarketDTOImpl implements _MarketDTO {
 
   @override
   String toString() {
-    return 'MarketDTO(district: $district, president: $president)';
+    return 'GetMarketDTO(district: $district, president: $president)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MarketDTOImpl &&
+            other is _$GetMarketDTOImpl &&
             (identical(other.district, district) ||
                 other.district == district) &&
             (identical(other.president, president) ||
@@ -150,26 +151,26 @@ class _$MarketDTOImpl implements _MarketDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MarketDTOImplCopyWith<_$MarketDTOImpl> get copyWith =>
-      __$$MarketDTOImplCopyWithImpl<_$MarketDTOImpl>(this, _$identity);
+  _$$GetMarketDTOImplCopyWith<_$GetMarketDTOImpl> get copyWith =>
+      __$$GetMarketDTOImplCopyWithImpl<_$GetMarketDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MarketDTOImplToJson(
+    return _$$GetMarketDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _MarketDTO implements MarketDTO {
-  const factory _MarketDTO(
+abstract class _GetMarketDTO implements GetMarketDTO {
+  const factory _GetMarketDTO(
       {@JsonKey(name: 'district', defaultValue: '')
       required final String district,
       @JsonKey(name: 'president', defaultValue: '')
-      required final String president}) = _$MarketDTOImpl;
+      required final String president}) = _$GetMarketDTOImpl;
 
-  factory _MarketDTO.fromJson(Map<String, dynamic> json) =
-      _$MarketDTOImpl.fromJson;
+  factory _GetMarketDTO.fromJson(Map<String, dynamic> json) =
+      _$GetMarketDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'district', defaultValue: '')
@@ -179,6 +180,6 @@ abstract class _MarketDTO implements MarketDTO {
   String get president;
   @override
   @JsonKey(ignore: true)
-  _$$MarketDTOImplCopyWith<_$MarketDTOImpl> get copyWith =>
+  _$$GetMarketDTOImplCopyWith<_$GetMarketDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

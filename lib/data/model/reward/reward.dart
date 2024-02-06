@@ -7,11 +7,11 @@ part 'reward.g.dart';
 class Reward with _$Reward {
 
   const factory Reward({
-    required String content,
-    required String target,
-    required String rewardTypeStr,
-    required int? quantity,
-    required int? discountRate,
+    @JsonKey(name: 'content', defaultValue: '') required String content,
+    @JsonKey(name: 'target', defaultValue: '') required String target,
+    @JsonKey(name: 'type', defaultValue: '') required String rewardTypeStr,
+    @JsonKey(name: 'quantity', defaultValue: 0) required int? quantity,
+    @JsonKey(name: 'discountRate', defaultValue: 0) required int? discountRate,
   }) = _Reward;
 
   factory Reward.fromJson(Map<String, dynamic> json) =>
@@ -43,5 +43,10 @@ enum RewardType {
   String get subText => switch (this) {
         RewardType.discount => '%',
         RewardType.giftCard => '개',
+      };
+
+      String get jsonText => switch (this) {
+        RewardType.discount => 'DISCOUNT',
+        RewardType.giftCard => 'GIFT',
       };
 }

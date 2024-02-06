@@ -26,7 +26,7 @@ class _StatisticsIssuedPageState extends State<StatisticsIssuedPage> {
       body: BlocBuilder<StatisticsBloc, StatisticsState>(
         builder: (context, state) {
           List<Challenge> challengeList = state.statisticsList
-              .where((element) => element.challengeStatus.isIssuedComplete)
+              .where((element) => ChallengeStatus.stringToChallengeStatus(element.challengeStatus).isIssuedComplete)
               .toList();
           return Padding(
             padding: const EdgeInsets.only(top: 15),

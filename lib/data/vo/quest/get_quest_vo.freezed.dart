@@ -21,13 +21,13 @@ GetQuestVO _$GetQuestVOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GetQuestVO {
   @JsonKey(name: 'questId')
-  int get id => throw _privateConstructorUsedError;
+  String get questId => throw _privateConstructorUsedError;
   @JsonKey(name: 'rewardTitle')
   String get rewardTitle => throw _privateConstructorUsedError;
   @JsonKey(name: 'missionTitle')
   String get missionTitle => throw _privateConstructorUsedError;
   @JsonKey(name: 'status')
-  QuestStatus get questStatus => throw _privateConstructorUsedError;
+  String get questStatus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,10 +42,10 @@ abstract class $GetQuestVOCopyWith<$Res> {
       _$GetQuestVOCopyWithImpl<$Res, GetQuestVO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'questId') int id,
+      {@JsonKey(name: 'questId') String questId,
       @JsonKey(name: 'rewardTitle') String rewardTitle,
       @JsonKey(name: 'missionTitle') String missionTitle,
-      @JsonKey(name: 'status') QuestStatus questStatus});
+      @JsonKey(name: 'status') String questStatus});
 }
 
 /// @nodoc
@@ -61,16 +61,16 @@ class _$GetQuestVOCopyWithImpl<$Res, $Val extends GetQuestVO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? questId = null,
     Object? rewardTitle = null,
     Object? missionTitle = null,
     Object? questStatus = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
+      questId: null == questId
+          ? _value.questId
+          : questId // ignore: cast_nullable_to_non_nullable
+              as String,
       rewardTitle: null == rewardTitle
           ? _value.rewardTitle
           : rewardTitle // ignore: cast_nullable_to_non_nullable
@@ -82,7 +82,7 @@ class _$GetQuestVOCopyWithImpl<$Res, $Val extends GetQuestVO>
       questStatus: null == questStatus
           ? _value.questStatus
           : questStatus // ignore: cast_nullable_to_non_nullable
-              as QuestStatus,
+              as String,
     ) as $Val);
   }
 }
@@ -96,10 +96,10 @@ abstract class _$$GetQuestVOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'questId') int id,
+      {@JsonKey(name: 'questId') String questId,
       @JsonKey(name: 'rewardTitle') String rewardTitle,
       @JsonKey(name: 'missionTitle') String missionTitle,
-      @JsonKey(name: 'status') QuestStatus questStatus});
+      @JsonKey(name: 'status') String questStatus});
 }
 
 /// @nodoc
@@ -113,16 +113,16 @@ class __$$GetQuestVOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? questId = null,
     Object? rewardTitle = null,
     Object? missionTitle = null,
     Object? questStatus = null,
   }) {
     return _then(_$GetQuestVOImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
+      questId: null == questId
+          ? _value.questId
+          : questId // ignore: cast_nullable_to_non_nullable
+              as String,
       rewardTitle: null == rewardTitle
           ? _value.rewardTitle
           : rewardTitle // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ class __$$GetQuestVOImplCopyWithImpl<$Res>
       questStatus: null == questStatus
           ? _value.questStatus
           : questStatus // ignore: cast_nullable_to_non_nullable
-              as QuestStatus,
+              as String,
     ));
   }
 }
@@ -143,7 +143,7 @@ class __$$GetQuestVOImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetQuestVOImpl implements _GetQuestVO {
   const _$GetQuestVOImpl(
-      {@JsonKey(name: 'questId') required this.id,
+      {@JsonKey(name: 'questId') required this.questId,
       @JsonKey(name: 'rewardTitle') required this.rewardTitle,
       @JsonKey(name: 'missionTitle') required this.missionTitle,
       @JsonKey(name: 'status') required this.questStatus});
@@ -153,7 +153,7 @@ class _$GetQuestVOImpl implements _GetQuestVO {
 
   @override
   @JsonKey(name: 'questId')
-  final int id;
+  final String questId;
   @override
   @JsonKey(name: 'rewardTitle')
   final String rewardTitle;
@@ -162,11 +162,11 @@ class _$GetQuestVOImpl implements _GetQuestVO {
   final String missionTitle;
   @override
   @JsonKey(name: 'status')
-  final QuestStatus questStatus;
+  final String questStatus;
 
   @override
   String toString() {
-    return 'GetQuestVO(id: $id, rewardTitle: $rewardTitle, missionTitle: $missionTitle, questStatus: $questStatus)';
+    return 'GetQuestVO(questId: $questId, rewardTitle: $rewardTitle, missionTitle: $missionTitle, questStatus: $questStatus)';
   }
 
   @override
@@ -174,7 +174,7 @@ class _$GetQuestVOImpl implements _GetQuestVO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetQuestVOImpl &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.questId, questId) || other.questId == questId) &&
             (identical(other.rewardTitle, rewardTitle) ||
                 other.rewardTitle == rewardTitle) &&
             (identical(other.missionTitle, missionTitle) ||
@@ -186,7 +186,7 @@ class _$GetQuestVOImpl implements _GetQuestVO {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, rewardTitle, missionTitle, questStatus);
+      Object.hash(runtimeType, questId, rewardTitle, missionTitle, questStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -204,10 +204,10 @@ class _$GetQuestVOImpl implements _GetQuestVO {
 
 abstract class _GetQuestVO implements GetQuestVO {
   const factory _GetQuestVO(
-          {@JsonKey(name: 'questId') required final int id,
+          {@JsonKey(name: 'questId') required final String questId,
           @JsonKey(name: 'rewardTitle') required final String rewardTitle,
           @JsonKey(name: 'missionTitle') required final String missionTitle,
-          @JsonKey(name: 'status') required final QuestStatus questStatus}) =
+          @JsonKey(name: 'status') required final String questStatus}) =
       _$GetQuestVOImpl;
 
   factory _GetQuestVO.fromJson(Map<String, dynamic> json) =
@@ -215,7 +215,7 @@ abstract class _GetQuestVO implements GetQuestVO {
 
   @override
   @JsonKey(name: 'questId')
-  int get id;
+  String get questId;
   @override
   @JsonKey(name: 'rewardTitle')
   String get rewardTitle;
@@ -224,7 +224,7 @@ abstract class _GetQuestVO implements GetQuestVO {
   String get missionTitle;
   @override
   @JsonKey(name: 'status')
-  QuestStatus get questStatus;
+  String get questStatus;
   @override
   @JsonKey(ignore: true)
   _$$GetQuestVOImplCopyWith<_$GetQuestVOImpl> get copyWith =>

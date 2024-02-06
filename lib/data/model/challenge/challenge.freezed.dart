@@ -25,7 +25,7 @@ mixin _$Challenge {
   String get url => throw _privateConstructorUsedError;
   String get applicantId => throw _privateConstructorUsedError;
   Quest get quest => throw _privateConstructorUsedError;
-  ChallengeStatus get challengeStatus => throw _privateConstructorUsedError;
+  String get challengeStatus => throw _privateConstructorUsedError;
   String? get day => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $ChallengeCopyWith<$Res> {
       String url,
       String applicantId,
       Quest quest,
-      ChallengeStatus challengeStatus,
+      String challengeStatus,
       String? day});
 
   $QuestCopyWith<$Res> get quest;
@@ -90,7 +90,7 @@ class _$ChallengeCopyWithImpl<$Res, $Val extends Challenge>
       challengeStatus: null == challengeStatus
           ? _value.challengeStatus
           : challengeStatus // ignore: cast_nullable_to_non_nullable
-              as ChallengeStatus,
+              as String,
       day: freezed == day
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ abstract class _$$ChallengeImplCopyWith<$Res>
       String url,
       String applicantId,
       Quest quest,
-      ChallengeStatus challengeStatus,
+      String challengeStatus,
       String? day});
 
   @override
@@ -165,7 +165,7 @@ class __$$ChallengeImplCopyWithImpl<$Res>
       challengeStatus: null == challengeStatus
           ? _value.challengeStatus
           : challengeStatus // ignore: cast_nullable_to_non_nullable
-              as ChallengeStatus,
+              as String,
       day: freezed == day
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
@@ -198,7 +198,7 @@ class _$ChallengeImpl implements _Challenge {
   @override
   final Quest quest;
   @override
-  final ChallengeStatus challengeStatus;
+  final String challengeStatus;
   @override
   final String? day;
 
@@ -247,7 +247,7 @@ abstract class _Challenge implements Challenge {
       required final String url,
       required final String applicantId,
       required final Quest quest,
-      required final ChallengeStatus challengeStatus,
+      required final String challengeStatus,
       required final String? day}) = _$ChallengeImpl;
 
   factory _Challenge.fromJson(Map<String, dynamic> json) =
@@ -263,7 +263,7 @@ abstract class _Challenge implements Challenge {
   @override
   Quest get quest;
   @override
-  ChallengeStatus get challengeStatus;
+  String get challengeStatus;
   @override
   String? get day;
   @override

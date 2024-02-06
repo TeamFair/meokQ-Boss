@@ -18,52 +18,52 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
     Emitter<ChallengeState> emit,
   ) async {
     final challengeList = <Challenge>[
-      const Challenge(
+      Challenge(
         id: 0,
         url: '',
         applicantId: 'asd@naver.com',
         quest: Quest(
           id: 2,
-          reward: Reward(
+          reward: const Reward(
             content: '랜덤 조각 케이크 무료 증정권',
             target: '랜덤 조각 케이크',
             rewardTypeStr: 'FREE',
             quantity: 1,
             discountRate: null,
           ),
-          mission: Mission(
+          mission: const Mission(
             content: '가게 후기 SNS에 포스팅 완료 시',
             target: 'SNS',
             quantity: 2,
             missionType: MissionType.free,
           ),
-          questStatus: QuestStatus.open,
+          questStatus: QuestStatus.open.text,
         ),
-        challengeStatus: ChallengeStatus.issuedComplete,
+        challengeStatus: ChallengeStatus.issuedComplete.text,
         day: '9/26(화)',
       ),
-      const Challenge(
+      Challenge(
         id: 0,
         url: '',
         applicantId: 'qwe@gmail.com',
         quest: Quest(
           id: 2,
-          reward: Reward(
+          reward: const Reward(
             content: '랜덤 조각 케이크 무료 증정권',
             target: '랜덤 조각 케이크',
             rewardTypeStr: 'FREE',
             quantity: 1,
             discountRate: null,
           ),
-          mission: Mission(
+          mission: const Mission(
             content: '가게 후기 SNS에 포스팅 완료 시',
             target: 'SNS',
             quantity: 2,
             missionType: MissionType.free,
           ),
-          questStatus: QuestStatus.open,
+          questStatus: QuestStatus.open.text,
         ),
-        challengeStatus: ChallengeStatus.usedComplete,
+        challengeStatus: ChallengeStatus.usedComplete.text,
         day: '7/8(토)',
       ),
     ];

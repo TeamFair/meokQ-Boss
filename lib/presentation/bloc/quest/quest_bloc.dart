@@ -1,8 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meokq_boss/data/model/mission/mission.dart';
-import 'package:meokq_boss/data/model/quest/quest.dart';
-import 'package:meokq_boss/data/model/reward/reward.dart';
+import 'package:meokq_boss/core/config/local_key.dart';
+import 'package:meokq_boss/core/injector/injector.dart';
+import 'package:meokq_boss/data/vo/quest/get_quest_vo.dart';
+import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
+import 'package:meokq_boss/domain/repository/local/inteface_local.dart';
 
 part 'quest_event.dart';
 part 'quest_state.dart';
@@ -12,81 +14,26 @@ class QuestBloc extends Bloc<QuestEvent, QuestState> {
     on<InitAllQuest>(_initAllQuest);
   }
 
+  final _remote = getIt<InterfaceRemote>();
+  final _local = getIt<InterfaceLocal>();
+
   Future<void> _initAllQuest(
     InitAllQuest event,
     Emitter<QuestState> emit,
   ) async {
-    // TODO: rest에서 quest의 정보를 받아옵니다
-    final questList = [
-      const Quest(
-        id: 0,
-        reward: Reward(
-          content: '아메리카노 50% 할인권',
-          target: '아메리카노',
-          rewardTypeStr: 'DISCOUNT',
-          quantity: null,
-          discountRate: 50,
-        ),
-        mission: Mission(
-          content: '오후 12시 전에 아메리카노 2잔 주문',
-          target: '아메리카노',
-          quantity: 2,
-          missionType: MissionType.free,
-        ),
-        questStatus: QuestStatus.open,
-      ),
-      const Quest(
-        id: 1,
-        reward: Reward(
-          content: '카페라떼 70% 할인권',
-          target: '카페라떼',
-          rewardTypeStr: 'DISCOUNT',
-          quantity: null,
-          discountRate: 70,
-        ),
-        mission: Mission(
-          content: '빵 2종류 이상 구매 시',
-          target: '빵',
-          quantity: 2,
-          missionType: MissionType.free,
-        ),
-        questStatus: QuestStatus.checking,
-      ),
-      const Quest(
-        id: 1,
-        reward: Reward(
-          content: '카페라떼 70% 할인권',
-          target: '카페라떼',
-          rewardTypeStr: 'DISCOUNT',
-          quantity: null,
-          discountRate: 70,
-        ),
-        mission: Mission(
-          content: '빵 2종류 이상 구매 시',
-          target: '빵',
-          quantity: 2,
-          missionType: MissionType.free,
-        ),
-        questStatus: QuestStatus.checking,
-      ),
-      const Quest(
-        id: 2,
-        reward: Reward(
-          content: '랜덤 조각 케이크 무료 증정권',
-          target: '랜덤 조각 케이크',
-          rewardTypeStr: 'FREE',
-          quantity: 1,
-          discountRate: null,
-        ),
-        mission: Mission(
-          content: '가게 후기 SNS에 포스팅 완료 시',
-          target: 'SNS',
-          quantity: 2,
-          missionType: MissionType.free,
-        ),
-        questStatus: QuestStatus.review,
-      ),
-    ];
+    var marketId = _local.getKey(LocalKey.marketId);
+    if (marketId == null) {
+      final market = await _remote.getMarkets();
+
+      _local.setKey(
+        LocalKey.marketId,
+        market.marketId,
+      );
+
+      marketId = market.marketId;
+    }
+    final questList = await _remote.getQuests(marketId: marketId);
+
     emit(
       state.copyWith(
         questList: questList,

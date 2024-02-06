@@ -4,6 +4,8 @@ enum BusinessHour { open, close }
 
 enum Stage { first, second, third }
 
+enum ApplyState { init, success, failed }
+
 class StoreInformationState extends Equatable {
   const StoreInformationState({
     required this.storeName,
@@ -13,8 +15,8 @@ class StoreInformationState extends Equatable {
     required this.open,
     required this.close,
     required this.logoUrl,
-    required this.allFinished,
     required this.stage,
+    required this.applyState,
   });
 
   final String storeName;
@@ -31,9 +33,9 @@ class StoreInformationState extends Equatable {
 
   final String logoUrl;
 
-  final bool allFinished;
-
   final Stage stage;
+
+  final ApplyState applyState;
 
   static StoreInformationState init() {
     return const StoreInformationState(
@@ -44,8 +46,8 @@ class StoreInformationState extends Equatable {
       open: '오전 9:00',
       close: '오후 11:00',
       logoUrl: '',
-      allFinished: false,
       stage: Stage.first,
+      applyState: ApplyState.init,
     );
   }
 
@@ -59,6 +61,7 @@ class StoreInformationState extends Equatable {
     String? logoUrl,
     bool? allFinished,
     Stage? stage,
+    ApplyState? applyState,
   }) {
     return StoreInformationState(
       storeName: storeName ?? this.storeName,
@@ -68,8 +71,8 @@ class StoreInformationState extends Equatable {
       open: open ?? this.open,
       close: close ?? this.close,
       logoUrl: logoUrl ?? this.logoUrl,
-      allFinished: allFinished ?? this.allFinished,
       stage: stage ?? this.stage,
+      applyState: applyState ?? this.applyState,
     );
   }
 
@@ -82,8 +85,8 @@ class StoreInformationState extends Equatable {
         open,
         close,
         logoUrl,
-        allFinished,
         stage,
+        applyState,
       ];
 
   bool get canStage1ButtonTap =>

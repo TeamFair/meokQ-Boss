@@ -20,10 +20,15 @@ Reward _$RewardFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Reward {
+  @JsonKey(name: 'content', defaultValue: '')
   String get content => throw _privateConstructorUsedError;
+  @JsonKey(name: 'target', defaultValue: '')
   String get target => throw _privateConstructorUsedError;
+  @JsonKey(name: 'type', defaultValue: '')
   String get rewardTypeStr => throw _privateConstructorUsedError;
+  @JsonKey(name: 'quantity', defaultValue: 0)
   int? get quantity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'discountRate', defaultValue: 0)
   int? get discountRate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,11 +42,11 @@ abstract class $RewardCopyWith<$Res> {
       _$RewardCopyWithImpl<$Res, Reward>;
   @useResult
   $Res call(
-      {String content,
-      String target,
-      String rewardTypeStr,
-      int? quantity,
-      int? discountRate});
+      {@JsonKey(name: 'content', defaultValue: '') String content,
+      @JsonKey(name: 'target', defaultValue: '') String target,
+      @JsonKey(name: 'type', defaultValue: '') String rewardTypeStr,
+      @JsonKey(name: 'quantity', defaultValue: 0) int? quantity,
+      @JsonKey(name: 'discountRate', defaultValue: 0) int? discountRate});
 }
 
 /// @nodoc
@@ -96,11 +101,11 @@ abstract class _$$RewardImplCopyWith<$Res> implements $RewardCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String content,
-      String target,
-      String rewardTypeStr,
-      int? quantity,
-      int? discountRate});
+      {@JsonKey(name: 'content', defaultValue: '') String content,
+      @JsonKey(name: 'target', defaultValue: '') String target,
+      @JsonKey(name: 'type', defaultValue: '') String rewardTypeStr,
+      @JsonKey(name: 'quantity', defaultValue: 0) int? quantity,
+      @JsonKey(name: 'discountRate', defaultValue: 0) int? discountRate});
 }
 
 /// @nodoc
@@ -149,24 +154,30 @@ class __$$RewardImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RewardImpl implements _Reward {
   const _$RewardImpl(
-      {required this.content,
-      required this.target,
-      required this.rewardTypeStr,
-      required this.quantity,
+      {@JsonKey(name: 'content', defaultValue: '') required this.content,
+      @JsonKey(name: 'target', defaultValue: '') required this.target,
+      @JsonKey(name: 'type', defaultValue: '') required this.rewardTypeStr,
+      @JsonKey(name: 'quantity', defaultValue: 0) required this.quantity,
+      @JsonKey(name: 'discountRate', defaultValue: 0)
       required this.discountRate});
 
   factory _$RewardImpl.fromJson(Map<String, dynamic> json) =>
       _$$RewardImplFromJson(json);
 
   @override
+  @JsonKey(name: 'content', defaultValue: '')
   final String content;
   @override
+  @JsonKey(name: 'target', defaultValue: '')
   final String target;
   @override
+  @JsonKey(name: 'type', defaultValue: '')
   final String rewardTypeStr;
   @override
+  @JsonKey(name: 'quantity', defaultValue: 0)
   final int? quantity;
   @override
+  @JsonKey(name: 'discountRate', defaultValue: 0)
   final int? discountRate;
 
   @override
@@ -210,23 +221,31 @@ class _$RewardImpl implements _Reward {
 
 abstract class _Reward implements Reward {
   const factory _Reward(
-      {required final String content,
-      required final String target,
+      {@JsonKey(name: 'content', defaultValue: '')
+      required final String content,
+      @JsonKey(name: 'target', defaultValue: '') required final String target,
+      @JsonKey(name: 'type', defaultValue: '')
       required final String rewardTypeStr,
-      required final int? quantity,
+      @JsonKey(name: 'quantity', defaultValue: 0) required final int? quantity,
+      @JsonKey(name: 'discountRate', defaultValue: 0)
       required final int? discountRate}) = _$RewardImpl;
 
   factory _Reward.fromJson(Map<String, dynamic> json) = _$RewardImpl.fromJson;
 
   @override
+  @JsonKey(name: 'content', defaultValue: '')
   String get content;
   @override
+  @JsonKey(name: 'target', defaultValue: '')
   String get target;
   @override
+  @JsonKey(name: 'type', defaultValue: '')
   String get rewardTypeStr;
   @override
+  @JsonKey(name: 'quantity', defaultValue: 0)
   int? get quantity;
   @override
+  @JsonKey(name: 'discountRate', defaultValue: 0)
   int? get discountRate;
   @override
   @JsonKey(ignore: true)

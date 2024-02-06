@@ -157,12 +157,6 @@ class BossStage1Page extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: GestureDetector(
-                // onTap: () => context.read<BossInformationBloc>().add(
-                //       const AddImage(
-                //         imagePicker: ImagePicker.gallery,
-                //         imageType: ImageType.businessCertification,
-                //       ),
-                //     ),
                 onTap: () {
                   showModalBottomSheet(
                     context: context,
@@ -172,18 +166,24 @@ class BossStage1Page extends StatelessWidget {
                       ),
                     ),
                     builder: (childContext) => CameraBottomSheet(
-                      firstTap: () => context.read<BossInformationBloc>().add(
-                            const AddImage(
-                              imageType: ImageType.businessCertification,
-                              imagePicker: ImagePicker.gallery,
-                            ),
-                          ),
-                      secondTap: () => context.read<BossInformationBloc>().add(
-                            const AddImage(
-                              imageType: ImageType.businessCertification,
-                              imagePicker: ImagePicker.camera,
-                            ),
-                          ),
+                      firstTap: () {
+                        context.read<BossInformationBloc>().add(
+                              const AddImage(
+                                imageType: ImageType.businessCertification,
+                                imagePicker: ImagePicker.gallery,
+                              ),
+                            );
+                        Navigator.pop(context);
+                      },
+                      secondTap: () {
+                        context.read<BossInformationBloc>().add(
+                              const AddImage(
+                                imageType: ImageType.businessCertification,
+                                imagePicker: ImagePicker.camera,
+                              ),
+                            );
+                        Navigator.pop(context);
+                      },
                     ),
                   );
                 },

@@ -6,10 +6,10 @@ part 'mission.g.dart';
 @freezed
 class Mission with _$Mission {
   const factory Mission({
-    required String content,
-    required String target,
-    required int? quantity,
-    required MissionType missionType,
+    @JsonKey(name: 'content') String? content,
+    @JsonKey(name: 'target', defaultValue: '') required String target,
+    @JsonKey(name: 'quantity') int? quantity,
+    @JsonKey(name: 'type') required MissionType missionType,
   }) = _Mission;
 
   factory Mission.fromJson(Map<String, dynamic> json) =>
@@ -41,6 +41,11 @@ enum MissionType {
   String get hintText => switch (this) {
         MissionType.basic => 'ex) 아메리카노',
         MissionType.free => '미션 내용을 입력하세요',
+      };
+  
+  String get jsonText => switch (this) {
+        MissionType.basic => 'NORMAL',
+        MissionType.free => 'FREE',
       };
 
   bool get isFreeQuest => this == MissionType.free;

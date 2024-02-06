@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/data/model/quest/quest.dart';
+import 'package:meokq_boss/data/vo/quest/get_quest_vo.dart';
 import 'package:meokq_boss/presentation/bloc/quest/quest_bloc.dart';
 import 'package:meokq_boss/presentation/global/quest_box.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_detail/quest_detail_argument.dart';
@@ -27,8 +28,8 @@ class _QuestCheckPageState extends State<QuestCheckPage> {
     return Scaffold(
       body: BlocBuilder<QuestBloc, QuestState>(
         builder: (context, state) {
-          List<Quest> questList = state.questList
-              .where((element) => element.questStatus.isChecking)
+          List<GetQuestVO> questList = state.questList
+              .where((element) => QuestStatus.stringToQuestStatus(element.questStatus).isChecking)
               .toList();
           return Padding(
             padding: const EdgeInsets.only(top: 15),
@@ -44,7 +45,7 @@ class _QuestCheckPageState extends State<QuestCheckPage> {
                         onTap: () {
                           Navigator.of(context).pushNamed(
                             QuestDetailPage.id,
-                            arguments: QuestDetailArgument(quest: quest),
+                            arguments: QuestDetailArgument(questId: quest.questId),
                           );
                         },
                         child: QuestBox(quest: quest),

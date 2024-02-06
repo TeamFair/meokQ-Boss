@@ -12,8 +12,8 @@ enum QuestStatus {
   review,
   open;
 
-  QuestStatus stringToQuestStatus(String string) => switch (string) {
-    '' => QuestStatus.open,
+  factory QuestStatus.stringToQuestStatus(String string) => switch (string) {
+    'OPEN' => QuestStatus.open,
     'UNDER_REVIEW' => QuestStatus.review,
     _ => QuestStatus.checking,
   };
@@ -47,7 +47,7 @@ class Quest with _$Quest {
     @JsonKey(name: 'questId') required int id,
     @JsonKey(name: 'rewards') required Reward reward,
     @JsonKey(name: 'missions') required Mission mission,
-    @JsonKey(name: 'questStatus') required QuestStatus questStatus,
+    @JsonKey(name: 'questStatus') required String questStatus,
   }) = _Quest;
 
   factory Quest.fromJson(Map<String, dynamic> json) => _$QuestFromJson(json);

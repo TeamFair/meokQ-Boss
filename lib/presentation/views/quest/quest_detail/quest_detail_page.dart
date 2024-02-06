@@ -39,7 +39,7 @@ class _QuestDetailPageState extends State<QuestDetailPage> {
 
     BlocProvider.of<QuestDetailBloc>(context).add(
       InitQuestDetailState(
-        quest: args.quest,
+        questId: args.questId,
       ),
     );
   }

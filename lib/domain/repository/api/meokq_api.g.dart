@@ -143,7 +143,7 @@ class _MeokqApi implements MeokqApi {
     )
             .compose(
               _dio.options,
-              '/api/open/market/${questId}',
+              '/api/open/quest/${questId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -157,9 +157,12 @@ class _MeokqApi implements MeokqApi {
   }
 
   @override
-  Future<ResponseVO> storeImage({required String file}) async {
+  Future<ResponseVO> postImage({
+    required String type,
+    required FormData file,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'type': type};
     final _headers = <String, dynamic>{};
     final _data = file;
     final _result = await _dio
@@ -186,7 +189,7 @@ class _MeokqApi implements MeokqApi {
   @override
   Future<ResponseVO> getImage({required String imageId}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'imageId': imageId};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -197,7 +200,7 @@ class _MeokqApi implements MeokqApi {
     )
             .compose(
               _dio.options,
-              '/api/boss/image/{imageId}',
+              '/api/boss/image/${imageId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -211,8 +214,7 @@ class _MeokqApi implements MeokqApi {
   }
 
   @override
-  Future<ResponseVO> storeChallenge(
-      {required Map<String, dynamic> data}) async {
+  Future<ResponseVO> postChallenge({required Map<String, dynamic> data}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -220,7 +222,7 @@ class _MeokqApi implements MeokqApi {
     _data.addAll(data);
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
-      method: 'POST',
+      method: 'PUT',
       headers: _headers,
       extra: _extra,
     )
@@ -242,13 +244,14 @@ class _MeokqApi implements MeokqApi {
   @override
   Future<ResponseVO> getChallenge({
     required String marketId,
-    required String status,
+    String? status,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'marketId': marketId,
       r'status': status,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -275,13 +278,13 @@ class _MeokqApi implements MeokqApi {
   @override
   Future<ResponseVO> publishQuest({
     required String marketId,
-    required String status,
+    required String questId,
     required String ticketCount,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'marketId': marketId,
-      r'questId': status,
+      r'questId': questId,
       r'ticketCount': ticketCount,
     };
     final _headers = <String, dynamic>{};
@@ -310,12 +313,12 @@ class _MeokqApi implements MeokqApi {
   @override
   Future<ResponseVO> deleteQuest({
     required String marketId,
-    required String status,
+    required String questId,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'marketId': marketId,
-      r'questId': status,
+      r'questId': questId,
     };
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
@@ -341,17 +344,12 @@ class _MeokqApi implements MeokqApi {
   }
 
   @override
-  Future<ResponseVO> postQuest({
-    required String marketId,
-    required String status,
-  }) async {
+  Future<ResponseVO> postQuest({required Map<String, dynamic> body}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'marketId': marketId,
-      r'questId': status,
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'POST',
@@ -374,9 +372,9 @@ class _MeokqApi implements MeokqApi {
   }
 
   @override
-  Future<ResponseVO> getAgreement() async {
+  Future<ResponseVO> getAgreement({required String agreementType}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'agreementType': agreementType};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -401,12 +399,11 @@ class _MeokqApi implements MeokqApi {
   }
 
   @override
-  Future<ResponseVO> postAgreement({required Map<String, dynamic> data}) async {
+  Future<ResponseVO> postAgreement({required String body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(data);
+    final _data = body;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'POST',
@@ -416,6 +413,116 @@ class _MeokqApi implements MeokqApi {
             .compose(
               _dio.options,
               '/api/boss/agreement',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ResponseVO.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ResponseVO> postMarket({required Map<String, dynamic> body}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/boss/market',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ResponseVO.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ResponseVO> postAuth({required Map<String, dynamic> body}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/boss/market/auth',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ResponseVO.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ResponseVO> withdraw() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/boss/withdraw',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ResponseVO.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ResponseVO> logout() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/boss/logout',
               queryParameters: queryParameters,
               data: _data,
             )

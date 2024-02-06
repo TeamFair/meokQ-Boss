@@ -1,4 +1,5 @@
 part of 'agreement_permission_bloc.dart';
+
 sealed class AgreementPermissionEvent extends Equatable {
   const AgreementPermissionEvent();
 
@@ -13,3 +14,5 @@ class ChangeAgree extends AgreementPermissionEvent {
     required this.consent,
   });
 }
+
+class TapNextButton extends AgreementPermissionEvent {}

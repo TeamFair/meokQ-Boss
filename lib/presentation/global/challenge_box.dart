@@ -12,6 +12,9 @@ class ChallengeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ChallengeStatus challengeStatus =
+        ChallengeStatus.stringToChallengeStatus(challenge.challengeStatus);
+        
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       height: 95,
@@ -41,7 +44,7 @@ class ChallengeBox extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        challenge.quest.mission.content,
+                        challenge.quest.mission.content ?? '',
                         style: TextS.caption2(),
                       ),
                     ],
@@ -53,30 +56,30 @@ class ChallengeBox extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (challenge.challengeStatus.isIssued)
+                      if (challengeStatus.isIssued)
                         Text(
                           challenge.day ?? '',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: textColor,
+                            color: textColor(challengeStatus),
                             fontSize: 12,
                             fontFamily: 'Pretendard',
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                      if (challenge.challengeStatus.isIssued)
+                      if (challengeStatus.isIssued)
                         Text(
-                          challenge.challengeStatus.text,
+                          challengeStatus.text,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: textColor,
+                            color: textColor(challengeStatus),
                             fontSize: 12,
                             fontFamily: 'Pretendard',
                             fontWeight: FontWeight.w600,
                             height: 1.5,
                           ),
                         ),
-                      if (challenge.challengeStatus.isIssued)
+                      if (challengeStatus.isIssued)
                         const SizedBox(
                           height: 8,
                         ),
@@ -116,7 +119,7 @@ class ChallengeBox extends StatelessWidget {
     );
   }
 
-  Color get textColor => switch (challenge.challengeStatus) {
+  Color textColor(ChallengeStatus challengeStatus) => switch (challengeStatus) {
         ChallengeStatus.notIssued => ColorS.gray400,
         ChallengeStatus.issuedComplete => ColorS.blue,
         ChallengeStatus.usedComplete => ColorS.red,

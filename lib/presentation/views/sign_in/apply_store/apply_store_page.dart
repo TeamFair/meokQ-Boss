@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/global/custom_alert_dialog.dart';
+import 'package:meokq_boss/presentation/global/meokq_button.dart';
+import 'package:meokq_boss/presentation/views/home/home_page.dart';
 import 'package:meokq_boss/presentation/views/sign_in/apply_store/boss_information_apply/boss_information_apply_page.dart';
 import 'package:meokq_boss/presentation/views/sign_in/apply_store/store_information_apply/store_information_apply_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
@@ -22,7 +24,7 @@ class _ApplyStorePageState extends State<ApplyStorePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -172,6 +174,14 @@ class _ApplyStorePageState extends State<ApplyStorePage> {
                   ),
                 ),
               ),
+            const Spacer(),
+            MeokQButton(
+              onTap: () => Navigator.of(context).pushNamed(HomePage.id),
+              text: '입점 신청하기',
+            ),
+            const SizedBox(
+              height: 42,
+            ),
           ],
         ),
       ),

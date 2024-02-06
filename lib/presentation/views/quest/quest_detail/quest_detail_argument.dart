@@ -1,7 +1,5 @@
-import 'package:meokq_boss/data/model/quest/quest.dart';
-
 class QuestDetailArgument {
-  final Quest quest;
+  final String questId;
 
-  QuestDetailArgument({required this.quest});
+  QuestDetailArgument({required this.questId});
 }

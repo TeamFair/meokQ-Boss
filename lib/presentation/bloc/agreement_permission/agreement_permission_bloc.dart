@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meokq_boss/core/config/const.dart';
+import 'package:meokq_boss/core/injector/injector.dart';
+import 'package:meokq_boss/data/dto/agreement/agreement_dto.dart';
+import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
 
 part 'agreement_permission_event.dart';
 part 'agreement_permission_state.dart';
@@ -17,7 +20,10 @@ class AgreementPermissionBloc
           ),
         ) {
     on<ChangeAgree>(_tabAgreeButton);
+    on<TapNextButton>(_tabNextButton);
   }
+
+  final remote = getIt<InterfaceRemote>();
 
   void _tabAgreeButton(
     ChangeAgree event,
@@ -63,5 +69,30 @@ class AgreementPermissionBloc
           );
         }
     }
+  }
+
+  Future<void> _tabNextButton(
+    TapNextButton event,
+    Emitter<AgreementPermissionState> emit,
+  ) async{
+    List<AgreementDTO> agreementList = <AgreementDTO>[
+      AgreementDTO(
+        version: 0,
+        agreementType: Consent.collection.apiText,
+        acceptYn: state.collectionAgree ? 'Y' : 'N',
+      ),
+      AgreementDTO(
+        version: 0,
+        agreementType: Consent.thirdParty.apiText,
+        acceptYn: state.thirdPartyAccess ? 'Y' : 'N',
+      ),
+      AgreementDTO(
+        version: 0,
+        agreementType: Consent.marketing.apiText,
+        acceptYn: state.marketingAgree ? 'Y' : 'N',
+      ),
+    ];
+
+    await remote.postAgreement(agreementList: agreementList);
   }
 }

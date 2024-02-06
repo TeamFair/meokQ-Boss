@@ -47,7 +47,7 @@ class CustomTextField extends StatelessWidget {
           ),
           Container(
             height: 50,
-            padding: const EdgeInsets.fromLTRB(15, 15, 15, 7.5),
+            padding: const EdgeInsets.fromLTRB(20, 15, 15, 7.5),
             decoration: ShapeDecoration(
               color: ColorS.background,
               shape: RoundedRectangleBorder(
@@ -63,17 +63,18 @@ class CustomTextField extends StatelessWidget {
               keyboardType: textInputType,
               cursorColor: ColorS.applyGray,
               decoration: InputDecoration(
+                contentPadding: const EdgeInsets.only(top: -13),
                 border: InputBorder.none,
                 hintText: hintText,
                 hintStyle: TextS.content().copyWith(
                   color: ColorS.applyGray,
                 ),
                 suffixIcon: Text(
-                      suffixText ?? '',
-                      style: TextS.content().copyWith(
-                        color: ColorS.applyGray,
-                      ),
-                    ),
+                  suffixText ?? '',
+                  style: TextS.content().copyWith(
+                    color: ColorS.applyGray,
+                  ),
+                ),
               ),
             ),
           ),

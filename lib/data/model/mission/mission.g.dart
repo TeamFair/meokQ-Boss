@@ -8,17 +8,14 @@ part of 'mission.dart';
 
 _$MissionImpl _$$MissionImplFromJson(Map<String, dynamic> json) =>
     _$MissionImpl(
-      content: json['content'] as String,
-      target: json['target'] as String,
+      content: json['content'] as String?,
+      target: json['target'] as String? ?? '',
       quantity: json['quantity'] as int?,
-      missionType: $enumDecode(_$MissionTypeEnumMap, json['missionType']),
+      missionType: $enumDecode(_$MissionTypeEnumMap, json['type']),
     );
 
 Map<String, dynamic> _$$MissionImplToJson(_$MissionImpl instance) {
-  final val = <String, dynamic>{
-    'content': instance.content,
-    'target': instance.target,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -26,8 +23,10 @@ Map<String, dynamic> _$$MissionImplToJson(_$MissionImpl instance) {
     }
   }
 
+  writeNotNull('content', instance.content);
+  val['target'] = instance.target;
   writeNotNull('quantity', instance.quantity);
-  val['missionType'] = _$MissionTypeEnumMap[instance.missionType]!;
+  val['type'] = _$MissionTypeEnumMap[instance.missionType]!;
   return val;
 }
 

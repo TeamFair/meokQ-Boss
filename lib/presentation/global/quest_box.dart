@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/data/model/quest/quest.dart';
+import 'package:meokq_boss/data/vo/quest/get_quest_vo.dart';
 
 class QuestBox extends StatelessWidget {
   const QuestBox({super.key, required this.quest});
 
-  final Quest quest;
+  final GetQuestVO quest;
 
   @override
   Widget build(BuildContext context) {
+    final questStatus = QuestStatus.stringToQuestStatus(quest.questStatus);
     return Container(
       decoration: ShapeDecoration(
         color: Colors.white,
@@ -32,14 +34,14 @@ class QuestBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  quest.reward.content,
+                  quest.rewardTitle,
                   style: TextS.heading1(),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 Text(
-                  quest.mission.content,
+                  quest.missionTitle,
                   style: TextS.caption2(),
                 ),
               ],
@@ -58,13 +60,13 @@ class QuestBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 QuestStateChip(
-                  questStatus: quest.questStatus,
+                  questStatus: questStatus,
                 ),
-                if (quest.questStatus.isOpen)
+                if (questStatus.isOpen)
                   const SizedBox(
                     height: 6,
                   ),
-                if (quest.questStatus.isOpen)
+                if (questStatus.isOpen)
                   Text(
                     '90일 남음', // TODO: 퀘스크 상태에 따라 바뀜
                     style: TextS.body().copyWith(color: ColorS.applyGray),

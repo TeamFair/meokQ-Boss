@@ -1,14 +1,14 @@
 part of 'quest_bloc.dart';
 
 class QuestState extends Equatable {
-  final List<Quest> questList;
+  final List<GetQuestVO> questList;
 
   const QuestState({
     required this.questList,
   });
 
   QuestState copyWith({
-    List<Quest>? questList,
+    List<GetQuestVO>? questList,
   }) {
     return QuestState(
       questList: questList ?? this.questList,

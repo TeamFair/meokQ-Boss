@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/domain/repository/image_picker/interface_image_picker.dart';
+import 'package:meokq_boss/domain/usecase/store_apply_use_case.dart';
 
 part 'store_information_state.dart';
 part 'store_information_event.dart';
@@ -79,13 +80,18 @@ class StoreInformationBloc
     ChangeBussinessDays event,
     Emitter<StoreInformationState> emit,
   ) {
-    var businessDays = state.businessDays;
+    List<String> businessDays = [];
+
+    for (String s in state.businessDays) {
+      businessDays.add(s);
+    }
 
     if (businessDays.contains(event.day)) {
       businessDays.remove(event.day);
     } else {
       businessDays.add(event.day);
     }
+
     emit(
       state.copyWith(
         businessDays: businessDays,
@@ -132,6 +138,25 @@ class StoreInformationBloc
     StoreApply event,
     Emitter<StoreInformationState> emit,
   ) async {
-    // TODO: API 연결
+    final usecase = await StoreApplyUseCase().call(
+      StoreApplyInput(
+        open: state.open,
+        close: state.close,
+        businessDays: state.businessDays,
+        storeName: state.storeName,
+        phone: state.phone,
+        address: state.address,
+        logoImageUrl: state.logoUrl,
+      ),
+    );
+
+    emit(
+      state.copyWith(
+        applyState: usecase.fold(
+          (l) => ApplyState.failed,
+          (r) => ApplyState.success,
+        ),
+      ),
+    );
   }
 }

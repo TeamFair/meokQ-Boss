@@ -9,6 +9,8 @@ enum Stage { first, second }
 
 enum ImagePicker { gallery, camera }
 
+enum ApplyState { init, success, failed }
+
 class BossInformationState extends Equatable {
   const BossInformationState({
     required this.businessNumber,
@@ -21,8 +23,8 @@ class BossInformationState extends Equatable {
     required this.postalCode,
     required this.identificationUrl,
     required this.userName,
-    required this.allFinished,
     required this.stage,
+    required this.applyState,
   });
 
   final String businessNumber;
@@ -35,8 +37,8 @@ class BossInformationState extends Equatable {
   final String businessCertificationUrl;
   final String identificationUrl;
   final String userName;
-  final bool allFinished;
   final Stage stage;
+  final ApplyState applyState;
 
   static BossInformationState init() {
     return BossInformationState(
@@ -50,8 +52,8 @@ class BossInformationState extends Equatable {
       postalCode: '',
       identificationUrl: '',
       userName: '',
-      allFinished: false,
       stage: Stage.first,
+      applyState: ApplyState.init,
     );
   }
 
@@ -68,6 +70,7 @@ class BossInformationState extends Equatable {
     String? userName,
     bool? allFinished,
     Stage? stage,
+    ApplyState? applyState,
   }) {
     return BossInformationState(
       businessNumber: businessNumber ?? this.businessNumber,
@@ -81,8 +84,8 @@ class BossInformationState extends Equatable {
       postalCode: postalCode ?? this.postalCode,
       identificationUrl: identificationUrl ?? this.identificationUrl,
       userName: userName ?? this.userName,
-      allFinished: allFinished ?? this.allFinished,
       stage: stage ?? this.stage,
+      applyState: applyState ?? this.applyState,
     );
   }
 
@@ -98,8 +101,8 @@ class BossInformationState extends Equatable {
         businessCertificationUrl,
         identificationUrl,
         userName,
-        allFinished,
         stage,
+        applyState,
       ];
 
   bool get stage1Condition =>

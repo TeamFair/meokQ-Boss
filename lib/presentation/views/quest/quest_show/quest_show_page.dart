@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
+import 'package:meokq_boss/data/model/quest/quest.dart';
 import 'package:meokq_boss/presentation/bloc/quest/quest_bloc.dart';
 import 'package:meokq_boss/presentation/global/quest_box.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_detail/quest_detail_argument.dart';
@@ -38,10 +39,10 @@ class _QuestShowPageState extends State<QuestShowPage> {
                       final quest = state.questList[index];
                       return GestureDetector(
                         onTap: () {
-                          if (quest.questStatus.isChecking) {
+                          if (QuestStatus.stringToQuestStatus(quest.questStatus).isChecking) {
                             Navigator.of(context).pushNamed(
                               QuestDetailPage.id,
-                              arguments: QuestDetailArgument(quest: quest),
+                              arguments: QuestDetailArgument(questId: quest.questId),
                             );
                           }
                         },

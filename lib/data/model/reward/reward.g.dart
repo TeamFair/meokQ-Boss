@@ -7,18 +7,18 @@ part of 'reward.dart';
 // **************************************************************************
 
 _$RewardImpl _$$RewardImplFromJson(Map<String, dynamic> json) => _$RewardImpl(
-      content: json['content'] as String,
-      target: json['target'] as String,
-      rewardTypeStr: json['rewardTypeStr'] as String,
-      quantity: json['quantity'] as int?,
-      discountRate: json['discountRate'] as int?,
+      content: json['content'] as String? ?? '',
+      target: json['target'] as String? ?? '',
+      rewardTypeStr: json['type'] as String? ?? '',
+      quantity: json['quantity'] as int? ?? 0,
+      discountRate: json['discountRate'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$RewardImplToJson(_$RewardImpl instance) {
   final val = <String, dynamic>{
     'content': instance.content,
     'target': instance.target,
-    'rewardTypeStr': instance.rewardTypeStr,
+    'type': instance.rewardTypeStr,
   };
 
   void writeNotNull(String key, dynamic value) {

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/domain/repository/image_picker/interface_image_picker.dart';
+import 'package:meokq_boss/domain/usecase/boss_apply_use_case.dart';
 
 part 'boss_information_state.dart';
 part 'boss_information_event.dart';
@@ -172,10 +173,27 @@ class BossInformationBloc
     WritingCompleted event,
     Emitter<BossInformationState> emit,
   ) async {
-    //TODO: 입력한 값을 api로 전달
+    final usecase = await BossApplyUseCase().call(
+      BossApplyInput(
+        businessNumber: state.businessNumber,
+        businessType: state.businessType,
+        bossName: state.bossName,
+        storeName: state.storeName,
+        address: state.address,
+        postalCode: state.postalCode,
+        birth: state.birth,
+        businessCertificationUrl: state.businessCertificationUrl,
+        identificationUrl: state.identificationUrl,
+        userName: state.userName,
+      ),
+    );
+
     emit(
       state.copyWith(
-        allFinished: true,
+        applyState: usecase.fold(
+          (l) => ApplyState.failed,
+          (r) => ApplyState.success,
+        ),
       ),
     );
   }

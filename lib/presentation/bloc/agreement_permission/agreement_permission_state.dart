@@ -32,6 +32,15 @@ enum Consent {
       Consent.marketing => marketingConsent,
     };
   }
+
+  String get apiText {
+    return switch (this) {
+      Consent.collection => 'PERSONAL_INFO_COLLECTION',
+      Consent.thirdParty => 'THIRD_PARTY_PROVIDE',
+      Consent.marketing => 'PROMOTION_MARKETING',
+      Consent.all => '',
+    };
+  }
 }
 
 class AgreementPermissionState extends Equatable {

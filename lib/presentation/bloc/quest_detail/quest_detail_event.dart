@@ -3,10 +3,10 @@ part of 'quest_detail_bloc.dart';
 sealed class QuestDetailEvent {}
 
 class InitQuestDetailState extends QuestDetailEvent {
-  final Quest quest;
+  final String questId;
 
   InitQuestDetailState({
-    required this.quest,
+    required this.questId,
   });
 }
 

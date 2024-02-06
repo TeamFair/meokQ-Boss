@@ -54,8 +54,12 @@ class _AgreePageState extends State<AgreePage> {
                 ),
                 const Spacer(),
                 MeokQButton(
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(ApplyStorePage.id),
+                  onTap: () async {
+                    context
+                        .read<AgreementPermissionBloc>()
+                        .add(TapNextButton());
+                    Navigator.of(context).pushNamed(ApplyStorePage.id);
+                  },
                   text: '다음',
                   canTap: canTapNextButton,
                 ),

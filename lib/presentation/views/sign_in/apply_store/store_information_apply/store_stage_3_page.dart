@@ -15,94 +15,110 @@ class StoreStage3Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<StoreInformationBloc, StoreInformationState>(
-      builder: (context, state) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 4,
-              color: ColorS.buttonYellow,
-              width: MediaQuery.of(context).size.width * 0.8,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                '가게 로고를 넣어주세요',
-                style: TextS.title1().copyWith(
-                  fontSize: 19,
+    return BlocListener<StoreInformationBloc, StoreInformationState>(
+      listener: (context, state) {
+        switch (state.applyState) {
+          case ApplyState.init:
+            break;
+          case ApplyState.success:
+            Navigator.pop(context, true);
+          case ApplyState.failed:
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('마켓 등록을 실패하였습니다.')),
+            );
+        }
+      },
+      child: BlocBuilder<StoreInformationBloc, StoreInformationState>(
+        builder: (context, state) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 4,
+                color: ColorS.buttonYellow,
+                width: MediaQuery.of(context).size.width * 0.8,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  '가게 로고를 넣어주세요',
+                  style: TextS.title1().copyWith(
+                    fontSize: 19,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Center(
-              child: GestureDetector(
-                // onTap: () => context.read<StoreInformationBloc>().add(
-                //       AddImage(),
-                //     ),
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(25),
+              const SizedBox(
+                height: 50,
+              ),
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(25),
+                        ),
+                      ),
+                      builder: (childContext) => CameraBottomSheet(
+                        firstTap: () {
+                          context
+                              .read<StoreInformationBloc>()
+                              .add(AddImageFromGallery());
+                          Navigator.pop(context);
+                        },
+                        secondTap: () {
+                          context
+                              .read<StoreInformationBloc>()
+                              .add(AddImageFromCamera());
+                          Navigator.pop(context);
+                        },
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: 98,
+                    width: 98,
+                    decoration: const BoxDecoration(
+                      color: ColorS.background,
+                      shape: BoxShape.circle,
+                    ),
+                    child: state.logoUrl.isEmpty
+                        ? SvgPicture.asset(Svgs.plusInCircleIcon)
+                        : ClipOval(
+                            child: Image.file(
+                              File(state.logoUrl),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                  ),
+                ),
+              ),
+              const Spacer(),
+              MeokQTwoButton(
+                secondText: '완료',
+                firstButtonTap: () => context.read<StoreInformationBloc>().add(
+                      const ChangeStage(
+                        stage: Stage.second,
                       ),
                     ),
-                    builder: (childContext) => CameraBottomSheet(
-                      firstTap: () => context
-                          .read<StoreInformationBloc>()
-                          .add(AddImageFromGallery()),
-                      secondTap: () => context
-                          .read<StoreInformationBloc>()
-                          .add(AddImageFromCamera()),
-                    ),
-                  );
+                secondButtonCanTap: state.canStage3ButtonTap,
+                secondButtonTap: () async {
+                  context.read<StoreInformationBloc>().add(
+                        StoreApply(),
+                      );
                 },
-                child: Container(
-                  height: 98,
-                  width: 98,
-                  decoration: const BoxDecoration(
-                    color: ColorS.background,
-                    shape: BoxShape.circle,
-                  ),
-                  child: state.logoUrl.isEmpty
-                      ? SvgPicture.asset(Svgs.plusInCircleIcon)
-                      : ClipOval(
-                          child: Image.file(
-                            File(state.logoUrl),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                ),
               ),
-            ),
-            const Spacer(),
-            MeokQTwoButton(
-              secondText: '완료',
-              firstButtonTap: () => context.read<StoreInformationBloc>().add(
-                    const ChangeStage(
-                      stage: Stage.second,
-                    ),
-                  ),
-              secondButtonCanTap: state.canStage3ButtonTap,
-              secondButtonTap: () {
-                context.read<StoreInformationBloc>().add(
-                      StoreApply(),
-                    );
-                Navigator.pop(context, true);
-              },
-            ),
-            const SizedBox(
-              height: 42,
-            ),
-          ],
-        );
-      },
+              const SizedBox(
+                height: 42,
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }

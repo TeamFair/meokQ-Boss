@@ -9,6 +9,12 @@ enum ChallengeStatus {
   issuedComplete,
   usedComplete;
 
+  factory ChallengeStatus.stringToChallengeStatus(String value) => switch (value) {
+    '' => ChallengeStatus.issuedComplete,
+    '' => ChallengeStatus.issuedComplete,
+    _ => ChallengeStatus.issuedComplete,
+  };
+
   String get text => switch (this) {
         ChallengeStatus.issuedComplete => '발급완료',
         ChallengeStatus.usedComplete => '사용완료',
@@ -29,7 +35,7 @@ class Challenge with _$Challenge {
     required String url,
     required String applicantId,
     required Quest quest,
-    required ChallengeStatus challengeStatus,
+    required String challengeStatus,
     required String? day,
   }) = _Challenge;
 

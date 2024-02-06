@@ -83,7 +83,7 @@ class AuthenticationRepository extends InterfaceAuthentication {
     return LoginInput(
       accessToken: auth?.accessToken ?? '',
       email: googleUser?.email ?? '',
-      channel: 'APPLE',
+      channel: 'GOOGLE',
       refreshToken: '',
     );
   }

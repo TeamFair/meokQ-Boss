@@ -7,6 +7,8 @@ enum TextType {
   reward;
 }
 
+enum ApplyState { init, success, failed }
+
 class QuestAddState extends Equatable {
   final String missionItem;
   final String missionItemCount;
@@ -14,6 +16,7 @@ class QuestAddState extends Equatable {
   final String reward;
   final MissionType missionType;
   final RewardType rewardType;
+  final ApplyState applyState;
 
   const QuestAddState({
     required this.missionItem,
@@ -22,6 +25,7 @@ class QuestAddState extends Equatable {
     required this.reward,
     required this.missionType,
     required this.rewardType,
+    required this.applyState,
   });
 
   static QuestAddState init() => const QuestAddState(
@@ -31,6 +35,7 @@ class QuestAddState extends Equatable {
         reward: '',
         missionType: MissionType.basic,
         rewardType: RewardType.discount,
+        applyState: ApplyState.init,
       );
 
   QuestAddState copyWith({
@@ -40,6 +45,7 @@ class QuestAddState extends Equatable {
     String? reward,
     MissionType? missionType,
     RewardType? rewardType,
+    ApplyState? applyState,
   }) {
     return QuestAddState(
       missionItem: missionItem ?? this.missionItem,
@@ -48,6 +54,7 @@ class QuestAddState extends Equatable {
       reward: reward ?? this.reward,
       missionType: missionType ?? this.missionType,
       rewardType: rewardType ?? this.rewardType,
+      applyState: applyState ?? this.applyState,
     );
   }
 
@@ -59,6 +66,7 @@ class QuestAddState extends Equatable {
         reward,
         missionType,
         rewardType,
+        applyState,
       ];
 
   String get title =>
@@ -69,5 +77,6 @@ class QuestAddState extends Equatable {
         MissionType.free => missionItem,
       };
 
-  bool get isButtonAble => rewardItem.isNotEmpty && reward.isNotEmpty && missionItem.isNotEmpty;
+  bool get isButtonAble =>
+      rewardItem.isNotEmpty && reward.isNotEmpty && missionItem.isNotEmpty;
 }

@@ -20,9 +20,13 @@ Mission _$MissionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Mission {
-  String get content => throw _privateConstructorUsedError;
+  @JsonKey(name: 'content')
+  String? get content => throw _privateConstructorUsedError;
+  @JsonKey(name: 'target', defaultValue: '')
   String get target => throw _privateConstructorUsedError;
+  @JsonKey(name: 'quantity')
   int? get quantity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'type')
   MissionType get missionType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +40,10 @@ abstract class $MissionCopyWith<$Res> {
       _$MissionCopyWithImpl<$Res, Mission>;
   @useResult
   $Res call(
-      {String content, String target, int? quantity, MissionType missionType});
+      {@JsonKey(name: 'content') String? content,
+      @JsonKey(name: 'target', defaultValue: '') String target,
+      @JsonKey(name: 'quantity') int? quantity,
+      @JsonKey(name: 'type') MissionType missionType});
 }
 
 /// @nodoc
@@ -52,16 +59,16 @@ class _$MissionCopyWithImpl<$Res, $Val extends Mission>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? content = null,
+    Object? content = freezed,
     Object? target = null,
     Object? quantity = freezed,
     Object? missionType = null,
   }) {
     return _then(_value.copyWith(
-      content: null == content
+      content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       target: null == target
           ? _value.target
           : target // ignore: cast_nullable_to_non_nullable
@@ -86,7 +93,10 @@ abstract class _$$MissionImplCopyWith<$Res> implements $MissionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String content, String target, int? quantity, MissionType missionType});
+      {@JsonKey(name: 'content') String? content,
+      @JsonKey(name: 'target', defaultValue: '') String target,
+      @JsonKey(name: 'quantity') int? quantity,
+      @JsonKey(name: 'type') MissionType missionType});
 }
 
 /// @nodoc
@@ -100,16 +110,16 @@ class __$$MissionImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? content = null,
+    Object? content = freezed,
     Object? target = null,
     Object? quantity = freezed,
     Object? missionType = null,
   }) {
     return _then(_$MissionImpl(
-      content: null == content
+      content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       target: null == target
           ? _value.target
           : target // ignore: cast_nullable_to_non_nullable
@@ -130,21 +140,25 @@ class __$$MissionImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MissionImpl implements _Mission {
   const _$MissionImpl(
-      {required this.content,
-      required this.target,
-      required this.quantity,
-      required this.missionType});
+      {@JsonKey(name: 'content') this.content,
+      @JsonKey(name: 'target', defaultValue: '') required this.target,
+      @JsonKey(name: 'quantity') this.quantity,
+      @JsonKey(name: 'type') required this.missionType});
 
   factory _$MissionImpl.fromJson(Map<String, dynamic> json) =>
       _$$MissionImplFromJson(json);
 
   @override
-  final String content;
+  @JsonKey(name: 'content')
+  final String? content;
   @override
+  @JsonKey(name: 'target', defaultValue: '')
   final String target;
   @override
+  @JsonKey(name: 'quantity')
   final int? quantity;
   @override
+  @JsonKey(name: 'type')
   final MissionType missionType;
 
   @override
@@ -186,20 +200,25 @@ class _$MissionImpl implements _Mission {
 
 abstract class _Mission implements Mission {
   const factory _Mission(
-      {required final String content,
-      required final String target,
-      required final int? quantity,
+      {@JsonKey(name: 'content') final String? content,
+      @JsonKey(name: 'target', defaultValue: '') required final String target,
+      @JsonKey(name: 'quantity') final int? quantity,
+      @JsonKey(name: 'type')
       required final MissionType missionType}) = _$MissionImpl;
 
   factory _Mission.fromJson(Map<String, dynamic> json) = _$MissionImpl.fromJson;
 
   @override
-  String get content;
+  @JsonKey(name: 'content')
+  String? get content;
   @override
+  @JsonKey(name: 'target', defaultValue: '')
   String get target;
   @override
+  @JsonKey(name: 'quantity')
   int? get quantity;
   @override
+  @JsonKey(name: 'type')
   MissionType get missionType;
   @override
   @JsonKey(ignore: true)

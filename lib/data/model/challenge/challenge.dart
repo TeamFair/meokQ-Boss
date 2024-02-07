@@ -5,38 +5,25 @@ part 'challenge.freezed.dart';
 part 'challenge.g.dart';
 
 enum ChallengeStatus {
-  notIssued,
-  issuedComplete,
-  usedComplete;
+  approved,
+  rejected,
+  underReview;
 
-  factory ChallengeStatus.stringToChallengeStatus(String value) => switch (value) {
-    '' => ChallengeStatus.issuedComplete,
-    '' => ChallengeStatus.issuedComplete,
-    _ => ChallengeStatus.issuedComplete,
-  };
-
-  String get text => switch (this) {
-        ChallengeStatus.issuedComplete => '발급완료',
-        ChallengeStatus.usedComplete => '사용완료',
-        _ => '',
+  factory ChallengeStatus.stringToChallengeStatus(String value) =>
+      switch (value) {
+        'APPROVED' => ChallengeStatus.approved,
+        'REJECTED' => ChallengeStatus.rejected,
+        _ => ChallengeStatus.rejected,
       };
-
-  bool get isIssued => this != ChallengeStatus.notIssued;
-
-  bool get isIssuedComplete => this != ChallengeStatus.issuedComplete;
-
-  bool get isUsedComplete => this != ChallengeStatus.usedComplete;
 }
 
 @freezed
 class Challenge with _$Challenge {
   const factory Challenge({
-    @JsonKey(name: 'questId') required int id,
-    required String url,
-    required String applicantId,
-    required Quest quest,
-    required String challengeStatus,
-    required String? day,
+    @JsonKey(name: 'challengeId') required String challengeId,
+    @JsonKey(name: 'receiptImageId') required String receiptImageId,
+    @JsonKey(name: 'questId') required Quest quest,
+    @JsonKey(name: 'status') required String challengeStatus,
   }) = _Challenge;
 
   factory Challenge.fromJson(Map<String, dynamic> json) =>

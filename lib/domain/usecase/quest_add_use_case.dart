@@ -21,7 +21,7 @@ class QuestAddUseCase
   ) async {
     try {
       final dto = {
-        'marketId': _local.getKey(LocalKey.marketId),
+        'marketId': _local.getKey(LocalStringKey.marketId),
         'missions': [
           {
             'content': input.missionType == MissionType.free

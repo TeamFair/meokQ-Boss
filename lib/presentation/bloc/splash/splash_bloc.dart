@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:meokq_boss/domain/usecase/splash_use_case.dart';
 
 part 'splash_event.dart';
 part 'splash_state.dart';
@@ -22,10 +23,19 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     emit(state.copyWith(status: SplashStatus.inProgress));
     try {
       // 이자리에 위 1, 2 - 1, 2 - 2 작업이 진행되어야 합니다
-      await Future.delayed(
-        const Duration(milliseconds: 3000),
+      await Future.delayed(const Duration(seconds: 2));
+      final usecase = await SplashUseCase().call(SplashInput());
+
+      usecase.fold(
+        (l) => emit(state.copyWith(status: SplashStatus.failure)),
+        (r) {
+          if (r.shouldLogin) {
+            emit(state.copyWith(status: SplashStatus.needLogin));
+          } else {
+            emit(state.copyWith(status: SplashStatus.success));
+          }
+        },
       );
-      emit(state.copyWith(status: SplashStatus.success));
     } catch (_) {
       emit(state.copyWith(status: SplashStatus.failure));
     }

@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
-import 'package:meokq_boss/data/model/challenge/challenge.dart';
+import 'package:meokq_boss/data/model/coupon/coupon.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
-class ChallengeBox extends StatelessWidget {
-  const ChallengeBox({super.key, required this.challenge});
+class CouponBox extends StatelessWidget {
+  const CouponBox({super.key, required this.coupon});
 
-  final Challenge challenge;
+  final Coupon coupon;
 
   @override
   Widget build(BuildContext context) {
+    CouponStatus couponStatus =
+        CouponStatus.stringToCouponStatus(coupon.couponStatus);
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       height: 95,
@@ -34,14 +38,14 @@ class ChallengeBox extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        challenge.quest.reward.content,
+                        coupon.reward.content,
                         style: TextS.heading1(),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
                       Text(
-                        challenge.quest.mission.content ?? '',
+                        coupon.missions[0].content ?? '',
                         style: TextS.caption2(),
                       ),
                     ],
@@ -53,6 +57,30 @@ class ChallengeBox extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                        Text(
+                          dateFormat(coupon.useDate),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: textColor(couponStatus),
+                            fontSize: 12,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          couponStatus.text,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: textColor(couponStatus),
+                            fontSize: 12,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w600,
+                            height: 1.5,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
                       Container(
                         width: 50,
                         height: 22,
@@ -68,7 +96,7 @@ class ChallengeBox extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          challenge.challengeId,
+                          coupon.userNickname,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             color: ColorS.gray400,
@@ -89,9 +117,15 @@ class ChallengeBox extends StatelessWidget {
     );
   }
 
-  Color textColor(ChallengeStatus challengeStatus) => switch (challengeStatus) {
-        ChallengeStatus.approved => ColorS.gray400,
-        ChallengeStatus.rejected => ColorS.blue,
-        ChallengeStatus.underReview => ColorS.red,
+  Color textColor(CouponStatus couponStatus) => switch (couponStatus) {
+        CouponStatus.issued => ColorS.blue,
+        CouponStatus.used => ColorS.red,
+        _ => ColorS.gray400,
       };
+
+  String dateFormat(String date) {
+    DateTime dateTime = DateTime.parse(date);
+
+    return DateFormat('M/d(E)', 'ko').format(dateTime);
+  }
 }

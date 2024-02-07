@@ -69,7 +69,7 @@ class StoreApplyUseCase
       final res = await _remote.applyMarkets(applyMarketDTO: dto);
 
       _local.setKey(
-        LocalKey.marketId,
+        LocalStringKey.marketId,
         res.marketId,
       );
 

@@ -6,7 +6,7 @@ enum LoginStatus {
   reject,
   review,
   firstComplete,
-  done,
+  APPROVED,
   failure,
   logout;
 

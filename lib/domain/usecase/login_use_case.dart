@@ -13,7 +13,6 @@ class LoginUseCase
     with RestErrorHandleMixin
     implements UseCase<LoginOutput, LoginInput> {
   final _remote = getIt<InterfaceRemote>();
-
   final _local = getIt<InterfaceLocal>();
 
   @override
@@ -21,11 +20,32 @@ class LoginUseCase
     LoginInput input,
   ) async {
     try {
+      final email = input.email ?? _local.getKey(LocalStringKey.email) ?? '';
+      final channel =
+          input.channel ?? _local.getKey(LocalStringKey.channel) ?? '';
+      final accessToken =
+          input.accessToken ?? _local.getKey(LocalStringKey.accessToken) ?? '';
+      final refreshToken = input.refreshToken ??
+          _local.getKey(LocalStringKey.refreshToken) ??
+          '';
+
+      if (email.isEmpty || channel.isEmpty || accessToken.isEmpty) {
+        return Left(
+          LoginFailure(),
+        );
+      }
+
+      // 로그인 정보들을 저장
+      _local.setKey(LocalStringKey.email, email);
+      _local.setKey(LocalStringKey.channel, channel);
+      _local.setKey(LocalStringKey.accessToken, accessToken);
+      _local.setKey(LocalStringKey.refreshToken, refreshToken);
+
       final loginDTO = LoginDTO(
-        email: input.email,
-        channel: input.channel,
-        accessToken: input.accessToken,
-        refreshToken: input.refreshToken,
+        email: email,
+        channel: channel,
+        accessToken: accessToken,
+        refreshToken: refreshToken,
         userType: 'BOSS',
       );
 
@@ -38,7 +58,7 @@ class LoginUseCase
       }
 
       _local.setKey(
-        LocalKey.token,
+        LocalStringKey.token,
         login.authorization,
       );
 
@@ -51,14 +71,13 @@ class LoginUseCase
       }
 
       _local.setKey(
-        LocalKey.marketId,
+        LocalStringKey.marketId,
         market.marketId,
       );
 
       return Right(
         LoginOutput(
-          // loginStatus: strToLoginStatus(market.status),
-          loginStatus: LoginStatus.newUser,
+          loginStatus: strToLoginStatus(market.status),
         ),
       );
     } on DioException catch (e) {
@@ -69,25 +88,25 @@ class LoginUseCase
   }
 
   LoginStatus strToLoginStatus(String str) => switch (str) {
-        'DONE' => LoginStatus.done,
+        'APPROVED' => LoginStatus.APPROVED,
         'UNDER_REVIEW' => LoginStatus.review,
         'NEW_USER' => LoginStatus.newUser,
-        'REJECT' => LoginStatus.reject,
+        'REJECTED' => LoginStatus.reject,
         _ => LoginStatus.failure,
       };
 }
 
 class LoginInput {
-  final String email;
-  final String channel;
-  final String accessToken;
-  final String refreshToken;
+  final String? email;
+  final String? channel;
+  final String? accessToken;
+  final String? refreshToken;
 
   LoginInput({
-    required this.email,
-    required this.channel,
-    required this.accessToken,
-    required this.refreshToken,
+    this.email,
+    this.channel,
+    this.accessToken,
+    this.refreshToken,
   });
 }
 

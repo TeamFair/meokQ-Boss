@@ -32,7 +32,7 @@ class BossApplyUseCase
 
     try {
       final dto = {
-        'marketId': _local.getKey(LocalKey.marketId),
+        'marketId': _local.getKey(LocalStringKey.marketId),
         'owner': {
           'name': input.userName,
           'birthdate': input.birth,

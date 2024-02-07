@@ -2,6 +2,7 @@ import 'package:meokq_boss/data/dto/delete_quest/delete_quest_dto.dart';
 import 'package:meokq_boss/data/dto/login/login_dto.dart';
 import 'package:meokq_boss/data/dto/agreement/agreement_dto.dart';
 import 'package:meokq_boss/data/dto/publish_quest/publish_quest_dto.dart';
+import 'package:meokq_boss/data/model/coupon/coupon.dart';
 import 'package:meokq_boss/data/model/quest/quest.dart';
 import 'package:meokq_boss/data/vo/challenge/challenge_vo.dart';
 import 'package:meokq_boss/data/vo/image/image_vo.dart';
@@ -61,4 +62,6 @@ abstract class InterfaceRemote {
   Future<void> logout();
 
   Future<DetailMarketVO> getDetailMarket();
+
+  Future<List<Coupon>> getCoupons({required String status});
 }

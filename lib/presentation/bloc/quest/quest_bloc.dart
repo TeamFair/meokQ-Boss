@@ -21,17 +21,7 @@ class QuestBloc extends Bloc<QuestEvent, QuestState> {
     InitAllQuest event,
     Emitter<QuestState> emit,
   ) async {
-    var marketId = _local.getKey(LocalKey.marketId);
-    if (marketId == null) {
-      final market = await _remote.getMarkets();
-
-      _local.setKey(
-        LocalKey.marketId,
-        market.marketId,
-      );
-
-      marketId = market.marketId;
-    }
+    final marketId = _local.getKey(LocalStringKey.marketId) ?? '';
     final questList = await _remote.getQuests(marketId: marketId);
 
     emit(

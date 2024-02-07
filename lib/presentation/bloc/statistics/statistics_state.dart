@@ -1,20 +1,23 @@
 part of 'statistics_bloc.dart';
 
-
+enum CouponState { init, failure, success }
 
 class StatisticsState extends Equatable {
-  final List<Challenge> statisticsList;
+  final List<Coupon> couponList;
+  final CouponState couponState;
 
-  const StatisticsState({required this.statisticsList});
+  const StatisticsState({required this.couponList, required this.couponState});
 
   StatisticsState copyWith({
-    List<Challenge>? statisticsList,
+    List<Coupon>? couponList,
+    CouponState? couponState,
   }) {
     return StatisticsState(
-      statisticsList: statisticsList ?? this.statisticsList,
+      couponList: couponList ?? this.couponList,
+      couponState: couponState ?? this.couponState,
     );
   }
 
   @override
-  List<Object?> get props => [statisticsList];
+  List<Object?> get props => [couponList, couponState];
 }

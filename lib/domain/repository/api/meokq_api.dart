@@ -96,4 +96,10 @@ abstract class MeokqApi {
 
   @GET('/api/boss/logout') // 로그아웃
   Future<ResponseVO> logout();
+
+  @GET('/api/boss/coupon') // 쿠폰 목록 조회 (통계)
+  Future<ResponseVO> getCoupons({
+    @Query('status') required String status,
+    @Query('marketId') required String marketId,
+  });
 }

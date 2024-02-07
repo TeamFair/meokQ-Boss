@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
+import 'package:meokq_boss/presentation/views/home/home_page.dart';
 import 'package:meokq_boss/presentation/views/login/login_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
@@ -26,9 +27,16 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
-        if (state.status == SplashStatus.success) {
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil(LoginPage.id, (route) => false);
+        switch (state.status) {
+          case SplashStatus.needLogin:
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil(LoginPage.id, (route) => false);
+          case SplashStatus.success:
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil(HomePage.id, (route) => false);
+          case SplashStatus.failure:
+          case SplashStatus.inProgress:
+            break;
         }
       },
       child: Container(

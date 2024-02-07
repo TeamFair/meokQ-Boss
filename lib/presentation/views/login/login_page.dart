@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
             );
 
           case LoginStatus.firstComplete:
-          case LoginStatus.done:
+          case LoginStatus.APPROVED:
             Navigator.of(context)
                 .pushNamedAndRemoveUntil(HomePage.id, (route) => false);
 

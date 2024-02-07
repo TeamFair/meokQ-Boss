@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
-import 'package:meokq_boss/data/model/quest/quest.dart';
 import 'package:meokq_boss/data/vo/quest/get_quest_vo.dart';
 import 'package:meokq_boss/presentation/bloc/quest/quest_bloc.dart';
 import 'package:meokq_boss/presentation/global/quest_box.dart';

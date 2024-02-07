@@ -2,6 +2,7 @@ part of 'splash_bloc.dart';
 
 enum SplashStatus {
   inProgress,
+  needLogin,
   success,
   failure,
 }

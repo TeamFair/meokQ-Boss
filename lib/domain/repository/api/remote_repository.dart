@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meokq_boss/core/config/local_key.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
@@ -8,6 +9,7 @@ import 'package:meokq_boss/data/dto/delete_quest/delete_quest_dto.dart';
 import 'package:meokq_boss/data/dto/login/login_dto.dart';
 import 'package:meokq_boss/data/dto/agreement/agreement_dto.dart';
 import 'package:meokq_boss/data/dto/publish_quest/publish_quest_dto.dart';
+import 'package:meokq_boss/data/model/coupon/coupon.dart';
 import 'package:meokq_boss/data/model/quest/quest.dart';
 import 'package:meokq_boss/data/vo/challenge/challenge_vo.dart';
 import 'package:meokq_boss/data/vo/image/image_vo.dart';
@@ -19,6 +21,8 @@ import 'package:meokq_boss/data/vo/quest/get_quest_vo.dart';
 import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
 import 'package:meokq_boss/domain/repository/api/meokq_api.dart';
 import 'package:meokq_boss/domain/repository/local/inteface_local.dart';
+import 'package:meokq_boss/domain/usecase/login_use_case.dart';
+import 'package:meokq_boss/presentation/views/login/login_page.dart';
 
 @LazySingleton(as: InterfaceRemote, env: ['prod'])
 class RemoteRepository extends InterfaceRemote {
@@ -43,12 +47,12 @@ class RemoteRepository extends InterfaceRemote {
     dio.options.receiveTimeout = const Duration(seconds: 30);
 
     dio.options.headers['Authorization'] =
-        getIt<InterfaceLocal>().getKey(LocalKey.token);
+        getIt<InterfaceLocal>().getKey(LocalStringKey.token);
 
     onRequest(r, h) {
       r.headers['accept'] = 'application/json';
       r.headers['authorization'] =
-          getIt<InterfaceLocal>().getKey(LocalKey.token);
+          getIt<InterfaceLocal>().getKey(LocalStringKey.token);
       r.headers['Content-Type'] = 'application/json';
       // r.headers['Keep-Alive'] = 'timeout=60';
       return h.next(r);
@@ -62,10 +66,26 @@ class RemoteRepository extends InterfaceRemote {
       DioException error,
       ErrorInterceptorHandler h,
     ) async {
+      final context = GlobalKey<NavigatorState>().currentContext!;
       try {
+        // Token값이 만료되었다 => 로그인을 다시 해야한다
         if (error.response!.statusCode == 401) {
-          error.requestOptions.headers['Authorization'] =
-              getIt<InterfaceLocal>().getKey(LocalKey.token);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('토큰이 만료되었습니다')),
+          );
+
+          final usecase = await LoginUseCase().call(LoginInput());
+
+          usecase.fold(
+            (l) => Navigator.pushNamedAndRemoveUntil(
+              context,
+              LoginPage.id,
+              ((route) => false),
+            ),
+            (r) => ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('다시 시도해주세요')),
+            ),
+          );
         }
       } catch (e) {
         // 인터넷이 끊어진 경우 handler.next(error)만 하며 오류를 넘겨주기.
@@ -260,10 +280,28 @@ class RemoteRepository extends InterfaceRemote {
   }
 
   @override
-  Future<DetailMarketVO> getDetailMarket() async{
-    final res =
-        await api.market(marketId: localRepositroy.getKey(LocalKey.marketId) ?? '');
+  Future<DetailMarketVO> getDetailMarket() async {
+    final res = await api.market(
+      marketId: localRepositroy.getKey(LocalStringKey.marketId) ?? '',
+    );
 
     return DetailMarketVO.fromJson(res.data);
+  }
+
+  @override
+  Future<List<Coupon>> getCoupons({required String status}) async {
+    final res = await api.getCoupons(
+      status: status,
+      marketId: localRepositroy.getKey(LocalStringKey.marketId) ?? '',
+    );
+
+    List<Coupon> couponList = [];
+    res.data.forEach((e) {
+      couponList.add(
+        Coupon.fromJson(e),
+      );
+    });
+
+    return couponList;
   }
 }

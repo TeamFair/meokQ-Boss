@@ -20,13 +20,14 @@ Challenge _$ChallengeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Challenge {
+  @JsonKey(name: 'challengeId')
+  String get challengeId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'receiptImageId')
+  String get receiptImageId => throw _privateConstructorUsedError;
   @JsonKey(name: 'questId')
-  int get id => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
-  String get applicantId => throw _privateConstructorUsedError;
   Quest get quest => throw _privateConstructorUsedError;
+  @JsonKey(name: 'status')
   String get challengeStatus => throw _privateConstructorUsedError;
-  String? get day => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,12 +41,10 @@ abstract class $ChallengeCopyWith<$Res> {
       _$ChallengeCopyWithImpl<$Res, Challenge>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'questId') int id,
-      String url,
-      String applicantId,
-      Quest quest,
-      String challengeStatus,
-      String? day});
+      {@JsonKey(name: 'challengeId') String challengeId,
+      @JsonKey(name: 'receiptImageId') String receiptImageId,
+      @JsonKey(name: 'questId') Quest quest,
+      @JsonKey(name: 'status') String challengeStatus});
 
   $QuestCopyWith<$Res> get quest;
 }
@@ -63,25 +62,19 @@ class _$ChallengeCopyWithImpl<$Res, $Val extends Challenge>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? url = null,
-    Object? applicantId = null,
+    Object? challengeId = null,
+    Object? receiptImageId = null,
     Object? quest = null,
     Object? challengeStatus = null,
-    Object? day = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      challengeId: null == challengeId
+          ? _value.challengeId
+          : challengeId // ignore: cast_nullable_to_non_nullable
               as String,
-      applicantId: null == applicantId
-          ? _value.applicantId
-          : applicantId // ignore: cast_nullable_to_non_nullable
+      receiptImageId: null == receiptImageId
+          ? _value.receiptImageId
+          : receiptImageId // ignore: cast_nullable_to_non_nullable
               as String,
       quest: null == quest
           ? _value.quest
@@ -91,10 +84,6 @@ class _$ChallengeCopyWithImpl<$Res, $Val extends Challenge>
           ? _value.challengeStatus
           : challengeStatus // ignore: cast_nullable_to_non_nullable
               as String,
-      day: freezed == day
-          ? _value.day
-          : day // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 
@@ -116,12 +105,10 @@ abstract class _$$ChallengeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'questId') int id,
-      String url,
-      String applicantId,
-      Quest quest,
-      String challengeStatus,
-      String? day});
+      {@JsonKey(name: 'challengeId') String challengeId,
+      @JsonKey(name: 'receiptImageId') String receiptImageId,
+      @JsonKey(name: 'questId') Quest quest,
+      @JsonKey(name: 'status') String challengeStatus});
 
   @override
   $QuestCopyWith<$Res> get quest;
@@ -138,25 +125,19 @@ class __$$ChallengeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? url = null,
-    Object? applicantId = null,
+    Object? challengeId = null,
+    Object? receiptImageId = null,
     Object? quest = null,
     Object? challengeStatus = null,
-    Object? day = freezed,
   }) {
     return _then(_$ChallengeImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      challengeId: null == challengeId
+          ? _value.challengeId
+          : challengeId // ignore: cast_nullable_to_non_nullable
               as String,
-      applicantId: null == applicantId
-          ? _value.applicantId
-          : applicantId // ignore: cast_nullable_to_non_nullable
+      receiptImageId: null == receiptImageId
+          ? _value.receiptImageId
+          : receiptImageId // ignore: cast_nullable_to_non_nullable
               as String,
       quest: null == quest
           ? _value.quest
@@ -166,10 +147,6 @@ class __$$ChallengeImplCopyWithImpl<$Res>
           ? _value.challengeStatus
           : challengeStatus // ignore: cast_nullable_to_non_nullable
               as String,
-      day: freezed == day
-          ? _value.day
-          : day // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -178,33 +155,30 @@ class __$$ChallengeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ChallengeImpl implements _Challenge {
   const _$ChallengeImpl(
-      {@JsonKey(name: 'questId') required this.id,
-      required this.url,
-      required this.applicantId,
-      required this.quest,
-      required this.challengeStatus,
-      required this.day});
+      {@JsonKey(name: 'challengeId') required this.challengeId,
+      @JsonKey(name: 'receiptImageId') required this.receiptImageId,
+      @JsonKey(name: 'questId') required this.quest,
+      @JsonKey(name: 'status') required this.challengeStatus});
 
   factory _$ChallengeImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChallengeImplFromJson(json);
 
   @override
+  @JsonKey(name: 'challengeId')
+  final String challengeId;
+  @override
+  @JsonKey(name: 'receiptImageId')
+  final String receiptImageId;
+  @override
   @JsonKey(name: 'questId')
-  final int id;
-  @override
-  final String url;
-  @override
-  final String applicantId;
-  @override
   final Quest quest;
   @override
+  @JsonKey(name: 'status')
   final String challengeStatus;
-  @override
-  final String? day;
 
   @override
   String toString() {
-    return 'Challenge(id: $id, url: $url, applicantId: $applicantId, quest: $quest, challengeStatus: $challengeStatus, day: $day)';
+    return 'Challenge(challengeId: $challengeId, receiptImageId: $receiptImageId, quest: $quest, challengeStatus: $challengeStatus)';
   }
 
   @override
@@ -212,20 +186,19 @@ class _$ChallengeImpl implements _Challenge {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChallengeImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.url, url) || other.url == url) &&
-            (identical(other.applicantId, applicantId) ||
-                other.applicantId == applicantId) &&
+            (identical(other.challengeId, challengeId) ||
+                other.challengeId == challengeId) &&
+            (identical(other.receiptImageId, receiptImageId) ||
+                other.receiptImageId == receiptImageId) &&
             (identical(other.quest, quest) || other.quest == quest) &&
             (identical(other.challengeStatus, challengeStatus) ||
-                other.challengeStatus == challengeStatus) &&
-            (identical(other.day, day) || other.day == day));
+                other.challengeStatus == challengeStatus));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, url, applicantId, quest, challengeStatus, day);
+      runtimeType, challengeId, receiptImageId, quest, challengeStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -243,29 +216,27 @@ class _$ChallengeImpl implements _Challenge {
 
 abstract class _Challenge implements Challenge {
   const factory _Challenge(
-      {@JsonKey(name: 'questId') required final int id,
-      required final String url,
-      required final String applicantId,
-      required final Quest quest,
-      required final String challengeStatus,
-      required final String? day}) = _$ChallengeImpl;
+          {@JsonKey(name: 'challengeId') required final String challengeId,
+          @JsonKey(name: 'receiptImageId') required final String receiptImageId,
+          @JsonKey(name: 'questId') required final Quest quest,
+          @JsonKey(name: 'status') required final String challengeStatus}) =
+      _$ChallengeImpl;
 
   factory _Challenge.fromJson(Map<String, dynamic> json) =
       _$ChallengeImpl.fromJson;
 
   @override
+  @JsonKey(name: 'challengeId')
+  String get challengeId;
+  @override
+  @JsonKey(name: 'receiptImageId')
+  String get receiptImageId;
+  @override
   @JsonKey(name: 'questId')
-  int get id;
-  @override
-  String get url;
-  @override
-  String get applicantId;
-  @override
   Quest get quest;
   @override
+  @JsonKey(name: 'status')
   String get challengeStatus;
-  @override
-  String? get day;
   @override
   @JsonKey(ignore: true)
   _$$ChallengeImplCopyWith<_$ChallengeImpl> get copyWith =>

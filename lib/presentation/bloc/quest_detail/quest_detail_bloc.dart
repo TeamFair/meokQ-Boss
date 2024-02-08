@@ -26,15 +26,16 @@ class QuestDetailBloc extends Bloc<QuestDetailEvent, QuestDetailState> {
     InitQuestDetailState event,
     Emitter<QuestDetailState> emit,
   ) async {
-    // TODO: /api/boss/{bossID}로 ticketAccount를 받아온다
-    int ticketAccount = 40;
+    final marketInfo = await _remote.getDetailMarket();
+
+    final ticketCount = marketInfo.ticketCount;
 
     final quest = await _remote.getQuest(questId: event.questId);
 
     emit(
       state.copyWith(
         quest: quest,
-        ticketAccount: ticketAccount,
+        ticketCount: ticketCount,
       ),
     );
   }

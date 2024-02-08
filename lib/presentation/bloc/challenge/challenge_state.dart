@@ -1,18 +1,23 @@
 part of 'challenge_bloc.dart';
 
-class ChallengeState extends Equatable {
-  final List<Challenge> challengeList;
+enum ChallengeStatus { init, failure, success }
 
-  const ChallengeState({required this.challengeList});
+class ChallengeState extends Equatable {
+  final List<ChallengeVO> challengeList;
+  final ChallengeStatus challengeStatus;
+
+  const ChallengeState({required this.challengeList, required this.challengeStatus});
 
   ChallengeState copyWith({
-    List<Challenge>? challengeList,
+    List<ChallengeVO>? challengeList,
+    ChallengeStatus? challengeStatus,
   }) {
     return ChallengeState(
       challengeList: challengeList ?? this.challengeList,
+      challengeStatus: challengeStatus ?? this.challengeStatus,
     );
   }
 
   @override
-  List<Object?> get props => [challengeList];
+  List<Object?> get props => [challengeList, challengeStatus];
 }

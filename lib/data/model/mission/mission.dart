@@ -9,7 +9,7 @@ class Mission with _$Mission {
     @JsonKey(name: 'content') String? content,
     @JsonKey(name: 'target', defaultValue: '') required String target,
     @JsonKey(name: 'quantity') int? quantity,
-    @JsonKey(name: 'type') required MissionType missionType,
+    @JsonKey(name: 'type') required String missionType,
   }) = _Mission;
 
   factory Mission.fromJson(Map<String, dynamic> json) =>

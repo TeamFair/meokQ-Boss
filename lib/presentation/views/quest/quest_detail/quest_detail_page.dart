@@ -93,14 +93,14 @@ class _QuestDetailPageState extends State<QuestDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          state.quest?.reward.content ?? '',
+                          state.quest?.rewards[0].content ?? '',
                           style: TextS.heading1(),
                         ),
                         const SizedBox(
                           height: 5,
                         ),
                         Text(
-                          state.quest?.mission.content ?? '',
+                          state.quest?.missions[0].content ?? '',
                           style: TextS.caption2(),
                         ),
                       ],
@@ -144,7 +144,7 @@ class _QuestDetailPageState extends State<QuestDetailPage> {
                           ),
                         ),
                         child: Text(
-                          '남은 이용권 ${state.ticketAccount}개',
+                          '남은 이용권 ${state.ticketCount}개',
                           textAlign: TextAlign.center,
                           style: TextS.badge01().copyWith(
                             color: ColorS.red,
@@ -225,7 +225,7 @@ class _QuestDetailPageState extends State<QuestDetailPage> {
                           GestureDetector(
                             onTap: () {
                               if (state.questPeriod <
-                                  (state.ticketAccount ?? 0)) {
+                                  (state.ticketCount ?? 0)) {
                                 context.read<QuestDetailBloc>().add(
                                       ChangeQuestPeriod(
                                         questPeriod: state.questPeriod + 1,

@@ -11,7 +11,7 @@ _$MissionImpl _$$MissionImplFromJson(Map<String, dynamic> json) =>
       content: json['content'] as String?,
       target: json['target'] as String? ?? '',
       quantity: json['quantity'] as int?,
-      missionType: $enumDecode(_$MissionTypeEnumMap, json['type']),
+      missionType: json['type'] as String,
     );
 
 Map<String, dynamic> _$$MissionImplToJson(_$MissionImpl instance) {
@@ -26,11 +26,6 @@ Map<String, dynamic> _$$MissionImplToJson(_$MissionImpl instance) {
   writeNotNull('content', instance.content);
   val['target'] = instance.target;
   writeNotNull('quantity', instance.quantity);
-  val['type'] = _$MissionTypeEnumMap[instance.missionType]!;
+  val['type'] = instance.missionType;
   return val;
 }
-
-const _$MissionTypeEnumMap = {
-  MissionType.free: 'free',
-  MissionType.basic: 'basic',
-};

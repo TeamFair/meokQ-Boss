@@ -27,8 +27,10 @@ class _QuestCheckPageState extends State<QuestCheckPage> {
     return Scaffold(
       body: BlocBuilder<QuestBloc, QuestState>(
         builder: (context, state) {
-          List<GetQuestVO> questList = state.questList
-              .where((element) => QuestStatus.stringToQuestStatus(element.questStatus).isChecking)
+          List<QuestListVO> questList = state.questList
+              .where((element) =>
+                  QuestStatus.stringToQuestStatus(element.questStatus)
+                      .isChecking,)
               .toList();
           return Padding(
             padding: const EdgeInsets.only(top: 15),
@@ -44,7 +46,8 @@ class _QuestCheckPageState extends State<QuestCheckPage> {
                         onTap: () {
                           Navigator.of(context).pushNamed(
                             QuestDetailPage.id,
-                            arguments: QuestDetailArgument(questId: quest.questId),
+                            arguments:
+                                QuestDetailArgument(questId: quest.questId),
                           );
                         },
                         child: QuestBox(quest: quest),

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
-import 'package:meokq_boss/data/model/challenge/challenge.dart';
+import 'package:meokq_boss/data/vo/challenge/challenge_vo.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
 class ChallengeBox extends StatelessWidget {
   const ChallengeBox({super.key, required this.challenge});
 
-  final Challenge challenge;
+  final ChallengeVO challenge;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +34,14 @@ class ChallengeBox extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        challenge.quest.reward.content,
+                        challenge.quest.rewards[0].content ?? '',
                         style: TextS.heading1(),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
                       Text(
-                        challenge.quest.mission.content ?? '',
+                        challenge.quest.missions[0].content ?? '',
                         style: TextS.caption2(),
                       ),
                     ],
@@ -88,10 +88,4 @@ class ChallengeBox extends StatelessWidget {
       ),
     );
   }
-
-  Color textColor(ChallengeStatus challengeStatus) => switch (challengeStatus) {
-        ChallengeStatus.approved => ColorS.gray400,
-        ChallengeStatus.rejected => ColorS.blue,
-        ChallengeStatus.underReview => ColorS.red,
-      };
 }

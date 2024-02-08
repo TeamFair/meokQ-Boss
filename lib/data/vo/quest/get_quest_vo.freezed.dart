@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-GetQuestVO _$GetQuestVOFromJson(Map<String, dynamic> json) {
-  return _GetQuestVO.fromJson(json);
+QuestListVO _$QuestListVOFromJson(Map<String, dynamic> json) {
+  return _QuestListVO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$GetQuestVO {
+mixin _$QuestListVO {
   @JsonKey(name: 'questId')
   String get questId => throw _privateConstructorUsedError;
   @JsonKey(name: 'rewardTitle')
@@ -31,15 +31,15 @@ mixin _$GetQuestVO {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetQuestVOCopyWith<GetQuestVO> get copyWith =>
+  $QuestListVOCopyWith<QuestListVO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GetQuestVOCopyWith<$Res> {
-  factory $GetQuestVOCopyWith(
-          GetQuestVO value, $Res Function(GetQuestVO) then) =
-      _$GetQuestVOCopyWithImpl<$Res, GetQuestVO>;
+abstract class $QuestListVOCopyWith<$Res> {
+  factory $QuestListVOCopyWith(
+          QuestListVO value, $Res Function(QuestListVO) then) =
+      _$QuestListVOCopyWithImpl<$Res, QuestListVO>;
   @useResult
   $Res call(
       {@JsonKey(name: 'questId') String questId,
@@ -49,9 +49,9 @@ abstract class $GetQuestVOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GetQuestVOCopyWithImpl<$Res, $Val extends GetQuestVO>
-    implements $GetQuestVOCopyWith<$Res> {
-  _$GetQuestVOCopyWithImpl(this._value, this._then);
+class _$QuestListVOCopyWithImpl<$Res, $Val extends QuestListVO>
+    implements $QuestListVOCopyWith<$Res> {
+  _$QuestListVOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -88,11 +88,11 @@ class _$GetQuestVOCopyWithImpl<$Res, $Val extends GetQuestVO>
 }
 
 /// @nodoc
-abstract class _$$GetQuestVOImplCopyWith<$Res>
-    implements $GetQuestVOCopyWith<$Res> {
-  factory _$$GetQuestVOImplCopyWith(
-          _$GetQuestVOImpl value, $Res Function(_$GetQuestVOImpl) then) =
-      __$$GetQuestVOImplCopyWithImpl<$Res>;
+abstract class _$$QuestListVOImplCopyWith<$Res>
+    implements $QuestListVOCopyWith<$Res> {
+  factory _$$QuestListVOImplCopyWith(
+          _$QuestListVOImpl value, $Res Function(_$QuestListVOImpl) then) =
+      __$$QuestListVOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,11 +103,11 @@ abstract class _$$GetQuestVOImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$GetQuestVOImplCopyWithImpl<$Res>
-    extends _$GetQuestVOCopyWithImpl<$Res, _$GetQuestVOImpl>
-    implements _$$GetQuestVOImplCopyWith<$Res> {
-  __$$GetQuestVOImplCopyWithImpl(
-      _$GetQuestVOImpl _value, $Res Function(_$GetQuestVOImpl) _then)
+class __$$QuestListVOImplCopyWithImpl<$Res>
+    extends _$QuestListVOCopyWithImpl<$Res, _$QuestListVOImpl>
+    implements _$$QuestListVOImplCopyWith<$Res> {
+  __$$QuestListVOImplCopyWithImpl(
+      _$QuestListVOImpl _value, $Res Function(_$QuestListVOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$GetQuestVOImplCopyWithImpl<$Res>
     Object? missionTitle = null,
     Object? questStatus = null,
   }) {
-    return _then(_$GetQuestVOImpl(
+    return _then(_$QuestListVOImpl(
       questId: null == questId
           ? _value.questId
           : questId // ignore: cast_nullable_to_non_nullable
@@ -141,15 +141,15 @@ class __$$GetQuestVOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetQuestVOImpl implements _GetQuestVO {
-  const _$GetQuestVOImpl(
+class _$QuestListVOImpl implements _QuestListVO {
+  const _$QuestListVOImpl(
       {@JsonKey(name: 'questId') required this.questId,
       @JsonKey(name: 'rewardTitle') required this.rewardTitle,
       @JsonKey(name: 'missionTitle') required this.missionTitle,
       @JsonKey(name: 'status') required this.questStatus});
 
-  factory _$GetQuestVOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetQuestVOImplFromJson(json);
+  factory _$QuestListVOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QuestListVOImplFromJson(json);
 
   @override
   @JsonKey(name: 'questId')
@@ -166,14 +166,14 @@ class _$GetQuestVOImpl implements _GetQuestVO {
 
   @override
   String toString() {
-    return 'GetQuestVO(questId: $questId, rewardTitle: $rewardTitle, missionTitle: $missionTitle, questStatus: $questStatus)';
+    return 'QuestListVO(questId: $questId, rewardTitle: $rewardTitle, missionTitle: $missionTitle, questStatus: $questStatus)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetQuestVOImpl &&
+            other is _$QuestListVOImpl &&
             (identical(other.questId, questId) || other.questId == questId) &&
             (identical(other.rewardTitle, rewardTitle) ||
                 other.rewardTitle == rewardTitle) &&
@@ -191,27 +191,27 @@ class _$GetQuestVOImpl implements _GetQuestVO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetQuestVOImplCopyWith<_$GetQuestVOImpl> get copyWith =>
-      __$$GetQuestVOImplCopyWithImpl<_$GetQuestVOImpl>(this, _$identity);
+  _$$QuestListVOImplCopyWith<_$QuestListVOImpl> get copyWith =>
+      __$$QuestListVOImplCopyWithImpl<_$QuestListVOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetQuestVOImplToJson(
+    return _$$QuestListVOImplToJson(
       this,
     );
   }
 }
 
-abstract class _GetQuestVO implements GetQuestVO {
-  const factory _GetQuestVO(
+abstract class _QuestListVO implements QuestListVO {
+  const factory _QuestListVO(
           {@JsonKey(name: 'questId') required final String questId,
           @JsonKey(name: 'rewardTitle') required final String rewardTitle,
           @JsonKey(name: 'missionTitle') required final String missionTitle,
           @JsonKey(name: 'status') required final String questStatus}) =
-      _$GetQuestVOImpl;
+      _$QuestListVOImpl;
 
-  factory _GetQuestVO.fromJson(Map<String, dynamic> json) =
-      _$GetQuestVOImpl.fromJson;
+  factory _QuestListVO.fromJson(Map<String, dynamic> json) =
+      _$QuestListVOImpl.fromJson;
 
   @override
   @JsonKey(name: 'questId')
@@ -227,6 +227,6 @@ abstract class _GetQuestVO implements GetQuestVO {
   String get questStatus;
   @override
   @JsonKey(ignore: true)
-  _$$GetQuestVOImplCopyWith<_$GetQuestVOImpl> get copyWith =>
+  _$$QuestListVOImplCopyWith<_$QuestListVOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

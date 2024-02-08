@@ -7,11 +7,11 @@ part 'reward.g.dart';
 class Reward with _$Reward {
 
   const factory Reward({
-    @JsonKey(name: 'content', defaultValue: '') required String content,
+    @JsonKey(name: 'content') String? content,
     @JsonKey(name: 'target', defaultValue: '') required String target,
     @JsonKey(name: 'type', defaultValue: '') required String rewardTypeStr,
-    @JsonKey(name: 'quantity', defaultValue: 0) required int? quantity,
-    @JsonKey(name: 'discountRate', defaultValue: 0) required int? discountRate,
+    @JsonKey(name: 'quantity') int? quantity,
+    @JsonKey(name: 'discountRate') int? discountRate,
   }) = _Reward;
 
   factory Reward.fromJson(Map<String, dynamic> json) =>

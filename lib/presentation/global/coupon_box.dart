@@ -38,7 +38,7 @@ class CouponBox extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        coupon.reward.content,
+                        coupon.reward.content ?? '',
                         style: TextS.heading1(),
                       ),
                       const SizedBox(

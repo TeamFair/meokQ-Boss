@@ -11,3 +11,5 @@ class TapAgreement extends SettingEvent {
 }
 
 class TapLogoutButton extends SettingEvent {}
+
+class TapWithdrawButton extends SettingEvent {}

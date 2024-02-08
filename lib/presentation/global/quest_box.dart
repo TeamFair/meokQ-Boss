@@ -6,7 +6,7 @@ import 'package:meokq_boss/data/vo/quest/get_quest_vo.dart';
 class QuestBox extends StatelessWidget {
   const QuestBox({super.key, required this.quest});
 
-  final GetQuestVO quest;
+  final QuestListVO quest;
 
   @override
   Widget build(BuildContext context) {

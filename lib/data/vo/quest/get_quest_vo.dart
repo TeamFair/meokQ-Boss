@@ -12,10 +12,10 @@ enum QuestStatus {
   open;
 
   factory QuestStatus.stringToQuestStatus(String string) => switch (string) {
-    'OPEN' => QuestStatus.open,
-    'UNDER_REVIEW' => QuestStatus.review,
-    _ => QuestStatus.checking,
-  };
+        'OPEN' => QuestStatus.open,
+        'UNDER_REVIEW' => QuestStatus.review,
+        _ => QuestStatus.checking,
+      };
 
   String get text => switch (this) {
         QuestStatus.open => '게시중',
@@ -41,15 +41,14 @@ enum QuestStatus {
 }
 
 @freezed
-class GetQuestVO with _$GetQuestVO {
-
-  const factory GetQuestVO({
+class QuestListVO with _$QuestListVO {
+  const factory QuestListVO({
     @JsonKey(name: 'questId') required String questId,
     @JsonKey(name: 'rewardTitle') required String rewardTitle,
     @JsonKey(name: 'missionTitle') required String missionTitle,
     @JsonKey(name: 'status') required String questStatus,
-  }) = _GetQuestVO;
+  }) = _QuestListVO;
 
-  factory GetQuestVO.fromJson(Map<String, dynamic> json) =>
-      _$GetQuestVOFromJson(json);
+  factory QuestListVO.fromJson(Map<String, dynamic> json) =>
+      _$QuestListVOFromJson(json);
 }

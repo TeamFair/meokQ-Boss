@@ -9,8 +9,8 @@ part 'quest.g.dart';
 class Quest with _$Quest {
   const factory Quest({
     @JsonKey(name: 'questId') required int id,
-    @JsonKey(name: 'rewards') required Reward reward,
-    @JsonKey(name: 'missions') required Mission mission,
+    @JsonKey(name: 'rewards') required List<Reward> rewards,
+    @JsonKey(name: 'missions') required List<Mission> missions,
   }) = _Quest;
 
   factory Quest.fromJson(Map<String, dynamic> json) => _$QuestFromJson(json);

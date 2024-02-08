@@ -22,26 +22,32 @@ enum Agreement {
   }
 }
 
+enum UserState { login, logout, withdraw }
+
 class SettingState extends Equatable {
   final bool collectionAgreement;
   final bool emailAgreement;
   final bool smsAgreement;
+  final UserState userState;
 
   const SettingState({
     required this.collectionAgreement,
     required this.emailAgreement,
     required this.smsAgreement,
+    required this.userState,
   });
 
   SettingState copyWith({
     bool? collectionAgreement,
     bool? emailAgreement,
     bool? smsAgreement,
+    UserState? userState,
   }) {
     return SettingState(
       collectionAgreement: collectionAgreement ?? this.collectionAgreement,
       emailAgreement: emailAgreement ?? this.emailAgreement,
       smsAgreement: smsAgreement ?? this.smsAgreement,
+      userState: userState ?? this.userState,
     );
   }
 
@@ -50,5 +56,6 @@ class SettingState extends Equatable {
         collectionAgreement,
         emailAgreement,
         smsAgreement,
+        userState,
       ];
 }

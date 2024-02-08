@@ -10,6 +10,7 @@ class ChallengeVO with _$ChallengeVO {
   const factory ChallengeVO({
     @JsonKey(name: 'challengeId', defaultValue: '') required String challengeId,
     @JsonKey(name: 'quest') required Quest quest,
+    @JsonKey(name: 'receiptImageId') required String receiptImageId,
   }) = _ChallengeVO;
 
   factory ChallengeVO.fromJson(Map<String, dynamic> json) =>

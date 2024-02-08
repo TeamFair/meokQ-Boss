@@ -42,33 +42,50 @@ class _ChallengePageState extends State<ChallengePage> {
           ),
         ],
       ),
-      body: BlocBuilder<ChallengeBloc, ChallengeState>(
-        builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 15),
-            child: state.challengeList.isNotEmpty
-                ? ListView.separated(
-                    itemCount: state.challengeList.length,
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: 12,
-                    ),
-                    itemBuilder: (context, index) {
-                      final challenge = state.challengeList[index];
-                      return GestureDetector(
-                        onTap: () {},
-                        child: ChallengeBox(challenge: challenge),
-                      );
-                    },
-                  )
-                : Center(
-                    child: Text(
-                      '승인할 도전이 없습니다',
-                      style:
-                          TextS.content().copyWith(color: ColorS.contentGray),
-                    ),
-                  ),
-          );
+      body: BlocListener<ChallengeBloc, ChallengeState>(
+        listener: (context, state) {
+          switch (state.challengeStatus) {
+            case ChallengeStatus.failure:
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('도전 목록을 불러오지 못했습니다')),
+              );
+              break;
+            case ChallengeStatus.init:
+            case ChallengeStatus.success:
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('도전 목록을 불러왔습니다')),
+              );
+              break;
+          }
         },
+        child: BlocBuilder<ChallengeBloc, ChallengeState>(
+          builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: state.challengeList.isNotEmpty
+                  ? ListView.separated(
+                      itemCount: state.challengeList.length,
+                      separatorBuilder: (context, index) => const SizedBox(
+                        height: 12,
+                      ),
+                      itemBuilder: (context, index) {
+                        final challenge = state.challengeList[index];
+                        return GestureDetector(
+                          onTap: () {},
+                          child: ChallengeBox(challenge: challenge),
+                        );
+                      },
+                    )
+                  : Center(
+                      child: Text(
+                        '승인할 도전이 없습니다',
+                        style:
+                            TextS.content().copyWith(color: ColorS.contentGray),
+                      ),
+                    ),
+            );
+          },
+        ),
       ),
     );
   }

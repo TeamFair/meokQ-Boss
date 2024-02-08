@@ -23,9 +23,9 @@ mixin _$Quest {
   @JsonKey(name: 'questId')
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'rewards')
-  Reward get reward => throw _privateConstructorUsedError;
+  List<Reward> get rewards => throw _privateConstructorUsedError;
   @JsonKey(name: 'missions')
-  Mission get mission => throw _privateConstructorUsedError;
+  List<Mission> get missions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,11 +39,8 @@ abstract class $QuestCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'questId') int id,
-      @JsonKey(name: 'rewards') Reward reward,
-      @JsonKey(name: 'missions') Mission mission});
-
-  $RewardCopyWith<$Res> get reward;
-  $MissionCopyWith<$Res> get mission;
+      @JsonKey(name: 'rewards') List<Reward> rewards,
+      @JsonKey(name: 'missions') List<Mission> missions});
 }
 
 /// @nodoc
@@ -60,39 +57,23 @@ class _$QuestCopyWithImpl<$Res, $Val extends Quest>
   @override
   $Res call({
     Object? id = null,
-    Object? reward = null,
-    Object? mission = null,
+    Object? rewards = null,
+    Object? missions = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      reward: null == reward
-          ? _value.reward
-          : reward // ignore: cast_nullable_to_non_nullable
-              as Reward,
-      mission: null == mission
-          ? _value.mission
-          : mission // ignore: cast_nullable_to_non_nullable
-              as Mission,
+      rewards: null == rewards
+          ? _value.rewards
+          : rewards // ignore: cast_nullable_to_non_nullable
+              as List<Reward>,
+      missions: null == missions
+          ? _value.missions
+          : missions // ignore: cast_nullable_to_non_nullable
+              as List<Mission>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RewardCopyWith<$Res> get reward {
-    return $RewardCopyWith<$Res>(_value.reward, (value) {
-      return _then(_value.copyWith(reward: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MissionCopyWith<$Res> get mission {
-    return $MissionCopyWith<$Res>(_value.mission, (value) {
-      return _then(_value.copyWith(mission: value) as $Val);
-    });
   }
 }
 
@@ -105,13 +86,8 @@ abstract class _$$QuestImplCopyWith<$Res> implements $QuestCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'questId') int id,
-      @JsonKey(name: 'rewards') Reward reward,
-      @JsonKey(name: 'missions') Mission mission});
-
-  @override
-  $RewardCopyWith<$Res> get reward;
-  @override
-  $MissionCopyWith<$Res> get mission;
+      @JsonKey(name: 'rewards') List<Reward> rewards,
+      @JsonKey(name: 'missions') List<Mission> missions});
 }
 
 /// @nodoc
@@ -126,22 +102,22 @@ class __$$QuestImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? reward = null,
-    Object? mission = null,
+    Object? rewards = null,
+    Object? missions = null,
   }) {
     return _then(_$QuestImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      reward: null == reward
-          ? _value.reward
-          : reward // ignore: cast_nullable_to_non_nullable
-              as Reward,
-      mission: null == mission
-          ? _value.mission
-          : mission // ignore: cast_nullable_to_non_nullable
-              as Mission,
+      rewards: null == rewards
+          ? _value._rewards
+          : rewards // ignore: cast_nullable_to_non_nullable
+              as List<Reward>,
+      missions: null == missions
+          ? _value._missions
+          : missions // ignore: cast_nullable_to_non_nullable
+              as List<Mission>,
     ));
   }
 }
@@ -151,8 +127,10 @@ class __$$QuestImplCopyWithImpl<$Res>
 class _$QuestImpl implements _Quest {
   const _$QuestImpl(
       {@JsonKey(name: 'questId') required this.id,
-      @JsonKey(name: 'rewards') required this.reward,
-      @JsonKey(name: 'missions') required this.mission});
+      @JsonKey(name: 'rewards') required final List<Reward> rewards,
+      @JsonKey(name: 'missions') required final List<Mission> missions})
+      : _rewards = rewards,
+        _missions = missions;
 
   factory _$QuestImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuestImplFromJson(json);
@@ -160,16 +138,27 @@ class _$QuestImpl implements _Quest {
   @override
   @JsonKey(name: 'questId')
   final int id;
+  final List<Reward> _rewards;
   @override
   @JsonKey(name: 'rewards')
-  final Reward reward;
+  List<Reward> get rewards {
+    if (_rewards is EqualUnmodifiableListView) return _rewards;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_rewards);
+  }
+
+  final List<Mission> _missions;
   @override
   @JsonKey(name: 'missions')
-  final Mission mission;
+  List<Mission> get missions {
+    if (_missions is EqualUnmodifiableListView) return _missions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_missions);
+  }
 
   @override
   String toString() {
-    return 'Quest(id: $id, reward: $reward, mission: $mission)';
+    return 'Quest(id: $id, rewards: $rewards, missions: $missions)';
   }
 
   @override
@@ -178,13 +167,17 @@ class _$QuestImpl implements _Quest {
         (other.runtimeType == runtimeType &&
             other is _$QuestImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.reward, reward) || other.reward == reward) &&
-            (identical(other.mission, mission) || other.mission == mission));
+            const DeepCollectionEquality().equals(other._rewards, _rewards) &&
+            const DeepCollectionEquality().equals(other._missions, _missions));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, reward, mission);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      const DeepCollectionEquality().hash(_rewards),
+      const DeepCollectionEquality().hash(_missions));
 
   @JsonKey(ignore: true)
   @override
@@ -202,9 +195,10 @@ class _$QuestImpl implements _Quest {
 
 abstract class _Quest implements Quest {
   const factory _Quest(
-      {@JsonKey(name: 'questId') required final int id,
-      @JsonKey(name: 'rewards') required final Reward reward,
-      @JsonKey(name: 'missions') required final Mission mission}) = _$QuestImpl;
+          {@JsonKey(name: 'questId') required final int id,
+          @JsonKey(name: 'rewards') required final List<Reward> rewards,
+          @JsonKey(name: 'missions') required final List<Mission> missions}) =
+      _$QuestImpl;
 
   factory _Quest.fromJson(Map<String, dynamic> json) = _$QuestImpl.fromJson;
 
@@ -213,10 +207,10 @@ abstract class _Quest implements Quest {
   int get id;
   @override
   @JsonKey(name: 'rewards')
-  Reward get reward;
+  List<Reward> get rewards;
   @override
   @JsonKey(name: 'missions')
-  Mission get mission;
+  List<Mission> get missions;
   @override
   @JsonKey(ignore: true)
   _$$QuestImplCopyWith<_$QuestImpl> get copyWith =>

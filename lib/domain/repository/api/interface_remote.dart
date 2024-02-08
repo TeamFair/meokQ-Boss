@@ -42,10 +42,7 @@ abstract class InterfaceRemote {
 
   Future<void> postChallenge({required Map<String, dynamic> challengeDTO});
 
-  Future<List<ChallengeVO>> getChallenge({
-    required String marketId,
-    String? status,
-  });
+  Future<List<ChallengeVO>> getChallenges();
 
   Future<void> publishQuest({required PublishQuestDTO publishQuestDTO});
 
@@ -53,7 +50,7 @@ abstract class InterfaceRemote {
 
   Future<void> postQuest({required Map<String, dynamic> dto});
 
-  Future<List<GetQuestVO>> getQuests({required String marketId});
+  Future<List<QuestListVO>> getQuests({required String marketId});
 
   Future<Quest> getQuest({required String questId});
 

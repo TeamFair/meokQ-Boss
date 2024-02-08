@@ -184,11 +184,16 @@ class RemoteRepository extends InterfaceRemote {
   }
 
   @override
-  Future<List<ChallengeVO>> getChallenge({
-    required String marketId,
-    String? status,
-  }) async {
-    final res = await api.getChallenge(marketId: marketId, status: status);
+  Future<List<ChallengeVO>> getChallenges() async {
+    assert(
+      localRepositroy.getKey(LocalStringKey.marketId) != null,
+      '마켓 id가 없습니다',
+    );
+
+    final res = await api.getChallenge(
+      marketId: localRepositroy.getKey(LocalStringKey.marketId) ?? '',
+      status: 'UNDER_REVIEW',
+    );
 
     List<ChallengeVO> challengeList = [];
     res.data.forEach((element) {
@@ -244,13 +249,13 @@ class RemoteRepository extends InterfaceRemote {
   }
 
   @override
-  Future<List<GetQuestVO>> getQuests({required String marketId}) async {
+  Future<List<QuestListVO>> getQuests({required String marketId}) async {
     final res = await api.quests(marketId: marketId);
 
-    List<GetQuestVO> questList = [];
+    List<QuestListVO> questList = [];
     res.data.forEach((element) {
       questList.add(
-        GetQuestVO.fromJson(element),
+        QuestListVO.fromJson(element),
       );
     });
 
@@ -290,6 +295,11 @@ class RemoteRepository extends InterfaceRemote {
 
   @override
   Future<List<Coupon>> getCoupons({required String status}) async {
+    assert(
+      localRepositroy.getKey(LocalStringKey.marketId) != null,
+      '마켓 id가 없습니다',
+    );
+
     final res = await api.getCoupons(
       status: status,
       marketId: localRepositroy.getKey(LocalStringKey.marketId) ?? '',

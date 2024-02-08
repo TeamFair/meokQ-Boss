@@ -27,7 +27,7 @@ mixin _$Mission {
   @JsonKey(name: 'quantity')
   int? get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'type')
-  MissionType get missionType => throw _privateConstructorUsedError;
+  String get missionType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +43,7 @@ abstract class $MissionCopyWith<$Res> {
       {@JsonKey(name: 'content') String? content,
       @JsonKey(name: 'target', defaultValue: '') String target,
       @JsonKey(name: 'quantity') int? quantity,
-      @JsonKey(name: 'type') MissionType missionType});
+      @JsonKey(name: 'type') String missionType});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$MissionCopyWithImpl<$Res, $Val extends Mission>
       missionType: null == missionType
           ? _value.missionType
           : missionType // ignore: cast_nullable_to_non_nullable
-              as MissionType,
+              as String,
     ) as $Val);
   }
 }
@@ -96,7 +96,7 @@ abstract class _$$MissionImplCopyWith<$Res> implements $MissionCopyWith<$Res> {
       {@JsonKey(name: 'content') String? content,
       @JsonKey(name: 'target', defaultValue: '') String target,
       @JsonKey(name: 'quantity') int? quantity,
-      @JsonKey(name: 'type') MissionType missionType});
+      @JsonKey(name: 'type') String missionType});
 }
 
 /// @nodoc
@@ -131,7 +131,7 @@ class __$$MissionImplCopyWithImpl<$Res>
       missionType: null == missionType
           ? _value.missionType
           : missionType // ignore: cast_nullable_to_non_nullable
-              as MissionType,
+              as String,
     ));
   }
 }
@@ -159,7 +159,7 @@ class _$MissionImpl implements _Mission {
   final int? quantity;
   @override
   @JsonKey(name: 'type')
-  final MissionType missionType;
+  final String missionType;
 
   @override
   String toString() {
@@ -204,7 +204,7 @@ abstract class _Mission implements Mission {
       @JsonKey(name: 'target', defaultValue: '') required final String target,
       @JsonKey(name: 'quantity') final int? quantity,
       @JsonKey(name: 'type')
-      required final MissionType missionType}) = _$MissionImpl;
+      required final String missionType}) = _$MissionImpl;
 
   factory _Mission.fromJson(Map<String, dynamic> json) = _$MissionImpl.fromJson;
 
@@ -219,7 +219,7 @@ abstract class _Mission implements Mission {
   int? get quantity;
   @override
   @JsonKey(name: 'type')
-  MissionType get missionType;
+  String get missionType;
   @override
   @JsonKey(ignore: true)
   _$$MissionImplCopyWith<_$MissionImpl> get copyWith =>

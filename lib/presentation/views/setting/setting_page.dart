@@ -29,69 +29,101 @@ class _SettingPageState extends State<SettingPage> {
         automaticallyImplyLeading: true,
         centerTitle: true,
       ),
-      body: BlocBuilder<SettingBloc, SettingState>(
-        builder: (context, state) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 16, 0, 7),
-                child: Text(
-                  '서비스 동의',
-                  style: TextS.caption1().copyWith(
-                    color: ColorS.applyGray,
-                  ),
-                ),
-              ),
-              SettingAgreementContainer(
-                agreement: Agreement.collection,
-                value: state.collectionAgreement,
-              ),
-              const SizedBox(
-                height: 1,
-              ),
-              SettingAgreementContainer(
-                agreement: Agreement.email,
-                value: state.emailAgreement,
-              ),
-              const SizedBox(
-                height: 1,
-              ),
-              SettingAgreementContainer(
-                agreement: Agreement.sms,
-                value: state.smsAgreement,
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 18, 0, 7),
-                child: Text(
-                  '계정',
-                  style: TextS.caption1().copyWith(
-                    color: ColorS.applyGray,
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  context.read<SettingBloc>().add(TapLogoutButton());
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(LoginPage.id, (route) => false);
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  height: 74,
-                  width: double.infinity,
-                  color: Colors.white,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    '로그아웃',
-                    style: TextS.subtitle2(),
-                  ),
-                ),
-              ),
-            ],
-          );
+      body: BlocListener<SettingBloc, SettingState>(
+        listener: (context, state) {
+          switch (state.userState) {
+            case UserState.login:
+              break;
+            case UserState.logout:
+            case UserState.withdraw:
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                LoginPage.id,
+                (route) => false,
+              );
+          }
         },
+        child: BlocBuilder<SettingBloc, SettingState>(
+          builder: (context, state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 16, 0, 7),
+                  child: Text(
+                    '서비스 동의',
+                    style: TextS.caption1().copyWith(
+                      color: ColorS.applyGray,
+                    ),
+                  ),
+                ),
+                SettingAgreementContainer(
+                  agreement: Agreement.collection,
+                  value: state.collectionAgreement,
+                ),
+                const SizedBox(
+                  height: 1,
+                ),
+                SettingAgreementContainer(
+                  agreement: Agreement.email,
+                  value: state.emailAgreement,
+                ),
+                const SizedBox(
+                  height: 1,
+                ),
+                SettingAgreementContainer(
+                  agreement: Agreement.sms,
+                  value: state.smsAgreement,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 18, 0, 7),
+                  child: Text(
+                    '계정',
+                    style: TextS.caption1().copyWith(
+                      color: ColorS.applyGray,
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    context.read<SettingBloc>().add(TapLogoutButton());
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    height: 64,
+                    width: double.infinity,
+                    color: Colors.white,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '로그아웃',
+                      style: TextS.subtitle2(),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 1,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    context.read<SettingBloc>().add(TapLogoutButton());
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    height: 64,
+                    width: double.infinity,
+                    color: Colors.white,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '회원탈퇴',
+                      style: TextS.subtitle2().copyWith(color: ColorS.red),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -118,7 +150,7 @@ class SettingAgreementContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            height: 40,
+            height: 43,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,

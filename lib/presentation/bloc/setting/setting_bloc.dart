@@ -1,5 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meokq_boss/core/injector/injector.dart';
+import 'package:meokq_boss/data/dto/agreement/agreement_dto.dart';
+import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
+import 'package:meokq_boss/presentation/bloc/agreement_permission/agreement_permission_bloc.dart';
 
 part 'setting_event.dart';
 part 'setting_state.dart';
@@ -11,22 +15,33 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
             collectionAgreement: false,
             emailAgreement: false,
             smsAgreement: false,
+            userState: UserState.login,
           ),
         ) {
     on<TapAgreement>(_tapAgreement);
     on<InitState>(_initState);
     on<TapLogoutButton>(_tapLogoutButton);
+    on<TapWithdrawButton>(_tapWithdrawButton);
   }
+
+  final _remote = getIt<InterfaceRemote>();
 
   Future<void> _initState(
     InitState event,
     Emitter<SettingState> emit,
   ) async {
+    final collectionAgreement =
+        await _remote.getAgreement(agreementType: Consent.collection.apiText);
+    final emailAgreement =
+        await _remote.getAgreement(agreementType: Consent.collection.apiText);
+    final smsAgreement =
+        await _remote.getAgreement(agreementType: Consent.collection.apiText);
+
     emit(
       state.copyWith(
-        collectionAgreement: true,
-        emailAgreement: true,
-        smsAgreement: false,
+        collectionAgreement: collectionAgreement,
+        emailAgreement: emailAgreement,
+        smsAgreement: smsAgreement,
       ),
     );
   }
@@ -37,21 +52,45 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
   ) async {
     switch (event.agreement) {
       case Agreement.collection:
-        // TODO : collection 버튼 on/off api 호출
+        await _remote.postAgreement(
+          agreementList: [
+            AgreementDTO(
+              version: 0,
+              agreementType: Consent.collection.apiText,
+              acceptYn: !state.collectionAgreement == true ? 'Y' : 'N',
+            ),
+          ],
+        );
         emit(
           state.copyWith(
             collectionAgreement: !state.collectionAgreement,
           ),
         );
       case Agreement.email:
-        // TODO : email 버튼 on/off api 호출
+        await _remote.postAgreement(
+          agreementList: [
+            AgreementDTO(
+              version: 0,
+              agreementType: Consent.collection.apiText,
+              acceptYn: !state.collectionAgreement == true ? 'Y' : 'N',
+            ),
+          ],
+        );
         emit(
           state.copyWith(
             emailAgreement: !state.emailAgreement,
           ),
         );
       case Agreement.sms:
-        // TODO : sms 버튼 on/off api 호출
+        await _remote.postAgreement(
+          agreementList: [
+            AgreementDTO(
+              version: 0,
+              agreementType: Consent.collection.apiText,
+              acceptYn: !state.collectionAgreement == true ? 'Y' : 'N',
+            ),
+          ],
+        );
         emit(
           state.copyWith(
             smsAgreement: !state.smsAgreement,
@@ -64,6 +103,23 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     TapLogoutButton event,
     Emitter<SettingState> emit,
   ) async {
-    // TODO: logout api
+    await _remote.logout();
+    emit(
+      state.copyWith(
+        userState: UserState.logout,
+      ),
+    );
+  }
+
+  Future<void> _tapWithdrawButton(
+    TapWithdrawButton event,
+    Emitter<SettingState> emit,
+  ) async {
+    await _remote.withdraw();
+    emit(
+      state.copyWith(
+        userState: UserState.withdraw,
+      ),
+    );
   }
 }

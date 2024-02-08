@@ -28,6 +28,8 @@ mixin _$Mission {
   int? get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'type')
   String get missionType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'title')
+  String? get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +45,8 @@ abstract class $MissionCopyWith<$Res> {
       {@JsonKey(name: 'content') String? content,
       @JsonKey(name: 'target', defaultValue: '') String target,
       @JsonKey(name: 'quantity') int? quantity,
-      @JsonKey(name: 'type') String missionType});
+      @JsonKey(name: 'type') String missionType,
+      @JsonKey(name: 'title') String? title});
 }
 
 /// @nodoc
@@ -63,6 +66,7 @@ class _$MissionCopyWithImpl<$Res, $Val extends Mission>
     Object? target = null,
     Object? quantity = freezed,
     Object? missionType = null,
+    Object? title = freezed,
   }) {
     return _then(_value.copyWith(
       content: freezed == content
@@ -81,6 +85,10 @@ class _$MissionCopyWithImpl<$Res, $Val extends Mission>
           ? _value.missionType
           : missionType // ignore: cast_nullable_to_non_nullable
               as String,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -96,7 +104,8 @@ abstract class _$$MissionImplCopyWith<$Res> implements $MissionCopyWith<$Res> {
       {@JsonKey(name: 'content') String? content,
       @JsonKey(name: 'target', defaultValue: '') String target,
       @JsonKey(name: 'quantity') int? quantity,
-      @JsonKey(name: 'type') String missionType});
+      @JsonKey(name: 'type') String missionType,
+      @JsonKey(name: 'title') String? title});
 }
 
 /// @nodoc
@@ -114,6 +123,7 @@ class __$$MissionImplCopyWithImpl<$Res>
     Object? target = null,
     Object? quantity = freezed,
     Object? missionType = null,
+    Object? title = freezed,
   }) {
     return _then(_$MissionImpl(
       content: freezed == content
@@ -132,6 +142,10 @@ class __$$MissionImplCopyWithImpl<$Res>
           ? _value.missionType
           : missionType // ignore: cast_nullable_to_non_nullable
               as String,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -143,7 +157,8 @@ class _$MissionImpl implements _Mission {
       {@JsonKey(name: 'content') this.content,
       @JsonKey(name: 'target', defaultValue: '') required this.target,
       @JsonKey(name: 'quantity') this.quantity,
-      @JsonKey(name: 'type') required this.missionType});
+      @JsonKey(name: 'type') required this.missionType,
+      @JsonKey(name: 'title') this.title});
 
   factory _$MissionImpl.fromJson(Map<String, dynamic> json) =>
       _$$MissionImplFromJson(json);
@@ -160,10 +175,13 @@ class _$MissionImpl implements _Mission {
   @override
   @JsonKey(name: 'type')
   final String missionType;
+  @override
+  @JsonKey(name: 'title')
+  final String? title;
 
   @override
   String toString() {
-    return 'Mission(content: $content, target: $target, quantity: $quantity, missionType: $missionType)';
+    return 'Mission(content: $content, target: $target, quantity: $quantity, missionType: $missionType, title: $title)';
   }
 
   @override
@@ -176,13 +194,14 @@ class _$MissionImpl implements _Mission {
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.missionType, missionType) ||
-                other.missionType == missionType));
+                other.missionType == missionType) &&
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, content, target, quantity, missionType);
+      Object.hash(runtimeType, content, target, quantity, missionType, title);
 
   @JsonKey(ignore: true)
   @override
@@ -203,8 +222,8 @@ abstract class _Mission implements Mission {
       {@JsonKey(name: 'content') final String? content,
       @JsonKey(name: 'target', defaultValue: '') required final String target,
       @JsonKey(name: 'quantity') final int? quantity,
-      @JsonKey(name: 'type')
-      required final String missionType}) = _$MissionImpl;
+      @JsonKey(name: 'type') required final String missionType,
+      @JsonKey(name: 'title') final String? title}) = _$MissionImpl;
 
   factory _Mission.fromJson(Map<String, dynamic> json) = _$MissionImpl.fromJson;
 
@@ -220,6 +239,9 @@ abstract class _Mission implements Mission {
   @override
   @JsonKey(name: 'type')
   String get missionType;
+  @override
+  @JsonKey(name: 'title')
+  String? get title;
   @override
   @JsonKey(ignore: true)
   _$$MissionImplCopyWith<_$MissionImpl> get copyWith =>

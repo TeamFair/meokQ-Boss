@@ -8,7 +8,7 @@ part 'quest.g.dart';
 @freezed
 class Quest with _$Quest {
   const factory Quest({
-    @JsonKey(name: 'questId') required int id,
+    @JsonKey(name: 'questId') required String questId,
     @JsonKey(name: 'rewards') required List<Reward> rewards,
     @JsonKey(name: 'missions') required List<Mission> missions,
   }) = _Quest;

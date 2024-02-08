@@ -22,8 +22,6 @@ DeleteQuestDTO _$DeleteQuestDTOFromJson(Map<String, dynamic> json) {
 mixin _$DeleteQuestDTO {
   @JsonKey(name: 'questId')
   String get questId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'marketId')
-  String get marketId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,9 +35,7 @@ abstract class $DeleteQuestDTOCopyWith<$Res> {
           DeleteQuestDTO value, $Res Function(DeleteQuestDTO) then) =
       _$DeleteQuestDTOCopyWithImpl<$Res, DeleteQuestDTO>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'questId') String questId,
-      @JsonKey(name: 'marketId') String marketId});
+  $Res call({@JsonKey(name: 'questId') String questId});
 }
 
 /// @nodoc
@@ -56,16 +52,11 @@ class _$DeleteQuestDTOCopyWithImpl<$Res, $Val extends DeleteQuestDTO>
   @override
   $Res call({
     Object? questId = null,
-    Object? marketId = null,
   }) {
     return _then(_value.copyWith(
       questId: null == questId
           ? _value.questId
           : questId // ignore: cast_nullable_to_non_nullable
-              as String,
-      marketId: null == marketId
-          ? _value.marketId
-          : marketId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -79,9 +70,7 @@ abstract class _$$DeleteQuestDTOImplCopyWith<$Res>
       __$$DeleteQuestDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'questId') String questId,
-      @JsonKey(name: 'marketId') String marketId});
+  $Res call({@JsonKey(name: 'questId') String questId});
 }
 
 /// @nodoc
@@ -96,16 +85,11 @@ class __$$DeleteQuestDTOImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? questId = null,
-    Object? marketId = null,
   }) {
     return _then(_$DeleteQuestDTOImpl(
       questId: null == questId
           ? _value.questId
           : questId // ignore: cast_nullable_to_non_nullable
-              as String,
-      marketId: null == marketId
-          ? _value.marketId
-          : marketId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -114,9 +98,7 @@ class __$$DeleteQuestDTOImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$DeleteQuestDTOImpl implements _DeleteQuestDTO {
-  const _$DeleteQuestDTOImpl(
-      {@JsonKey(name: 'questId') required this.questId,
-      @JsonKey(name: 'marketId') required this.marketId});
+  const _$DeleteQuestDTOImpl({@JsonKey(name: 'questId') required this.questId});
 
   factory _$DeleteQuestDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$DeleteQuestDTOImplFromJson(json);
@@ -124,13 +106,10 @@ class _$DeleteQuestDTOImpl implements _DeleteQuestDTO {
   @override
   @JsonKey(name: 'questId')
   final String questId;
-  @override
-  @JsonKey(name: 'marketId')
-  final String marketId;
 
   @override
   String toString() {
-    return 'DeleteQuestDTO(questId: $questId, marketId: $marketId)';
+    return 'DeleteQuestDTO(questId: $questId)';
   }
 
   @override
@@ -138,14 +117,12 @@ class _$DeleteQuestDTOImpl implements _DeleteQuestDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteQuestDTOImpl &&
-            (identical(other.questId, questId) || other.questId == questId) &&
-            (identical(other.marketId, marketId) ||
-                other.marketId == marketId));
+            (identical(other.questId, questId) || other.questId == questId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, questId, marketId);
+  int get hashCode => Object.hash(runtimeType, questId);
 
   @JsonKey(ignore: true)
   @override
@@ -164,8 +141,7 @@ class _$DeleteQuestDTOImpl implements _DeleteQuestDTO {
 
 abstract class _DeleteQuestDTO implements DeleteQuestDTO {
   const factory _DeleteQuestDTO(
-          {@JsonKey(name: 'questId') required final String questId,
-          @JsonKey(name: 'marketId') required final String marketId}) =
+          {@JsonKey(name: 'questId') required final String questId}) =
       _$DeleteQuestDTOImpl;
 
   factory _DeleteQuestDTO.fromJson(Map<String, dynamic> json) =
@@ -174,9 +150,6 @@ abstract class _DeleteQuestDTO implements DeleteQuestDTO {
   @override
   @JsonKey(name: 'questId')
   String get questId;
-  @override
-  @JsonKey(name: 'marketId')
-  String get marketId;
   @override
   @JsonKey(ignore: true)
   _$$DeleteQuestDTOImplCopyWith<_$DeleteQuestDTOImpl> get copyWith =>

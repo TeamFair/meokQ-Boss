@@ -10,7 +10,6 @@ _$PublishQuestDTOImpl _$$PublishQuestDTOImplFromJson(
         Map<String, dynamic> json) =>
     _$PublishQuestDTOImpl(
       questId: json['questId'] as String,
-      marketId: json['marketId'] as String,
       ticketCount: json['ticketCount'] as int,
     );
 
@@ -18,6 +17,5 @@ Map<String, dynamic> _$$PublishQuestDTOImplToJson(
         _$PublishQuestDTOImpl instance) =>
     <String, dynamic>{
       'questId': instance.questId,
-      'marketId': instance.marketId,
       'ticketCount': instance.ticketCount,
     };

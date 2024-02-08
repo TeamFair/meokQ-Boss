@@ -21,7 +21,7 @@ Quest _$QuestFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Quest {
   @JsonKey(name: 'questId')
-  int get id => throw _privateConstructorUsedError;
+  String get questId => throw _privateConstructorUsedError;
   @JsonKey(name: 'rewards')
   List<Reward> get rewards => throw _privateConstructorUsedError;
   @JsonKey(name: 'missions')
@@ -38,7 +38,7 @@ abstract class $QuestCopyWith<$Res> {
       _$QuestCopyWithImpl<$Res, Quest>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'questId') int id,
+      {@JsonKey(name: 'questId') String questId,
       @JsonKey(name: 'rewards') List<Reward> rewards,
       @JsonKey(name: 'missions') List<Mission> missions});
 }
@@ -56,15 +56,15 @@ class _$QuestCopyWithImpl<$Res, $Val extends Quest>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? questId = null,
     Object? rewards = null,
     Object? missions = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
+      questId: null == questId
+          ? _value.questId
+          : questId // ignore: cast_nullable_to_non_nullable
+              as String,
       rewards: null == rewards
           ? _value.rewards
           : rewards // ignore: cast_nullable_to_non_nullable
@@ -85,7 +85,7 @@ abstract class _$$QuestImplCopyWith<$Res> implements $QuestCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'questId') int id,
+      {@JsonKey(name: 'questId') String questId,
       @JsonKey(name: 'rewards') List<Reward> rewards,
       @JsonKey(name: 'missions') List<Mission> missions});
 }
@@ -101,15 +101,15 @@ class __$$QuestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? questId = null,
     Object? rewards = null,
     Object? missions = null,
   }) {
     return _then(_$QuestImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
+      questId: null == questId
+          ? _value.questId
+          : questId // ignore: cast_nullable_to_non_nullable
+              as String,
       rewards: null == rewards
           ? _value._rewards
           : rewards // ignore: cast_nullable_to_non_nullable
@@ -126,7 +126,7 @@ class __$$QuestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuestImpl implements _Quest {
   const _$QuestImpl(
-      {@JsonKey(name: 'questId') required this.id,
+      {@JsonKey(name: 'questId') required this.questId,
       @JsonKey(name: 'rewards') required final List<Reward> rewards,
       @JsonKey(name: 'missions') required final List<Mission> missions})
       : _rewards = rewards,
@@ -137,7 +137,7 @@ class _$QuestImpl implements _Quest {
 
   @override
   @JsonKey(name: 'questId')
-  final int id;
+  final String questId;
   final List<Reward> _rewards;
   @override
   @JsonKey(name: 'rewards')
@@ -158,7 +158,7 @@ class _$QuestImpl implements _Quest {
 
   @override
   String toString() {
-    return 'Quest(id: $id, rewards: $rewards, missions: $missions)';
+    return 'Quest(questId: $questId, rewards: $rewards, missions: $missions)';
   }
 
   @override
@@ -166,7 +166,7 @@ class _$QuestImpl implements _Quest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QuestImpl &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.questId, questId) || other.questId == questId) &&
             const DeepCollectionEquality().equals(other._rewards, _rewards) &&
             const DeepCollectionEquality().equals(other._missions, _missions));
   }
@@ -175,7 +175,7 @@ class _$QuestImpl implements _Quest {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
+      questId,
       const DeepCollectionEquality().hash(_rewards),
       const DeepCollectionEquality().hash(_missions));
 
@@ -195,7 +195,7 @@ class _$QuestImpl implements _Quest {
 
 abstract class _Quest implements Quest {
   const factory _Quest(
-          {@JsonKey(name: 'questId') required final int id,
+          {@JsonKey(name: 'questId') required final String questId,
           @JsonKey(name: 'rewards') required final List<Reward> rewards,
           @JsonKey(name: 'missions') required final List<Mission> missions}) =
       _$QuestImpl;
@@ -204,7 +204,7 @@ abstract class _Quest implements Quest {
 
   @override
   @JsonKey(name: 'questId')
-  int get id;
+  String get questId;
   @override
   @JsonKey(name: 'rewards')
   List<Reward> get rewards;

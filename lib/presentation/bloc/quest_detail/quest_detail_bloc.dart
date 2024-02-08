@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
+import 'package:meokq_boss/data/dto/delete_quest/delete_quest_dto.dart';
+import 'package:meokq_boss/data/dto/publish_quest/publish_quest_dto.dart';
 import 'package:meokq_boss/data/model/quest/quest.dart';
 import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
 
@@ -12,12 +14,13 @@ class QuestDetailBloc extends Bloc<QuestDetailEvent, QuestDetailState> {
       : super(
           const QuestDetailState(
             questPeriod: 1,
+            questDetailStatus: QuestDetailStatus.init,
           ),
         ) {
     on<InitQuestDetailState>(_initQuestDetailState);
     on<DeleteQuest>(_deleteQuest);
     on<ChangeQuestPeriod>(_changeQuestPeriod);
-    on<PostQuest>(_postQuest);
+    on<PublishQuest>(_publishQuest);
   }
 
   final _remote = getIt<InterfaceRemote>();
@@ -40,10 +43,24 @@ class QuestDetailBloc extends Bloc<QuestDetailEvent, QuestDetailState> {
     );
   }
 
-  void _deleteQuest(
+  Future<void> _deleteQuest(
     DeleteQuest event,
     Emitter<QuestDetailState> emit,
-  ) {}
+  ) async {
+    assert(state.quest != null, 'quest 정보가 없습니다');
+
+    await _remote.deletehQuest(
+      deleteQuestDTO: DeleteQuestDTO(
+        questId: state.quest!.questId,
+      ),
+    );
+
+    emit(
+      state.copyWith(
+        questDetailStatus: QuestDetailStatus.delete,
+      ),
+    );
+  }
 
   void _changeQuestPeriod(
     ChangeQuestPeriod event,
@@ -56,8 +73,23 @@ class QuestDetailBloc extends Bloc<QuestDetailEvent, QuestDetailState> {
     );
   }
 
-  Future<void> _postQuest(
-    PostQuest event,
+  Future<void> _publishQuest(
+    PublishQuest event,
     Emitter<QuestDetailState> emit,
-  ) async {}
+  ) async {
+    assert(state.quest != null, 'quest 정보가 없습니다');
+
+    await _remote.publishQuest(
+      publishQuestDTO: PublishQuestDTO(
+        questId: state.quest!.questId,
+        ticketCount: state.questPeriod,
+      ),
+    );
+
+    emit(
+      state.copyWith(
+        questDetailStatus: QuestDetailStatus.apply,
+      ),
+    );
+  }
 }

@@ -18,4 +18,4 @@ class ChangeQuestPeriod extends QuestDetailEvent {
   ChangeQuestPeriod({required this.questPeriod});
 }
 
-class PostQuest extends QuestDetailEvent {}
+class PublishQuest extends QuestDetailEvent {}

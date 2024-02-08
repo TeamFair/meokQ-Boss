@@ -30,6 +30,8 @@ mixin _$Reward {
   int? get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'discountRate')
   int? get discountRate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'title')
+  String? get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +48,8 @@ abstract class $RewardCopyWith<$Res> {
       @JsonKey(name: 'target', defaultValue: '') String target,
       @JsonKey(name: 'type', defaultValue: '') String rewardTypeStr,
       @JsonKey(name: 'quantity') int? quantity,
-      @JsonKey(name: 'discountRate') int? discountRate});
+      @JsonKey(name: 'discountRate') int? discountRate,
+      @JsonKey(name: 'title') String? title});
 }
 
 /// @nodoc
@@ -67,6 +70,7 @@ class _$RewardCopyWithImpl<$Res, $Val extends Reward>
     Object? rewardTypeStr = null,
     Object? quantity = freezed,
     Object? discountRate = freezed,
+    Object? title = freezed,
   }) {
     return _then(_value.copyWith(
       content: freezed == content
@@ -89,6 +93,10 @@ class _$RewardCopyWithImpl<$Res, $Val extends Reward>
           ? _value.discountRate
           : discountRate // ignore: cast_nullable_to_non_nullable
               as int?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -105,7 +113,8 @@ abstract class _$$RewardImplCopyWith<$Res> implements $RewardCopyWith<$Res> {
       @JsonKey(name: 'target', defaultValue: '') String target,
       @JsonKey(name: 'type', defaultValue: '') String rewardTypeStr,
       @JsonKey(name: 'quantity') int? quantity,
-      @JsonKey(name: 'discountRate') int? discountRate});
+      @JsonKey(name: 'discountRate') int? discountRate,
+      @JsonKey(name: 'title') String? title});
 }
 
 /// @nodoc
@@ -124,6 +133,7 @@ class __$$RewardImplCopyWithImpl<$Res>
     Object? rewardTypeStr = null,
     Object? quantity = freezed,
     Object? discountRate = freezed,
+    Object? title = freezed,
   }) {
     return _then(_$RewardImpl(
       content: freezed == content
@@ -146,6 +156,10 @@ class __$$RewardImplCopyWithImpl<$Res>
           ? _value.discountRate
           : discountRate // ignore: cast_nullable_to_non_nullable
               as int?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -158,7 +172,8 @@ class _$RewardImpl implements _Reward {
       @JsonKey(name: 'target', defaultValue: '') required this.target,
       @JsonKey(name: 'type', defaultValue: '') required this.rewardTypeStr,
       @JsonKey(name: 'quantity') this.quantity,
-      @JsonKey(name: 'discountRate') this.discountRate});
+      @JsonKey(name: 'discountRate') this.discountRate,
+      @JsonKey(name: 'title') this.title});
 
   factory _$RewardImpl.fromJson(Map<String, dynamic> json) =>
       _$$RewardImplFromJson(json);
@@ -178,10 +193,13 @@ class _$RewardImpl implements _Reward {
   @override
   @JsonKey(name: 'discountRate')
   final int? discountRate;
+  @override
+  @JsonKey(name: 'title')
+  final String? title;
 
   @override
   String toString() {
-    return 'Reward(content: $content, target: $target, rewardTypeStr: $rewardTypeStr, quantity: $quantity, discountRate: $discountRate)';
+    return 'Reward(content: $content, target: $target, rewardTypeStr: $rewardTypeStr, quantity: $quantity, discountRate: $discountRate, title: $title)';
   }
 
   @override
@@ -196,13 +214,14 @@ class _$RewardImpl implements _Reward {
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.discountRate, discountRate) ||
-                other.discountRate == discountRate));
+                other.discountRate == discountRate) &&
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, content, target, rewardTypeStr, quantity, discountRate);
+  int get hashCode => Object.hash(runtimeType, content, target, rewardTypeStr,
+      quantity, discountRate, title);
 
   @JsonKey(ignore: true)
   @override
@@ -225,7 +244,8 @@ abstract class _Reward implements Reward {
       @JsonKey(name: 'type', defaultValue: '')
       required final String rewardTypeStr,
       @JsonKey(name: 'quantity') final int? quantity,
-      @JsonKey(name: 'discountRate') final int? discountRate}) = _$RewardImpl;
+      @JsonKey(name: 'discountRate') final int? discountRate,
+      @JsonKey(name: 'title') final String? title}) = _$RewardImpl;
 
   factory _Reward.fromJson(Map<String, dynamic> json) = _$RewardImpl.fromJson;
 
@@ -244,6 +264,9 @@ abstract class _Reward implements Reward {
   @override
   @JsonKey(name: 'discountRate')
   int? get discountRate;
+  @override
+  @JsonKey(name: 'title')
+  String? get title;
   @override
   @JsonKey(ignore: true)
   _$$RewardImplCopyWith<_$RewardImpl> get copyWith =>

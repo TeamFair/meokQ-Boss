@@ -12,6 +12,7 @@ class Reward with _$Reward {
     @JsonKey(name: 'type', defaultValue: '') required String rewardTypeStr,
     @JsonKey(name: 'quantity') int? quantity,
     @JsonKey(name: 'discountRate') int? discountRate,
+    @JsonKey(name: 'title') String? title,
   }) = _Reward;
 
   factory Reward.fromJson(Map<String, dynamic> json) =>

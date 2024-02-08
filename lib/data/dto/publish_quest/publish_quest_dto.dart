@@ -8,7 +8,6 @@ class PublishQuestDTO with _$PublishQuestDTO {
 
   const factory PublishQuestDTO({
     @JsonKey(name: 'questId') required String questId,
-    @JsonKey(name: 'marketId') required String marketId,
     @JsonKey(name: 'ticketCount') required int ticketCount,
   }) = _PublishQuestDTO;
 

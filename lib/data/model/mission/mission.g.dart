@@ -12,6 +12,7 @@ _$MissionImpl _$$MissionImplFromJson(Map<String, dynamic> json) =>
       target: json['target'] as String? ?? '',
       quantity: json['quantity'] as int?,
       missionType: json['type'] as String,
+      title: json['title'] as String?,
     );
 
 Map<String, dynamic> _$$MissionImplToJson(_$MissionImpl instance) {
@@ -27,5 +28,6 @@ Map<String, dynamic> _$$MissionImplToJson(_$MissionImpl instance) {
   val['target'] = instance.target;
   writeNotNull('quantity', instance.quantity);
   val['type'] = instance.missionType;
+  writeNotNull('title', instance.title);
   return val;
 }

@@ -12,6 +12,7 @@ _$RewardImpl _$$RewardImplFromJson(Map<String, dynamic> json) => _$RewardImpl(
       rewardTypeStr: json['type'] as String? ?? '',
       quantity: json['quantity'] as int?,
       discountRate: json['discountRate'] as int?,
+      title: json['title'] as String?,
     );
 
 Map<String, dynamic> _$$RewardImplToJson(_$RewardImpl instance) {
@@ -28,5 +29,6 @@ Map<String, dynamic> _$$RewardImplToJson(_$RewardImpl instance) {
   val['type'] = instance.rewardTypeStr;
   writeNotNull('quantity', instance.quantity);
   writeNotNull('discountRate', instance.discountRate);
+  writeNotNull('title', instance.title);
   return val;
 }

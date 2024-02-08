@@ -8,7 +8,6 @@ class DeleteQuestDTO with _$DeleteQuestDTO {
 
   const factory DeleteQuestDTO({
     @JsonKey(name: 'questId') required String questId,
-    @JsonKey(name: 'marketId') required String marketId,
   }) = _DeleteQuestDTO;
 
   factory DeleteQuestDTO.fromJson(Map<String, dynamic> json) =>

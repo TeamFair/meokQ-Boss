@@ -177,8 +177,13 @@ class RemoteRepository extends InterfaceRemote {
 
   @override
   Future<void> deletehQuest({required DeleteQuestDTO deleteQuestDTO}) async {
+    assert(
+      localRepositroy.getKey(LocalStringKey.marketId) != null,
+      '마켓 id가 없습니다',
+    );
+    
     await api.deleteQuest(
-      marketId: deleteQuestDTO.marketId,
+      marketId: localRepositroy.getKey(LocalStringKey.marketId) ?? '',
       questId: deleteQuestDTO.questId,
     );
   }
@@ -241,8 +246,13 @@ class RemoteRepository extends InterfaceRemote {
 
   @override
   Future<void> publishQuest({required PublishQuestDTO publishQuestDTO}) async {
+    assert(
+      localRepositroy.getKey(LocalStringKey.marketId) != null,
+      '마켓 id가 없습니다',
+    );
+
     await api.publishQuest(
-      marketId: publishQuestDTO.marketId,
+      marketId: localRepositroy.getKey(LocalStringKey.marketId)!,
       questId: publishQuestDTO.questId,
       ticketCount: publishQuestDTO.ticketCount.toString(),
     );

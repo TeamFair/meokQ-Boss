@@ -121,4 +121,9 @@ abstract class MeokqApi {
   Future<ResponseVO> requestReview({
     @Path('marketId') required String marketId,
   });
+
+  @GET('/api/boss/market-auth') // 마켓인증정보 조회
+  Future<ResponseVO> marketApproved({
+    @Path('marketId') required String marketId,
+  });
 }

@@ -8,6 +8,7 @@ import 'package:meokq_boss/data/vo/challenge/challenge_vo.dart';
 import 'package:meokq_boss/data/vo/image/image_vo.dart';
 import 'package:meokq_boss/data/vo/login/login_vo.dart';
 import 'package:meokq_boss/data/vo/market/apply_market/apply_market_vo.dart';
+import 'package:meokq_boss/data/vo/market/check_market/check_market_vo.dart';
 import 'package:meokq_boss/data/vo/market/detail_market/detail_market_vo.dart';
 import 'package:meokq_boss/data/vo/market/market_vo.dart';
 import 'package:meokq_boss/data/vo/quest/get_quest_vo.dart';
@@ -61,4 +62,6 @@ abstract class InterfaceRemote {
   Future<DetailMarketVO> getDetailMarket();
 
   Future<List<Coupon>> getCoupons({required String status});
+
+  Future<List<CheckMarketVO>> marketApproved();
 }

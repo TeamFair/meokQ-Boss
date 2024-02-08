@@ -15,6 +15,7 @@ import 'package:meokq_boss/data/vo/challenge/challenge_vo.dart';
 import 'package:meokq_boss/data/vo/image/image_vo.dart';
 import 'package:meokq_boss/data/vo/login/login_vo.dart';
 import 'package:meokq_boss/data/vo/market/apply_market/apply_market_vo.dart';
+import 'package:meokq_boss/data/vo/market/check_market/check_market_vo.dart';
 import 'package:meokq_boss/data/vo/market/detail_market/detail_market_vo.dart';
 import 'package:meokq_boss/data/vo/market/market_vo.dart';
 import 'package:meokq_boss/data/vo/quest/get_quest_vo.dart';
@@ -181,7 +182,7 @@ class RemoteRepository extends InterfaceRemote {
       localRepositroy.getKey(LocalStringKey.marketId) != null,
       '마켓 id가 없습니다',
     );
-    
+
     await api.deleteQuest(
       marketId: localRepositroy.getKey(LocalStringKey.marketId) ?? '',
       questId: deleteQuestDTO.questId,
@@ -323,5 +324,23 @@ class RemoteRepository extends InterfaceRemote {
     });
 
     return couponList;
+  }
+
+  @override
+  Future<List<CheckMarketVO>> marketApproved() async {
+    assert(
+      localRepositroy.getKey(LocalStringKey.marketId) != null,
+      '마켓 id가 없습니다',
+    );
+    List<CheckMarketVO> checkMarketList = [];
+    final res = await api.marketApproved(
+      marketId: localRepositroy.getKey(LocalStringKey.marketId)!,
+    );
+
+    res.data.forEach((e) {
+      checkMarketList.add(CheckMarketVO.fromJson(e));
+    });
+
+    return checkMarketList;
   }
 }

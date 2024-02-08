@@ -10,8 +10,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     on<SplashInit>(_splashInit);
   }
 
-  // TODO: local 정보 붙여야함
-
   // splash에서 해야할 것
   // 1. local에서 token이나 로그인했는지 상태를 가져온다
   // 2 - 1. 로그인이 되어있다면 바로 auth의 상태를 authenticated로 바꿔서 home으로 바로 떨어지게 합니다
@@ -23,17 +21,18 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     emit(state.copyWith(status: SplashStatus.inProgress));
     try {
       // 이자리에 위 1, 2 - 1, 2 - 2 작업이 진행되어야 합니다
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 1));
       final usecase = await SplashUseCase().call(SplashInput());
 
       usecase.fold(
         (l) => emit(state.copyWith(status: SplashStatus.failure)),
         (r) {
-          if (r.shouldLogin) {
-            emit(state.copyWith(status: SplashStatus.needLogin));
-          } else {
-            emit(state.copyWith(status: SplashStatus.success));
-          }
+          emit(
+            state.copyWith(
+              status: r.splashStatus,
+              comment: r.comment,
+            ),
+          );
         },
       );
     } catch (_) {

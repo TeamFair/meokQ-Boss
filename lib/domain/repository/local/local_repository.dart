@@ -22,4 +22,14 @@ class LocalRepository extends InterfaceLocal {
   String? getKey(String key) {
     return local.getString(key);
   }
+
+  @override
+  void deleteKey(String key) {
+    local.remove(key);
+  }
+
+  @override
+  void removeAll() {
+    local.clear();
+  }
 }

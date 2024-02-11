@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/data/dto/agreement/agreement_dto.dart';
 import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
+import 'package:meokq_boss/domain/repository/local/inteface_local.dart';
 import 'package:meokq_boss/presentation/bloc/agreement_permission/agreement_permission_bloc.dart';
 
 part 'setting_event.dart';
@@ -25,6 +26,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
   }
 
   final _remote = getIt<InterfaceRemote>();
+  final _local = getIt<InterfaceLocal>();
 
   Future<void> _initState(
     InitState event,
@@ -104,6 +106,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     Emitter<SettingState> emit,
   ) async {
     await _remote.logout();
+    _local.removeAll();
     emit(
       state.copyWith(
         userState: UserState.logout,
@@ -116,6 +119,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     Emitter<SettingState> emit,
   ) async {
     await _remote.withdraw();
+    _local.removeAll();
     emit(
       state.copyWith(
         userState: UserState.withdraw,

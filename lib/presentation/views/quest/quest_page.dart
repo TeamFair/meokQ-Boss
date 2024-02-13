@@ -28,7 +28,6 @@ class _QuestPageState extends State<QuestPage> {
           title: const Text(
             '퀘스트',
           ),
-          elevation: 1,
           automaticallyImplyLeading: false,
           actions: [
             IconButton(

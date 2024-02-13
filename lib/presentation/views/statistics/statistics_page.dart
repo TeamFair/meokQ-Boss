@@ -27,7 +27,6 @@ class _StatisticsPageState extends State<StatisticsPage> {
           title: const Text(
             '고객 통계',
           ),
-          elevation: 1,
           automaticallyImplyLeading: false,
           actions: [
             IconButton(

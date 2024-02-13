@@ -48,12 +48,12 @@ class RemoteRepository extends InterfaceRemote {
     dio.options.receiveTimeout = const Duration(seconds: 30);
 
     dio.options.headers['Authorization'] =
-        getIt<InterfaceLocal>().getKey(LocalStringKey.token);
+        getIt<InterfaceLocal>().getKey(LocalStringKey.token) ?? '';
 
     onRequest(r, h) {
       r.headers['accept'] = 'application/json';
       r.headers['authorization'] =
-          getIt<InterfaceLocal>().getKey(LocalStringKey.token);
+          getIt<InterfaceLocal>().getKey(LocalStringKey.token) ?? '';
       r.headers['Content-Type'] = 'application/json';
       // r.headers['Keep-Alive'] = 'timeout=60';
       return h.next(r);

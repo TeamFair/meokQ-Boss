@@ -32,7 +32,6 @@ class _AccountPageState extends State<AccountPage> {
           resizeToAvoidBottomInset: true,
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            elevation: 0,
             title: const Text(
               '내 정보',
             ),

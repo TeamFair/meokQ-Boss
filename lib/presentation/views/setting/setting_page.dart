@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/setting/setting_bloc.dart';
 import 'package:meokq_boss/presentation/views/login/login_page.dart';
+import 'package:meokq_boss/presentation/views/setting/withdraw_page.dart';
 
 class SettingPage extends StatefulWidget {
   static const id = 'setting_page';
@@ -88,6 +91,11 @@ class _SettingPageState extends State<SettingPage> {
                 GestureDetector(
                   onTap: () {
                     context.read<SettingBloc>().add(TapLogoutButton());
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      LoginPage.id,
+                      (route) => false,
+                    );
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -105,8 +113,17 @@ class _SettingPageState extends State<SettingPage> {
                   height: 1,
                 ),
                 GestureDetector(
-                  onTap: () {
-                    context.read<SettingBloc>().add(TapLogoutButton());
+                  onTap: () async {
+                    final res =
+                        await Navigator.of(context).pushNamed(WithdrawPage.id);
+                    if (res == true) {
+                      context.read<SettingBloc>().add(TapWithdrawButton());
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        LoginPage.id,
+                        (route) => false,
+                      );
+                    }
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20),

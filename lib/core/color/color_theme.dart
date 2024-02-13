@@ -44,4 +44,6 @@ extension ColorS on MaterialColor {
   static const divideGray = Color(0xFFE6E6E6);
 
   static const commentGray = Color(0xFFB3B3B5);
+
+  static const captionGray = Color(0xFF606060);
 }

@@ -54,7 +54,6 @@ class _QuestDetailPageState extends State<QuestDetailPage> {
         ),
         titleTextStyle: TextS.title2(),
         centerTitle: true,
-        elevation: 1,
       ),
       body: BlocListener<QuestDetailBloc, QuestDetailState>(
         listener: (context, state) {

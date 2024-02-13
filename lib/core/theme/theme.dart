@@ -7,6 +7,7 @@ class AppTheme {
 
   static ThemeData buildTheme() {
     return ThemeData(
+      // useMaterial3: false,
       primaryColor: ColorS.primary,
       scaffoldBackgroundColor: ColorS.background,
       appBarTheme: _appBarTheme(),
@@ -20,9 +21,11 @@ class AppTheme {
 
   static AppBarTheme _appBarTheme() {
     return AppBarTheme(
-      backgroundColor: Colors.white,
+      color: Colors.white,
       titleTextStyle: TextS.title1(),
-      elevation: 0,
+      surfaceTintColor: Colors.white,
+      shadowColor: ColorS.background,
+      elevation: 1,
       foregroundColor: Colors.black,
     );
   }

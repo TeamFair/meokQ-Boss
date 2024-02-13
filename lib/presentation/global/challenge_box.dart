@@ -34,14 +34,14 @@ class ChallengeBox extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        challenge.quest.rewards[0].content ?? '',
+                        challenge.quest.rewards[0].title ?? '',
                         style: TextS.heading1(),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
                       Text(
-                        challenge.quest.missions[0].content ?? '',
+                        challenge.quest.missions[0].title ?? '',
                         style: TextS.caption2(),
                       ),
                     ],

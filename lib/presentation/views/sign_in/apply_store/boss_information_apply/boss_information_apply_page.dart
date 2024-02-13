@@ -16,7 +16,7 @@ class BossInformationApplyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-            resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -42,7 +42,6 @@ class BossInformationApplyPage extends StatelessWidget {
           style: TextS.title2(),
         ),
         centerTitle: true,
-        elevation: 1,
       ),
       body: BlocBuilder<BossInformationBloc, BossInformationState>(
         builder: (context, state) {

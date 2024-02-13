@@ -36,7 +36,6 @@ class _QuestAddPageState extends State<QuestAddPage> {
           '퀘스트 추가',
         ),
         centerTitle: true,
-        elevation: 1,
       ),
       body: BlocListener<QuestAddBloc, QuestAddState>(
         listener: ((context, state) {

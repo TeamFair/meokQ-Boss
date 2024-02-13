@@ -16,6 +16,7 @@ import 'package:meokq_boss/presentation/views/login/login_page.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_add/quest_add_page.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_detail/quest_detail_page.dart';
 import 'package:meokq_boss/presentation/views/setting/setting_page.dart';
+import 'package:meokq_boss/presentation/views/setting/withdraw_page.dart';
 import 'package:meokq_boss/presentation/views/sign_in/agree/agree_page.dart';
 import 'package:meokq_boss/presentation/views/sign_in/apply_store/apply_store_page.dart';
 import 'package:meokq_boss/presentation/views/sign_in/apply_store/boss_information_apply/boss_information_apply_page.dart';
@@ -102,6 +103,11 @@ class RouteGenerator {
             create: (context) => AccountTimeEditBloc(),
             child: const AccountTimeEditPage(),
           ),
+        );
+      case WithdrawPage.id:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) => const WithdrawPage(),
         );
       default:
         return _errorRoute();

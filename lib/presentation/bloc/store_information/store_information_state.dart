@@ -43,7 +43,7 @@ class StoreInformationState extends Equatable {
       address: '',
       phone: '',
       businessDays: [],
-      open: '오전 9:00',
+      open: '오전 09:00',
       close: '오후 11:00',
       logoUrl: '',
       stage: Stage.first,

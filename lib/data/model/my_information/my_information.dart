@@ -8,7 +8,7 @@ class MyInformation with _$MyInformation {
   const factory MyInformation({
     required String logoUrl,
     required int questCount,
-    required int ticketAccount,
+    required int ticketCount,
     required String address,
     required List<String> businessDays,
     required String open,

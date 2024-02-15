@@ -18,7 +18,7 @@ class AccountState extends Equatable {
       myInformation: MyInformation(
         logoUrl: '',
         questCount: 0,
-        ticketAccount: 0,
+        ticketCount: 0,
         address: '',
         businessDays: [],
         open: '',

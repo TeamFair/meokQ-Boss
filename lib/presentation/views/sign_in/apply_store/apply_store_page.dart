@@ -175,10 +175,11 @@ class _ApplyStorePageState extends State<ApplyStorePage> {
                 ),
               ),
             const Spacer(),
-            MeokQButton(
-              onTap: () => Navigator.of(context).pushNamed(HomePage.id),
-              text: '입점 신청하기',
-            ),
+            if (bossButtonState && storeButtonState)
+              MeokQButton(
+                onTap: () => Navigator.of(context).pushNamed(HomePage.id),
+                text: '입점 신청하기',
+              ),
             const SizedBox(
               height: 42,
             ),

@@ -52,16 +52,16 @@ class _ChallengePageState extends State<ChallengePage> {
               break;
             case ChallengeStatus.init:
             case ChallengeStatus.success:
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('도전 목록을 불러왔습니다')),
-              );
+              // ScaffoldMessenger.of(context).showSnackBar(
+              //   const SnackBar(content: Text('도전 목록을 불러왔습니다')),
+              // );
               break;
           }
         },
         child: BlocBuilder<ChallengeBloc, ChallengeState>(
           builder: (context, state) {
             return Padding(
-              padding: const EdgeInsets.only(top: 15),
+              padding: const EdgeInsets.symmetric(vertical: 15),
               child: state.challengeList.isNotEmpty
                   ? ListView.separated(
                       itemCount: state.challengeList.length,

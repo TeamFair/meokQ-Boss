@@ -122,7 +122,7 @@ class _AccountPageState extends State<AccountPage> {
                                     style: TextS.content2(),
                                   ),
                                   Text(
-                                    '${state.myInformation.ticketAccount}개',
+                                    '${state.myInformation.ticketCount}개',
                                     style: TextS.content2().copyWith(
                                       fontWeight: FontWeight.w700,
                                     ),

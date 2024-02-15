@@ -1,11 +1,12 @@
 // 📦 Package imports:
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/data/vo/challenge/challenge_vo.dart';
 import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
 import 'package:meokq_boss/domain/usecase/use_case.dart';
 
-class GetChallengeUseCase
+class GetChallengeUseCase with RestErrorHandleMixin
     implements UseCase<GetChallengeOutput, GetChallengeInput> {
   final _remote = getIt<InterfaceRemote>();
 
@@ -17,7 +18,9 @@ class GetChallengeUseCase
       final challengeList = await _remote.getChallenges();
 
       return Right(GetChallengeOutput(challengeList: challengeList));
-    } catch (e) {
+    } on DioException catch (e) {
+      return Left(restErrorHandle(e));
+    }  catch (e) {
       return Left(GetChallengeFailure());
     }
   }

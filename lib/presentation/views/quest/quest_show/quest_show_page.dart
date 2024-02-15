@@ -39,39 +39,42 @@ class _QuestShowPageState extends State<QuestShowPage> {
         },
         child: BlocBuilder<QuestBloc, QuestState>(
           builder: (context, state) {
-            return Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: state.questList.isNotEmpty
-                  ? ListView.separated(
-                      itemCount: state.questList.length,
-                      separatorBuilder: (context, index) => const SizedBox(
-                        height: 12,
+            return RefreshIndicator(
+              onRefresh: () async => BlocProvider.of<QuestBloc>(context).add(InitAllQuest()),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: state.questList.isNotEmpty
+                    ? ListView.separated(
+                        itemCount: state.questList.length,
+                        separatorBuilder: (context, index) => const SizedBox(
+                          height: 12,
+                        ),
+                        itemBuilder: (context, index) {
+                          final quest = state.questList[index];
+                          return GestureDetector(
+                            onTap: () {
+                              if (QuestStatus.stringToQuestStatus(
+                                quest.questStatus,
+                              ).isChecking) {
+                                Navigator.of(context).pushNamed(
+                                  QuestDetailPage.id,
+                                  arguments: QuestDetailArgument(
+                                      questId: quest.questId,),
+                                );
+                              }
+                            },
+                            child: QuestBox(quest: quest),
+                          );
+                        },
+                      )
+                    : Center(
+                        child: Text(
+                          '현재 게시중인 퀘스트가 없습니다',
+                          style: TextS.content()
+                              .copyWith(color: ColorS.contentGray),
+                        ),
                       ),
-                      itemBuilder: (context, index) {
-                        final quest = state.questList[index];
-                        return GestureDetector(
-                          onTap: () {
-                            if (QuestStatus.stringToQuestStatus(
-                              quest.questStatus,
-                            ).isChecking) {
-                              Navigator.of(context).pushNamed(
-                                QuestDetailPage.id,
-                                arguments:
-                                    QuestDetailArgument(questId: quest.questId),
-                              );
-                            }
-                          },
-                          child: QuestBox(quest: quest),
-                        );
-                      },
-                    )
-                  : Center(
-                      child: Text(
-                        '현재 게시중인 퀘스트가 없습니다',
-                        style:
-                            TextS.content().copyWith(color: ColorS.contentGray),
-                      ),
-                    ),
+              ),
             );
           },
         ),

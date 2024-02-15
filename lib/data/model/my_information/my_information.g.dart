@@ -10,7 +10,7 @@ _$MyInformationImpl _$$MyInformationImplFromJson(Map<String, dynamic> json) =>
     _$MyInformationImpl(
       logoUrl: json['logoUrl'] as String,
       questCount: json['questCount'] as int,
-      ticketAccount: json['ticketAccount'] as int,
+      ticketCount: json['ticketCount'] as int,
       address: json['address'] as String,
       businessDays: (json['businessDays'] as List<dynamic>)
           .map((e) => e as String)
@@ -24,7 +24,7 @@ Map<String, dynamic> _$$MyInformationImplToJson(_$MyInformationImpl instance) =>
     <String, dynamic>{
       'logoUrl': instance.logoUrl,
       'questCount': instance.questCount,
-      'ticketAccount': instance.ticketAccount,
+      'ticketCount': instance.ticketCount,
       'address': instance.address,
       'businessDays': instance.businessDays,
       'open': instance.open,

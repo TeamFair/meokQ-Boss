@@ -22,7 +22,7 @@ MyInformation _$MyInformationFromJson(Map<String, dynamic> json) {
 mixin _$MyInformation {
   String get logoUrl => throw _privateConstructorUsedError;
   int get questCount => throw _privateConstructorUsedError;
-  int get ticketAccount => throw _privateConstructorUsedError;
+  int get ticketCount => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   List<String> get businessDays => throw _privateConstructorUsedError;
   String get open => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $MyInformationCopyWith<$Res> {
   $Res call(
       {String logoUrl,
       int questCount,
-      int ticketAccount,
+      int ticketCount,
       String address,
       List<String> businessDays,
       String open,
@@ -67,7 +67,7 @@ class _$MyInformationCopyWithImpl<$Res, $Val extends MyInformation>
   $Res call({
     Object? logoUrl = null,
     Object? questCount = null,
-    Object? ticketAccount = null,
+    Object? ticketCount = null,
     Object? address = null,
     Object? businessDays = null,
     Object? open = null,
@@ -83,9 +83,9 @@ class _$MyInformationCopyWithImpl<$Res, $Val extends MyInformation>
           ? _value.questCount
           : questCount // ignore: cast_nullable_to_non_nullable
               as int,
-      ticketAccount: null == ticketAccount
-          ? _value.ticketAccount
-          : ticketAccount // ignore: cast_nullable_to_non_nullable
+      ticketCount: null == ticketCount
+          ? _value.ticketCount
+          : ticketCount // ignore: cast_nullable_to_non_nullable
               as int,
       address: null == address
           ? _value.address
@@ -122,7 +122,7 @@ abstract class _$$MyInformationImplCopyWith<$Res>
   $Res call(
       {String logoUrl,
       int questCount,
-      int ticketAccount,
+      int ticketCount,
       String address,
       List<String> businessDays,
       String open,
@@ -143,7 +143,7 @@ class __$$MyInformationImplCopyWithImpl<$Res>
   $Res call({
     Object? logoUrl = null,
     Object? questCount = null,
-    Object? ticketAccount = null,
+    Object? ticketCount = null,
     Object? address = null,
     Object? businessDays = null,
     Object? open = null,
@@ -159,9 +159,9 @@ class __$$MyInformationImplCopyWithImpl<$Res>
           ? _value.questCount
           : questCount // ignore: cast_nullable_to_non_nullable
               as int,
-      ticketAccount: null == ticketAccount
-          ? _value.ticketAccount
-          : ticketAccount // ignore: cast_nullable_to_non_nullable
+      ticketCount: null == ticketCount
+          ? _value.ticketCount
+          : ticketCount // ignore: cast_nullable_to_non_nullable
               as int,
       address: null == address
           ? _value.address
@@ -193,7 +193,7 @@ class _$MyInformationImpl implements _MyInformation {
   const _$MyInformationImpl(
       {required this.logoUrl,
       required this.questCount,
-      required this.ticketAccount,
+      required this.ticketCount,
       required this.address,
       required final List<String> businessDays,
       required this.open,
@@ -209,7 +209,7 @@ class _$MyInformationImpl implements _MyInformation {
   @override
   final int questCount;
   @override
-  final int ticketAccount;
+  final int ticketCount;
   @override
   final String address;
   final List<String> _businessDays;
@@ -229,7 +229,7 @@ class _$MyInformationImpl implements _MyInformation {
 
   @override
   String toString() {
-    return 'MyInformation(logoUrl: $logoUrl, questCount: $questCount, ticketAccount: $ticketAccount, address: $address, businessDays: $businessDays, open: $open, close: $close, phone: $phone)';
+    return 'MyInformation(logoUrl: $logoUrl, questCount: $questCount, ticketCount: $ticketCount, address: $address, businessDays: $businessDays, open: $open, close: $close, phone: $phone)';
   }
 
   @override
@@ -240,8 +240,8 @@ class _$MyInformationImpl implements _MyInformation {
             (identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl) &&
             (identical(other.questCount, questCount) ||
                 other.questCount == questCount) &&
-            (identical(other.ticketAccount, ticketAccount) ||
-                other.ticketAccount == ticketAccount) &&
+            (identical(other.ticketCount, ticketCount) ||
+                other.ticketCount == ticketCount) &&
             (identical(other.address, address) || other.address == address) &&
             const DeepCollectionEquality()
                 .equals(other._businessDays, _businessDays) &&
@@ -256,7 +256,7 @@ class _$MyInformationImpl implements _MyInformation {
       runtimeType,
       logoUrl,
       questCount,
-      ticketAccount,
+      ticketCount,
       address,
       const DeepCollectionEquality().hash(_businessDays),
       open,
@@ -281,7 +281,7 @@ abstract class _MyInformation implements MyInformation {
   const factory _MyInformation(
       {required final String logoUrl,
       required final int questCount,
-      required final int ticketAccount,
+      required final int ticketCount,
       required final String address,
       required final List<String> businessDays,
       required final String open,
@@ -296,7 +296,7 @@ abstract class _MyInformation implements MyInformation {
   @override
   int get questCount;
   @override
-  int get ticketAccount;
+  int get ticketCount;
   @override
   String get address;
   @override

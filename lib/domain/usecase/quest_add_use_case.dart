@@ -34,10 +34,13 @@ class QuestAddUseCase
             'type': input.missionType.jsonText,
           },
         ],
-        'reward': [
+        'rewards': [
           {
             'target': input.rewardItem,
-            'quantity': input.reward,
+            'quantity':
+                input.rewardType == RewardType.giftCard ? input.reward : 0,
+            'discountRate':
+                input.rewardType == RewardType.discount ? input.reward : 0,
             'type': input.rewardType.jsonText,
           },
         ],
@@ -56,9 +59,9 @@ class QuestAddUseCase
 
 class QuestAddInput {
   final String missionItem;
-  final String missionItemCount;
+  final int missionItemCount;
   final String rewardItem;
-  final String reward;
+  final int reward;
   final MissionType missionType;
   final RewardType rewardType;
 

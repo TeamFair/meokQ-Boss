@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/data/model/my_information/my_information.dart';
 import 'package:meokq_boss/domain/repository/image_picker/interface_image_picker.dart';
+import 'package:meokq_boss/domain/usecase/get_account_use_case.dart';
 
 part 'account_state.dart';
 part 'account_event.dart';
@@ -18,24 +19,18 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
 
   final _imagePickerRepository = getIt<InterfaceImagePicker>();
 
-  void _initMyInformationState(
+  Future<void> _initMyInformationState(
     InitMyInformation event,
     Emitter<AccountState> emit,
-  ) {
-    const myInformation = MyInformation(
-      logoUrl: '',
-      questCount: 3,
-      ticketAccount: 40,
-      address: '경기도 안양시 만안구 안양동 88-1',
-      businessDays: ['월', '화', '수', '목', '금'],
-      open: '오전 9:00',
-      close: '오후 10:30',
-      phone: '02-123-4567',
-    );
+  ) async {
+    final usecase = await GetAccountUseCase().call(GetAccountInput());
 
-    emit(
-      state.copyWith(
-        myInformation: myInformation,
+    usecase.fold(
+      (l) => null,
+      (r) => emit(
+        state.copyWith(
+          myInformation: r.myInformation,
+        ),
       ),
     );
   }

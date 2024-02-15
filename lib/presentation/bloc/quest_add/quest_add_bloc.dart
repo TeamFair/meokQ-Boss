@@ -76,9 +76,9 @@ class QuestAddBloc extends Bloc<QuestAddEvent, QuestAddState> {
     final usecase = await QuestAddUseCase().call(
       QuestAddInput(
         missionItem: state.missionItem,
-        missionItemCount: state.missionItemCount,
+        missionItemCount: int.parse(state.missionItemCount),
         rewardItem: state.rewardItem,
-        reward: state.reward,
+        reward: int.parse(state.reward),
         missionType: state.missionType,
         rewardType: state.rewardType,
       ),

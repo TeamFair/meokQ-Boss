@@ -16,13 +16,13 @@ class StoreStage2Page extends StatelessWidget {
       builder: (context, state) {
         var hourList = <String>[];
         for (int i = 0; i <= 11; i++) {
-          hourList.add('오전 $i:00');
-          hourList.add('오전 $i:30');
+          hourList.add('오전 ${i < 10 ? '0$i' : i}:00');
+          hourList.add('오전 ${i < 10 ? '0$i' : i}:30');
         }
 
         for (int i = 0; i <= 11; i++) {
-          hourList.add('오후 $i:00');
-          hourList.add('오후 $i:30');
+          hourList.add('오후 ${i < 10 ? '0$i' : i}:00');
+          hourList.add('오후 ${i < 10 ? '0$i' : i}:30');
         }
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,

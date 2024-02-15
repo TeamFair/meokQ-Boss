@@ -27,7 +27,7 @@ class SplashUseCase implements UseCase<SplashOutput, SplashInput> {
 
       return Right(
         SplashOutput(
-          splashStatus: strToSplashStatus(checkMarketVO[0].reviewResult),
+          splashStatus: strToSplashStatus(checkMarketVO[1].reviewResult),
           // splashStatus: SplashStatus.register,
           comment: checkMarketVO[0].comment,
         ),

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:meokq_boss/core/config/enum.dart';
 import 'package:meokq_boss/core/config/local_key.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
+import 'package:meokq_boss/core/util/time_util.dart';
 import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
 import 'package:meokq_boss/domain/repository/local/inteface_local.dart';
 import 'package:meokq_boss/domain/usecase/use_case.dart';
@@ -19,35 +20,13 @@ class StoreApplyUseCase
     StoreApplyInput input,
   ) async {
     try {
-      final openTimePlus = input.open.contains('오후');
-      final openTime = input.open.split(' ')[1];
-
-      var openHour = int.parse(openTime.split(':')[0]);
-      var openMinute = openTime.split(':')[1];
-      if (openTimePlus) {
-        openHour += 12;
-      }
-
-      final open = '${openHour == 9 ? '09' : openHour}:$openMinute';
-
-      final closeTimePlus = input.close.contains('오후');
-      final closeTime = input.close.split(' ')[1];
-
-      var closeHour = int.parse(closeTime.split(':')[0]);
-      var closeMinute = closeTime.split(':')[1];
-      if (closeTimePlus) {
-        closeHour += 12;
-      }
-
-      final close = '${closeHour == 9 ? '09' : closeHour}:$closeMinute';
-
       List<Map<String, dynamic>> marketList = [];
 
       for (String day in input.businessDays) {
         marketList.add({
           'weekDay': formatDay(day),
-          'openTime': open,
-          'closeTime': close,
+          'openTime': korToDate(input.open),
+          'closeTime': korToDate(input.close),
           'holidayYn': 'Y',
         });
       }

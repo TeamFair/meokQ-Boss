@@ -458,8 +458,8 @@ class QuestAddTextField extends StatelessWidget {
           Container(
             height: 50,
             padding: const EdgeInsets.fromLTRB(
-              15,
-              15,
+              20,
+              21,
               0,
               7.5,
             ),

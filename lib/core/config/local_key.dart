@@ -7,4 +7,6 @@ class LocalStringKey {
   static const channel = 'channel';
   static const accessToken = 'accessToken';
   static const refreshToken = 'refreshToken';
+
+  static const marketStatus = 'marketStatus';
 }

@@ -7,7 +7,7 @@ enum SplashStatus {
   register,
   underReview,
   approved,
-  failure;
+  failure;  
 }
 
 class SplashState extends Equatable {

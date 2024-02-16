@@ -52,7 +52,8 @@ class GetAccountUseCase
         businessDays: sortedDays,
         open: marketInfo.marketTimes.first.openTime,
         close: marketInfo.marketTimes.first.openTime,
-        phone: marketInfo.phone,
+        phone: marketInfo.phone, 
+        changedLogoUrl: '',
       );
 
       return Right(

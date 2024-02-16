@@ -1,5 +1,6 @@
 // 📦 Package imports:
 import 'package:dartz/dartz.dart';
+import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/config/local_key.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
@@ -25,9 +26,11 @@ class SplashUseCase implements UseCase<SplashOutput, SplashInput> {
 
       final checkMarketVO = await _remote.marketApproved();
 
+      _local.setKey(LocalStringKey.marketStatus, checkMarketVO[0].reviewResult);
+
       return Right(
         SplashOutput(
-          splashStatus: strToSplashStatus(checkMarketVO[1].reviewResult),
+          splashStatus: strToSplashStatus(checkMarketVO[0].reviewResult),
           // splashStatus: SplashStatus.register,
           comment: checkMarketVO[0].comment,
         ),
@@ -35,16 +38,6 @@ class SplashUseCase implements UseCase<SplashOutput, SplashInput> {
     } catch (e) {
       return Left(SplashFailure());
     }
-  }
-
-  SplashStatus strToSplashStatus(String value) {
-    return switch (value) {
-      'REGISTERED' => SplashStatus.register,
-      'UNDER_REVIEW' => SplashStatus.underReview,
-      'APPROVED' => SplashStatus.approved,
-      'REJECTED' => SplashStatus.reject,
-      _ => SplashStatus.failure,
-    };
   }
 }
 

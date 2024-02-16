@@ -1,3 +1,5 @@
+import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
+
 enum Flavor {
   dev,
   stg,
@@ -72,3 +74,13 @@ const devUrl = 'http://43.202.229.190:9090';
 const productionUrl = 'http://43.202.229.190:9091';
 
 String imageUrl = '$devUrl/api/open/image/';
+
+SplashStatus strToSplashStatus(String value) {
+    return switch (value) {
+      'REGISTERED' => SplashStatus.register,
+      'UNDER_REVIEW' => SplashStatus.underReview,
+      'APPROVED' => SplashStatus.approved,
+      'REJECTED' => SplashStatus.reject,
+      _ => SplashStatus.failure,
+    };
+  }

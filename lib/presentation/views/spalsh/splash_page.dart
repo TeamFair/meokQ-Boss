@@ -30,78 +30,82 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocListener<SplashBloc, SplashState>(
-      listener: (context, state) {
-        switch (state.status) {
-          case SplashStatus.needLogin:
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil(LoginPage.id, (route) => false);
-          case SplashStatus.approved:
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil(HomePage.id, (route) => false);
-          case SplashStatus.reject:
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(20),
+        listener: (context, state) {
+          switch (state.status) {
+            case SplashStatus.needLogin:
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil(LoginPage.id, (route) => false);
+            case SplashStatus.approved:
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil(HomePage.id, (route) => false);
+            case SplashStatus.reject:
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20),
+                  ),
                 ),
-              ),
-              builder: (childContext) {
-                return LoginStatusBottomSheet(
-                  loginStatus: LoginStatus.reject,
-                  content: state.comment,
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(ApplyStorePage.id),
-                );
-              },
-            );
-          case SplashStatus.underReview:
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              builder: (childContext) {
-                return const LoginStatusBottomSheet(
-                  loginStatus: LoginStatus.review,
-                );
-              },
-            );
-          case SplashStatus.register:
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(20),
+                builder: (childContext) {
+                  return LoginStatusBottomSheet(
+                    loginStatus: LoginStatus.reject,
+                    content: state.comment,
+                    onTap: () =>
+                        Navigator.of(context).pushNamed(ApplyStorePage.id),
+                  );
+                },
+              );
+            case SplashStatus.underReview:
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
                 ),
-              ),
-              builder: (childContext) {
-                return LoginStatusBottomSheet(
-                  loginStatus: LoginStatus.newUser,
-                  onTap: () => Navigator.of(context).pushNamed(AgreePage.id),
-                );
-              },
-            );
-          case SplashStatus.failure:
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('화면 진입에 실패하였습니다. 다시 실행해주세요')),
-            );
-          case SplashStatus.inProgress:
-            break;
-        }
-      },
-      child: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: ColorS.primary,
-        child: Center(
-          child: SvgPicture.asset(Svgs.smileIcon),
+                builder: (childContext) {
+                  return LoginStatusBottomSheet(
+                    loginStatus: LoginStatus.review,
+                    onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
+                      HomePage.id,
+                      (route) => false,
+                    ),
+                  );
+                },
+              );
+            case SplashStatus.register:
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20),
+                  ),
+                ),
+                builder: (childContext) {
+                  return LoginStatusBottomSheet(
+                    loginStatus: LoginStatus.newUser,
+                    onTap: () => Navigator.of(context).pushNamed(AgreePage.id),
+                  );
+                },
+              );
+            case SplashStatus.failure:
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('화면 진입에 실패하였습니다. 다시 실행해주세요')),
+              );
+            case SplashStatus.inProgress:
+              break;
+          }
+        },
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: ColorS.primary,
+          child: Center(
+            child: SvgPicture.asset(Svgs.smileIcon),
+          ),
         ),
       ),
-    ),
     );
   }
 }

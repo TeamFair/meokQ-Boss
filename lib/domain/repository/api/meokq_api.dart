@@ -42,12 +42,6 @@ abstract class MeokqApi {
     @Body() required FormData file,
   });
 
-  @GET('/api/boss/image/{imageId}')
-  Future<ResponseVO> getImage({
-    // 이미지 불러오기
-    @Path('imageId') required String imageId,
-  });
-
   @PUT('/api/boss/challenge/review')
   Future<ResponseVO> postChallenge({
     // 도전내역 검토결과 등록

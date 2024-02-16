@@ -1,6 +1,7 @@
 // 📦 Package imports:
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/config/local_key.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/core/util/time_util.dart';
@@ -29,7 +30,7 @@ class GetAccountUseCase
       final questList = await _remote.getQuests(
         marketId: local.getKey(LocalStringKey.marketId)!,
       );
-      final imageUrl = await _remote.getImage(imageId: marketInfo.logoImageId);
+      final logoUrl = imageUrl + marketInfo.logoImageId;
 
       final businessDays = marketInfo.marketTimes.map((element) {
         return toKoreanDay(element.weekDay);
@@ -44,7 +45,7 @@ class GetAccountUseCase
       }
 
       final myInformation = MyInformation(
-        logoUrl: imageUrl,
+        logoUrl: logoUrl,
         questCount: questList.length,
         ticketCount: marketInfo.ticketCount,
         address: marketInfo.address,

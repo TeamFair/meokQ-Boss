@@ -61,3 +61,14 @@ const rewardContent = '보상은 고객이 미션을 완료했을 때, 사장님
 
 const passContent =
     '이용권은 퀘스트를 맛Q 서비스에 올릴 수 있는 화폐입니다. 이용권 한 개당 30일이며, 한 번 사용하면 수정이 불가하니 신중히 사용해주세요!';
+
+const rejectList = [
+  '영수증이 불명확합니다',
+  '퀘스트와 알맞는 내용이 아닙니다',
+  '직접 입력',
+];
+
+const devUrl = 'http://43.202.229.190:9090';
+const productionUrl = 'http://43.202.229.190:9091';
+
+String imageUrl = '$devUrl/api/open/image/';

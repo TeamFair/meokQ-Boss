@@ -7,37 +7,39 @@ part 'get_quest_vo.freezed.dart';
 part 'get_quest_vo.g.dart';
 
 enum QuestStatus {
-  checking,
-  review,
-  open;
+  published,
+  underReivew,
+  completed;
 
   factory QuestStatus.stringToQuestStatus(String string) => switch (string) {
-        'OPEN' => QuestStatus.open,
-        'UNDER_REVIEW' => QuestStatus.review,
-        _ => QuestStatus.checking,
+        'COMPLETED' => QuestStatus.completed,
+        'UNDER_REVIEW' => QuestStatus.underReivew,
+        _ => QuestStatus.published,
       };
 
   String get text => switch (this) {
-        QuestStatus.open => '게시중',
-        QuestStatus.review => '대기상태',
-        QuestStatus.checking => '검토중',
+        QuestStatus.completed => '게시중',
+        QuestStatus.underReivew => '대기상태',
+        QuestStatus.published => '검토중',
       };
 
   Color get backgroundColor => switch (this) {
-        QuestStatus.open => ColorS.badgeBlue,
-        QuestStatus.review => ColorS.badgeRed,
-        QuestStatus.checking => ColorS.background,
+        QuestStatus.completed => ColorS.badgeBlue,
+        QuestStatus.underReivew => ColorS.background,
+        QuestStatus.published => ColorS.badgeRed,
       };
 
   Color get textColor => switch (this) {
-        QuestStatus.open => const Color(0xFF329CE9),
-        QuestStatus.review => const Color(0xFFF16868),
-        QuestStatus.checking => ColorS.applyGray,
+        QuestStatus.completed => const Color(0xFF329CE9),
+        QuestStatus.underReivew => ColorS.applyGray,
+        QuestStatus.published => const Color(0xFFF16868),
       };
 
-  bool get isOpen => this == QuestStatus.open;
+  bool get isOpen => this == QuestStatus.completed;
 
-  bool get isChecking => this == QuestStatus.checking;
+  bool get isPublished => this == QuestStatus.published;
+
+  bool get isUnderReview => this == QuestStatus.underReivew;
 }
 
 @freezed

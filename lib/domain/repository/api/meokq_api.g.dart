@@ -187,33 +187,6 @@ class _MeokqApi implements MeokqApi {
   }
 
   @override
-  Future<ResponseVO> getImage({required String imageId}) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/api/boss/image/${imageId}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = ResponseVO.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
   Future<ResponseVO> postChallenge({required Map<String, dynamic> data}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

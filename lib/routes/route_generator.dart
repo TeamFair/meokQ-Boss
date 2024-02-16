@@ -4,6 +4,7 @@ import 'package:meokq_boss/presentation/bloc/account_time_edit/account_time_edit
 import 'package:meokq_boss/presentation/bloc/agreement_permission/agreement_permission_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/boss_information/boss_information_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/bottom_navigation_controller/bnc_bloc.dart';
+import 'package:meokq_boss/presentation/bloc/challenge_detail/challenge_detail_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/quest_add/quest_add_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/quest_detail/quest_detail_bloc.dart';
@@ -11,6 +12,7 @@ import 'package:meokq_boss/presentation/bloc/setting/setting_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/store_information/store_information_bloc.dart';
 import 'package:meokq_boss/presentation/views/account/account_time_edit_page.dart';
+import 'package:meokq_boss/presentation/views/challenge/challenge_detail/challenge_detail_page.dart';
 import 'package:meokq_boss/presentation/views/home/home_page.dart';
 import 'package:meokq_boss/presentation/views/login/login_page.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_add/quest_add_page.dart';
@@ -102,6 +104,14 @@ class RouteGenerator {
           builder: (context) => BlocProvider<AccountTimeEditBloc>(
             create: (context) => AccountTimeEditBloc(),
             child: const AccountTimeEditPage(),
+          ),
+        );
+      case ChallengeDetailPage.id:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) => BlocProvider<ChallengeDetailBloc>(
+            create: (context) => ChallengeDetailBloc(),
+            child: const ChallengeDetailPage(),
           ),
         );
       case WithdrawPage.id:

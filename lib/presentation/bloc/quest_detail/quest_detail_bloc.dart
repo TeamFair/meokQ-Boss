@@ -2,9 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/data/dto/delete_quest/delete_quest_dto.dart';
-import 'package:meokq_boss/data/dto/publish_quest/publish_quest_dto.dart';
 import 'package:meokq_boss/data/model/quest/quest.dart';
 import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
+import 'package:meokq_boss/domain/usecase/publish_quest_use_case.dart';
 
 part 'quest_detail_state.dart';
 part 'quest_detail_event.dart';
@@ -79,16 +79,23 @@ class QuestDetailBloc extends Bloc<QuestDetailEvent, QuestDetailState> {
   ) async {
     assert(state.quest != null, 'quest 정보가 없습니다');
 
-    await _remote.publishQuest(
-      publishQuestDTO: PublishQuestDTO(
+    final usecase = await PublishQuestUseCase().call(
+      PublishQuestInput(
         questId: state.quest!.questId,
         ticketCount: state.questPeriod,
       ),
     );
 
-    emit(
-      state.copyWith(
-        questDetailStatus: QuestDetailStatus.apply,
+    usecase.fold(
+      (l) => emit(
+        state.copyWith(
+          questDetailStatus: QuestDetailStatus.failed,
+        ),
+      ),
+      (r) => emit(
+        state.copyWith(
+          questDetailStatus: QuestDetailStatus.apply,
+        ),
       ),
     );
   }

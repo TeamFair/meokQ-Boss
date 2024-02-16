@@ -40,7 +40,8 @@ class _QuestShowPageState extends State<QuestShowPage> {
         child: BlocBuilder<QuestBloc, QuestState>(
           builder: (context, state) {
             return RefreshIndicator(
-              onRefresh: () async => BlocProvider.of<QuestBloc>(context).add(InitAllQuest()),
+              onRefresh: () async =>
+                  BlocProvider.of<QuestBloc>(context).add(InitAllQuest()),
               child: Padding(
                 padding: const EdgeInsets.only(top: 15),
                 child: state.questList.isNotEmpty
@@ -55,11 +56,12 @@ class _QuestShowPageState extends State<QuestShowPage> {
                             onTap: () {
                               if (QuestStatus.stringToQuestStatus(
                                 quest.questStatus,
-                              ).isChecking) {
+                              ).isUnderReview) {
                                 Navigator.of(context).pushNamed(
                                   QuestDetailPage.id,
                                   arguments: QuestDetailArgument(
-                                      questId: quest.questId,),
+                                    questId: quest.questId,
+                                  ),
                                 );
                               }
                             },

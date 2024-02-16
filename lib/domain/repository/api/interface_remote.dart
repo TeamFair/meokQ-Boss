@@ -39,8 +39,6 @@ abstract class InterfaceRemote {
     required String file,
   });
 
-  Future<String> getImage({required String imageId});
-
   Future<void> postChallenge({required Map<String, dynamic> challengeDTO});
 
   Future<List<ChallengeVO>> getChallenges();

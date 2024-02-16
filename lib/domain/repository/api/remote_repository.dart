@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/config/local_key.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/data/dto/delete_quest/delete_quest_dto.dart';
@@ -103,7 +104,7 @@ class RemoteRepository extends InterfaceRemote {
       ),
     );
 
-    api = MeokqApi(dio, baseUrl: 'http://43.202.229.190:9090');
+    api = MeokqApi(dio, baseUrl: devUrl);
     await Future.delayed(const Duration(seconds: 1));
   }
 
@@ -209,13 +210,6 @@ class RemoteRepository extends InterfaceRemote {
     });
 
     return challengeList;
-  }
-
-  @override
-  Future<String> getImage({required String imageId}) async {
-    final res = await api.getImage(imageId: imageId);
-
-    return res.data['imageId'];
   }
 
   @override

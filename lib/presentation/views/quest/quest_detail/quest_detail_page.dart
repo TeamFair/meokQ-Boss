@@ -63,6 +63,10 @@ class _QuestDetailPageState extends State<QuestDetailPage> {
             case QuestDetailStatus.delete:
             case QuestDetailStatus.apply:
               Navigator.pop(context);
+            case QuestDetailStatus.failed:
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('퀘스트를 게시하지 못했습니다')),
+              );
           }
         },
         child: BlocBuilder<QuestDetailBloc, QuestDetailState>(
@@ -312,7 +316,7 @@ class _QuestDetailPageState extends State<QuestDetailPage> {
                     secondButtonTap: () {
                       showDialog(
                         context: context,
-                        builder: (context) {
+                        builder: (childContext) {
                           return CustomAlertDialog(
                             height: 184,
                             title: '퀘스트를 게시하시겠습니까?',
@@ -324,7 +328,7 @@ class _QuestDetailPageState extends State<QuestDetailPage> {
                               context
                                   .read<QuestDetailBloc>()
                                   .add(PublishQuest());
-                              Navigator.pop(context);
+                              Navigator.pop(childContext);
                             },
                           );
                         },

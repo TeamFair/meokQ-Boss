@@ -67,7 +67,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     emit(
       state.copyWith(
         myInformation: state.myInformation.copyWith(
-          logoUrl: imagePath,
+          changedLogoUrl: imagePath,
         ),
       ),
     );
@@ -89,5 +89,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     // TODO: apply account
+    
   }
 }

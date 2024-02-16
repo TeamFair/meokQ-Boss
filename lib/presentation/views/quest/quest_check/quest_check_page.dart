@@ -28,9 +28,11 @@ class _QuestCheckPageState extends State<QuestCheckPage> {
       body: BlocBuilder<QuestBloc, QuestState>(
         builder: (context, state) {
           List<QuestListVO> questList = state.questList
-              .where((element) =>
-                  QuestStatus.stringToQuestStatus(element.questStatus)
-                      .isChecking,)
+              .where(
+                (element) =>
+                    QuestStatus.stringToQuestStatus(element.questStatus)
+                        .isPublished,
+              )
               .toList();
           return Padding(
             padding: const EdgeInsets.only(top: 15),

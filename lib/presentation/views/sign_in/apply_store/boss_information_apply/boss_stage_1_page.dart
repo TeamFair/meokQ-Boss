@@ -7,7 +7,7 @@ import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/boss_information/boss_information_bloc.dart';
-import 'package:meokq_boss/presentation/global/custom_bottom_sheet.dart';
+import 'package:meokq_boss/presentation/global/camera_bottom_sheet.dart';
 import 'package:meokq_boss/presentation/global/custom_text_field.dart';
 import 'package:meokq_boss/presentation/global/meokq_button.dart';
 import 'package:meokq_boss/presentation/global/custom_drop_down_button.dart';

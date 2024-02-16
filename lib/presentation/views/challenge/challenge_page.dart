@@ -5,6 +5,8 @@ import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/challenge/challenge_bloc.dart';
 import 'package:meokq_boss/presentation/global/challenge_box.dart';
+import 'package:meokq_boss/presentation/views/challenge/challenge_detail/challenge_detail_argument.dart';
+import 'package:meokq_boss/presentation/views/challenge/challenge_detail/challenge_detail_page.dart';
 import 'package:meokq_boss/presentation/views/setting/setting_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
@@ -71,8 +73,18 @@ class _ChallengePageState extends State<ChallengePage> {
                       itemBuilder: (context, index) {
                         final challenge = state.challengeList[index];
                         return GestureDetector(
-                          onTap: () {},
-                          child: ChallengeBox(challenge: challenge),
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                              ChallengeDetailPage.id,
+                              arguments:
+                                  ChallengeDetailArgument(challenge: challenge),
+                            );
+                          },
+                          child: ChallengeBox(
+                            rewardTitle: challenge.quest.rewards[0].title ?? '',
+                            missionTitle: challenge.quest.missions[0].title ?? '',
+                            challengeId: challenge.challengeId,
+                          ),
                         );
                       },
                     )

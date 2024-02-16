@@ -28,6 +28,7 @@ mixin _$MyInformation {
   String get open => throw _privateConstructorUsedError;
   String get close => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
+  String get changedLogoUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +50,8 @@ abstract class $MyInformationCopyWith<$Res> {
       List<String> businessDays,
       String open,
       String close,
-      String phone});
+      String phone,
+      String changedLogoUrl});
 }
 
 /// @nodoc
@@ -73,6 +75,7 @@ class _$MyInformationCopyWithImpl<$Res, $Val extends MyInformation>
     Object? open = null,
     Object? close = null,
     Object? phone = null,
+    Object? changedLogoUrl = null,
   }) {
     return _then(_value.copyWith(
       logoUrl: null == logoUrl
@@ -107,6 +110,10 @@ class _$MyInformationCopyWithImpl<$Res, $Val extends MyInformation>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      changedLogoUrl: null == changedLogoUrl
+          ? _value.changedLogoUrl
+          : changedLogoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -127,7 +134,8 @@ abstract class _$$MyInformationImplCopyWith<$Res>
       List<String> businessDays,
       String open,
       String close,
-      String phone});
+      String phone,
+      String changedLogoUrl});
 }
 
 /// @nodoc
@@ -149,6 +157,7 @@ class __$$MyInformationImplCopyWithImpl<$Res>
     Object? open = null,
     Object? close = null,
     Object? phone = null,
+    Object? changedLogoUrl = null,
   }) {
     return _then(_$MyInformationImpl(
       logoUrl: null == logoUrl
@@ -183,6 +192,10 @@ class __$$MyInformationImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      changedLogoUrl: null == changedLogoUrl
+          ? _value.changedLogoUrl
+          : changedLogoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -198,7 +211,8 @@ class _$MyInformationImpl implements _MyInformation {
       required final List<String> businessDays,
       required this.open,
       required this.close,
-      required this.phone})
+      required this.phone,
+      required this.changedLogoUrl})
       : _businessDays = businessDays;
 
   factory _$MyInformationImpl.fromJson(Map<String, dynamic> json) =>
@@ -226,10 +240,12 @@ class _$MyInformationImpl implements _MyInformation {
   final String close;
   @override
   final String phone;
+  @override
+  final String changedLogoUrl;
 
   @override
   String toString() {
-    return 'MyInformation(logoUrl: $logoUrl, questCount: $questCount, ticketCount: $ticketCount, address: $address, businessDays: $businessDays, open: $open, close: $close, phone: $phone)';
+    return 'MyInformation(logoUrl: $logoUrl, questCount: $questCount, ticketCount: $ticketCount, address: $address, businessDays: $businessDays, open: $open, close: $close, phone: $phone, changedLogoUrl: $changedLogoUrl)';
   }
 
   @override
@@ -247,7 +263,9 @@ class _$MyInformationImpl implements _MyInformation {
                 .equals(other._businessDays, _businessDays) &&
             (identical(other.open, open) || other.open == open) &&
             (identical(other.close, close) || other.close == close) &&
-            (identical(other.phone, phone) || other.phone == phone));
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.changedLogoUrl, changedLogoUrl) ||
+                other.changedLogoUrl == changedLogoUrl));
   }
 
   @JsonKey(ignore: true)
@@ -261,7 +279,8 @@ class _$MyInformationImpl implements _MyInformation {
       const DeepCollectionEquality().hash(_businessDays),
       open,
       close,
-      phone);
+      phone,
+      changedLogoUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -286,7 +305,8 @@ abstract class _MyInformation implements MyInformation {
       required final List<String> businessDays,
       required final String open,
       required final String close,
-      required final String phone}) = _$MyInformationImpl;
+      required final String phone,
+      required final String changedLogoUrl}) = _$MyInformationImpl;
 
   factory _MyInformation.fromJson(Map<String, dynamic> json) =
       _$MyInformationImpl.fromJson;
@@ -307,6 +327,8 @@ abstract class _MyInformation implements MyInformation {
   String get close;
   @override
   String get phone;
+  @override
+  String get changedLogoUrl;
   @override
   @JsonKey(ignore: true)
   _$$MyInformationImplCopyWith<_$MyInformationImpl> get copyWith =>

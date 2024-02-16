@@ -20,6 +20,8 @@ PublishQuestDTO _$PublishQuestDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PublishQuestDTO {
+  @JsonKey(name: 'marketId')
+  String get marketId => throw _privateConstructorUsedError;
   @JsonKey(name: 'questId')
   String get questId => throw _privateConstructorUsedError;
   @JsonKey(name: 'ticketCount')
@@ -38,7 +40,8 @@ abstract class $PublishQuestDTOCopyWith<$Res> {
       _$PublishQuestDTOCopyWithImpl<$Res, PublishQuestDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'questId') String questId,
+      {@JsonKey(name: 'marketId') String marketId,
+      @JsonKey(name: 'questId') String questId,
       @JsonKey(name: 'ticketCount') int ticketCount});
 }
 
@@ -55,10 +58,15 @@ class _$PublishQuestDTOCopyWithImpl<$Res, $Val extends PublishQuestDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? marketId = null,
     Object? questId = null,
     Object? ticketCount = null,
   }) {
     return _then(_value.copyWith(
+      marketId: null == marketId
+          ? _value.marketId
+          : marketId // ignore: cast_nullable_to_non_nullable
+              as String,
       questId: null == questId
           ? _value.questId
           : questId // ignore: cast_nullable_to_non_nullable
@@ -80,7 +88,8 @@ abstract class _$$PublishQuestDTOImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'questId') String questId,
+      {@JsonKey(name: 'marketId') String marketId,
+      @JsonKey(name: 'questId') String questId,
       @JsonKey(name: 'ticketCount') int ticketCount});
 }
 
@@ -95,10 +104,15 @@ class __$$PublishQuestDTOImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? marketId = null,
     Object? questId = null,
     Object? ticketCount = null,
   }) {
     return _then(_$PublishQuestDTOImpl(
+      marketId: null == marketId
+          ? _value.marketId
+          : marketId // ignore: cast_nullable_to_non_nullable
+              as String,
       questId: null == questId
           ? _value.questId
           : questId // ignore: cast_nullable_to_non_nullable
@@ -115,12 +129,16 @@ class __$$PublishQuestDTOImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PublishQuestDTOImpl implements _PublishQuestDTO {
   const _$PublishQuestDTOImpl(
-      {@JsonKey(name: 'questId') required this.questId,
+      {@JsonKey(name: 'marketId') required this.marketId,
+      @JsonKey(name: 'questId') required this.questId,
       @JsonKey(name: 'ticketCount') required this.ticketCount});
 
   factory _$PublishQuestDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$PublishQuestDTOImplFromJson(json);
 
+  @override
+  @JsonKey(name: 'marketId')
+  final String marketId;
   @override
   @JsonKey(name: 'questId')
   final String questId;
@@ -130,7 +148,7 @@ class _$PublishQuestDTOImpl implements _PublishQuestDTO {
 
   @override
   String toString() {
-    return 'PublishQuestDTO(questId: $questId, ticketCount: $ticketCount)';
+    return 'PublishQuestDTO(marketId: $marketId, questId: $questId, ticketCount: $ticketCount)';
   }
 
   @override
@@ -138,6 +156,8 @@ class _$PublishQuestDTOImpl implements _PublishQuestDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PublishQuestDTOImpl &&
+            (identical(other.marketId, marketId) ||
+                other.marketId == marketId) &&
             (identical(other.questId, questId) || other.questId == questId) &&
             (identical(other.ticketCount, ticketCount) ||
                 other.ticketCount == ticketCount));
@@ -145,7 +165,7 @@ class _$PublishQuestDTOImpl implements _PublishQuestDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, questId, ticketCount);
+  int get hashCode => Object.hash(runtimeType, marketId, questId, ticketCount);
 
   @JsonKey(ignore: true)
   @override
@@ -164,13 +184,17 @@ class _$PublishQuestDTOImpl implements _PublishQuestDTO {
 
 abstract class _PublishQuestDTO implements PublishQuestDTO {
   const factory _PublishQuestDTO(
-          {@JsonKey(name: 'questId') required final String questId,
+          {@JsonKey(name: 'marketId') required final String marketId,
+          @JsonKey(name: 'questId') required final String questId,
           @JsonKey(name: 'ticketCount') required final int ticketCount}) =
       _$PublishQuestDTOImpl;
 
   factory _PublishQuestDTO.fromJson(Map<String, dynamic> json) =
       _$PublishQuestDTOImpl.fromJson;
 
+  @override
+  @JsonKey(name: 'marketId')
+  String get marketId;
   @override
   @JsonKey(name: 'questId')
   String get questId;

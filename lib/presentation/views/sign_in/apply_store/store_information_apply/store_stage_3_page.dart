@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/bloc/store_information/store_information_bloc.dart';
-import 'package:meokq_boss/presentation/global/custom_bottom_sheet.dart';
+import 'package:meokq_boss/presentation/global/camera_bottom_sheet.dart';
 import 'package:meokq_boss/presentation/global/meakq_two_button.dart';
 import 'package:meokq_boss/resources/resources.dart';
 

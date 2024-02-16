@@ -1,6 +1,6 @@
 part of 'quest_detail_bloc.dart';
 
-enum QuestDetailStatus { init, delete, apply }
+enum QuestDetailStatus { init, delete, apply, failed }
 
 class QuestDetailState extends Equatable {
   final Quest? quest;

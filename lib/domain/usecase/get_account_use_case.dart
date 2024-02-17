@@ -37,22 +37,22 @@ class GetAccountUseCase
       }).toList();
 
       final sortedDays = ['월', '화', '수', '목', '금', '토', '일'];
+      final days = <String>[];
 
       for (var s in sortedDays) {
-        if (!businessDays.contains(s)) {
-          sortedDays.remove(s);
-        }
+        if (businessDays.contains(s)) days.add(s);
       }
 
       final myInformation = MyInformation(
         logoUrl: logoUrl,
+        name: marketInfo.name,
         questCount: questList.length,
         ticketCount: marketInfo.ticketCount,
         address: marketInfo.address,
-        businessDays: sortedDays,
-        open: marketInfo.marketTimes.first.openTime,
-        close: marketInfo.marketTimes.first.openTime,
-        phone: marketInfo.phone, 
+        businessDays: days,
+        open: dateToKor(marketInfo.marketTimes.first.openTime),
+        close: dateToKor(marketInfo.marketTimes.first.closeTime),
+        phone: marketInfo.phone,
         changedLogoUrl: '',
       );
 

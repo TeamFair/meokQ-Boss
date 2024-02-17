@@ -52,7 +52,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         emit(
           state.copyWith(
             myInformation: state.myInformation.copyWith(
-              address: event.newText,
+              phone: event.newText,
             ),
           ),
         );
@@ -89,6 +89,5 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     // TODO: apply account
-    
   }
 }

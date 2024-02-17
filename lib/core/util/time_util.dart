@@ -26,8 +26,8 @@ String dateToKor(String date) {
   DateTime time = DateFormat('HH:mm').parse(date);
 
   String stringTime = DateFormat('HH:mm').format(time);
-  time = time.subtract(const Duration(hours: 12));
-  String before12Time = DateFormat('HH:mm').format(time);
+  DateTime newTime = time.subtract(const Duration(hours: 12));
+  String before12Time = DateFormat('HH:mm').format(newTime);
 
   return time.hour < 12 ? '오전 $stringTime' : '오후 $before12Time';
 }

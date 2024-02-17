@@ -21,6 +21,7 @@ MyInformation _$MyInformationFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MyInformation {
   String get logoUrl => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   int get questCount => throw _privateConstructorUsedError;
   int get ticketCount => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
@@ -44,6 +45,7 @@ abstract class $MyInformationCopyWith<$Res> {
   @useResult
   $Res call(
       {String logoUrl,
+      String name,
       int questCount,
       int ticketCount,
       String address,
@@ -68,6 +70,7 @@ class _$MyInformationCopyWithImpl<$Res, $Val extends MyInformation>
   @override
   $Res call({
     Object? logoUrl = null,
+    Object? name = null,
     Object? questCount = null,
     Object? ticketCount = null,
     Object? address = null,
@@ -81,6 +84,10 @@ class _$MyInformationCopyWithImpl<$Res, $Val extends MyInformation>
       logoUrl: null == logoUrl
           ? _value.logoUrl
           : logoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       questCount: null == questCount
           ? _value.questCount
@@ -128,6 +135,7 @@ abstract class _$$MyInformationImplCopyWith<$Res>
   @useResult
   $Res call(
       {String logoUrl,
+      String name,
       int questCount,
       int ticketCount,
       String address,
@@ -150,6 +158,7 @@ class __$$MyInformationImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? logoUrl = null,
+    Object? name = null,
     Object? questCount = null,
     Object? ticketCount = null,
     Object? address = null,
@@ -163,6 +172,10 @@ class __$$MyInformationImplCopyWithImpl<$Res>
       logoUrl: null == logoUrl
           ? _value.logoUrl
           : logoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       questCount: null == questCount
           ? _value.questCount
@@ -205,6 +218,7 @@ class __$$MyInformationImplCopyWithImpl<$Res>
 class _$MyInformationImpl implements _MyInformation {
   const _$MyInformationImpl(
       {required this.logoUrl,
+      required this.name,
       required this.questCount,
       required this.ticketCount,
       required this.address,
@@ -220,6 +234,8 @@ class _$MyInformationImpl implements _MyInformation {
 
   @override
   final String logoUrl;
+  @override
+  final String name;
   @override
   final int questCount;
   @override
@@ -245,7 +261,7 @@ class _$MyInformationImpl implements _MyInformation {
 
   @override
   String toString() {
-    return 'MyInformation(logoUrl: $logoUrl, questCount: $questCount, ticketCount: $ticketCount, address: $address, businessDays: $businessDays, open: $open, close: $close, phone: $phone, changedLogoUrl: $changedLogoUrl)';
+    return 'MyInformation(logoUrl: $logoUrl, name: $name, questCount: $questCount, ticketCount: $ticketCount, address: $address, businessDays: $businessDays, open: $open, close: $close, phone: $phone, changedLogoUrl: $changedLogoUrl)';
   }
 
   @override
@@ -254,6 +270,7 @@ class _$MyInformationImpl implements _MyInformation {
         (other.runtimeType == runtimeType &&
             other is _$MyInformationImpl &&
             (identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.questCount, questCount) ||
                 other.questCount == questCount) &&
             (identical(other.ticketCount, ticketCount) ||
@@ -273,6 +290,7 @@ class _$MyInformationImpl implements _MyInformation {
   int get hashCode => Object.hash(
       runtimeType,
       logoUrl,
+      name,
       questCount,
       ticketCount,
       address,
@@ -299,6 +317,7 @@ class _$MyInformationImpl implements _MyInformation {
 abstract class _MyInformation implements MyInformation {
   const factory _MyInformation(
       {required final String logoUrl,
+      required final String name,
       required final int questCount,
       required final int ticketCount,
       required final String address,
@@ -313,6 +332,8 @@ abstract class _MyInformation implements MyInformation {
 
   @override
   String get logoUrl;
+  @override
+  String get name;
   @override
   int get questCount;
   @override

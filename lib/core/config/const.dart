@@ -1,3 +1,4 @@
+import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
 
 enum Flavor {
@@ -76,11 +77,19 @@ const productionUrl = 'http://43.202.229.190:9091';
 String imageUrl = '$devUrl/api/open/image/';
 
 SplashStatus strToSplashStatus(String value) {
-    return switch (value) {
-      'REGISTERED' => SplashStatus.register,
-      'UNDER_REVIEW' => SplashStatus.underReview,
-      'APPROVED' => SplashStatus.approved,
-      'REJECTED' => SplashStatus.reject,
-      _ => SplashStatus.failure,
+  return switch (value) {
+    'REGISTERED' => SplashStatus.register,
+    'UNDER_REVIEW' => SplashStatus.underReview,
+    'APPROVED' => SplashStatus.approved,
+    'REJECTED' => SplashStatus.reject,
+    _ => SplashStatus.failure,
+  };
+}
+
+LoginStatus strToLoginStatus(String str) => switch (str) {
+      'APPROVED' => LoginStatus.APPROVED,
+      'UNDER_REVIEW' => LoginStatus.review,
+      'REGISTERED' => LoginStatus.newUser,
+      'REJECTED' => LoginStatus.reject,
+      _ => LoginStatus.failure,
     };
-  }

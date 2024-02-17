@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -49,158 +51,163 @@ class _AccountPageState extends State<AccountPage> {
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 28),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 81,
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 81,
-                        height: 81,
-                        decoration: ShapeDecoration(
-                          image: const DecorationImage(
-                            image: NetworkImage(
-                              'https://via.placeholder.com/81x81',
-                            ),
-                            fit: BoxFit.fill,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                              width: 1,
-                              color: Color(0xFFC7C7C7),
-                            ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 81,
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 81,
+                          height: 81,
+                          child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
+                            child: state.myInformation.changedLogoUrl.isEmpty
+                                ? Image.network(
+                                    state.myInformation.logoUrl,
+                                    fit: BoxFit.fill,
+                                  )
+                                : Image.file(
+                                    File(state.myInformation.changedLogoUrl),
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Container(
+                                        color: ColorS.background,
+                                      );
+                                    },
+                                    fit: BoxFit.fill,
+                                  ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 18,
-                      ),
-                      SizedBox(
-                        height: 50,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              '커피크라운 안양점',
-                              style: TextS.heading2(),
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            SizedBox(
-                              height: 20,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '퀘스트 개수 ',
-                                    style: TextS.content2(),
-                                  ),
-                                  Text(
-                                    '${state.myInformation.questCount}개',
-                                    style: TextS.content2().copyWith(
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 12,
-                                  ),
-                                  Container(
-                                    width: 1,
-                                    height: 14,
-                                    color: ColorS.commentGray,
-                                  ),
-                                  const SizedBox(
-                                    width: 12,
-                                  ),
-                                  Text(
-                                    '이용권 개수 ',
-                                    style: TextS.content2(),
-                                  ),
-                                  Text(
-                                    '${state.myInformation.ticketCount}개',
-                                    style: TextS.content2().copyWith(
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ],
+                        const SizedBox(
+                          width: 18,
+                        ),
+                        SizedBox(
+                          height: 50,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                state.myInformation.name,
+                                style: TextS.heading2(),
                               ),
-                            ),
-                          ],
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              SizedBox(
+                                height: 20,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '퀘스트 개수 ',
+                                      style: TextS.content2(),
+                                    ),
+                                    Text(
+                                      '${state.myInformation.questCount}개',
+                                      style: TextS.content2().copyWith(
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    Container(
+                                      width: 1,
+                                      height: 14,
+                                      color: ColorS.commentGray,
+                                    ),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    Text(
+                                      '이용권 개수 ',
+                                      style: TextS.content2(),
+                                    ),
+                                    Text(
+                                      '${state.myInformation.ticketCount}개',
+                                      style: TextS.content2().copyWith(
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 46,
-                ),
-                AccountTextWidget(
-                  title: '주소',
-                  content: state.myInformation.address,
-                  isEdit: state.editClicked,
-                  onChanged: (text) => context.read<AccountBloc>().add(
-                        ChangeText(
-                          newText: text,
-                          textType: TextType.address,
-                        ),
-                      ),
-                ),
-                AccountTextWidget(
-                  title: '영업일',
-                  content: businessDayString(state.myInformation.businessDays),
-                  isEdit: state.editClicked,
-                  onButtonTap: () => Navigator.of(context).pushNamed(
-                    AccountTimeEditPage.id,
-                    arguments: AccountTimeEditArgument(
-                      businessDays: state.myInformation.businessDays,
-                      open: state.myInformation.open,
-                      close: state.myInformation.close,
+                      ],
                     ),
                   ),
-                ),
-                AccountTextWidget(
-                  title: '영업 시작 시간',
-                  content: state.myInformation.open,
-                  isEdit: state.editClicked,
-                  onButtonTap: () => Navigator.of(context).pushNamed(
-                    AccountTimeEditPage.id,
-                    arguments: AccountTimeEditArgument(
-                      businessDays: state.myInformation.businessDays,
-                      open: state.myInformation.open,
-                      close: state.myInformation.close,
-                    ),
+                  const SizedBox(
+                    height: 46,
                   ),
-                ),
-                AccountTextWidget(
-                  title: '영업 마감 시간',
-                  content: state.myInformation.close,
-                  isEdit: state.editClicked,
-                  onButtonTap: () => Navigator.of(context).pushNamed(
-                    AccountTimeEditPage.id,
-                    arguments: AccountTimeEditArgument(
-                      businessDays: state.myInformation.businessDays,
-                      open: state.myInformation.open,
-                      close: state.myInformation.close,
-                    ),
-                  ),
-                ),
-                AccountTextWidget(
-                  title: '영업장 전화번호',
-                  content: state.myInformation.phone,
-                  isEdit: state.editClicked,
-                  onChanged: (text) => context.read<AccountBloc>().add(
-                        ChangeText(
-                          newText: text,
-                          textType: TextType.phone,
+                  AccountTextWidget(
+                    title: '주소',
+                    content: state.myInformation.address,
+                    isEdit: state.editClicked,
+                    onChanged: (text) => context.read<AccountBloc>().add(
+                          ChangeText(
+                            newText: text,
+                            textType: TextType.address,
+                          ),
                         ),
+                  ),
+                  AccountTextWidget(
+                    title: '영업일',
+                    content:
+                        businessDayString(state.myInformation.businessDays),
+                    isEdit: state.editClicked,
+                    onButtonTap: () => Navigator.of(context).pushNamed(
+                      AccountTimeEditPage.id,
+                      arguments: AccountTimeEditArgument(
+                        businessDays: state.myInformation.businessDays,
+                        open: state.myInformation.open,
+                        close: state.myInformation.close,
                       ),
-                ),
-              ],
+                    ),
+                  ),
+                  AccountTextWidget(
+                    title: '영업 시작 시간',
+                    content: state.myInformation.open,
+                    isEdit: state.editClicked,
+                    onButtonTap: () => Navigator.of(context).pushNamed(
+                      AccountTimeEditPage.id,
+                      arguments: AccountTimeEditArgument(
+                        businessDays: state.myInformation.businessDays,
+                        open: state.myInformation.open,
+                        close: state.myInformation.close,
+                      ),
+                    ),
+                  ),
+                  AccountTextWidget(
+                    title: '영업 마감 시간',
+                    content: state.myInformation.close,
+                    isEdit: state.editClicked,
+                    onButtonTap: () => Navigator.of(context).pushNamed(
+                      AccountTimeEditPage.id,
+                      arguments: AccountTimeEditArgument(
+                        businessDays: state.myInformation.businessDays,
+                        open: state.myInformation.open,
+                        close: state.myInformation.close,
+                      ),
+                    ),
+                  ),
+                  AccountTextWidget(
+                    title: '영업장 전화번호',
+                    content: state.myInformation.phone,
+                    isEdit: state.editClicked,
+                    onChanged: (text) => context.read<AccountBloc>().add(
+                          ChangeText(
+                            newText: text,
+                            textType: TextType.phone,
+                          ),
+                        ),
+                  ),
+                ],
+              ),
             ),
           ),
         );

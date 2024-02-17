@@ -35,9 +35,9 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     final collectionAgreement =
         await _remote.getAgreement(agreementType: Consent.collection.apiText);
     final emailAgreement =
-        await _remote.getAgreement(agreementType: Consent.collection.apiText);
+        await _remote.getAgreement(agreementType: Consent.thirdParty.apiText);
     final smsAgreement =
-        await _remote.getAgreement(agreementType: Consent.collection.apiText);
+        await _remote.getAgreement(agreementType: Consent.marketing.apiText);
 
     emit(
       state.copyWith(

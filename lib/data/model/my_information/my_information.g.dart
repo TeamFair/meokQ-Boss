@@ -9,6 +9,7 @@ part of 'my_information.dart';
 _$MyInformationImpl _$$MyInformationImplFromJson(Map<String, dynamic> json) =>
     _$MyInformationImpl(
       logoUrl: json['logoUrl'] as String,
+      name: json['name'] as String,
       questCount: json['questCount'] as int,
       ticketCount: json['ticketCount'] as int,
       address: json['address'] as String,
@@ -24,6 +25,7 @@ _$MyInformationImpl _$$MyInformationImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$MyInformationImplToJson(_$MyInformationImpl instance) =>
     <String, dynamic>{
       'logoUrl': instance.logoUrl,
+      'name': instance.name,
       'questCount': instance.questCount,
       'ticketCount': instance.ticketCount,
       'address': instance.address,

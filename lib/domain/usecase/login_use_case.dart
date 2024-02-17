@@ -1,6 +1,7 @@
 // 📦 Package imports:
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/config/local_key.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/data/dto/login/login_dto.dart';
@@ -86,14 +87,6 @@ class LoginUseCase
       return Left(LoginFailure());
     }
   }
-
-  LoginStatus strToLoginStatus(String str) => switch (str) {
-        'APPROVED' => LoginStatus.APPROVED,
-        'UNDER_REVIEW' => LoginStatus.review,
-        'NEW_USER' => LoginStatus.newUser,
-        'REJECTED' => LoginStatus.reject,
-        _ => LoginStatus.failure,
-      };
 }
 
 class LoginInput {

@@ -17,12 +17,6 @@ class QuestCheckPage extends StatefulWidget {
 
 class _QuestCheckPageState extends State<QuestCheckPage> {
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    BlocProvider.of<QuestBloc>(context).add(InitAllQuest());
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<QuestBloc, QuestState>(
@@ -34,35 +28,44 @@ class _QuestCheckPageState extends State<QuestCheckPage> {
                         .isPublished,
               )
               .toList();
-          return Padding(
-            padding: const EdgeInsets.only(top: 15),
-            child: questList.isNotEmpty
-                ? ListView.separated(
-                    itemCount: questList.length,
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: 12,
+          return RefreshIndicator(
+            onRefresh: () async =>
+                BlocProvider.of<QuestBloc>(context).add(InitAllQuest()),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: questList.isNotEmpty
+                  ? ListView.separated(
+                      itemCount: questList.length,
+                      separatorBuilder: (context, index) => const SizedBox(
+                        height: 12,
+                      ),
+                      itemBuilder: (context, index) {
+                        final quest = questList[index];
+                        return GestureDetector(
+                          onTap: () {
+                            if (QuestStatus.stringToQuestStatus(
+                              quest.questStatus,
+                            ).isUnderReview) {
+                              Navigator.of(context).pushNamed(
+                                QuestDetailPage.id,
+                                arguments: QuestDetailArgument(
+                                  questId: quest.questId,
+                                ),
+                              );
+                            }
+                          },
+                          child: QuestBox(quest: quest),
+                        );
+                      },
+                    )
+                  : Center(
+                      child: Text(
+                        '현재 검토중인 퀘스트가 없습니다',
+                        style:
+                            TextS.content().copyWith(color: ColorS.contentGray),
+                      ),
                     ),
-                    itemBuilder: (context, index) {
-                      final quest = questList[index];
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).pushNamed(
-                            QuestDetailPage.id,
-                            arguments:
-                                QuestDetailArgument(questId: quest.questId),
-                          );
-                        },
-                        child: QuestBox(quest: quest),
-                      );
-                    },
-                  )
-                : Center(
-                    child: Text(
-                      '현재 검토중인 퀘스트가 없습니다',
-                      style:
-                          TextS.content().copyWith(color: ColorS.contentGray),
-                    ),
-                  ),
+            ),
           );
         },
       ),

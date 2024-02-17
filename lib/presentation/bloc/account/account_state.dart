@@ -25,6 +25,7 @@ class AccountState extends Equatable {
         close: '',
         phone: '',
         changedLogoUrl: '',
+        name: '',
       ),
       editClicked: false,
     );

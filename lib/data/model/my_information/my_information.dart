@@ -7,6 +7,7 @@ part 'my_information.g.dart';
 class MyInformation with _$MyInformation {
   const factory MyInformation({
     required String logoUrl,
+    required String name,
     required int questCount,
     required int ticketCount,
     required String address,

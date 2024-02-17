@@ -296,7 +296,7 @@ class _ChallengeDetailPageState extends State<ChallengeDetailPage> {
                     secondButtonTap: () {
                       showDialog(
                         context: context,
-                        builder: (context) {
+                        builder: (childContext) {
                           return CustomAlertDialog(
                             title: '쿠폰을 발급하시겠습니까?',
                             contents: '발급 후 되돌릴 수 없으니 유의해주세요',

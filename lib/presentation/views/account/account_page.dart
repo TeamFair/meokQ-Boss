@@ -66,6 +66,11 @@ class _AccountPageState extends State<AccountPage> {
                             child: state.myInformation.changedLogoUrl.isEmpty
                                 ? Image.network(
                                     state.myInformation.logoUrl,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Container(
+                                        color: ColorS.background,
+                                      );
+                                    },
                                     fit: BoxFit.fill,
                                   )
                                 : Image.file(

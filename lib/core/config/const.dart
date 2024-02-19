@@ -87,9 +87,9 @@ SplashStatus strToSplashStatus(String value) {
 }
 
 LoginStatus strToLoginStatus(String str) => switch (str) {
-      'APPROVED' => LoginStatus.APPROVED,
+      'APPROVED' => LoginStatus.approved,
       'UNDER_REVIEW' => LoginStatus.review,
-      'REGISTERED' => LoginStatus.newUser,
+      'REGISTERED' => LoginStatus.register,
       'REJECTED' => LoginStatus.reject,
       _ => LoginStatus.failure,
     };

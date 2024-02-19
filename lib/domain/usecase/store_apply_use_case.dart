@@ -24,7 +24,7 @@ class StoreApplyUseCase
 
       for (String day in input.businessDays) {
         marketList.add({
-          'weekDay': formatDay(day),
+          'weekDay': toEnglishDay(day),
           'openTime': korToDate(input.open),
           'closeTime': korToDate(input.close),
           'holidayYn': 'Y',
@@ -59,17 +59,6 @@ class StoreApplyUseCase
       return Left(StoreApplyFailure());
     }
   }
-
-  String formatDay(String day) => switch (day) {
-        '월' => 'MON',
-        '화' => 'TUE',
-        '수' => 'WED',
-        '목' => 'THU',
-        '금' => 'FRI',
-        '토' => 'SAT',
-        '일' => 'SUN',
-        _ => ''
-      };
 }
 
 class StoreApplyInput {

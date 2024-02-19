@@ -18,8 +18,6 @@ class ChangeText extends AccountEvent {
   });
 }
 
-class ChangeAccount extends AccountEvent {}
-
 class EditButtonClicked extends AccountEvent {}
 
 class InitMyInformation extends AccountEvent {}

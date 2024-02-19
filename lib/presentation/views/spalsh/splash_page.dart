@@ -64,12 +64,8 @@ class _SplashPageState extends State<SplashPage> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 builder: (childContext) {
-                  return LoginStatusBottomSheet(
+                  return const LoginStatusBottomSheet(
                     loginStatus: LoginStatus.review,
-                    onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
-                      HomePage.id,
-                      (route) => false,
-                    ),
                   );
                 },
               );
@@ -84,7 +80,7 @@ class _SplashPageState extends State<SplashPage> {
                 ),
                 builder: (childContext) {
                   return LoginStatusBottomSheet(
-                    loginStatus: LoginStatus.newUser,
+                    loginStatus: LoginStatus.register,
                     onTap: () => Navigator.of(context).pushNamed(AgreePage.id),
                   );
                 },

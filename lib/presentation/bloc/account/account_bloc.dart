@@ -12,7 +12,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   AccountBloc() : super(AccountState.init()) {
     on<ChangeText>(_changeText);
     on<ChangeLogo>(_changeLogo);
-    on<ChangeAccount>(_changeAccount);
     on<EditButtonClicked>(_editButtonClicked);
     on<InitMyInformation>(_initMyInformationState);
   }
@@ -77,17 +76,19 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     EditButtonClicked event,
     Emitter<AccountState> emit,
   ) {
-    emit(
-      state.copyWith(
-        editClicked: !state.editClicked,
-      ),
-    );
-  }
-
-  Future<void> _changeAccount(
-    ChangeAccount event,
-    Emitter<AccountState> emit,
-  ) async {
-    // TODO: apply account
+    if (state.editClicked) {
+      // TODO: API postAccount call
+      emit(
+        state.copyWith(
+          editClicked: !state.editClicked,
+        ),
+      );
+    } else {
+      emit(
+        state.copyWith(
+          editClicked: !state.editClicked,
+        ),
+      );
+    }
   }
 }

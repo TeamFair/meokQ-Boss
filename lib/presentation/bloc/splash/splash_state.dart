@@ -2,11 +2,11 @@ part of 'splash_bloc.dart';
 
 enum SplashStatus {
   inProgress,
-  needLogin,
-  reject,
-  register,
-  underReview,
-  approved,
+  needLogin, // 로그인이 안된 상태
+  reject, // 마켓 등록 실패 상태
+  register, // 로그인만 된 상태
+  underReview, // 마켓 등록 신청한 상태
+  approved, // 승인 상태
   failure;  
 }
 

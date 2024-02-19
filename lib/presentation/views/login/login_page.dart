@@ -8,6 +8,7 @@ import 'package:meokq_boss/presentation/views/home/home_page.dart';
 import 'package:meokq_boss/presentation/views/login/widget/login_button.dart';
 import 'package:meokq_boss/presentation/views/login/widget/login_chip.dart';
 import 'package:meokq_boss/presentation/views/sign_in/agree/agree_page.dart';
+import 'package:meokq_boss/presentation/views/sign_in/apply_store/apply_store_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
 class LoginPage extends StatefulWidget {
@@ -24,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         switch (state.loginStatus) {
-          case LoginStatus.newUser:
+          case LoginStatus.register:
             showModalBottomSheet(
               context: context,
               isScrollControlled: true,
@@ -52,8 +53,9 @@ class _LoginPageState extends State<LoginPage> {
               builder: (childContext) {
                 return LoginStatusBottomSheet(
                   loginStatus: state.loginStatus,
-                  content: '사업자 등록증을 첨부해주세요.',
-                  onTap: () => Navigator.of(context).pushNamed(AgreePage.id),
+                  content: '등록 실패',
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(ApplyStorePage.id),
                 );
               },
             );
@@ -72,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
             );
 
           case LoginStatus.firstComplete:
-          case LoginStatus.APPROVED:
+          case LoginStatus.approved:
             Navigator.of(context)
                 .pushNamedAndRemoveUntil(HomePage.id, (route) => false);
 

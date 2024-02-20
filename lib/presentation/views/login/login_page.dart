@@ -116,17 +116,17 @@ class _LoginPageState extends State<LoginPage> {
                 isBorderNeed: true,
                 textColor: Colors.black,
               ),
-              const SizedBox(
-                height: 16,
-              ),
-              // if (defaultTargetPlatform == TargetPlatform.iOS)
-              const LoginButton(
-                svgLink: Svgs.appleIcon,
-                loginMethod: LoginMethod.apple,
-                color: Colors.black,
-                isBorderNeed: false,
-                textColor: Colors.white,
-              ),
+              // const SizedBox(
+              //   height: 16,
+              // ),
+              // // if (defaultTargetPlatform == TargetPlatform.iOS)
+              // const LoginButton(
+              //   svgLink: Svgs.appleIcon,
+              //   loginMethod: LoginMethod.apple,
+              //   color: Colors.black,
+              //   isBorderNeed: false,
+              //   textColor: Colors.white,
+              // ),
             ],
           ),
         ),

@@ -63,24 +63,25 @@ class LoginUseCase
         login.authorization,
       );
 
-      final market = await _remote.getMarkets();
+      final marketList = await _remote.getMarkets();
 
-      if (market.marketId.isEmpty) { // 마켓 아이디가 없다 - 마켓 등록을 해야한다
+      if (marketList.isEmpty) {
+        // 마켓 아이디가 없다 - 마켓 등록을 해야한다
         return Right(
-        LoginOutput(
-          loginStatus: LoginStatus.register,
-        ),
-      );
+          LoginOutput(
+            loginStatus: LoginStatus.register,
+          ),
+        );
       }
 
       _local.setKey(
         LocalStringKey.marketId,
-        market.marketId,
+        marketList[0].marketId,
       );
 
       return Right(
         LoginOutput(
-          loginStatus: strToLoginStatus(market.status),
+          loginStatus: strToLoginStatus(marketList[0].status),
         ),
       );
     } on DioException catch (e) {

@@ -127,14 +127,17 @@ class RemoteRepository extends InterfaceRemote {
   }
 
   @override
-  Future<MarketVO> getMarkets() async {
+  Future<List<MarketVO>> getMarkets() async {
     final res = await api.markets(
         // ownMarketOnly: 'true',
         );
 
-    MarketVO vo = MarketVO.fromJson(res.data[0]);
+    List<MarketVO> marketList = [];
+    for (var data in res.data) {
+      marketList.add( MarketVO.fromJson(data));
+    }
 
-    return vo;
+    return marketList;
   }
 
   @override

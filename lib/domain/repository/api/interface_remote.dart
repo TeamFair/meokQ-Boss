@@ -20,7 +20,7 @@ abstract class InterfaceRemote {
 
   Future<LoginVO> login({required LoginDTO loginDTO});
 
-  Future<MarketVO> getMarkets();
+  Future<List<MarketVO>> getMarkets();
 
   Future<ApplyMarketVO> applyMarkets({
     required Map<String, dynamic> applyMarketDTO,

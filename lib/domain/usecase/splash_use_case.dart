@@ -26,6 +26,14 @@ class SplashUseCase implements UseCase<SplashOutput, SplashInput> {
 
       final checkMarketVO = await _remote.marketApproved();
 
+      if (checkMarketVO.isEmpty) {
+        return Right(
+        SplashOutput(
+          splashStatus: SplashStatus.register,
+        ),
+      );
+      }
+
       _local.setKey(LocalStringKey.marketStatus, checkMarketVO[0].reviewResult);
 
       return Right(

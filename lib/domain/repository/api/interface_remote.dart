@@ -62,4 +62,6 @@ abstract class InterfaceRemote {
   Future<List<Coupon>> getCoupons({required String status});
 
   Future<List<CheckMarketVO>> marketApproved();
+
+  Future<void> putMarket({required Map<String, dynamic> dto});
 }

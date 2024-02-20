@@ -11,6 +11,7 @@ class ChallengeVO with _$ChallengeVO {
     @JsonKey(name: 'challengeId', defaultValue: '') required String challengeId,
     @JsonKey(name: 'quest') required Quest quest,
     @JsonKey(name: 'receiptImageId') required String receiptImageId,
+    @JsonKey(name: 'userNickName') required String userNickName,
   }) = _ChallengeVO;
 
   factory ChallengeVO.fromJson(Map<String, dynamic> json) =>

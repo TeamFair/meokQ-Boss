@@ -74,7 +74,7 @@ const rejectList = [
 const devUrl = 'http://43.202.229.190:9090';
 const productionUrl = 'http://43.202.229.190:9091';
 
-String imageUrl = '$devUrl/api/open/image/';
+String imageUrl = '$productionUrl/api/open/image/';
 
 SplashStatus strToSplashStatus(String value) {
   return switch (value) {
@@ -82,7 +82,7 @@ SplashStatus strToSplashStatus(String value) {
     'UNDER_REVIEW' => SplashStatus.underReview,
     'APPROVED' => SplashStatus.approved,
     'REJECTED' => SplashStatus.reject,
-    _ => SplashStatus.failure,
+    _ => SplashStatus.needLogin,
   };
 }
 

@@ -9,12 +9,12 @@ class ChallengeBox extends StatelessWidget {
     super.key,
     required this.rewardTitle,
     required this.missionTitle,
-    required this.challengeId,
+    required this.userNickName,
   });
 
   final String rewardTitle;
   final String missionTitle;
-  final String challengeId;
+  final String userNickName;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +74,7 @@ class ChallengeBox extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          challengeId,
+                          userNickName,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             color: ColorS.gray400,

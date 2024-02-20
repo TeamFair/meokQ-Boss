@@ -18,6 +18,7 @@ class ChallengeDetailBloc
             challengeId: '',
             status: ChallengeDetailStatus.init,
             comment: '영수증이 불명확합니다',
+            userNickName: '',
           ),
         ) {
     on<InitChallengeState>(_initChallenge);
@@ -36,6 +37,7 @@ class ChallengeDetailBloc
         rewardTitle: event.challengeVO.quest.rewards[0].title ?? '',
         missionTitle: event.challengeVO.quest.missions[0].title ?? '',
         challengeId: event.challengeVO.challengeId,
+        userNickName: event.challengeVO.userNickName,
       ),
     );
   }

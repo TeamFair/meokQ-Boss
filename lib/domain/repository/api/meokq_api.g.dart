@@ -555,7 +555,7 @@ class _MeokqApi implements MeokqApi {
     )
             .compose(
               _dio.options,
-              '/api/boss/market/${marketId}/request-review',
+              '/api/boss/market-auth/${marketId}/request-review',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -583,6 +583,37 @@ class _MeokqApi implements MeokqApi {
             .compose(
               _dio.options,
               '/api/boss/market-auth',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ResponseVO.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ResponseVO> putMarket({
+    required String marketId,
+    required Map<String, dynamic> body,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/boss/market/${marketId}',
               queryParameters: queryParameters,
               data: _data,
             )

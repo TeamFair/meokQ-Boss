@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
-import 'package:meokq_boss/core/config/local_key.dart';
-import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
-import 'package:meokq_boss/domain/repository/local/inteface_local.dart';
 import 'package:meokq_boss/presentation/bloc/tab_bar_controller/tab_bar_bloc.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_add/quest_add_page.dart';
 import 'package:meokq_boss/presentation/views/quest/quest_check/quest_check_page.dart';
@@ -35,19 +32,9 @@ class _QuestPageState extends State<QuestPage> {
           actions: [
             IconButton(
               onPressed: () {
-                if (getIt<InterfaceLocal>()
-                        .getKey(LocalStringKey.marketStatus) ==
-                    'APPROVED') {
-                  Navigator.of(context).pushNamed(
-                    QuestAddPage.id,
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('아직 마켓 승인이 나지 않아 퀘스트를 추가할 수 없습니다'),
-                    ),
-                  );
-                }
+                Navigator.of(context).pushNamed(
+                  QuestAddPage.id,
+                );
               },
               icon: SvgPicture.asset(Svgs.plusIcon),
             ),

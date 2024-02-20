@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
+import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 import 'package:meokq_boss/presentation/global/custom_alert_dialog.dart';
 import 'package:meokq_boss/presentation/global/meokq_button.dart';
-import 'package:meokq_boss/presentation/views/home/home_page.dart';
+import 'package:meokq_boss/presentation/views/login/login_page.dart';
 import 'package:meokq_boss/presentation/views/sign_in/apply_store/boss_information_apply/boss_information_apply_page.dart';
 import 'package:meokq_boss/presentation/views/sign_in/apply_store/store_information_apply/store_information_apply_page.dart';
 import 'package:meokq_boss/resources/resources.dart';
@@ -177,7 +178,18 @@ class _ApplyStorePageState extends State<ApplyStorePage> {
             const Spacer(),
             if (bossButtonState && storeButtonState)
               MeokQButton(
-                onTap: () => Navigator.of(context).pushNamed(HomePage.id),
+                onTap: () => showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              builder: (childContext) {
+                return const LoginStatusBottomSheet(
+                  loginStatus: LoginStatus.review,
+                );
+              },
+            ),
                 text: '입점 신청하기',
               ),
             const SizedBox(

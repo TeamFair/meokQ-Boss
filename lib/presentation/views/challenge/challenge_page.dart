@@ -82,8 +82,9 @@ class _ChallengePageState extends State<ChallengePage> {
                           },
                           child: ChallengeBox(
                             rewardTitle: challenge.quest.rewards[0].title ?? '',
-                            missionTitle: challenge.quest.missions[0].title ?? '',
-                            challengeId: challenge.challengeId,
+                            missionTitle:
+                                challenge.quest.missions[0].title ?? '',
+                            userNickName: challenge.userNickName,
                           ),
                         );
                       },

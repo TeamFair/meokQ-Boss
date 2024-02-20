@@ -47,7 +47,7 @@ class PostAccountUseCase
 
         logoImageId = imageVO.imageId;
       }
-      
+
       // input으로 들어온 값들로만 dto 생성
       final dto = {
         'logoImageId': logoImageId,
@@ -55,6 +55,8 @@ class PostAccountUseCase
         'address': input.address,
         'marketTime': marketList,
       };
+
+      await _remote.putMarket(dto: dto);
 
       return Right(PostAccountOutput());
     } on DioException catch (e) {

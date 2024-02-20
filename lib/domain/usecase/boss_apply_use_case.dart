@@ -50,6 +50,10 @@ class BossApplyUseCase
 
       await _remote.postAuth(applyAuthDTO: dto);
 
+      final checkMarketVO = await _remote.marketApproved();
+
+      _local.setKey(LocalStringKey.marketStatus, checkMarketVO[0].reviewResult);
+
       return Right(BossApplyOutput());
     } on DioException catch (e) {
       return Left(restErrorHandle(e));

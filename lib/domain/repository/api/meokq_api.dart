@@ -111,7 +111,7 @@ abstract class MeokqApi {
     @Query('marketId') required String marketId,
   });
 
-  @GET('/api/boss/market/{marketId}/request-review') // 마켓인증정보 검토 요청
+  @GET('/api/boss/market-auth/{marketId}/request-review') // 마켓인증정보 검토 요청
   Future<ResponseVO> requestReview({
     @Path('marketId') required String marketId,
   });
@@ -119,5 +119,11 @@ abstract class MeokqApi {
   @GET('/api/boss/market-auth') // 마켓인증정보 조회
   Future<ResponseVO> marketApproved({
     @Path('marketId') required String marketId,
+  });
+
+  @PUT('/api/boss/market/{marketId}') // 마켓정보 수정
+  Future<ResponseVO> putMarket({
+    @Path('marketId') required String marketId,
+    @Body() required Map<String, dynamic> body,
   });
 }

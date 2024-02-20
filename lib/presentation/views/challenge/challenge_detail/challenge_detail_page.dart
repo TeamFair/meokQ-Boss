@@ -91,7 +91,7 @@ class _ChallengeDetailPageState extends State<ChallengeDetailPage> {
                   ChallengeBox(
                     rewardTitle: state.rewardTitle,
                     missionTitle: state.missionTitle,
-                    challengeId: state.challengeId,
+                    userNickName: state.userNickName,
                   ),
                   const SizedBox(
                     height: 19,

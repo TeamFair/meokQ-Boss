@@ -104,7 +104,7 @@ class RemoteRepository extends InterfaceRemote {
       ),
     );
 
-    api = MeokqApi(dio, baseUrl: devUrl);
+    api = MeokqApi(dio, baseUrl: productionUrl);
     await Future.delayed(const Duration(seconds: 1));
   }
 
@@ -336,5 +336,18 @@ class RemoteRepository extends InterfaceRemote {
     });
 
     return checkMarketList;
+  }
+
+  @override
+  Future<void> putMarket({required Map<String, dynamic> dto}) async {
+    assert(
+      localRepositroy.getKey(LocalStringKey.marketId) != null,
+      '마켓 id가 없습니다',
+    );
+
+    await api.putMarket(
+      marketId: localRepositroy.getKey(LocalStringKey.marketId)!,
+      body: dto,
+    );
   }
 }

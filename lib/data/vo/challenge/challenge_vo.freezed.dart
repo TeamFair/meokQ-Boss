@@ -26,6 +26,8 @@ mixin _$ChallengeVO {
   Quest get quest => throw _privateConstructorUsedError;
   @JsonKey(name: 'receiptImageId')
   String get receiptImageId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'userNickName')
+  String get userNickName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +44,8 @@ abstract class $ChallengeVOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'challengeId', defaultValue: '') String challengeId,
       @JsonKey(name: 'quest') Quest quest,
-      @JsonKey(name: 'receiptImageId') String receiptImageId});
+      @JsonKey(name: 'receiptImageId') String receiptImageId,
+      @JsonKey(name: 'userNickName') String userNickName});
 
   $QuestCopyWith<$Res> get quest;
 }
@@ -63,6 +66,7 @@ class _$ChallengeVOCopyWithImpl<$Res, $Val extends ChallengeVO>
     Object? challengeId = null,
     Object? quest = null,
     Object? receiptImageId = null,
+    Object? userNickName = null,
   }) {
     return _then(_value.copyWith(
       challengeId: null == challengeId
@@ -76,6 +80,10 @@ class _$ChallengeVOCopyWithImpl<$Res, $Val extends ChallengeVO>
       receiptImageId: null == receiptImageId
           ? _value.receiptImageId
           : receiptImageId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userNickName: null == userNickName
+          ? _value.userNickName
+          : userNickName // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -100,7 +108,8 @@ abstract class _$$ChallengeVOImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'challengeId', defaultValue: '') String challengeId,
       @JsonKey(name: 'quest') Quest quest,
-      @JsonKey(name: 'receiptImageId') String receiptImageId});
+      @JsonKey(name: 'receiptImageId') String receiptImageId,
+      @JsonKey(name: 'userNickName') String userNickName});
 
   @override
   $QuestCopyWith<$Res> get quest;
@@ -120,6 +129,7 @@ class __$$ChallengeVOImplCopyWithImpl<$Res>
     Object? challengeId = null,
     Object? quest = null,
     Object? receiptImageId = null,
+    Object? userNickName = null,
   }) {
     return _then(_$ChallengeVOImpl(
       challengeId: null == challengeId
@@ -134,6 +144,10 @@ class __$$ChallengeVOImplCopyWithImpl<$Res>
           ? _value.receiptImageId
           : receiptImageId // ignore: cast_nullable_to_non_nullable
               as String,
+      userNickName: null == userNickName
+          ? _value.userNickName
+          : userNickName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -145,7 +159,8 @@ class _$ChallengeVOImpl implements _ChallengeVO {
       {@JsonKey(name: 'challengeId', defaultValue: '')
       required this.challengeId,
       @JsonKey(name: 'quest') required this.quest,
-      @JsonKey(name: 'receiptImageId') required this.receiptImageId});
+      @JsonKey(name: 'receiptImageId') required this.receiptImageId,
+      @JsonKey(name: 'userNickName') required this.userNickName});
 
   factory _$ChallengeVOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChallengeVOImplFromJson(json);
@@ -159,10 +174,13 @@ class _$ChallengeVOImpl implements _ChallengeVO {
   @override
   @JsonKey(name: 'receiptImageId')
   final String receiptImageId;
+  @override
+  @JsonKey(name: 'userNickName')
+  final String userNickName;
 
   @override
   String toString() {
-    return 'ChallengeVO(challengeId: $challengeId, quest: $quest, receiptImageId: $receiptImageId)';
+    return 'ChallengeVO(challengeId: $challengeId, quest: $quest, receiptImageId: $receiptImageId, userNickName: $userNickName)';
   }
 
   @override
@@ -174,13 +192,15 @@ class _$ChallengeVOImpl implements _ChallengeVO {
                 other.challengeId == challengeId) &&
             (identical(other.quest, quest) || other.quest == quest) &&
             (identical(other.receiptImageId, receiptImageId) ||
-                other.receiptImageId == receiptImageId));
+                other.receiptImageId == receiptImageId) &&
+            (identical(other.userNickName, userNickName) ||
+                other.userNickName == userNickName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, challengeId, quest, receiptImageId);
+  int get hashCode => Object.hash(
+      runtimeType, challengeId, quest, receiptImageId, userNickName);
 
   @JsonKey(ignore: true)
   @override
@@ -198,11 +218,12 @@ class _$ChallengeVOImpl implements _ChallengeVO {
 
 abstract class _ChallengeVO implements ChallengeVO {
   const factory _ChallengeVO(
-      {@JsonKey(name: 'challengeId', defaultValue: '')
-      required final String challengeId,
-      @JsonKey(name: 'quest') required final Quest quest,
-      @JsonKey(name: 'receiptImageId')
-      required final String receiptImageId}) = _$ChallengeVOImpl;
+          {@JsonKey(name: 'challengeId', defaultValue: '')
+          required final String challengeId,
+          @JsonKey(name: 'quest') required final Quest quest,
+          @JsonKey(name: 'receiptImageId') required final String receiptImageId,
+          @JsonKey(name: 'userNickName') required final String userNickName}) =
+      _$ChallengeVOImpl;
 
   factory _ChallengeVO.fromJson(Map<String, dynamic> json) =
       _$ChallengeVOImpl.fromJson;
@@ -216,6 +237,9 @@ abstract class _ChallengeVO implements ChallengeVO {
   @override
   @JsonKey(name: 'receiptImageId')
   String get receiptImageId;
+  @override
+  @JsonKey(name: 'userNickName')
+  String get userNickName;
   @override
   @JsonKey(ignore: true)
   _$$ChallengeVOImplCopyWith<_$ChallengeVOImpl> get copyWith =>

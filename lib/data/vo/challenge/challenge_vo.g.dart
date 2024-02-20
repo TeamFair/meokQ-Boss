@@ -11,6 +11,7 @@ _$ChallengeVOImpl _$$ChallengeVOImplFromJson(Map<String, dynamic> json) =>
       challengeId: json['challengeId'] as String? ?? '',
       quest: Quest.fromJson(json['quest'] as Map<String, dynamic>),
       receiptImageId: json['receiptImageId'] as String,
+      userNickName: json['userNickName'] as String,
     );
 
 Map<String, dynamic> _$$ChallengeVOImplToJson(_$ChallengeVOImpl instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$ChallengeVOImplToJson(_$ChallengeVOImpl instance) =>
       'challengeId': instance.challengeId,
       'quest': instance.quest.toJson(),
       'receiptImageId': instance.receiptImageId,
+      'userNickName': instance.userNickName,
     };

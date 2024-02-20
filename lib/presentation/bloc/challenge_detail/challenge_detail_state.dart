@@ -9,6 +9,7 @@ class ChallengeDetailState extends Equatable {
   final String challengeId;
   final ChallengeDetailStatus status;
   final String comment;
+  final String userNickName;
 
   const ChallengeDetailState({
     required this.imageUrl,
@@ -17,6 +18,7 @@ class ChallengeDetailState extends Equatable {
     required this.challengeId,
     required this.status,
     required this.comment,
+    required this.userNickName,
   });
 
   ChallengeDetailState copyWith({
@@ -26,6 +28,7 @@ class ChallengeDetailState extends Equatable {
     String? challengeId,
     ChallengeDetailStatus? status,
     String? comment,
+    String? userNickName,
   }) {
     return ChallengeDetailState(
       imageUrl: imageUrl ?? this.imageUrl,
@@ -34,6 +37,7 @@ class ChallengeDetailState extends Equatable {
       challengeId: challengeId ?? this.challengeId,
       status: status ?? this.status,
       comment: comment ?? this.comment,
+      userNickName: userNickName ?? this.userNickName,
     );
   }
 
@@ -45,5 +49,6 @@ class ChallengeDetailState extends Equatable {
         challengeId,
         status,
         comment,
+        userNickName,
       ];
 }

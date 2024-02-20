@@ -65,10 +65,12 @@ class LoginUseCase
 
       final market = await _remote.getMarkets();
 
-      if (market.marketId.isEmpty) {
-        return Left(
-          LoginFailure(),
-        );
+      if (market.marketId.isEmpty) { // 마켓 아이디가 없다 - 마켓 등록을 해야한다
+        return Right(
+        LoginOutput(
+          loginStatus: LoginStatus.register,
+        ),
+      );
       }
 
       _local.setKey(

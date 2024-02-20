@@ -4,6 +4,7 @@ import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/data/model/my_information/my_information.dart';
 import 'package:meokq_boss/domain/repository/image_picker/interface_image_picker.dart';
 import 'package:meokq_boss/domain/usecase/get_account_use_case.dart';
+import 'package:meokq_boss/domain/usecase/post_account_use_case.dart';
 
 part 'account_state.dart';
 part 'account_event.dart';
@@ -72,12 +73,21 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     );
   }
 
-  void _editButtonClicked(
+  Future<void> _editButtonClicked(
     EditButtonClicked event,
     Emitter<AccountState> emit,
-  ) {
+  ) async {
     if (state.editClicked) {
-      // TODO: API postAccount call
+      await PostAccountUseCase().call(
+        PostAccountInput(
+          phone: state.myInformation.phone,
+          address: state.myInformation.address,
+          logoImageUrl: state.myInformation.changedLogoUrl.isEmpty
+              ? null
+              : state.myInformation.changedLogoUrl,
+        ),
+      );
+
       emit(
         state.copyWith(
           editClicked: !state.editClicked,

@@ -93,7 +93,7 @@ abstract class MeokqApi {
     @Body() required Map<String, dynamic> body,
   });
 
-  @POST('/api/boss/market/auth')
+  @POST('/api/boss/market-auth')
   Future<ResponseVO> postAuth({
     // 마켓인증내역 등록
     @Body() required Map<String, dynamic> body,

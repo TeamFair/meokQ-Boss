@@ -441,7 +441,7 @@ class _MeokqApi implements MeokqApi {
     )
             .compose(
               _dio.options,
-              '/api/boss/market/auth',
+              '/api/boss/market-auth',
               queryParameters: queryParameters,
               data: _data,
             )

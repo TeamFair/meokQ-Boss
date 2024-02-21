@@ -134,7 +134,7 @@ class RemoteRepository extends InterfaceRemote {
 
     List<MarketVO> marketList = [];
     for (var data in res.data) {
-      marketList.add( MarketVO.fromJson(data));
+      marketList.add(MarketVO.fromJson(data));
     }
 
     return marketList;

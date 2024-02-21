@@ -21,6 +21,7 @@ class LoginUseCase
     LoginInput input,
   ) async {
     try {
+      // input 값이 없으면 local을 가져다쓰고 그 값도 없으면 left
       final email = input.email ?? _local.getKey(LocalStringKey.email) ?? '';
       final channel =
           input.channel ?? _local.getKey(LocalStringKey.channel) ?? '';

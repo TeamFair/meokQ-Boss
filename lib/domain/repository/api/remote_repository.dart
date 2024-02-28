@@ -104,7 +104,7 @@ class RemoteRepository extends InterfaceRemote {
       ),
     );
 
-    api = MeokqApi(dio, baseUrl: productionUrl);
+    api = MeokqApi(dio, baseUrl: restAPIUrl);
     await Future.delayed(const Duration(seconds: 1));
   }
 

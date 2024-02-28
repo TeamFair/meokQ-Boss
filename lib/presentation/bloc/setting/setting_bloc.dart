@@ -4,7 +4,6 @@ import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/data/dto/agreement/agreement_dto.dart';
 import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
 import 'package:meokq_boss/domain/repository/local/inteface_local.dart';
-import 'package:meokq_boss/presentation/bloc/agreement_permission/agreement_permission_bloc.dart';
 
 part 'setting_event.dart';
 part 'setting_state.dart';
@@ -33,11 +32,11 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     Emitter<SettingState> emit,
   ) async {
     final collectionAgreement =
-        await _remote.getAgreement(agreementType: Consent.collection.apiText);
+        await _remote.getAgreement(agreementType: Agreement.collection.apiText);
     final emailAgreement =
-        await _remote.getAgreement(agreementType: Consent.thirdParty.apiText);
+        await _remote.getAgreement(agreementType: Agreement.email.apiText);
     final smsAgreement =
-        await _remote.getAgreement(agreementType: Consent.marketing.apiText);
+        await _remote.getAgreement(agreementType: Agreement.sms.apiText);
 
     emit(
       state.copyWith(
@@ -58,7 +57,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
           agreementList: [
             AgreementDTO(
               version: 0,
-              agreementType: Consent.collection.apiText,
+              agreementType: Agreement.collection.apiText,
               acceptYn: !state.collectionAgreement == true ? 'Y' : 'N',
             ),
           ],
@@ -73,7 +72,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
           agreementList: [
             AgreementDTO(
               version: 0,
-              agreementType: Consent.collection.apiText,
+              agreementType: Agreement.email.apiText,
               acceptYn: !state.collectionAgreement == true ? 'Y' : 'N',
             ),
           ],
@@ -88,7 +87,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
           agreementList: [
             AgreementDTO(
               version: 0,
-              agreementType: Consent.collection.apiText,
+              agreementType: Agreement.sms.apiText,
               acceptYn: !state.collectionAgreement == true ? 'Y' : 'N',
             ),
           ],

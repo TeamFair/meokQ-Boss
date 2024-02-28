@@ -20,6 +20,14 @@ enum Agreement {
       Agreement.sms => '이벤트 및 다양한 혜택정보 SMS 수신 허용',
     };
   }
+
+  String get apiText {
+    return switch (this) {
+      Agreement.collection => 'PROMOTION_MARKETING_BOSS',
+      Agreement.email => 'EMAIL_CONSENT_FORM_BOSS',
+      Agreement.sms => 'SMS_CONSENT_FORM_BOSS',
+    };
+  }
 }
 
 enum UserState { login, logout, withdraw }

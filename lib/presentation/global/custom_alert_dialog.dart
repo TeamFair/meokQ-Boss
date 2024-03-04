@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 import 'package:meokq_boss/presentation/global/meakq_two_button.dart';
+import 'package:meokq_boss/presentation/global/meokq_button.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   const CustomAlertDialog({
@@ -15,6 +16,7 @@ class CustomAlertDialog extends StatelessWidget {
     this.confirmButtonColor = ColorS.notiYellow,
     this.height = 168,
     this.secondContent,
+    this.isOnebutton = false,
   });
 
   /// 다이얼로그의 제목
@@ -41,6 +43,9 @@ class CustomAlertDialog extends StatelessWidget {
   final String? secondContent;
 
   final int height;
+
+  // 버튼이 하나만 필요한 경우
+  final bool isOnebutton;
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +91,14 @@ class CustomAlertDialog extends StatelessWidget {
             const SizedBox(
               height: 24,
             ),
-            MeokQTwoButton(
-              firstText: cancelText,
-              secondText: confirmText,
-              firstButtonTap: cancelCallback,
-              secondButtonTap: confirmCallback,
-            ),
+            isOnebutton
+                ? MeokQButton(onTap: confirmCallback, text: confirmText)
+                : MeokQTwoButton(
+                    firstText: cancelText,
+                    secondText: confirmText,
+                    firstButtonTap: cancelCallback,
+                    secondButtonTap: confirmCallback,
+                  ),
             const SizedBox(
               height: 12,
             ),

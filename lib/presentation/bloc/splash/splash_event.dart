@@ -1,12 +1,7 @@
 part of 'splash_bloc.dart';
 
-sealed class SplashEvent extends Equatable {
-  const SplashEvent();
+sealed class SplashEvent {}
 
-  @override
-  List<Object> get props => [];
-}
+class SplashInit extends SplashEvent {}
 
-final class SplashInit extends SplashEvent {
-  const SplashInit();
-}
+class GoMarket extends SplashEvent {}

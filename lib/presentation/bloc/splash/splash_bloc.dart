@@ -22,9 +22,9 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     try {
       // 이자리에 위 1, 2 - 1, 2 - 2 작업이 진행되어야 합니다
       await Future.delayed(const Duration(seconds: 1));
-      final usecase = await SplashUseCase().call(SplashInput());
+      final splahsUsecase = await SplashUseCase().call(SplashInput());
 
-      usecase.fold(
+      splahsUsecase.fold(
         (l) => emit(state.copyWith(status: SplashStatus.failure)),
         (r) {
           emit(
@@ -35,8 +35,21 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
           );
         },
       );
+
+      // TODO: 추후에 배포한 후에 추가해야함 (url 을 알아야함) 
+      // (await CheckVersionUseCase().call(CheckVersionInput())).fold(
+      //   (l) => null,  
+      //   (r) => emit(state.copyWith(appUpdateStatus: r.appUpdateStatus)),
+      // );
     } catch (_) {
       emit(state.copyWith(status: SplashStatus.failure));
     }
   }
+
+  // Future<void> _goMarket(
+  //   GoMarket event,
+  //   Emitter<SplashState> emit,
+  // ) async {
+  //   // TODO: 추후에 추가
+  // }
 }

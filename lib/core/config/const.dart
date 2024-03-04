@@ -1,12 +1,6 @@
 import 'package:meokq_boss/presentation/bloc/login/login_bloc.dart';
 import 'package:meokq_boss/presentation/bloc/splash/splash_bloc.dart';
 
-enum Flavor {
-  dev,
-  stg,
-  prod,
-}
-
 const personalInfoCollectAgreement = '''
 TFair(팀페어)는 맛Q 서비스 회원가입, 고객상담 및 AS, 고지사항 전달 및 서비스 사용을 위해 아래와 같이 개인정보를 수집, 이용합니다.
 

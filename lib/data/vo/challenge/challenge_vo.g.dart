@@ -9,7 +9,7 @@ part of 'challenge_vo.dart';
 _$ChallengeVOImpl _$$ChallengeVOImplFromJson(Map<String, dynamic> json) =>
     _$ChallengeVOImpl(
       challengeId: json['challengeId'] as String? ?? '',
-      quest: Quest.fromJson(json['quest'] as Map<String, dynamic>),
+      quest: ChallengeQuest.fromJson(json['quest'] as Map<String, dynamic>),
       receiptImageId: json['receiptImageId'] as String,
       userNickName: json['userNickName'] as String,
     );

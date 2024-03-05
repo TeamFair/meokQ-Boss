@@ -23,7 +23,7 @@ mixin _$ChallengeVO {
   @JsonKey(name: 'challengeId', defaultValue: '')
   String get challengeId => throw _privateConstructorUsedError;
   @JsonKey(name: 'quest')
-  Quest get quest => throw _privateConstructorUsedError;
+  ChallengeQuest get quest => throw _privateConstructorUsedError;
   @JsonKey(name: 'receiptImageId')
   String get receiptImageId => throw _privateConstructorUsedError;
   @JsonKey(name: 'userNickName')
@@ -43,11 +43,11 @@ abstract class $ChallengeVOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'challengeId', defaultValue: '') String challengeId,
-      @JsonKey(name: 'quest') Quest quest,
+      @JsonKey(name: 'quest') ChallengeQuest quest,
       @JsonKey(name: 'receiptImageId') String receiptImageId,
       @JsonKey(name: 'userNickName') String userNickName});
 
-  $QuestCopyWith<$Res> get quest;
+  $ChallengeQuestCopyWith<$Res> get quest;
 }
 
 /// @nodoc
@@ -76,7 +76,7 @@ class _$ChallengeVOCopyWithImpl<$Res, $Val extends ChallengeVO>
       quest: null == quest
           ? _value.quest
           : quest // ignore: cast_nullable_to_non_nullable
-              as Quest,
+              as ChallengeQuest,
       receiptImageId: null == receiptImageId
           ? _value.receiptImageId
           : receiptImageId // ignore: cast_nullable_to_non_nullable
@@ -90,8 +90,8 @@ class _$ChallengeVOCopyWithImpl<$Res, $Val extends ChallengeVO>
 
   @override
   @pragma('vm:prefer-inline')
-  $QuestCopyWith<$Res> get quest {
-    return $QuestCopyWith<$Res>(_value.quest, (value) {
+  $ChallengeQuestCopyWith<$Res> get quest {
+    return $ChallengeQuestCopyWith<$Res>(_value.quest, (value) {
       return _then(_value.copyWith(quest: value) as $Val);
     });
   }
@@ -107,12 +107,12 @@ abstract class _$$ChallengeVOImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'challengeId', defaultValue: '') String challengeId,
-      @JsonKey(name: 'quest') Quest quest,
+      @JsonKey(name: 'quest') ChallengeQuest quest,
       @JsonKey(name: 'receiptImageId') String receiptImageId,
       @JsonKey(name: 'userNickName') String userNickName});
 
   @override
-  $QuestCopyWith<$Res> get quest;
+  $ChallengeQuestCopyWith<$Res> get quest;
 }
 
 /// @nodoc
@@ -139,7 +139,7 @@ class __$$ChallengeVOImplCopyWithImpl<$Res>
       quest: null == quest
           ? _value.quest
           : quest // ignore: cast_nullable_to_non_nullable
-              as Quest,
+              as ChallengeQuest,
       receiptImageId: null == receiptImageId
           ? _value.receiptImageId
           : receiptImageId // ignore: cast_nullable_to_non_nullable
@@ -170,7 +170,7 @@ class _$ChallengeVOImpl implements _ChallengeVO {
   final String challengeId;
   @override
   @JsonKey(name: 'quest')
-  final Quest quest;
+  final ChallengeQuest quest;
   @override
   @JsonKey(name: 'receiptImageId')
   final String receiptImageId;
@@ -220,7 +220,7 @@ abstract class _ChallengeVO implements ChallengeVO {
   const factory _ChallengeVO(
           {@JsonKey(name: 'challengeId', defaultValue: '')
           required final String challengeId,
-          @JsonKey(name: 'quest') required final Quest quest,
+          @JsonKey(name: 'quest') required final ChallengeQuest quest,
           @JsonKey(name: 'receiptImageId') required final String receiptImageId,
           @JsonKey(name: 'userNickName') required final String userNickName}) =
       _$ChallengeVOImpl;
@@ -233,7 +233,7 @@ abstract class _ChallengeVO implements ChallengeVO {
   String get challengeId;
   @override
   @JsonKey(name: 'quest')
-  Quest get quest;
+  ChallengeQuest get quest;
   @override
   @JsonKey(name: 'receiptImageId')
   String get receiptImageId;

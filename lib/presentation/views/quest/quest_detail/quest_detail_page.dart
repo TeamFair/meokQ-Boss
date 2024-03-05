@@ -106,14 +106,14 @@ class _QuestDetailPageState extends State<QuestDetailPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            state.quest?.rewards[0].title ?? '',
+                            state.quest?.rewards.firstOrNull ?? '',
                             style: TextS.heading1(),
                           ),
                           const SizedBox(
                             height: 5,
                           ),
                           Text(
-                            state.quest?.missions[0].title ?? '',
+                            state.quest?.missions.firstOrNull ?? '',
                             style: TextS.caption2(),
                           ),
                         ],

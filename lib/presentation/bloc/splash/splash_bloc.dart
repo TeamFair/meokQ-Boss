@@ -6,7 +6,13 @@ part 'splash_event.dart';
 part 'splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
-  SplashBloc() : super(const SplashState(status: SplashStatus.inProgress)) {
+  SplashBloc()
+      : super(
+          const SplashState(
+            status: SplashStatus.inProgress,
+            appUpdateStatus: AppUpdateStatus.updated,
+          ),
+        ) {
     on<SplashInit>(_splashInit);
   }
 
@@ -36,9 +42,9 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         },
       );
 
-      // TODO: 추후에 배포한 후에 추가해야함 (url 을 알아야함) 
+      // TODO: 추후에 배포한 후에 추가해야함 (url 을 알아야함)
       // (await CheckVersionUseCase().call(CheckVersionInput())).fold(
-      //   (l) => null,  
+      //   (l) => null,
       //   (r) => emit(state.copyWith(appUpdateStatus: r.appUpdateStatus)),
       // );
     } catch (_) {

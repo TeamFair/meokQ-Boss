@@ -8,17 +8,17 @@ part of 'quest.dart';
 
 _$QuestImpl _$$QuestImplFromJson(Map<String, dynamic> json) => _$QuestImpl(
       questId: json['questId'] as String,
-      rewards: (json['rewards'] as List<dynamic>)
-          .map((e) => Reward.fromJson(e as Map<String, dynamic>))
+      rewards: (json['rewardTitles'] as List<dynamic>)
+          .map((e) => e as String)
           .toList(),
-      missions: (json['missions'] as List<dynamic>)
-          .map((e) => Mission.fromJson(e as Map<String, dynamic>))
+      missions: (json['missionTitles'] as List<dynamic>)
+          .map((e) => e as String)
           .toList(),
     );
 
 Map<String, dynamic> _$$QuestImplToJson(_$QuestImpl instance) =>
     <String, dynamic>{
       'questId': instance.questId,
-      'rewards': instance.rewards.map((e) => e.toJson()).toList(),
-      'missions': instance.missions.map((e) => e.toJson()).toList(),
+      'rewardTitles': instance.rewards,
+      'missionTitles': instance.missions,
     };

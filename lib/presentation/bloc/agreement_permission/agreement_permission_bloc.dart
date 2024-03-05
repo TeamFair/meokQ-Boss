@@ -4,6 +4,7 @@ import 'package:meokq_boss/core/config/const.dart';
 import 'package:meokq_boss/core/injector/injector.dart';
 import 'package:meokq_boss/data/dto/agreement/agreement_dto.dart';
 import 'package:meokq_boss/domain/repository/api/interface_remote.dart';
+import 'package:meokq_boss/presentation/bloc/setting/setting_bloc.dart';
 
 part 'agreement_permission_event.dart';
 part 'agreement_permission_state.dart';
@@ -89,6 +90,16 @@ class AgreementPermissionBloc
       AgreementDTO(
         version: 0,
         agreementType: Consent.marketing.apiText,
+        acceptYn: state.marketingAgree ? 'Y' : 'N',
+      ),
+      AgreementDTO(
+        version: 0,
+        agreementType: Agreement.email.apiText,
+        acceptYn: state.marketingAgree ? 'Y' : 'N',
+      ),
+      AgreementDTO(
+        version: 0,
+        agreementType: Agreement.sms.apiText,
         acceptYn: state.marketingAgree ? 'Y' : 'N',
       ),
     ];

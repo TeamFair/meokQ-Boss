@@ -15,11 +15,15 @@ import '../../data/repository/api/remote_repository.dart' as _i10;
 import '../../data/repository/auth/authentication_repository.dart' as _i4;
 import '../../data/repository/image_picker/image_picker_repository.dart' as _i6;
 import '../../data/repository/local/local_repository.dart' as _i8;
+import '../../data/repository/remote_config/remote_config_repository.dart'
+    as _i12;
 import '../../domain/repository/api/interface_remote.dart' as _i9;
 import '../../domain/repository/auth/interface_authentication.dart' as _i3;
 import '../../domain/repository/image_picker/interface_image_picker.dart'
     as _i5;
 import '../../domain/repository/local/inteface_local.dart' as _i7;
+import '../../domain/repository/remote_config/interface_remote_config.dart'
+    as _i11;
 
 const String _prod = 'prod';
 
@@ -48,6 +52,10 @@ _i1.GetIt init(
   );
   gh.lazySingleton<_i9.InterfaceRemote>(
     () => _i10.RemoteRepository.create(gh<_i7.InterfaceLocal>()),
+    registerFor: {_prod},
+  );
+  gh.singleton<_i11.InterfaceRemoteConfig>(
+    _i12.RemoteConfigRepository(),
     registerFor: {_prod},
   );
   return getIt;

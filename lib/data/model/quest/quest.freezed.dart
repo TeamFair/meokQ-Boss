@@ -12,7 +12,7 @@ part of 'quest.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Quest _$QuestFromJson(Map<String, dynamic> json) {
   return _Quest.fromJson(json);
@@ -22,10 +22,10 @@ Quest _$QuestFromJson(Map<String, dynamic> json) {
 mixin _$Quest {
   @JsonKey(name: 'questId')
   String get questId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'rewards')
-  List<Reward> get rewards => throw _privateConstructorUsedError;
-  @JsonKey(name: 'missions')
-  List<Mission> get missions => throw _privateConstructorUsedError;
+  @JsonKey(name: 'rewardTitles')
+  List<String> get rewards => throw _privateConstructorUsedError;
+  @JsonKey(name: 'missionTitles')
+  List<String> get missions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,8 +39,8 @@ abstract class $QuestCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'questId') String questId,
-      @JsonKey(name: 'rewards') List<Reward> rewards,
-      @JsonKey(name: 'missions') List<Mission> missions});
+      @JsonKey(name: 'rewardTitles') List<String> rewards,
+      @JsonKey(name: 'missionTitles') List<String> missions});
 }
 
 /// @nodoc
@@ -68,11 +68,11 @@ class _$QuestCopyWithImpl<$Res, $Val extends Quest>
       rewards: null == rewards
           ? _value.rewards
           : rewards // ignore: cast_nullable_to_non_nullable
-              as List<Reward>,
+              as List<String>,
       missions: null == missions
           ? _value.missions
           : missions // ignore: cast_nullable_to_non_nullable
-              as List<Mission>,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -86,8 +86,8 @@ abstract class _$$QuestImplCopyWith<$Res> implements $QuestCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'questId') String questId,
-      @JsonKey(name: 'rewards') List<Reward> rewards,
-      @JsonKey(name: 'missions') List<Mission> missions});
+      @JsonKey(name: 'rewardTitles') List<String> rewards,
+      @JsonKey(name: 'missionTitles') List<String> missions});
 }
 
 /// @nodoc
@@ -113,11 +113,11 @@ class __$$QuestImplCopyWithImpl<$Res>
       rewards: null == rewards
           ? _value._rewards
           : rewards // ignore: cast_nullable_to_non_nullable
-              as List<Reward>,
+              as List<String>,
       missions: null == missions
           ? _value._missions
           : missions // ignore: cast_nullable_to_non_nullable
-              as List<Mission>,
+              as List<String>,
     ));
   }
 }
@@ -127,8 +127,8 @@ class __$$QuestImplCopyWithImpl<$Res>
 class _$QuestImpl implements _Quest {
   const _$QuestImpl(
       {@JsonKey(name: 'questId') required this.questId,
-      @JsonKey(name: 'rewards') required final List<Reward> rewards,
-      @JsonKey(name: 'missions') required final List<Mission> missions})
+      @JsonKey(name: 'rewardTitles') required final List<String> rewards,
+      @JsonKey(name: 'missionTitles') required final List<String> missions})
       : _rewards = rewards,
         _missions = missions;
 
@@ -138,19 +138,19 @@ class _$QuestImpl implements _Quest {
   @override
   @JsonKey(name: 'questId')
   final String questId;
-  final List<Reward> _rewards;
+  final List<String> _rewards;
   @override
-  @JsonKey(name: 'rewards')
-  List<Reward> get rewards {
+  @JsonKey(name: 'rewardTitles')
+  List<String> get rewards {
     if (_rewards is EqualUnmodifiableListView) return _rewards;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_rewards);
   }
 
-  final List<Mission> _missions;
+  final List<String> _missions;
   @override
-  @JsonKey(name: 'missions')
-  List<Mission> get missions {
+  @JsonKey(name: 'missionTitles')
+  List<String> get missions {
     if (_missions is EqualUnmodifiableListView) return _missions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_missions);
@@ -195,10 +195,10 @@ class _$QuestImpl implements _Quest {
 
 abstract class _Quest implements Quest {
   const factory _Quest(
-          {@JsonKey(name: 'questId') required final String questId,
-          @JsonKey(name: 'rewards') required final List<Reward> rewards,
-          @JsonKey(name: 'missions') required final List<Mission> missions}) =
-      _$QuestImpl;
+      {@JsonKey(name: 'questId') required final String questId,
+      @JsonKey(name: 'rewardTitles') required final List<String> rewards,
+      @JsonKey(name: 'missionTitles')
+      required final List<String> missions}) = _$QuestImpl;
 
   factory _Quest.fromJson(Map<String, dynamic> json) = _$QuestImpl.fromJson;
 
@@ -206,11 +206,11 @@ abstract class _Quest implements Quest {
   @JsonKey(name: 'questId')
   String get questId;
   @override
-  @JsonKey(name: 'rewards')
-  List<Reward> get rewards;
+  @JsonKey(name: 'rewardTitles')
+  List<String> get rewards;
   @override
-  @JsonKey(name: 'missions')
-  List<Mission> get missions;
+  @JsonKey(name: 'missionTitles')
+  List<String> get missions;
   @override
   @JsonKey(ignore: true)
   _$$QuestImplCopyWith<_$QuestImpl> get copyWith =>

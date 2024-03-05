@@ -34,8 +34,8 @@ class ChallengeDetailBloc
     emit(
       state.copyWith(
         imageUrl: imageUrl + event.challengeVO.receiptImageId,
-        rewardTitle: event.challengeVO.quest.rewards[0].title ?? '',
-        missionTitle: event.challengeVO.quest.missions[0].title ?? '',
+        rewardTitle: event.challengeVO.quest.rewards.firstOrNull ?? '',
+        missionTitle: event.challengeVO.quest.missions.firstOrNull ?? '',
         challengeId: event.challengeVO.challengeId,
         userNickName: event.challengeVO.userNickName,
       ),

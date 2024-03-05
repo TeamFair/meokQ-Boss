@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
@@ -23,6 +24,8 @@ Future<void> configureDependencies({
     nativeAppKey: 'e7cd0441adfa8f5e9b8b4c3570358c36',
     javaScriptAppKey: '4717d4fb313b526d3cf8e510cfe1ee02',
   );
+
+  await Firebase.initializeApp();
 
   init(
     getIt,

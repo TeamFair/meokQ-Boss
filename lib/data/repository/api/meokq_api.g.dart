@@ -22,7 +22,7 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> login({required Map<String, dynamic> data}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -50,10 +50,10 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> markets() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -77,10 +77,10 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> market({required String marketId}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -104,10 +104,10 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> quests({required String marketId}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'marketId': marketId};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -131,10 +131,10 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> quest({required String questId}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -161,7 +161,7 @@ class _MeokqApi implements MeokqApi {
     required String type,
     required FormData file,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'type': type};
     final _headers = <String, dynamic>{};
     final _data = file;
@@ -188,7 +188,7 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> postChallenge({required Map<String, dynamic> data}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -219,14 +219,14 @@ class _MeokqApi implements MeokqApi {
     required String marketId,
     String? status,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'marketId': marketId,
       r'status': status,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -254,14 +254,14 @@ class _MeokqApi implements MeokqApi {
     required String questId,
     required String ticketCount,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'marketId': marketId,
       r'questId': questId,
       r'ticketCount': ticketCount,
     };
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'PUT',
@@ -288,13 +288,13 @@ class _MeokqApi implements MeokqApi {
     required String marketId,
     required String questId,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'marketId': marketId,
       r'questId': questId,
     };
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'PUT',
@@ -318,7 +318,7 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> postQuest({required Map<String, dynamic> body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -346,10 +346,10 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> getAgreement({required String agreementType}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'agreementType': agreementType};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -373,7 +373,7 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> postAgreement({required String body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = body;
@@ -400,7 +400,7 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> postMarket({required Map<String, dynamic> body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -428,7 +428,7 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> postAuth({required Map<String, dynamic> body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -456,10 +456,10 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> withdraw() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -483,10 +483,10 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> logout() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -513,13 +513,13 @@ class _MeokqApi implements MeokqApi {
     required String status,
     required String marketId,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'status': status,
       r'marketId': marketId,
     };
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -543,10 +543,10 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> requestReview({required String marketId}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -570,10 +570,10 @@ class _MeokqApi implements MeokqApi {
 
   @override
   Future<ResponseVO> marketApproved({required String marketId}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseVO>(Options(
       method: 'GET',
@@ -600,7 +600,7 @@ class _MeokqApi implements MeokqApi {
     required String marketId,
     required Map<String, dynamic> body,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};

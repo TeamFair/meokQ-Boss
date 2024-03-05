@@ -21,7 +21,6 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     BlocProvider.of<AccountBloc>(context).add(InitMyInformation());
   }
@@ -162,43 +161,66 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                   AccountTextWidget(
                     title: '영업일',
-                    content:
-                        businessDayString(state.myInformation.businessDays),
+                    content: state.myInformation.businessDaysString,
                     isEdit: state.editClicked,
-                    onButtonTap: () => Navigator.of(context).pushNamed(
-                      AccountTimeEditPage.id,
-                      arguments: AccountTimeEditArgument(
-                        businessDays: state.myInformation.businessDays,
-                        open: state.myInformation.open,
-                        close: state.myInformation.close,
-                      ),
-                    ),
+                    onButtonTap: () async {
+                      await Navigator.of(context)
+                          .pushNamed(
+                            AccountTimeEditPage.id,
+                            arguments: AccountTimeEditArgument(
+                              businessDays: state.myInformation.businessDays,
+                              open: state.myInformation.open,
+                              close: state.myInformation.close,
+                            ),
+                          )
+                          .whenComplete(
+                            () => context.read<AccountBloc>().add(
+                                  InitMyInformation(),
+                                ),
+                          );
+                    },
                   ),
                   AccountTextWidget(
                     title: '영업 시작 시간',
                     content: state.myInformation.open,
                     isEdit: state.editClicked,
-                    onButtonTap: () => Navigator.of(context).pushNamed(
-                      AccountTimeEditPage.id,
-                      arguments: AccountTimeEditArgument(
-                        businessDays: state.myInformation.businessDays,
-                        open: state.myInformation.open,
-                        close: state.myInformation.close,
-                      ),
-                    ),
+                    onButtonTap: () async {
+                      await Navigator.of(context)
+                          .pushNamed(
+                            AccountTimeEditPage.id,
+                            arguments: AccountTimeEditArgument(
+                              businessDays: state.myInformation.businessDays,
+                              open: state.myInformation.open,
+                              close: state.myInformation.close,
+                            ),
+                          )
+                          .whenComplete(
+                            () => context.read<AccountBloc>().add(
+                                  InitMyInformation(),
+                                ),
+                          );
+                    },
                   ),
                   AccountTextWidget(
                     title: '영업 마감 시간',
                     content: state.myInformation.close,
                     isEdit: state.editClicked,
-                    onButtonTap: () => Navigator.of(context).pushNamed(
-                      AccountTimeEditPage.id,
-                      arguments: AccountTimeEditArgument(
-                        businessDays: state.myInformation.businessDays,
-                        open: state.myInformation.open,
-                        close: state.myInformation.close,
-                      ),
-                    ),
+                    onButtonTap: () async {
+                      await Navigator.of(context)
+                          .pushNamed(
+                            AccountTimeEditPage.id,
+                            arguments: AccountTimeEditArgument(
+                              businessDays: state.myInformation.businessDays,
+                              open: state.myInformation.open,
+                              close: state.myInformation.close,
+                            ),
+                          )
+                          .whenComplete(
+                            () => context.read<AccountBloc>().add(
+                                  InitMyInformation(),
+                                ),
+                          );
+                    },
                   ),
                   AccountTextWidget(
                     title: '영업장 전화번호',
@@ -219,15 +241,6 @@ class _AccountPageState extends State<AccountPage> {
       },
     );
   }
-
-  String businessDayString(List<String> businessDays) {
-    if (businessDays.isEmpty) return '';
-    var str = '';
-    for (var day in businessDays) {
-      str += '$day, ';
-    }
-    return str.substring(0, str.length - 2);
-  }
 }
 
 class AccountTextWidget extends StatelessWidget {
@@ -246,12 +259,13 @@ class AccountTextWidget extends StatelessWidget {
   final Function()? onButtonTap;
   final Function(String)? onChanged;
 
-  final textEditingController = TextEditingController();
+  final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    textEditingController.text = content;
-
+    controller.text = content;
+    controller.selection =
+        TextSelection.collapsed(offset: controller.text.length);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       height: 60,
@@ -267,8 +281,8 @@ class AccountTextWidget extends StatelessWidget {
                   ? SizedBox(
                       width: 200,
                       child: TextField(
-                        textAlign: TextAlign.end,
-                        controller: textEditingController,
+                        controller: controller,
+                        textAlign: TextAlign.right,
                         onChanged: onChanged,
                         style: TextS.subtitle2().copyWith(
                           color: ColorS.gray400,

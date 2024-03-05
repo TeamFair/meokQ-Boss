@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meokq_boss/domain/usecase/post_account_use_case.dart';
 import 'package:meokq_boss/presentation/views/account/account_time_edit_argument.dart';
 
 part 'account_time_edit_state.dart';
@@ -41,7 +42,8 @@ class AccountTimeEditBloc
     ChangeBusinessDays event,
     Emitter<AccountTimeEditState> emit,
   ) {
-    var businessDays = <String>[];
+    List<String> businessDays = [];
+
     for (String s in state.businessDays) {
       businessDays.add(s);
     }
@@ -51,6 +53,7 @@ class AccountTimeEditBloc
     } else {
       businessDays.add(event.day);
     }
+    
     emit(
       state.copyWith(
         businessDays: businessDays,
@@ -75,6 +78,12 @@ class AccountTimeEditBloc
     ChangeAccountTime event,
     Emitter<AccountTimeEditState> emit,
   ) async {
-    // TODO: apply account
+    await PostAccountUseCase().call(
+      PostAccountInput(
+        businessDays: state.businessDays,
+        open: state.open,
+        close: state.close,
+      ),
+    );
   }
 }

@@ -20,6 +20,7 @@ _$MyInformationImpl _$$MyInformationImplFromJson(Map<String, dynamic> json) =>
       close: json['close'] as String,
       phone: json['phone'] as String,
       changedLogoUrl: json['changedLogoUrl'] as String,
+      businessDaysString: json['businessDaysString'] as String,
     );
 
 Map<String, dynamic> _$$MyInformationImplToJson(_$MyInformationImpl instance) =>
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$MyInformationImplToJson(_$MyInformationImpl instance) =>
       'close': instance.close,
       'phone': instance.phone,
       'changedLogoUrl': instance.changedLogoUrl,
+      'businessDaysString': instance.businessDaysString,
     };

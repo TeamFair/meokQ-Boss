@@ -26,6 +26,7 @@ class AccountState extends Equatable {
         phone: '',
         changedLogoUrl: '',
         name: '',
+        businessDaysString: '',
       ),
       editClicked: false,
     );

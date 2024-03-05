@@ -30,6 +30,7 @@ mixin _$MyInformation {
   String get close => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get changedLogoUrl => throw _privateConstructorUsedError;
+  String get businessDaysString => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +54,8 @@ abstract class $MyInformationCopyWith<$Res> {
       String open,
       String close,
       String phone,
-      String changedLogoUrl});
+      String changedLogoUrl,
+      String businessDaysString});
 }
 
 /// @nodoc
@@ -79,6 +81,7 @@ class _$MyInformationCopyWithImpl<$Res, $Val extends MyInformation>
     Object? close = null,
     Object? phone = null,
     Object? changedLogoUrl = null,
+    Object? businessDaysString = null,
   }) {
     return _then(_value.copyWith(
       logoUrl: null == logoUrl
@@ -121,6 +124,10 @@ class _$MyInformationCopyWithImpl<$Res, $Val extends MyInformation>
           ? _value.changedLogoUrl
           : changedLogoUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      businessDaysString: null == businessDaysString
+          ? _value.businessDaysString
+          : businessDaysString // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -143,7 +150,8 @@ abstract class _$$MyInformationImplCopyWith<$Res>
       String open,
       String close,
       String phone,
-      String changedLogoUrl});
+      String changedLogoUrl,
+      String businessDaysString});
 }
 
 /// @nodoc
@@ -167,6 +175,7 @@ class __$$MyInformationImplCopyWithImpl<$Res>
     Object? close = null,
     Object? phone = null,
     Object? changedLogoUrl = null,
+    Object? businessDaysString = null,
   }) {
     return _then(_$MyInformationImpl(
       logoUrl: null == logoUrl
@@ -209,6 +218,10 @@ class __$$MyInformationImplCopyWithImpl<$Res>
           ? _value.changedLogoUrl
           : changedLogoUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      businessDaysString: null == businessDaysString
+          ? _value.businessDaysString
+          : businessDaysString // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -226,7 +239,8 @@ class _$MyInformationImpl implements _MyInformation {
       required this.open,
       required this.close,
       required this.phone,
-      required this.changedLogoUrl})
+      required this.changedLogoUrl,
+      required this.businessDaysString})
       : _businessDays = businessDays;
 
   factory _$MyInformationImpl.fromJson(Map<String, dynamic> json) =>
@@ -258,10 +272,12 @@ class _$MyInformationImpl implements _MyInformation {
   final String phone;
   @override
   final String changedLogoUrl;
+  @override
+  final String businessDaysString;
 
   @override
   String toString() {
-    return 'MyInformation(logoUrl: $logoUrl, name: $name, questCount: $questCount, ticketCount: $ticketCount, address: $address, businessDays: $businessDays, open: $open, close: $close, phone: $phone, changedLogoUrl: $changedLogoUrl)';
+    return 'MyInformation(logoUrl: $logoUrl, name: $name, questCount: $questCount, ticketCount: $ticketCount, address: $address, businessDays: $businessDays, open: $open, close: $close, phone: $phone, changedLogoUrl: $changedLogoUrl, businessDaysString: $businessDaysString)';
   }
 
   @override
@@ -282,7 +298,9 @@ class _$MyInformationImpl implements _MyInformation {
             (identical(other.close, close) || other.close == close) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.changedLogoUrl, changedLogoUrl) ||
-                other.changedLogoUrl == changedLogoUrl));
+                other.changedLogoUrl == changedLogoUrl) &&
+            (identical(other.businessDaysString, businessDaysString) ||
+                other.businessDaysString == businessDaysString));
   }
 
   @JsonKey(ignore: true)
@@ -298,7 +316,8 @@ class _$MyInformationImpl implements _MyInformation {
       open,
       close,
       phone,
-      changedLogoUrl);
+      changedLogoUrl,
+      businessDaysString);
 
   @JsonKey(ignore: true)
   @override
@@ -325,7 +344,8 @@ abstract class _MyInformation implements MyInformation {
       required final String open,
       required final String close,
       required final String phone,
-      required final String changedLogoUrl}) = _$MyInformationImpl;
+      required final String changedLogoUrl,
+      required final String businessDaysString}) = _$MyInformationImpl;
 
   factory _MyInformation.fromJson(Map<String, dynamic> json) =
       _$MyInformationImpl.fromJson;
@@ -350,6 +370,8 @@ abstract class _MyInformation implements MyInformation {
   String get phone;
   @override
   String get changedLogoUrl;
+  @override
+  String get businessDaysString;
   @override
   @JsonKey(ignore: true)
   _$$MyInformationImplCopyWith<_$MyInformationImpl> get copyWith =>

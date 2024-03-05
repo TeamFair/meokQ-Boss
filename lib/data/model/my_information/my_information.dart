@@ -16,6 +16,7 @@ class MyInformation with _$MyInformation {
     required String close,
     required String phone,
     required String changedLogoUrl,
+    required String businessDaysString,
   }) = _MyInformation;
 
   factory MyInformation.fromJson(Map<String, dynamic> json) =>

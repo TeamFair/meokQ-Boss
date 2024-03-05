@@ -54,6 +54,7 @@ class GetAccountUseCase
         close: dateToKor(marketInfo.marketTimes.first.closeTime),
         phone: marketInfo.phone,
         changedLogoUrl: '',
+        businessDaysString: businessDayString(days),
       );
 
       return Right(
@@ -66,6 +67,15 @@ class GetAccountUseCase
     } catch (e) {
       return Left(GetAccountFailure());
     }
+  }
+
+  String businessDayString(List<String> businessDays) {
+    if (businessDays.isEmpty) return '';
+    var str = '';
+    for (var day in businessDays) {
+      str += '$day, ';
+    }
+    return str.substring(0, str.length - 2);
   }
 }
 

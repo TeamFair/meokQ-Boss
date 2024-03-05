@@ -175,9 +175,12 @@ class _AccountTimeEditPageState extends State<AccountTimeEditPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: MeokQButton(
-                  onTap: () => context
-                      .read<AccountTimeEditBloc>()
-                      .add(ChangeAccountTime()),
+                  onTap: () {
+                    context
+                        .read<AccountTimeEditBloc>()
+                        .add(ChangeAccountTime());
+                    Navigator.pop(context);
+                  },
                   text: '완료',
                 ),
               ),

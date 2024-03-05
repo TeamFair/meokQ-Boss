@@ -155,7 +155,7 @@ class RemoteRepository extends InterfaceRemote {
     required String agreementType,
   }) async {
     final res = await api.getAgreement(agreementType: agreementType);
-    return res.data['acceptYn'] == 'Y' ? true : false;
+    return res.data != null && res.data[0]['acceptYn'] == 'Y' ? true : false;
   }
 
   @override

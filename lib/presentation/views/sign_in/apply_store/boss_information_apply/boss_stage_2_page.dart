@@ -11,8 +11,17 @@ import 'package:meokq_boss/presentation/global/custom_text_field.dart';
 import 'package:meokq_boss/presentation/global/meakq_two_button.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
-class BossStage2Page extends StatelessWidget {
+class BossStage2Page extends StatefulWidget {
   const BossStage2Page({super.key});
+
+  @override
+  State<BossStage2Page> createState() => _BossStage2PageState();
+}
+
+class _BossStage2PageState extends State<BossStage2Page> {
+  final TextEditingController userNameController = TextEditingController();
+
+  final TextEditingController birthController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,26 +65,16 @@ class BossStage2Page extends StatelessWidget {
               ),
               CustomTextField(
                 title: '성함',
-                text: state.userName,
+                controller: userNameController,
                 hintText: '대표자명',
-                onChanged: (text) => context.read<BossInformationBloc>().add(
-                      ChangeUserName(
-                        newText: text,
-                      ),
-                    ),
               ),
               const SizedBox(
                 height: 15,
               ),
               CustomTextField(
                 title: '생년월일',
-                text: state.birth,
+                controller: birthController,
                 hintText: '생년월일',
-                onChanged: (text) => context.read<BossInformationBloc>().add(
-                      ChangeBirth(
-                        newText: text,
-                      ),
-                    ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),

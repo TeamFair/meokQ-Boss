@@ -3,33 +3,27 @@ import 'package:meokq_boss/core/color/color_theme.dart';
 import 'package:meokq_boss/core/theme/text_theme.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField({
+  const CustomTextField({
     super.key,
     this.textInputType,
     required this.title,
-    required this.text,
+    required this.controller,
     required this.hintText,
-    required this.onChanged,
     this.suffixText,
   });
 
   final String title;
 
-  final String text;
-
   final String hintText;
 
   final TextInputType? textInputType;
 
-  final Function(String) onChanged;
-
   final String? suffixText;
 
-  final controller = TextEditingController();
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
-    controller.text = text;
     controller.selection =
         TextSelection.collapsed(offset: controller.text.length);
     return Container(
@@ -54,12 +48,11 @@ class CustomTextField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            child: TextField(
+            child: TextFormField(
               controller: controller,
               style: TextS.content().copyWith(
                 color: ColorS.gray400,
               ),
-              onChanged: onChanged,
               keyboardType: textInputType,
               cursorColor: ColorS.applyGray,
               decoration: InputDecoration(

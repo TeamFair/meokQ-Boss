@@ -6,8 +6,46 @@ import 'package:meokq_boss/presentation/bloc/store_information/store_information
 import 'package:meokq_boss/presentation/global/meokq_button.dart';
 import 'package:meokq_boss/presentation/global/custom_text_field.dart';
 
-class StoreStage1Page extends StatelessWidget {
+class StoreStage1Page extends StatefulWidget {
   const StoreStage1Page({super.key});
+
+  @override
+  State<StoreStage1Page> createState() => _StoreStage1PageState();
+}
+
+class _StoreStage1PageState extends State<StoreStage1Page> {
+  final TextEditingController storeNameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    storeNameController.addListener(() {
+      context.read<StoreInformationBloc>().add(
+            ChangeStore(
+              newText: storeNameController.text,
+            ),
+          );
+    });
+
+    addressController.addListener(() {
+      context.read<StoreInformationBloc>().add(
+            ChangeAddress(
+              newText: addressController.text,
+            ),
+          );
+    });
+
+    phoneController.addListener(() {
+      context.read<StoreInformationBloc>().add(
+            ChangePhone(
+              newText: phoneController.text,
+            ),
+          );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,40 +76,24 @@ class StoreStage1Page extends StatelessWidget {
             ),
             CustomTextField(
               title: '상호명',
-              text: state.storeName,
+              controller: storeNameController,
               hintText: 'ex) 커피크라운 안양점',
-              onChanged: (text) => context.read<StoreInformationBloc>().add(
-                    ChangeStore(
-                      newText: text,
-                    ),
-                  ),
             ),
             const SizedBox(
               height: 15,
             ),
             CustomTextField(
               title: '가게주소',
-              text: state.address,
+              controller: addressController,
               hintText: 'ex) 경기도 안양시 만안구 안양동 88-1',
-              onChanged: (text) => context.read<StoreInformationBloc>().add(
-                    ChangeAddress(
-                      newText: text,
-                    ),
-                  ),
             ),
             const SizedBox(
               height: 15,
             ),
             CustomTextField(
               title: '가게 전화번호',
-              text: state.phone,
-              hintText: '숫자만 입력',
-              textInputType: TextInputType.phone,
-              onChanged: (text) => context.read<StoreInformationBloc>().add(
-                    ChangePhone(
-                      newText: text,
-                    ),
-                  ),
+              controller: phoneController,
+              hintText: 'ex) 010-1234-1234',
             ),
             const Spacer(),
             Padding(

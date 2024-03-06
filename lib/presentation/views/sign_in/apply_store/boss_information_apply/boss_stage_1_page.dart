@@ -13,13 +13,66 @@ import 'package:meokq_boss/presentation/global/meokq_button.dart';
 import 'package:meokq_boss/presentation/global/custom_drop_down_button.dart';
 import 'package:meokq_boss/resources/resources.dart';
 
-class BossStage1Page extends StatelessWidget {
+class BossStage1Page extends StatefulWidget {
   const BossStage1Page({super.key});
+
+  @override
+  State<BossStage1Page> createState() => _BossStage1PageState();
+}
+
+class _BossStage1PageState extends State<BossStage1Page> {
+  final TextEditingController businessNumberController = TextEditingController();
+  final TextEditingController bossNameController = TextEditingController();
+  final TextEditingController storeNameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController postalCodeController = TextEditingController();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    businessNumberController.addListener(() {
+      context.read<BossInformationBloc>().add(
+            ChangeBusinessNumber(
+              newText: businessNumberController.text,
+            ),
+          );
+    });
+    bossNameController.addListener(() {
+      context.read<BossInformationBloc>().add(
+            ChangeBossName(
+              newText: bossNameController.text,
+            ),
+          );
+    });
+    storeNameController.addListener(() {
+      context.read<BossInformationBloc>().add(
+            ChangeStoreName(
+              newText: storeNameController.text,
+            ),
+          );
+    });
+    addressController.addListener(() {
+      context.read<BossInformationBloc>().add(
+            ChangeAddress(
+              newText: addressController.text,
+            ),
+          );
+    });
+    postalCodeController.addListener(() {
+      context.read<BossInformationBloc>().add(
+            ChangePostalCode(
+              newText: postalCodeController.text,
+            ),
+          );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BossInformationBloc, BossInformationState>(
       builder: (context, state) {
+        
         return ListView(
           children: [
             Container(
@@ -44,15 +97,9 @@ class BossStage1Page extends StatelessWidget {
             ),
             CustomTextField(
               title: '영업신고증 고유번호',
-              text: state.businessNumber,
+              controller: businessNumberController,
               hintText: '제',
               suffixText: '호',
-              textInputType: TextInputType.number,
-              onChanged: (text) => context.read<BossInformationBloc>().add(
-                    ChangeBusinessNumber(
-                      newText: text,
-                    ),
-                  ),
             ),
             const SizedBox(
               height: 4,
@@ -93,53 +140,32 @@ class BossStage1Page extends StatelessWidget {
             ),
             CustomTextField(
               title: '대표자',
-              text: state.bossName,
+              controller: bossNameController,
               hintText: '대표자명',
-              onChanged: (text) => context.read<BossInformationBloc>().add(
-                    ChangeBossName(
-                      newText: text,
-                    ),
-                  ),
             ),
             const SizedBox(
               height: 15,
             ),
             CustomTextField(
               title: '영업소 명칭(상호명)',
-              text: state.storeName,
+              controller: storeNameController,
               hintText: '상호명',
-              onChanged: (text) => context.read<BossInformationBloc>().add(
-                    ChangeStoreName(
-                      newText: text,
-                    ),
-                  ),
             ),
             const SizedBox(
               height: 15,
             ),
             CustomTextField(
               title: '소재지',
-              text: state.address,
+              controller: addressController,
               hintText: '주소',
-              onChanged: (text) => context.read<BossInformationBloc>().add(
-                    ChangeAddress(
-                      newText: text,
-                    ),
-                  ),
             ),
             const SizedBox(
               height: 15,
             ),
             CustomTextField(
               title: '우편번호',
-              text: state.postalCode,
+              controller: postalCodeController,
               hintText: '우편번호',
-              textInputType: TextInputType.number,
-              onChanged: (text) => context.read<BossInformationBloc>().add(
-                    ChangePostalCode(
-                      newText: text,
-                    ),
-                  ),
             ),
             const SizedBox(
               height: 15,

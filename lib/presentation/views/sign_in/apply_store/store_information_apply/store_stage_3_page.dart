@@ -82,19 +82,15 @@ class StoreStage3Page extends StatelessWidget {
                   child: Container(
                     height: 108,
                     width: 108,
-                    clipBehavior: Clip.antiAlias,
-                    decoration: ShapeDecoration(
-                      color: ColorS.background,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: state.logoUrl.isEmpty
+                          ? SvgPicture.asset(Svgs.smileIconWithBg)
+                          : Image.file(
+                              File(state.logoUrl),
+                              fit: BoxFit.fill,
+                            ),
                     ),
-                    child: state.logoUrl.isEmpty
-                        ? SvgPicture.asset(Svgs.plusInCircleIcon)
-                        : Image.file(
-                            File(state.logoUrl),
-                            fit: BoxFit.fill,
-                          ),
                   ),
                 ),
               ),

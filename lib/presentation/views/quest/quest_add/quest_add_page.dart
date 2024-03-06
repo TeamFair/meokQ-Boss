@@ -52,9 +52,9 @@ class _QuestAddPageState extends State<QuestAddPage> {
         }),
         child: BlocBuilder<QuestAddBloc, QuestAddState>(
           builder: (context, state) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
+            return ListView(
+            //   crossAxisAlignment: CrossAxisAlignment.center,
+            //   mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   color: Colors.white,
@@ -134,7 +134,7 @@ class _QuestAddPageState extends State<QuestAddPage> {
                         height: 25,
                       ),
                       SizedBox(
-                        height: 80,
+                        height: 82,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -305,7 +305,7 @@ class _QuestAddPageState extends State<QuestAddPage> {
                         height: 25,
                       ),
                       SizedBox(
-                        height: 80,
+                        height: 82,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -356,10 +356,12 @@ class _QuestAddPageState extends State<QuestAddPage> {
                 const SizedBox(
                   height: 24,
                 ),
-                Text(
-                  '쿠폰 미리보기',
-                  style: TextS.subtitle1().copyWith(
-                    color: ColorS.gray400,
+                Center(
+                  child: Text(
+                    '쿠폰 미리보기',
+                    style: TextS.subtitle1().copyWith(
+                      color: ColorS.gray400,
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -397,7 +399,9 @@ class _QuestAddPageState extends State<QuestAddPage> {
                     ),
                   ),
                 ),
-                const Spacer(),
+                const SizedBox(
+                  height: 30,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: MeokQButton(

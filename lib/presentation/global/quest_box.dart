@@ -51,26 +51,28 @@ class QuestBox extends StatelessWidget {
             height: double.infinity,
             color: ColorS.divideGray,
           ),
-          SizedBox(
-            width: 88,
-            height: 72,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                QuestStateChip(
-                  questStatus: questStatus,
-                ),
-                if (questStatus.isOpen)
-                  const SizedBox(
-                    height: 6,
+          Expanded(
+            child: SizedBox(
+              width: 88,
+              height: 72,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  QuestStateChip(
+                    questStatus: questStatus,
                   ),
-                if (questStatus.isOpen)
-                  Text(
-                    '90일 남음', // TODO: 퀘스크 상태에 따라 바뀜
-                    style: TextS.body().copyWith(color: ColorS.applyGray),
-                  ),
-              ],
+                  if (questStatus.isOpen) ... [
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    Text(
+                      '90일 남음', // TODO: 퀘스크 상태에 따라 바뀜
+                      style: TextS.body().copyWith(color: ColorS.applyGray),
+                    ),
+                  ],
+                ],
+              ),
             ),
           ),
         ],

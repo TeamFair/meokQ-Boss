@@ -24,9 +24,9 @@ class MeokQButton extends StatelessWidget {
       onTap: canTap ? onTap : () {},
       child: Container(
         width: double.infinity,
-        height: 50,
+        height: 52,
         padding: const EdgeInsets.symmetric(
-          vertical: 16,
+          vertical: 15,
         ),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(

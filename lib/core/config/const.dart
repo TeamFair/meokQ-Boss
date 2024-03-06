@@ -65,8 +65,8 @@ const rejectList = [
   '직접 입력',
 ];
 
-const restAPIUrl = 'http://43.202.229.190:9090';
-// const restAPIUrl = 'http://43.202.229.190:9091';
+// const restAPIUrl = 'http://43.202.229.190:9090';
+const restAPIUrl = 'http://43.202.229.190:9091';
 
 String imageUrl = '$restAPIUrl/api/open/image/';
 

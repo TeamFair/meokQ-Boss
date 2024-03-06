@@ -25,6 +25,7 @@ class ChallengeBox extends StatelessWidget {
         children: [
           SvgPicture.asset(
             Svgs.challengeButton,
+            width: double.infinity,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 17, top: 18),

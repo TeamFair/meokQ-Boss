@@ -87,7 +87,7 @@ class _AccountPageState extends State<AccountPage> {
                           width: 18,
                         ),
                         SizedBox(
-                          height: 50,
+                          height: 52,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,

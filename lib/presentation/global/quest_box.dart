@@ -26,7 +26,7 @@ class QuestBox extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: 50,
+            height: 52,
             width: 240,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +62,7 @@ class QuestBox extends StatelessWidget {
                   QuestStateChip(
                     questStatus: questStatus,
                   ),
-                  if (questStatus.isOpen) ... [
+                  if (questStatus.isOpen) ...[
                     const SizedBox(
                       height: 6,
                     ),

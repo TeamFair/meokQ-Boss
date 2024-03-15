@@ -34,7 +34,7 @@ class ChallengeBox extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 50,
+                  height: 52,
                   width: 240,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

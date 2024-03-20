@@ -35,9 +35,9 @@ enum Consent {
 
   String get apiText {
     return switch (this) {
-      Consent.collection => 'PERSONAL_INFO_COLLECTION',
-      Consent.thirdParty => 'THIRD_PARTY_PROVIDE',
-      Consent.marketing => 'PROMOTION_MARKETING',
+      Consent.collection => 'PRIVACY_POLICY_BOSS',
+      Consent.thirdParty => 'PRIVACY_CONSENT_FORM_BOSS',
+      Consent.marketing => 'PROMOTION_MARKETING_BOSS',
       Consent.all => '',
     };
   }

@@ -21,17 +21,23 @@ class AccountTimeEditPage extends StatefulWidget {
 }
 
 class _AccountTimeEditPageState extends State<AccountTimeEditPage> {
+  var isNotUpdated = true;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final args =
-        ModalRoute.of(context)!.settings.arguments as AccountTimeEditArgument;
+    if (isNotUpdated) {
+      final args =
+          ModalRoute.of(context)!.settings.arguments as AccountTimeEditArgument;
 
-    BlocProvider.of<AccountTimeEditBloc>(context).add(
-      InitAccountTime(
-        argument: args,
-      ),
-    );
+      BlocProvider.of<AccountTimeEditBloc>(context).add(
+        InitAccountTime(
+          argument: args,
+        ),
+      );
+      
+      isNotUpdated = false;
+    }
   }
 
   @override
